@@ -6,8 +6,8 @@
 		
 		//Aquí se agrega cada subproyecto, separado por comas
 		{
-			"name": "PROT: plantilla_fv",
-			"path": "src/pro/plantilla_fv"
+			"name": "PROT: ataques",
+			"path": "src/pro/ataques"
 		},
 
 	],
