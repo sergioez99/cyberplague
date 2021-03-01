@@ -9,9 +9,9 @@
 int main() {
 
   MiModulo *mod = new MiModulo();
-
+  int hit = 0;
   //Creamos una ventana
-  sf::RenderWindow window(sf::VideoMode(640, 480), "P0. Fundamentos de los Videojuegos. DCCIA");
+  sf::RenderWindow window(sf::VideoMode(640, 480), "Hitbox");
 
   //Cargo la imagen donde reside la textura del sprite
   sf::Texture tex;
@@ -22,14 +22,19 @@ int main() {
 
   //Y creo el spritesheet a partir de la imagen anterior
   sf::Sprite sprite(tex);
+  sf::Sprite bala(tex);
 
   //Le pongo el centroide donde corresponde
   sprite.setOrigin(75 / 2, 75 / 2);
+  bala.setOrigin(75/2, 75/2);
   //Cojo el sprite que me interesa por defecto del sheet
   sprite.setTextureRect(sf::IntRect(0 * 75, 0 * 75, 75, 75));
+  bala.setTextureRect(sf::IntRect(1 * 75, 0 * 75, 75, 75));
 
   // Lo dispongo en el centro de la pantalla
-  sprite.setPosition(320, 240);
+  // 75, 480
+  sprite.setPosition(75, 240);
+  bala.setPosition(480, 300);
 
   //Bucle del juego
   while (window.isOpen()) {
@@ -88,8 +93,14 @@ int main() {
       }
     }
 
+    //Recoge las posiciones de los dos sprites y mira a ver si se intersectan.
+    //Si lo hace, se estan tocando, por lo que hace lo que corresponda.(hitbox)
+    if(sprite.getGlobalBounds().intersects(bala.getGlobalBounds()) && hit==0){
+      hit = 1;
+    }
     window.clear();
     window.draw(sprite);
+    if(hit==0) window.draw(bala);
     window.display();
   }
 
