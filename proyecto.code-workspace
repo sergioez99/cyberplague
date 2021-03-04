@@ -2,14 +2,18 @@
 	"folders": [
 		{
 			"path": "."
-		},
-		
-		//Aquí se agrega cada subproyecto, separado por comas
-		{
-			"name": "PROT: Hitbox",
-			"path": "src/pro/Hitbox"
-		},
+		}
 
+				//Aquí se agrega cada subproyecto, separado por comas
+				{
+					"name": "PROT: Hitbox",
+					"path": "src/pro/Hitbox",
+
+				},
+				{
+					"name": "PROT: FV",
+					"path": "src/pro/plantilla_fv"
+				}
 	],
 	"settings": {
 		"editor.wordWrap": "on"
