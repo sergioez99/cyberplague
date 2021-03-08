@@ -2,18 +2,23 @@
 	"folders": [
 		{
 			"path": "."
+		},
+
+		//Aquí se agrega cada subproyecto, separado por comas
+		{
+			"name": "PROT: Hitbox",
+			"path": "src/pro/Hitbox",
+
+		},
+		{
+			"name": "PROT: IA_Enemigo",
+			"path": "src/pro/IA_Enemigo",
+
+		},
+		{
+			"name": "PROT: FV",
+			"path": "src/pro/plantilla_fv"
 		}
-
-				//Aquí se agrega cada subproyecto, separado por comas
-				{
-					"name": "PROT: Hitbox",
-					"path": "src/pro/Hitbox",
-
-				},
-				{
-					"name": "PROT: FV",
-					"path": "src/pro/plantilla_fv"
-				}
 	],
 	"settings": {
 		"editor.wordWrap": "on"
