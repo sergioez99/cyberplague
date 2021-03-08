@@ -16,6 +16,11 @@
 
 		},
 		{
+			"name": "PROT: ataques",
+			"path": "src/pro/ataques",
+
+		},
+		{
 			"name": "PROT: FV",
 			"path": "src/pro/plantilla_fv"
 		}
