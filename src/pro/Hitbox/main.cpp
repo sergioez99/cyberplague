@@ -5,7 +5,15 @@
 #include "ej_modulos/mimodulo.h"
 
 #define kVel 5
-
+//Metodo que comprueba si interseccionan dos boundingBoxes. No importa el orden de estos (a o b).
+//Se pasa por referencia hit para que se cambie tambien en el main.
+bool hitboxCollision(int& hit, sf::FloatRect a, sf::FloatRect b){
+  if(a.intersects(b)){
+    hit = 1;
+    return true;
+  }
+  return false;
+}
 int main() {
 
   MiModulo *mod = new MiModulo();
@@ -93,14 +101,10 @@ int main() {
       }
     }
 
-    //Recoge las posiciones de los dos sprites y mira a ver si se intersectan.
-    //Si lo hace, se estan tocando, por lo que hace lo que corresponda.(hitbox)
-    if(sprite.getGlobalBounds().intersects(bala.getGlobalBounds()) && hit==0){
-      hit = 1;
-    }
     window.clear();
     window.draw(sprite);
-    if(hit==0) window.draw(bala);
+    //(Optimización) Añade un int para no volver a calcular las boundingBoxes en cada Update si ya se tocaron
+    if(hit==0 && !hitboxCollision(hit, sprite.getGlobalBounds(), bala.getGlobalBounds()))      window.draw(bala);
     window.display();
   }
 
