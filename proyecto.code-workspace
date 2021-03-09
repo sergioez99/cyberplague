@@ -4,33 +4,80 @@
 			"path": "."
 		},
 
-		//Aquí se agrega cada subproyecto, separado por comas
-		{
-			"name": "PROT: Hitbox",
-			"path": "src/pro/Hitbox",
+				//Aquí se agrega cada subproyecto, separado por comas
+				{
+					"name": "PROT: Hitbox",
+					"path": "src/pro/Hitbox",
+				},
+				{
+					"name": "PROT: IA_Enemigo",
+					"path": "src/pro/IA_Enemigo",
+		
+				},
+				{
+					"name": "PROT: ataques",
+					"path": "src/pro/ataques",
+		
+				},
+		
+				//Aquí se agrega cada subproyecto, separado por comas
+				{
+					"name": "PROT: plantilla_fv",
+					"path": "src/pro/plantilla_fv"
+				},
+				{
+					"name": "Mapa Tiled",
+					"path": "src/pro/mapa"
+				},
+				{
+					"name": "Mapa Tutorial",
+					"path": "src/pro/mapa_tutorial"
+				},
+				
 
-		},
-		{
-			"name": "PROT: IA_Enemigo",
-			"path": "src/pro/IA_Enemigo",
-
-		},
-		{
-			"name": "PROT: ataques",
-			"path": "src/pro/ataques",
-
-		},
-		{
-			"name": "PROT: FV",
-			"path": "src/pro/plantilla_fv"
-		}
+				{
+					"name": "PROT: FV",
+					"path": "src/pro/plantilla_fv"
+				}
 	],
 	"settings": {
 		"editor.wordWrap": "on",
 		"files.associations": {
+			"array": "cpp",
 			"*.tcc": "cpp",
+			"cctype": "cpp",
+			"clocale": "cpp",
+			"cmath": "cpp",
+			"cstdarg": "cpp",
+			"cstdint": "cpp",
+			"cstdio": "cpp",
+			"cstdlib": "cpp",
+			"ctime": "cpp",
+			"cwchar": "cpp",
+			"cwctype": "cpp",
+			"deque": "cpp",
+			"unordered_map": "cpp",
+			"vector": "cpp",
+			"exception": "cpp",
+			"algorithm": "cpp",
+			"functional": "cpp",
+			"system_error": "cpp",
+			"tuple": "cpp",
+			"type_traits": "cpp",
 			"fstream": "cpp",
-			"iostream": "cpp"
+			"initializer_list": "cpp",
+			"iosfwd": "cpp",
+			"iostream": "cpp",
+			"istream": "cpp",
+			"limits": "cpp",
+			"new": "cpp",
+			"ostream": "cpp",
+			"numeric": "cpp",
+			"sstream": "cpp",
+			"stdexcept": "cpp",
+			"streambuf": "cpp",
+			"utility": "cpp",
+			"typeinfo": "cpp"
 		}
 	}
 }
