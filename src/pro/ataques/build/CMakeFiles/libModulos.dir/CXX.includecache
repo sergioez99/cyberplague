@@ -6,6 +6,16 @@
 
 #IncludeRegexTransform: 
 
+/home/carlos-fv/FV/proyectoabp-grupo-c4/src/pro/ataques/ej_modulos/Bala.cpp
+Bala.h
+/home/carlos-fv/FV/proyectoabp-grupo-c4/src/pro/ataques/ej_modulos/Bala.h
+
+/home/carlos-fv/FV/proyectoabp-grupo-c4/src/pro/ataques/ej_modulos/Bala.h
+SFML/Graphics.hpp
+-
+iostream
+-
+
 /home/carlos-fv/FV/proyectoabp-grupo-c4/src/pro/ataques/ej_modulos/NPC.cpp
 NPC.h
 /home/carlos-fv/FV/proyectoabp-grupo-c4/src/pro/ataques/ej_modulos/NPC.h
@@ -15,14 +25,6 @@ iostream
 /home/carlos-fv/FV/proyectoabp-grupo-c4/src/pro/ataques/ej_modulos/NPC.h
 SFML/Graphics.hpp
 -
-
-/home/carlos-fv/FV/proyectoabp-grupo-c4/src/pro/ataques/ej_modulos/mimodulo2.cpp
-mimodulo2.h
-/home/carlos-fv/FV/proyectoabp-grupo-c4/src/pro/ataques/ej_modulos/mimodulo2.h
-iostream
--
-
-/home/carlos-fv/FV/proyectoabp-grupo-c4/src/pro/ataques/ej_modulos/mimodulo2.h
 
 /home/carlos-fv/FV/proyectoabp-grupo-c4/src/pro/ataques/ej_modulos/tinyxml2.cpp
 tinyxml2.h

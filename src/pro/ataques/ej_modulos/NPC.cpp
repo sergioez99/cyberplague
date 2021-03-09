@@ -4,7 +4,7 @@
 /*  DECLARACIÓN DE MÉTODOS.  */
 
     //CONSTRUCTOR.
-    NPC::NPC(String nom, String tex){
+    NPC::NPC(String nom, String tex, Vector2f pos){
 
         //CARGA DE TEXTURA.
         textura = new Texture();
@@ -15,6 +15,10 @@
 
         //APLICAR TEXTURA AL SPRITE.
         sprite = new Sprite(*textura);
+
+        //POSICION DEL SPRITE.
+        posicion = new Vector2f(pos);
+        sprite->setPosition(*posicion);
         
 
         nombre = new String(nom);
@@ -30,6 +34,7 @@
         delete armadura;
         delete textura;
         delete sprite;
+        delete posicion;
     }
 
     //GETTERS.
@@ -50,6 +55,11 @@
         return *armadura;
     }
 
+    Vector2f NPC::getPosicion(){
+
+        return *posicion;
+    }
+
     //SETTERS.
     void NPC::setNombre(String nom){
 
@@ -67,6 +77,7 @@
             *vida = vid;
         }
     }
+
     void NPC::setArmadura(int arm){
 
         if(armadura == NULL){armadura = new int(arm);}
@@ -75,8 +86,23 @@
         }
     }
 
-    void NPC::atacar(){
+    void NPC::setPosicion(Vector2f pos){
 
-       
+        if(posicion == NULL){posicion = new Vector2f(pos);}
+        else{
+            *posicion = pos;
+        }
+    }
 
+    void NPC::atacar(){}
+
+    bool NPC::estoyMuerto(){
+
+        if(*vida <= 0){
+            return true;
+        }
+
+        else{
+            return false;
+        }
     }

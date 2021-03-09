@@ -11,8 +11,8 @@
 },
 {
   "directory": "/home/carlos-fv/FV/proyectoabp-grupo-c4/src/pro/ataques/build",
-  "command": "/usr/bin/g++-5    -I/home/carlos-fv/FV/proyectoabp-grupo-c4/src/pro/ataques/ej_modulos   -std=c++1y -Wall -Wextra -g   -o CMakeFiles/libModulos.dir/ej_modulos/mimodulo2.cpp.o -c /home/carlos-fv/FV/proyectoabp-grupo-c4/src/pro/ataques/ej_modulos/mimodulo2.cpp",
-  "file": "/home/carlos-fv/FV/proyectoabp-grupo-c4/src/pro/ataques/ej_modulos/mimodulo2.cpp"
+  "command": "/usr/bin/g++-5    -I/home/carlos-fv/FV/proyectoabp-grupo-c4/src/pro/ataques/ej_modulos   -std=c++1y -Wall -Wextra -g   -o CMakeFiles/libModulos.dir/ej_modulos/Bala.cpp.o -c /home/carlos-fv/FV/proyectoabp-grupo-c4/src/pro/ataques/ej_modulos/Bala.cpp",
+  "file": "/home/carlos-fv/FV/proyectoabp-grupo-c4/src/pro/ataques/ej_modulos/Bala.cpp"
 },
 {
   "directory": "/home/carlos-fv/FV/proyectoabp-grupo-c4/src/pro/ataques/build",
