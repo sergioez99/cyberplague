@@ -15,15 +15,13 @@
 		
 				},
 				{
-					"name": "PROT: ataques",
+					"name": "PROT: Ataques",
 					"path": "src/pro/ataques",
 		
 				},
-		
-				//Aquí se agrega cada subproyecto, separado por comas
 				{
-					"name": "PROT: plantilla_fv",
-					"path": "src/pro/plantilla_fv"
+					"name": "PROT: movPersonaje",
+					"path": "src/pro/movPersonaje"
 				},
 				{
 					"name": "Mapa Tiled",
@@ -33,7 +31,10 @@
 					"name": "Mapa Tutorial",
 					"path": "src/pro/mapa_tutorial"
 				},
-				
+				{
+					"name": "Mapa movCamara",
+					"path": "src/pro/movCamara"
+				},
 
 				{
 					"name": "PROT: FV",
