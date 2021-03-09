@@ -136,6 +136,33 @@ libModulos/fast:
 	$(MAKE) -f CMakeFiles/libModulos.dir/build.make CMakeFiles/libModulos.dir/build
 .PHONY : libModulos/fast
 
+ej_modulos/Bala.o: ej_modulos/Bala.cpp.o
+
+.PHONY : ej_modulos/Bala.o
+
+# target to build an object file
+ej_modulos/Bala.cpp.o:
+	$(MAKE) -f CMakeFiles/libModulos.dir/build.make CMakeFiles/libModulos.dir/ej_modulos/Bala.cpp.o
+.PHONY : ej_modulos/Bala.cpp.o
+
+ej_modulos/Bala.i: ej_modulos/Bala.cpp.i
+
+.PHONY : ej_modulos/Bala.i
+
+# target to preprocess a source file
+ej_modulos/Bala.cpp.i:
+	$(MAKE) -f CMakeFiles/libModulos.dir/build.make CMakeFiles/libModulos.dir/ej_modulos/Bala.cpp.i
+.PHONY : ej_modulos/Bala.cpp.i
+
+ej_modulos/Bala.s: ej_modulos/Bala.cpp.s
+
+.PHONY : ej_modulos/Bala.s
+
+# target to generate assembly for a file
+ej_modulos/Bala.cpp.s:
+	$(MAKE) -f CMakeFiles/libModulos.dir/build.make CMakeFiles/libModulos.dir/ej_modulos/Bala.cpp.s
+.PHONY : ej_modulos/Bala.cpp.s
+
 ej_modulos/NPC.o: ej_modulos/NPC.cpp.o
 
 .PHONY : ej_modulos/NPC.o
@@ -162,33 +189,6 @@ ej_modulos/NPC.s: ej_modulos/NPC.cpp.s
 ej_modulos/NPC.cpp.s:
 	$(MAKE) -f CMakeFiles/libModulos.dir/build.make CMakeFiles/libModulos.dir/ej_modulos/NPC.cpp.s
 .PHONY : ej_modulos/NPC.cpp.s
-
-ej_modulos/mimodulo2.o: ej_modulos/mimodulo2.cpp.o
-
-.PHONY : ej_modulos/mimodulo2.o
-
-# target to build an object file
-ej_modulos/mimodulo2.cpp.o:
-	$(MAKE) -f CMakeFiles/libModulos.dir/build.make CMakeFiles/libModulos.dir/ej_modulos/mimodulo2.cpp.o
-.PHONY : ej_modulos/mimodulo2.cpp.o
-
-ej_modulos/mimodulo2.i: ej_modulos/mimodulo2.cpp.i
-
-.PHONY : ej_modulos/mimodulo2.i
-
-# target to preprocess a source file
-ej_modulos/mimodulo2.cpp.i:
-	$(MAKE) -f CMakeFiles/libModulos.dir/build.make CMakeFiles/libModulos.dir/ej_modulos/mimodulo2.cpp.i
-.PHONY : ej_modulos/mimodulo2.cpp.i
-
-ej_modulos/mimodulo2.s: ej_modulos/mimodulo2.cpp.s
-
-.PHONY : ej_modulos/mimodulo2.s
-
-# target to generate assembly for a file
-ej_modulos/mimodulo2.cpp.s:
-	$(MAKE) -f CMakeFiles/libModulos.dir/build.make CMakeFiles/libModulos.dir/ej_modulos/mimodulo2.cpp.s
-.PHONY : ej_modulos/mimodulo2.cpp.s
 
 ej_modulos/tinyxml2.o: ej_modulos/tinyxml2.cpp.o
 
@@ -254,12 +254,12 @@ help:
 	@echo "... edit_cache"
 	@echo "... MiJuego"
 	@echo "... libModulos"
+	@echo "... ej_modulos/Bala.o"
+	@echo "... ej_modulos/Bala.i"
+	@echo "... ej_modulos/Bala.s"
 	@echo "... ej_modulos/NPC.o"
 	@echo "... ej_modulos/NPC.i"
 	@echo "... ej_modulos/NPC.s"
-	@echo "... ej_modulos/mimodulo2.o"
-	@echo "... ej_modulos/mimodulo2.i"
-	@echo "... ej_modulos/mimodulo2.s"
 	@echo "... ej_modulos/tinyxml2.o"
 	@echo "... ej_modulos/tinyxml2.i"
 	@echo "... ej_modulos/tinyxml2.s"

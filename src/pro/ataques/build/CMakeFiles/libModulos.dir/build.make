@@ -81,28 +81,28 @@ CMakeFiles/libModulos.dir/ej_modulos/NPC.cpp.o.provides: CMakeFiles/libModulos.d
 CMakeFiles/libModulos.dir/ej_modulos/NPC.cpp.o.provides.build: CMakeFiles/libModulos.dir/ej_modulos/NPC.cpp.o
 
 
-CMakeFiles/libModulos.dir/ej_modulos/mimodulo2.cpp.o: CMakeFiles/libModulos.dir/flags.make
-CMakeFiles/libModulos.dir/ej_modulos/mimodulo2.cpp.o: ../ej_modulos/mimodulo2.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/carlos-fv/FV/proyectoabp-grupo-c4/src/pro/ataques/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/libModulos.dir/ej_modulos/mimodulo2.cpp.o"
-	/usr/bin/g++-5   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/libModulos.dir/ej_modulos/mimodulo2.cpp.o -c /home/carlos-fv/FV/proyectoabp-grupo-c4/src/pro/ataques/ej_modulos/mimodulo2.cpp
+CMakeFiles/libModulos.dir/ej_modulos/Bala.cpp.o: CMakeFiles/libModulos.dir/flags.make
+CMakeFiles/libModulos.dir/ej_modulos/Bala.cpp.o: ../ej_modulos/Bala.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/carlos-fv/FV/proyectoabp-grupo-c4/src/pro/ataques/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/libModulos.dir/ej_modulos/Bala.cpp.o"
+	/usr/bin/g++-5   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/libModulos.dir/ej_modulos/Bala.cpp.o -c /home/carlos-fv/FV/proyectoabp-grupo-c4/src/pro/ataques/ej_modulos/Bala.cpp
 
-CMakeFiles/libModulos.dir/ej_modulos/mimodulo2.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/libModulos.dir/ej_modulos/mimodulo2.cpp.i"
-	/usr/bin/g++-5  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/carlos-fv/FV/proyectoabp-grupo-c4/src/pro/ataques/ej_modulos/mimodulo2.cpp > CMakeFiles/libModulos.dir/ej_modulos/mimodulo2.cpp.i
+CMakeFiles/libModulos.dir/ej_modulos/Bala.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/libModulos.dir/ej_modulos/Bala.cpp.i"
+	/usr/bin/g++-5  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/carlos-fv/FV/proyectoabp-grupo-c4/src/pro/ataques/ej_modulos/Bala.cpp > CMakeFiles/libModulos.dir/ej_modulos/Bala.cpp.i
 
-CMakeFiles/libModulos.dir/ej_modulos/mimodulo2.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/libModulos.dir/ej_modulos/mimodulo2.cpp.s"
-	/usr/bin/g++-5  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/carlos-fv/FV/proyectoabp-grupo-c4/src/pro/ataques/ej_modulos/mimodulo2.cpp -o CMakeFiles/libModulos.dir/ej_modulos/mimodulo2.cpp.s
+CMakeFiles/libModulos.dir/ej_modulos/Bala.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/libModulos.dir/ej_modulos/Bala.cpp.s"
+	/usr/bin/g++-5  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/carlos-fv/FV/proyectoabp-grupo-c4/src/pro/ataques/ej_modulos/Bala.cpp -o CMakeFiles/libModulos.dir/ej_modulos/Bala.cpp.s
 
-CMakeFiles/libModulos.dir/ej_modulos/mimodulo2.cpp.o.requires:
+CMakeFiles/libModulos.dir/ej_modulos/Bala.cpp.o.requires:
 
-.PHONY : CMakeFiles/libModulos.dir/ej_modulos/mimodulo2.cpp.o.requires
+.PHONY : CMakeFiles/libModulos.dir/ej_modulos/Bala.cpp.o.requires
 
-CMakeFiles/libModulos.dir/ej_modulos/mimodulo2.cpp.o.provides: CMakeFiles/libModulos.dir/ej_modulos/mimodulo2.cpp.o.requires
-	$(MAKE) -f CMakeFiles/libModulos.dir/build.make CMakeFiles/libModulos.dir/ej_modulos/mimodulo2.cpp.o.provides.build
-.PHONY : CMakeFiles/libModulos.dir/ej_modulos/mimodulo2.cpp.o.provides
+CMakeFiles/libModulos.dir/ej_modulos/Bala.cpp.o.provides: CMakeFiles/libModulos.dir/ej_modulos/Bala.cpp.o.requires
+	$(MAKE) -f CMakeFiles/libModulos.dir/build.make CMakeFiles/libModulos.dir/ej_modulos/Bala.cpp.o.provides.build
+.PHONY : CMakeFiles/libModulos.dir/ej_modulos/Bala.cpp.o.provides
 
-CMakeFiles/libModulos.dir/ej_modulos/mimodulo2.cpp.o.provides.build: CMakeFiles/libModulos.dir/ej_modulos/mimodulo2.cpp.o
+CMakeFiles/libModulos.dir/ej_modulos/Bala.cpp.o.provides.build: CMakeFiles/libModulos.dir/ej_modulos/Bala.cpp.o
 
 
 CMakeFiles/libModulos.dir/ej_modulos/tinyxml2.cpp.o: CMakeFiles/libModulos.dir/flags.make
@@ -132,14 +132,14 @@ CMakeFiles/libModulos.dir/ej_modulos/tinyxml2.cpp.o.provides.build: CMakeFiles/l
 # Object files for target libModulos
 libModulos_OBJECTS = \
 "CMakeFiles/libModulos.dir/ej_modulos/NPC.cpp.o" \
-"CMakeFiles/libModulos.dir/ej_modulos/mimodulo2.cpp.o" \
+"CMakeFiles/libModulos.dir/ej_modulos/Bala.cpp.o" \
 "CMakeFiles/libModulos.dir/ej_modulos/tinyxml2.cpp.o"
 
 # External object files for target libModulos
 libModulos_EXTERNAL_OBJECTS =
 
 liblibModulos.a: CMakeFiles/libModulos.dir/ej_modulos/NPC.cpp.o
-liblibModulos.a: CMakeFiles/libModulos.dir/ej_modulos/mimodulo2.cpp.o
+liblibModulos.a: CMakeFiles/libModulos.dir/ej_modulos/Bala.cpp.o
 liblibModulos.a: CMakeFiles/libModulos.dir/ej_modulos/tinyxml2.cpp.o
 liblibModulos.a: CMakeFiles/libModulos.dir/build.make
 liblibModulos.a: CMakeFiles/libModulos.dir/link.txt
@@ -153,7 +153,7 @@ CMakeFiles/libModulos.dir/build: liblibModulos.a
 .PHONY : CMakeFiles/libModulos.dir/build
 
 CMakeFiles/libModulos.dir/requires: CMakeFiles/libModulos.dir/ej_modulos/NPC.cpp.o.requires
-CMakeFiles/libModulos.dir/requires: CMakeFiles/libModulos.dir/ej_modulos/mimodulo2.cpp.o.requires
+CMakeFiles/libModulos.dir/requires: CMakeFiles/libModulos.dir/ej_modulos/Bala.cpp.o.requires
 CMakeFiles/libModulos.dir/requires: CMakeFiles/libModulos.dir/ej_modulos/tinyxml2.cpp.o.requires
 
 .PHONY : CMakeFiles/libModulos.dir/requires
