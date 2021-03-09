@@ -19,6 +19,10 @@
 					"name": "Mapa Tiled",
 					"path": "src/pro/mapa"
 				},
+				{
+					"name": "Mapa Tutorial",
+					"path": "src/pro/mapa_tutorial"
+				},
 				
 
 				{
