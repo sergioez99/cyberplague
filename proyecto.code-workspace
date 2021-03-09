@@ -9,6 +9,16 @@
 					"name": "PROT: Hitbox",
 					"path": "src/pro/Hitbox",
 				},
+				{
+					"name": "PROT: IA_Enemigo",
+					"path": "src/pro/IA_Enemigo",
+		
+				},
+				{
+					"name": "PROT: ataques",
+					"path": "src/pro/ataques",
+		
+				},
 		
 				//Aquí se agrega cada subproyecto, separado por comas
 				{
