@@ -25,6 +25,11 @@
 		
 				},
 				{
+					"name": "PROT: Rayo Laser",
+					"path": "src/pro/rayoLaser",
+		
+				},
+				{
 					"name": "PROT: movPersonaje",
 					"path": "src/pro/movPersonaje"
 				},
