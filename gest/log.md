@@ -24,3 +24,6 @@ Añadido a Hitbox colisiones.
 
 ## 20210310 CarlosVillena @(2h)
 Prototipo de la segunda arma creada. Le dedicado mas tiempo del esperado porque no me funcionaba la forma para controlar la cadencia de disparo.
+
+## 20210310 CarlosVillena @(1h)
+Prototipo de la tercera arma creada.
