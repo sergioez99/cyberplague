@@ -8,7 +8,7 @@
 #define kVel 150
 #define kVelBala 800
 #define fps 60
-#define cad 10   //Cadencia: Cada "cad" frames, el pj dispara.
+#define cad 1   //Cadencia: Cada "cad" frames, el pj dispara.
 
 
 using namespace sf;
@@ -53,18 +53,16 @@ int main() {
   /* ------------------------------------------------------------------------ */
 
   /* PROYECTILES */
-  CircleShape bala;
-  bala.setFillColor(Color::Yellow);
-  bala.setRadius(5.f);
-
-  vector<CircleShape> balas;
+  RectangleShape laser(Vector2f(0,0));
+  laser.setPosition(pj->getPosicion());
+  laser.setFillColor(Color::Red);
 
   /* --------------------------- */
 
 
   Time timeStartUpdate = reloj1.getElapsedTime();
   int frameCount = 0; //Contador de Frames.
-    
+  bool disparo = false;
 
   //Bucle del juego
   while (window.isOpen()) {
@@ -105,10 +103,10 @@ int main() {
 
                 if(frameCount > cad - 1){
                 
-                  bala.setPosition(pj->getPosicion());
-                  balas.push_back(CircleShape(bala));
+                  disparo = true;
 
-                  frameCount = 0;
+                  laser.setSize(Vector2f(640, 10));
+                  laser.setPosition(pj->getPosicion());
                 }
 
                 break;
@@ -123,6 +121,20 @@ int main() {
                 std::cout << event.key.code << std::endl;
                 break;
               }
+
+          break;
+
+          case sf::Event::KeyReleased:
+
+            switch(event.key.code){
+
+              case sf::Keyboard::Z:
+
+                disparo = false;
+                laser.setPosition(Vector2f(0,0));
+
+              break;
+            }
         }
       }
 
@@ -130,18 +142,10 @@ int main() {
 
       /* UPDATE */
 
-      if(balas.size() != 0){
+      if(laser.getGlobalBounds().intersects(en_sprite->getGlobalBounds()) && frameCount > 10){
 
-        for(size_t i = 0; i < balas.size(); i++){
-
-          balas[i].move(kVelBala * delta, 0);
-
-          if(balas[i].getPosition().x >= en->getPosicion().x && !en->estoyMuerto()){
-
-            en->setVida(en->getVida() - 5);
-            balas.erase(balas.begin() + i);
-          }
-        }
+        en->setVida(en->getVida() - 2);
+        frameCount = 0;
       }
 
       frameCount ++;
@@ -154,11 +158,10 @@ int main() {
 
       window.clear();
 
-      for(size_t i = 0; i < balas.size(); i++){
+      if(disparo == true){
 
-        window.draw(balas[i]);
+        window.draw(laser);
       }
-      
 
       if(!en->estoyMuerto()){
         

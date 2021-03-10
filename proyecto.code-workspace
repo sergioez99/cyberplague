@@ -20,6 +20,16 @@
 		
 				},
 				{
+					"name": "PROT: Arco Hojas",
+					"path": "src/pro/arco_hojas",
+		
+				},
+				{
+					"name": "PROT: Rayo Laser",
+					"path": "src/pro/rayoLaser",
+		
+				},
+				{
 					"name": "PROT: movPersonaje",
 					"path": "src/pro/movPersonaje"
 				},

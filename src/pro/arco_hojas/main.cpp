@@ -8,7 +8,7 @@
 #define kVel 150
 #define kVelBala 800
 #define fps 60
-#define cad 10   //Cadencia: Cada "cad" frames, el pj dispara.
+#define cad 40   //Cadencia: Cada "cad" frames, el pj dispara.
 
 
 using namespace sf;
@@ -54,7 +54,7 @@ int main() {
 
   /* PROYECTILES */
   CircleShape bala;
-  bala.setFillColor(Color::Yellow);
+  bala.setFillColor(Color::Green);
   bala.setRadius(5.f);
 
   vector<CircleShape> balas;
@@ -138,7 +138,11 @@ int main() {
 
           if(balas[i].getPosition().x >= en->getPosicion().x && !en->estoyMuerto()){
 
-            en->setVida(en->getVida() - 5);
+            en->setVida(en->getVida() - 15);
+          }
+
+          if(balas[i].getPosition().x >= 640){
+
             balas.erase(balas.begin() + i);
           }
         }
