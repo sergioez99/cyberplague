@@ -1,19 +1,20 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include <cmath>
+#include <vector>
+#include <list>
 
 #include "include/config.h"
-#include "ej_modulos/mimodulo.h"
+#include "ej_modulos/Nodo.h"
 
 #define kVel 55
 #define kVelEnemigo 50
 #define rangoEnemigo 200.0f
 #define kUpdateTimePS 1000/15
+#define costeRecto 10
+#define costeDiagonal 14
 
 int main() {
-
-  MiModulo *mod = new MiModulo();
-
   //Creamos una ventana
   sf::RenderWindow window(sf::VideoMode(640, 480), "IA Enemigo");
 
@@ -52,6 +53,36 @@ int main() {
   // Lo dispongo en el lado izquierdo de la pantalla
   enemigo.setPosition(540, 240);
 
+  //Creamos una matriz de colisiones de prueba (se obtiene de un tilemap)
+  int matriz[16][12]; //Tiles de 40x40
+
+  for(int i = 0; i < 16; i++){
+    for(int j = 0; j < 12; j++){
+      matriz[i][j] = 0;
+    }
+  }
+
+  matriz[6][6] = 1;
+  matriz[7][5] = 1;
+  matriz[7][6] = 1;
+  matriz[8][5] = 1;
+  matriz[8][6] = 1;
+  matriz[9][6] = 1;
+  matriz[10][6] = 1;
+
+  //Esto es solo para pintar las colisiones por pantalla
+  std::vector<sf::RectangleShape> colisiones;
+
+  for(int i = 0; i < 16; i++){
+    for(int j = 0; j < 12; j++){
+      if(matriz[i][j] == 1){
+        sf::RectangleShape colision(sf::Vector2f(40, 40));
+        colision.setPosition(sf::Vector2f(i * 40, j * 40));
+        colisiones.push_back(colision);
+      }
+    }
+  }
+
   sf::Time timeStartUpdate = clock.getElapsedTime();
   //Bucle del juego
   while (window.isOpen()) {
@@ -89,16 +120,6 @@ int main() {
             personaje.move(-(kVel * delta), 0);
             break;
 
-          case sf::Keyboard::Up:
-            personaje.setTextureRect(sf::IntRect(0 * 75, 3 * 75, 75, 75));
-            personaje.move(0, -(kVel * delta));
-            break;
-
-          case sf::Keyboard::Down:
-            personaje.setTextureRect(sf::IntRect(0 * 75, 0 * 75, 75, 75));
-            personaje.move(0, kVel * delta);
-            break;
-
           //Tecla ESC para salir
           case sf::Keyboard::Escape:
             window.close();
@@ -118,10 +139,69 @@ int main() {
       if(distancia <= rangoEnemigo){
         enemigo.setTextureRect(sf::IntRect(2 * 85, 2 * 75, 75, 75));
         enemigo.setScale(-1,1);
+
+        //Algoritmo A*
+        std::list<Nodo> listaInterior;
+        std::list<Nodo> listaFrontera;
+
+        //Crear nodo inicio (enemigo) y calculamos donde esta en la matriz de colisiones
+        int xEnemigo = ceil(enemigo.getPosition().x / 40) - 1;
+        int yEnemigo = ceil(enemigo.getPosition().y / 40) - 1;
+        Nodo *inicio = new Nodo(NULL, xEnemigo, yEnemigo);
+
+        //Crear nodo meta (jugador) y calculamos donde esta en la matriz de colisiones
+        int xJugador = ceil(personaje.getPosition().x / 40) - 1;
+        int yJugador = ceil(personaje.getPosition().y / 40) - 1;
+        Nodo *meta = new Nodo(NULL, xJugador, yJugador);
+
+        //Anadimos a listaForntera el nodo inicio y los de alrededor
+        listaFrontera.push_back(*inicio);
+        Nodo *hijo;
+
+        //Direccion arriba izquierda (diagonal)
+        if(xEnemigo - 1 > -1 && yEnemigo - 1 > -1 && matriz[xEnemigo - 1][yEnemigo - 1] == 0){
+          hijo = new Nodo(*inicio);
+          hijo->setG(costeDiagonal);
+          hijo->setH(abs(xEnemigo - xJugador) + abs(yEnemigo - yJugador));
+          hijo->setF(hijo->getG() + hijo->getH());
+          listaFrontera.push_back(*hijo);
+        }
+        //Direccion izquierda (recto)
+        if(xEnemigo - 1 > -1 && matriz[xEnemigo - 1][yEnemigo] == 0){
+          hijo = new Nodo(*inicio);
+          hijo->setG(costeRecto);
+          hijo->setH(abs(xEnemigo - xJugador) + abs(yEnemigo - yJugador));
+          hijo->setF(hijo->getG() + hijo->getH());
+          listaFrontera.push_back(*hijo);
+        }
+        //Direccion arriba derecha (diagonal)
+        if(xEnemigo + 1 < 16 && yEnemigo - 1 > -1 && matriz[xEnemigo + 1][yEnemigo - 1] == 0){
+          hijo = new Nodo(*inicio);
+          hijo->setG(costeDiagonal);
+          hijo->setH(abs(xEnemigo - xJugador) + abs(yEnemigo - yJugador));
+          hijo->setF(hijo->getG() + hijo->getH());
+          listaFrontera.push_back(*hijo);
+        }
+        //Direccion derecha (recto)
+        if(xEnemigo + 1 < 16 && matriz[xEnemigo + 1][yEnemigo] == 0){
+          hijo = new Nodo(*inicio);
+          hijo->setG(costeRecto);
+          hijo->setH(abs(xEnemigo - xJugador) + abs(yEnemigo - yJugador));
+          hijo->setF(hijo->getG() + hijo->getH());
+          listaFrontera.push_back(*hijo);
+        }
         
-        //El enemigo se mueve hasta el jugador
+        //Nodo actual
+        Nodo *actual = inicio;
+
+        //Recorrer listaFrontera
+        while(!listaFrontera.empty()){
+          Nodo n = listaFrontera.front();
+        }
+        
+        /*//El enemigo se mueve hasta el jugador
         if(enemigo.getPosition().x > personaje.getPosition().x + 50.0f)
-          enemigo.move(-(kVelEnemigo * delta), 0);
+          enemigo.move(-(kVelEnemigo * delta), 0);*/
       }
       else{
         enemigo.setScale(1,1);
@@ -137,6 +217,8 @@ int main() {
     }
 
     window.clear();
+    for(int i = 0; i < (int)colisiones.size(); i++)
+      window.draw(colisiones[i]);
     window.draw(personaje);
     window.draw(enemigo);
     window.display();
