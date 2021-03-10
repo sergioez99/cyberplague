@@ -21,3 +21,6 @@ Creación de la versión preliminar de la clase Bala.
 
 ## 20210310 JoseSansano @(50min)
 Añadido a Hitbox colisiones.
+
+## 20210310 CarlosVillena @(2h)
+Prototipo de la segunda arma creada. Le dedicado mas tiempo del esperado porque no me funcionaba la forma para controlar la cadencia de disparo.
