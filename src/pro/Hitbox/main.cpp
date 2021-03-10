@@ -6,7 +6,7 @@
 
 #define kVel 5
 //Metodo que comprueba si interseccionan dos boundingBoxes. No importa el orden de estos (a o b).
-//Se pasa por referencia hit para que se cambie tambien en el main.
+//Se pasa por referencia hit para que se cambie tambien en el main y asi no volver a dibujar el sprite correspondiente.
 bool hitboxCollision(int& hit, sf::FloatRect a, sf::FloatRect b){
   if(a.intersects(b)){
     hit = 1;
@@ -14,10 +14,16 @@ bool hitboxCollision(int& hit, sf::FloatRect a, sf::FloatRect b){
   }
   return false;
 }
+//Metodo que solo comprueba si dos BoundingBoxes se cortan.
+bool spriteCollides(sf::FloatRect a, sf::FloatRect b){
+ if(a.intersects(b)) return true;
+ return false;
+}
 int main() {
 
   MiModulo *mod = new MiModulo();
   int hit = 0;
+  sf::Vector2f sPosition(0,0); //Guardar posicion inicial del sprite, para colisiones.
   //Creamos una ventana
   sf::RenderWindow window(sf::VideoMode(640, 480), "Hitbox");
 
@@ -31,24 +37,28 @@ int main() {
   //Y creo el spritesheet a partir de la imagen anterior
   sf::Sprite sprite(tex);
   sf::Sprite bala(tex);
+  sf::Sprite muro(tex);
 
   //Le pongo el centroide donde corresponde
   sprite.setOrigin(75 / 2, 75 / 2);
   bala.setOrigin(75/2, 75/2);
+  muro.setOrigin(75/2, 75/2);
   //Cojo el sprite que me interesa por defecto del sheet
   sprite.setTextureRect(sf::IntRect(0 * 75, 0 * 75, 75, 75));
   bala.setTextureRect(sf::IntRect(1 * 75, 0 * 75, 75, 75));
+  muro.setTextureRect(sf::IntRect(1 * 75, 3 * 75, 75, 75));
 
-  // Lo dispongo en el centro de la pantalla
-  // 75, 480
   sprite.setPosition(75, 240);
   bala.setPosition(480, 300);
+  muro.setPosition(200, 240);
 
   //Bucle del juego
   while (window.isOpen()) {
     //Bucle de obtención de eventos
+    sPosition = sprite.getPosition();
     sf::Event event;
     while (window.pollEvent(event)) {
+
 
       switch (event.type) {
 
@@ -100,11 +110,16 @@ int main() {
         }
       }
     }
-
+    //Si intersecta con el muro, no lo puede atravesar, por lo que no se mueve a esa posición.
+    if(spriteCollides(sprite.getGlobalBounds(), muro.getGlobalBounds())){ 
+      sprite.setPosition(sPosition);
+    }
     window.clear();
     window.draw(sprite);
+    window.draw(muro);
     //(Optimización) Añade un int para no volver a calcular las boundingBoxes en cada Update si ya se tocaron
-    if(hit==0 && !hitboxCollision(hit, sprite.getGlobalBounds(), bala.getGlobalBounds()))      window.draw(bala);
+    if(hit==0 && !hitboxCollision(hit, sprite.getGlobalBounds(), bala.getGlobalBounds())) window.draw(bala);
+    
     window.display();
   }
 
