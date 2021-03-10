@@ -6,8 +6,10 @@
 #include "ej_modulos/NPC.h"
 
 #define kVel 150
-#define kVelBala 500
+#define kVelBala 800
 #define fps 60
+#define cad 10   //Cadencia: Cada "cad" frames, el pj dispara.
+
 
 using namespace sf;
 using namespace std;
@@ -61,15 +63,16 @@ int main() {
 
 
   Time timeStartUpdate = reloj1.getElapsedTime();
-
+  int frameCount = 0; //Contador de Frames.
+    
 
   //Bucle del juego
   while (window.isOpen()) {
 
-    if(timeStartUpdate.asSeconds() > 1/fps){
+    if(timeStartUpdate.asSeconds() > (float) 1/fps){
 
-      float delta = reloj2.restart().asSeconds();
-     
+      float delta = reloj1.restart().asSeconds();
+      
       /* EVENTOS */
 
       sf::Event event;
@@ -100,10 +103,13 @@ int main() {
               //Tecla Z para disparar.
               case sf::Keyboard::Z:
 
-                bala.setPosition(pj->getPosicion());
-                balas.push_back(CircleShape(bala));
+                if(frameCount > cad - 1){
+                
+                  bala.setPosition(pj->getPosicion());
+                  balas.push_back(CircleShape(bala));
 
-                cout << bala.getPosition().x << " " << bala.getPosition().y << endl;
+                  frameCount = 0;
+                }
 
                 break;
 
@@ -133,16 +139,14 @@ int main() {
           if(balas[i].getPosition().x >= en->getPosicion().x && !en->estoyMuerto()){
 
             en->setVida(en->getVida() - 5);
-
             balas.erase(balas.begin() + i);
           }
-
-          cout << bala.getPosition().x << " " << bala.getPosition().y << endl;
         }
       }
 
-      
-      
+      frameCount ++;
+      if(frameCount ==  INT_MAX){frameCount=0;}
+      cout << frameCount << endl;
 
       /* ------------------------------------------------------- */
 
@@ -161,9 +165,6 @@ int main() {
         window.draw(*en_sprite);
       }
 
-        
-      
-      
       window.draw(*pj_sprite);
       
       window.display();
@@ -173,7 +174,6 @@ int main() {
       reloj1.restart();
     }
 
-    //
     //cout << timeStartUpdate.asSeconds() << endl;
     timeStartUpdate = reloj1.getElapsedTime();
   }
