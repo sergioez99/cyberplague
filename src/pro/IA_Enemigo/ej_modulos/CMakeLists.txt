@@ -1,7 +1,7 @@
 #Especificar donde se encuentran los ficheros cpp a compilar
 target_sources(libModulos PRIVATE
     "${CMAKE_CURRENT_SOURCE_DIR}/Nodo.cpp"
-    "${CMAKE_CURRENT_SOURCE_DIR}/mimodulo2.cpp"
+    "${CMAKE_CURRENT_SOURCE_DIR}/Pathfinding.cpp"
 )
 
 #Y donde se encuentran los .h

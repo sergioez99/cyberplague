@@ -30,3 +30,6 @@ Prototipo de la tercera arma creada.
 
 ## 20210310 RamónRodríguez @(2h14min)
 Creación de la clase Nodo e implementación de una parte del Algoritmo A* para el pathfinding del enemigo.
+
+## 20210311 RamónRodríguez @(3h15min)
+Implementación total del Algoritmo A* a falta de pruebas.

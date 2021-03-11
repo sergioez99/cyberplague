@@ -15,8 +15,14 @@ class Nodo{
         int getF();
         int getG();
         int getH();
+        int getX();
+        int getY();
 
+        void setPadre(Nodo *p);
         void setF(int fn);
         void setG(int gn);
         void setH(int hn);
+
+        bool operator==(const Nodo &);
+        bool operator!=(const Nodo &);
 };

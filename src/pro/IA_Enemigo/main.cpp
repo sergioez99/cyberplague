@@ -11,8 +11,8 @@
 #define kVelEnemigo 50
 #define rangoEnemigo 200.0f
 #define kUpdateTimePS 1000/15
-#define costeRecto 10
-#define costeDiagonal 14
+//#define costeRecto 10
+//#define costeDiagonal 14
 
 int main() {
   //Creamos una ventana
@@ -141,7 +141,7 @@ int main() {
         enemigo.setScale(-1,1);
 
         //Algoritmo A*
-        std::list<Nodo> listaInterior;
+        /*std::list<Nodo> listaInterior;
         std::list<Nodo> listaFrontera;
 
         //Crear nodo inicio (enemigo) y calculamos donde esta en la matriz de colisiones
@@ -197,7 +197,7 @@ int main() {
         //Recorrer listaFrontera
         while(!listaFrontera.empty()){
           Nodo n = listaFrontera.front();
-        }
+        }*/
         
         /*//El enemigo se mueve hasta el jugador
         if(enemigo.getPosition().x > personaje.getPosition().x + 50.0f)
