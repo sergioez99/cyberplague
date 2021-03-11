@@ -45,6 +45,10 @@
 					"name": "Mapa movCamara",
 					"path": "src/pro/movCamara"
 				},
+				{
+					"name": "PROT: Pausa",
+					"path": "src/pro/pausa"
+				},
 
 				{
 					"name": "PROT: FV",
