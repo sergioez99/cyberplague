@@ -8,8 +8,9 @@
 #define kVel 150
 #define kVelBala 800
 #define fps 60
-#define cad 5   //Cadencia: Cada "cad" frames, el pj dispara.
-#define dmg 2
+#define cad 3   //Cadencia: Cada "cad" frames, el pj dispara.
+
+#define mejora true
 
 
 using namespace sf;
@@ -59,12 +60,15 @@ int main() {
 
   vector<RectangleShape> balas;
 
+  int* dmg = new int(0);
+
   /* --------------------------- */
 
 
   Time timeStartUpdate = reloj1.getElapsedTime();
   int frameCount = 0; //Contador de Frames.
     
+  bool teclaPulsada = false;
 
   //Bucle del juego
   while (window.isOpen()) {
@@ -82,7 +86,13 @@ int main() {
 
           //Si se recibe el evento de cerrar la ventana la cierro
           case sf::Event::Closed:
+
             window.close();
+            delete pj;
+            delete en;
+            delete dmg;
+
+            return 0;
             break;
 
           //Se pulsó una tecla, imprimo su codigo
@@ -103,19 +113,37 @@ int main() {
               //Tecla Z para disparar.
               case sf::Keyboard::Z:
 
-                if(frameCount > cad - 1){
-                
+                if(frameCount > cad - 1 && teclaPulsada == false){
+                  
+                  if(mejora){
+
+                    *dmg = 5;
+                  }
+                  else{
+
+                    *dmg = 2;
+                  }
+
+
                   bala.setPosition(pj->getPosicion());
                   balas.push_back(RectangleShape(bala));
 
-                  frameCount = 0;
+                  
                 }
+
+                
+                teclaPulsada = true;
 
                 break;
 
               //Tecla ESC para salir.
               case sf::Keyboard::Escape:
                 window.close();
+                delete pj;
+                delete en;
+                delete dmg;
+
+                return 0;
                 break;
 
               //Cualquier tecla desconocida se imprime por pantalla su código
@@ -123,6 +151,21 @@ int main() {
                 std::cout << event.key.code << std::endl;
                 break;
               }
+            
+            break;
+
+          case Event::KeyReleased:
+
+                switch(event.key.code){
+
+                  case Keyboard::Z:
+
+                    teclaPulsada = false;
+                
+                  break;
+                }
+
+            break; 
         }
       }
 
@@ -136,17 +179,16 @@ int main() {
 
           balas[i].move(kVelBala * delta, 0);
 
-          if(balas[i].getPosition().x >= en->getPosicion().x && !en->estoyMuerto()){
+          if(balas[i].getGlobalBounds().intersects(en_sprite->getGlobalBounds()) && frameCount > 10 && !en->estoyMuerto()){
 
-            if(dmg - en->getArmadura() <= 0){en->setVida(en->getVida() - 1);}
+            if(*dmg - en->getArmadura() <= 0){en->setVida(en->getVida() - 1);}
             else{
 
-              en->setVida(en->getVida() - (dmg - en->getArmadura()));
+              en->setVida(en->getVida() - (*dmg - en->getArmadura()));
             }
             
             cout << en->getVida() << endl;
-            
-            balas.erase(balas.begin() + i);
+            frameCount = 0;
           }
 
           else if(balas[i].getPosition().x >= 640){
