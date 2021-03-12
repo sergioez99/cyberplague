@@ -46,10 +46,10 @@
 					"path": "src/pro/movCamara"
 				},
 				{
-					"name": "PROT: Pausa",
-					"path": "src/pro/pausa"
+					"name": "PROT: Menu Principal",
+					"path": "src/pro/menu_principal"
 				},
-
+			
 				{
 					"name": "PROT: FV",
 					"path": "src/pro/plantilla_fv"
