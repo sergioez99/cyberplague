@@ -65,7 +65,8 @@ int main() {
 
   Time timeStartUpdate = reloj1.getElapsedTime();
   int frameCount = 0; //Contador de Frames.
-    
+
+  bool teclaPulsada = false; 
 
   //Bucle del juego
   while (window.isOpen()) {
@@ -84,6 +85,10 @@ int main() {
           //Si se recibe el evento de cerrar la ventana la cierro
           case sf::Event::Closed:
             window.close();
+            delete pj;
+            delete en;
+
+            return 0;
             break;
 
           //Se pulsó una tecla, imprimo su codigo
@@ -104,7 +109,7 @@ int main() {
               //Tecla Z para disparar.
               case sf::Keyboard::Z:
 
-                if(frameCount > cad - 1){
+                if(frameCount > cad - 1 && teclaPulsada == false){
                 
                   bala.setPosition(pj->getPosicion());
                   balas.push_back(CircleShape(bala));
@@ -112,18 +117,42 @@ int main() {
                   frameCount = 0;
                 }
 
+                teclaPulsada = true;
+
                 break;
 
               //Tecla ESC para salir.
               case sf::Keyboard::Escape:
+
                 window.close();
+                delete pj;
+                delete en;
+
+                return 0;
                 break;
 
               //Cualquier tecla desconocida se imprime por pantalla su código
               default:
                 std::cout << event.key.code << std::endl;
                 break;
+            }
+
+            break;
+
+          case Event::KeyReleased:
+
+              switch (event.key.code){
+              
+                case Keyboard::Z:
+
+                  teclaPulsada = false;
+
+                  break;
+              
               }
+
+
+            break;   
         }
       }
 

@@ -9,7 +9,8 @@
 #define kVelBala 800
 #define fps 60
 #define cad 1   //Cadencia: Cada "cad" frames, el pj dispara.
-#define dmg 5
+
+#define mejora true
 
 
 using namespace sf;
@@ -58,6 +59,8 @@ int main() {
   lanzallamas.setPosition(pj->getPosicion());
   lanzallamas.setFillColor(Color::Red);
 
+  int* dmg = new int(0);
+
   /* --------------------------- */
 
 
@@ -83,6 +86,13 @@ int main() {
           case sf::Event::Closed:
 
             window.close();
+            delete pj;
+            delete en;
+            delete dmg;
+
+
+            return 0;
+
             break;
 
           //Se pulsó una tecla, imprimo su codigo
@@ -107,8 +117,21 @@ int main() {
                 
                   disparo = true;
 
-                  lanzallamas.setSize(Vector2f(150, 20));
-                  lanzallamas.setPosition(pj->getPosicion());
+                  if(mejora){
+                    
+                    lanzallamas.setSize(Vector2f(200, 20));
+                    lanzallamas.setPosition(pj->getPosicion());
+                    *dmg = 10;
+                  }
+
+                  else{
+
+                    lanzallamas.setSize(Vector2f(150, 20));
+                    lanzallamas.setPosition(pj->getPosicion());
+                    *dmg = 5;
+                  }
+
+                  
                 }
 
                 break;
@@ -117,6 +140,14 @@ int main() {
               case sf::Keyboard::Escape:
 
                 window.close();
+
+                delete pj;
+                delete en;
+                delete dmg;
+
+
+                return 0;
+
                 break;
 
               //Cualquier tecla desconocida se imprime por pantalla su código
@@ -147,10 +178,10 @@ int main() {
 
       if(lanzallamas.getGlobalBounds().intersects(en_sprite->getGlobalBounds()) && frameCount > 10 && !en->estoyMuerto()){
 
-        if(dmg - en->getArmadura() <= 0){en->setVida(en->getVida() - 1);}
+        if(*dmg - en->getArmadura() <= 0){en->setVida(en->getVida() - 1);}
         else{
 
-          en->setVida(en->getVida() - (dmg - en->getArmadura()));
+          en->setVida(en->getVida() - (*dmg - en->getArmadura()));
           cout << en->getVida() << endl;
         }
 
@@ -194,6 +225,8 @@ int main() {
 
   delete pj;
   delete en;
+  delete dmg;
+
 
   return 0;
 }

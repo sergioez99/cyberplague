@@ -9,6 +9,36 @@ Nodo::Nodo(Nodo *p, int coorX, int coorY){
     y = coorY;
 }
 
+Nodo::Nodo(const Nodo &n){
+    padre = n.padre;
+    f = n.f;
+    g = n.g;
+    h = n.h;
+    x = n.x;
+    y = n.y;
+}
+
+Nodo::~Nodo(){
+    padre = NULL;
+}
+
+Nodo & Nodo::operator=(const Nodo &n){
+    if(this != &n){
+        padre = n.padre;
+        f = n.f;
+        g = n.g;
+        h = n.h;
+        x = n.x;
+        y = n.y;
+    }
+
+    return *this;
+}
+
+Nodo* Nodo::getPadre(){
+    return padre;
+}
+
 int Nodo::getF(){
     return f;
 }

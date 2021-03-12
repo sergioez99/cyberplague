@@ -15,8 +15,10 @@ class Pathfinding {
 
   public:
     Pathfinding();
+    Pathfinding(const Pathfinding &);
     ~Pathfinding();
+    Pathfinding & operator=(const Pathfinding &);
 
-    Nodo* encontrarCamino(int **matriz, Nodo ini, Nodo fin);
-    list<Nodo> nodosAdyacentes(int **matriz, Nodo n, Nodo meta);
+    list<Nodo> encontrarCamino(int matriz[16][12], Nodo ini, Nodo fin);
+    list<Nodo> nodosAdyacentes(int matriz[16][12], Nodo n, Nodo meta);
 };

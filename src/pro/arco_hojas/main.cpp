@@ -8,9 +8,10 @@
 #define kVel 150
 #define kVelBala 800
 #define fps 60
-#define cad 40   //Cadencia: Cada "cad" frames, el pj dispara.
+#define cad 40   // Cadencia: Cada "cad" frames, el pj dispara.
 #define dmg 20
 
+#define mejora true // Cambiar para activar o desactivar la mejora.
 
 using namespace sf;
 using namespace std;
@@ -39,7 +40,7 @@ int main() {
 
   /* ---------------------------------------------------------------------- */
 
-  /* NPC */
+  /* NPCs */
   NPC *en = new NPC("Enemigo", "sprites.png", Vector2f(600, 240));
 
     //Copiamos el sprite.
@@ -58,13 +59,16 @@ int main() {
   bala.setFillColor(Color::Green);
   bala.setRadius(5.f);
 
-  vector<CircleShape> balas;
+
+
+  vector< CircleShape > balas;
 
   /* --------------------------- */
 
 
   Time timeStartUpdate = reloj1.getElapsedTime();
   int frameCount = 0; //Contador de Frames.
+  bool teclaPulsada = false;
     
 
   //Bucle del juego
@@ -83,7 +87,13 @@ int main() {
 
           //Si se recibe el evento de cerrar la ventana la cierro
           case sf::Event::Closed:
+
             window.close();
+            delete pj;
+            delete en;
+
+            return 0;
+
             break;
 
           //Se pulsó una tecla, imprimo su codigo
@@ -104,26 +114,63 @@ int main() {
               //Tecla Z para disparar.
               case sf::Keyboard::Z:
 
-                if(frameCount > cad - 1){
+                if(frameCount > cad - 1 && teclaPulsada == false){
                 
-                  bala.setPosition(pj->getPosicion());
-                  balas.push_back(CircleShape(bala));
+                  if(mejora){
+                    
+                    for(size_t i = 0; i < 3; i++){
+
+                      bala.setPosition(pj->getPosicion());
+                      balas.push_back(bala);
+                    }
+                    
+
+
+                  }
+                  else{
+
+                    bala.setPosition(pj->getPosicion());
+                    balas.push_back(bala);
+                  }
 
                   frameCount = 0;
                 }
+
+                teclaPulsada = true;
 
                 break;
 
               //Tecla ESC para salir.
               case sf::Keyboard::Escape:
+              
                 window.close();
+                delete pj;
+                delete en;
+
+                return 0;
                 break;
 
               //Cualquier tecla desconocida se imprime por pantalla su código
               default:
                 std::cout << event.key.code << std::endl;
                 break;
+            }
+
+            break;
+
+
+            case Event::KeyReleased:
+
+              switch(event.key.code){
+
+                case Keyboard::Z:
+
+                  teclaPulsada = false;
+              
+                break;
               }
+
+            break;
         }
       }
 
@@ -135,9 +182,38 @@ int main() {
 
         for(size_t i = 0; i < balas.size(); i++){
 
-          balas[i].move(kVelBala * delta, 0);
+          if(mejora){
 
-          if(balas[i].getGlobalBounds().intersects(en_sprite->getGlobalBounds()) && !en->estoyMuerto()){
+            switch (i % 3){
+
+            case 0:
+
+              balas[i].move(kVelBala * delta, (kVelBala * delta) / 3);
+
+              break;
+            
+            case 1:
+
+              balas[i].move(kVelBala * delta, 0);
+
+              break;
+            
+            case 2:
+
+              balas[i].move(kVelBala * delta, -(kVelBala * delta) / 3);
+
+              break;
+
+            }
+          }
+
+          else{
+
+             balas[i].move(kVelBala * delta, 0);
+          }
+         
+
+          if(balas[i].getGlobalBounds().intersects(en_sprite->getGlobalBounds()) && frameCount > 10 && !en->estoyMuerto()){
 
             if(dmg - en->getArmadura() <= 0){en->setVida(en->getVida() - 1);}
             else{
@@ -146,9 +222,10 @@ int main() {
               cout << en->getVida() << endl;
             }
             
+            frameCount = 0;
           }
 
-          else if(balas[i].getPosition().x >= 640){
+          else if(balas[i].getPosition().x >= 640 || balas[i].getPosition().y >= 480){
 
             balas.erase(balas.begin() + i);
           }
