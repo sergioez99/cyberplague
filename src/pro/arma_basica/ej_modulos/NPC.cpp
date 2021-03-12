@@ -23,7 +23,7 @@
 
         nombre = new String(nom);
         vida = new int(20);
-        armadura = new int(20);
+        armadura = new int(1);
     }
 
     //DESTRUCTOR.

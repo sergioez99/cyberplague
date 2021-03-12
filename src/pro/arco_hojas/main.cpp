@@ -9,6 +9,7 @@
 #define kVelBala 800
 #define fps 60
 #define cad 40   //Cadencia: Cada "cad" frames, el pj dispara.
+#define dmg 20
 
 
 using namespace sf;
@@ -136,12 +137,18 @@ int main() {
 
           balas[i].move(kVelBala * delta, 0);
 
-          if(balas[i].getPosition().x >= en->getPosicion().x && !en->estoyMuerto()){
+          if(balas[i].getGlobalBounds().intersects(en_sprite->getGlobalBounds()) && !en->estoyMuerto()){
 
-            en->setVida(en->getVida() - 15);
+            if(dmg - en->getArmadura() <= 0){en->setVida(en->getVida() - 1);}
+            else{
+
+              en->setVida(en->getVida() - (dmg - en->getArmadura()));
+              cout << en->getVida() << endl;
+            }
+            
           }
 
-          if(balas[i].getPosition().x >= 640){
+          else if(balas[i].getPosition().x >= 640){
 
             balas.erase(balas.begin() + i);
           }
@@ -150,7 +157,7 @@ int main() {
 
       frameCount ++;
       if(frameCount ==  INT_MAX){frameCount=0;}
-      cout << frameCount << endl;
+      //cout << frameCount << endl;
 
       /* ------------------------------------------------------- */
 
