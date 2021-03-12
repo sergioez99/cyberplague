@@ -37,5 +37,8 @@ Implementación total del Algoritmo A* a falta de pruebas.
 ## 20210312 CarlosVillena @(1h30min)
 Ultimos retoques a las armas, inclusión del lanzallamas, cálculo de daño y mejor cálculo de colisiones.
 
+## 20210312 CarlosVillena @(2h)
+Mejoras de las armas añadidas y algunos ajustes más.
+
 ## 20210312 RamónRodríguez @(2h)
 Debug del Algoritmo A*, solucionado un par de errores y localizado otro.
