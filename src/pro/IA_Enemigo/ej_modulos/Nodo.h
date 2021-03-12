@@ -11,7 +11,11 @@ class Nodo{
 
     public:
         Nodo(Nodo *p, int coorX, int coorY);
+        Nodo(const Nodo &);
+        ~Nodo();
+        Nodo & operator=(const Nodo &);
 
+        Nodo* getPadre();
         int getF();
         int getG();
         int getH();
