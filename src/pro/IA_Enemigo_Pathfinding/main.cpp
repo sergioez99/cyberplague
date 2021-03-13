@@ -9,7 +9,7 @@
 
 #define kVel 55
 #define kVelEnemigo 50
-#define rangoEnemigo 200.0f
+#define rangoEnemigo 400.0f
 #define kUpdateTimePS 1000/15
 
 int main() {
@@ -153,8 +153,17 @@ int main() {
 
         list<Nodo> camino = path.encontrarCamino(matriz, *inicio, *meta);
 
-        for(int i = 0; i < (int)camino.size(); i++){
-          cout << camino.front().getX() << ", " << camino.front().getY() << endl;
+        list<Nodo>::iterator it;
+        int i = 0;
+
+        cout << "Pos inicio: " << inicio->getX() << "," << inicio->getY() << endl;
+        cout << "Pos meta: " << meta->getX() << "," << meta->getY() << endl;
+
+        for(it = camino.begin(); it != camino.end(); it++){
+          Nodo aux = *it;
+
+          cout << "Pos " << i << ": " << aux.getX() << "," << aux.getY() << endl;
+          i++;
         }
         
         /*//El enemigo se mueve hasta el jugador

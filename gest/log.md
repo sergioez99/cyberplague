@@ -45,3 +45,6 @@ Debug del Algoritmo A*, solucionado un par de errores y localizado otro.
 
 ## 20210310 JoseSansano @(2h)
 Añadido implementación de hitbox a puntero vector de sprites.
+
+## 20210312 RamónRodríguez @(1h30min)
+Debug del Algoritmo A*, solucionado error encontrado pero sigue sin funcionar correctamente. Antes el error era que buscando el camino se quedaba en bucle infinito y ahora encuentra el camino pero no lo devuelve correctamente (posible problema con los punteros a los nodos padre).

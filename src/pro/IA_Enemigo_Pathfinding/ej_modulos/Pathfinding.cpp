@@ -40,7 +40,7 @@ list<Nodo> Pathfinding::encontrarCamino(int matriz[16][12], Nodo ini, Nodo fin){
 
     listaFrontera.push_back(inicio);
 
-    while(!listaFrontera.empty()){  //ERROR BUCLE INFINITO
+    while(!listaFrontera.empty()){  //BUCLE INFINITO SI EL JUGADOR SE ENCUENTRA EN UNA COLISION
         //Obtener de listaFrontera el nodo con menor f
         Nodo n = listaFrontera.front();
         list<Nodo>::iterator it;
@@ -104,7 +104,7 @@ list<Nodo> Pathfinding::nodosAdyacentes(int matriz[16][12], Nodo n, Nodo meta){
     //Direccion arriba izquierda (diagonal)
     if(n.getX() - 1 > -1 && n.getY() - 1 > -1 && matriz[n.getX() - 1][n.getY() - 1] == 0){
         Nodo hijo(&n, n.getX() - 1, n.getY() - 1);
-        hijo.setG(costeDiagonal);
+        hijo.setG(n.getG() + costeDiagonal);
         hijo.setH(abs(n.getX() - meta.getX()) + abs(n.getY() - meta.getY()));
         hijo.setF(hijo.getG() + hijo.getH());
         adyacentes.push_back(hijo);
@@ -112,7 +112,31 @@ list<Nodo> Pathfinding::nodosAdyacentes(int matriz[16][12], Nodo n, Nodo meta){
     //Direccion izquierda (recto)
     if(n.getX() - 1 > -1 && matriz[n.getX() - 1][n.getY()] == 0){
         Nodo hijo(&n, n.getX() - 1, n.getY());
-        hijo.setG(costeRecto);
+        hijo.setG(n.getG() + costeRecto);
+        hijo.setH(abs(n.getX() - meta.getX()) + abs(n.getY() - meta.getY()));
+        hijo.setF(hijo.getG() + hijo.getH());
+        adyacentes.push_back(hijo);
+    }
+    //Direccion abajo izquierda (diagonal)
+    if(n.getX() - 1 > -1 && n.getY() + 1 < 12 && matriz[n.getX() - 1][n.getY() + 1] == 0){
+        Nodo hijo(&n, n.getX() - 1, n.getY() + 1);
+        hijo.setG(n.getG() + costeDiagonal);
+        hijo.setH(abs(n.getX() - meta.getX()) + abs(n.getY() - meta.getY()));
+        hijo.setF(hijo.getG() + hijo.getH());
+        adyacentes.push_back(hijo);
+    }
+    //Direccion arriba (recto)
+    if(n.getY() - 1 > -1 && matriz[n.getX()][n.getY() - 1] == 0){
+        Nodo hijo(&n, n.getX(), n.getY() - 1);
+        hijo.setG(n.getG() + costeRecto);
+        hijo.setH(abs(n.getX() - meta.getX()) + abs(n.getY() - meta.getY()));
+        hijo.setF(hijo.getG() + hijo.getH());
+        adyacentes.push_back(hijo);
+    }
+    //Direccion abajo (recto)
+    if(n.getY() + 1 < 12 && matriz[n.getX()][n.getY() + 1] == 0){
+        Nodo hijo(&n, n.getX(), n.getY() + 1);
+        hijo.setG(n.getG() + costeRecto);
         hijo.setH(abs(n.getX() - meta.getX()) + abs(n.getY() - meta.getY()));
         hijo.setF(hijo.getG() + hijo.getH());
         adyacentes.push_back(hijo);
@@ -120,7 +144,7 @@ list<Nodo> Pathfinding::nodosAdyacentes(int matriz[16][12], Nodo n, Nodo meta){
     //Direccion arriba derecha (diagonal)
     if(n.getX() + 1 < 16 && n.getY() - 1 > -1 && matriz[n.getX() + 1][n.getY() - 1] == 0){
         Nodo hijo(&n, n.getX() + 1, n.getY() - 1);
-        hijo.setG(costeDiagonal);
+        hijo.setG(n.getG() + costeDiagonal);
         hijo.setH(abs(n.getX() - meta.getX()) + abs(n.getY() - meta.getY()));
         hijo.setF(hijo.getG() + hijo.getH());
         adyacentes.push_back(hijo);
@@ -128,7 +152,15 @@ list<Nodo> Pathfinding::nodosAdyacentes(int matriz[16][12], Nodo n, Nodo meta){
     //Direccion derecha (recto)
     if(n.getX() + 1 < 16 && matriz[n.getX() + 1][n.getY()] == 0){
         Nodo hijo(&n, n.getX() + 1, n.getY());
-        hijo.setG(costeRecto);
+        hijo.setG(n.getG() + costeRecto);
+        hijo.setH(abs(n.getX() - meta.getX()) + abs(n.getY() - meta.getY()));
+        hijo.setF(hijo.getG() + hijo.getH());
+        adyacentes.push_back(hijo);
+    }
+    //Direccion abajo derecha (diagonal)
+    if(n.getX() + 1 < 16 && n.getY() + 1 < 12 && matriz[n.getX() + 1][n.getY() + 1] == 0){
+        Nodo hijo(&n, n.getX() + 1, n.getY() + 1);
+        hijo.setG(n.getG() + costeDiagonal);
         hijo.setH(abs(n.getX() - meta.getX()) + abs(n.getY() - meta.getY()));
         hijo.setF(hijo.getG() + hijo.getH());
         adyacentes.push_back(hijo);
