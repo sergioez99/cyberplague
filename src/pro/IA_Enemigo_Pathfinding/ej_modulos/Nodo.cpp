@@ -19,7 +19,7 @@ Nodo::Nodo(const Nodo &n){
 }
 
 Nodo::~Nodo(){
-    padre = NULL;
+    padre = NULL; //Con esto el camino solo tiene el nodo meta y el anterior, sin esto peta
 }
 
 Nodo & Nodo::operator=(const Nodo &n){

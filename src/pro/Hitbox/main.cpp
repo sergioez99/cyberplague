@@ -14,7 +14,7 @@ bool hitboxCollision(int& hit, sf::FloatRect a, sf::FloatRect b){
   }
   return false;
 }
-//Metodo que solo comprueba si dos BoundingBoxes se cortan.
+//Metodo que solo comprueba si dos BoundingBoxes se intersectan.
 bool spriteCollides(sf::FloatRect a, sf::FloatRect b){
  if(a.intersects(b)) return true;
  return false;
@@ -38,6 +38,15 @@ int main() {
   sf::Sprite sprite(tex);
   sf::Sprite bala(tex);
   sf::Sprite muro(tex);
+  std::vector<sf::Sprite> * piedras = new std::vector<sf::Sprite>(); //Inicializar puntero vector de sprites.
+
+  for(int i=0; i<3; i++){ //bucle para añadir i sprites al vector
+    sf::Sprite v(tex);
+    v.setOrigin(75/2, 75/2);
+    v.setTextureRect(sf::IntRect(1 * 75, 3 * 75, 75, 75));
+    v.setPosition(200, 100+60*i);
+    piedras->push_back(v); 
+  }
 
   //Le pongo el centroide donde corresponde
   sprite.setOrigin(75 / 2, 75 / 2);
@@ -50,7 +59,7 @@ int main() {
 
   sprite.setPosition(75, 240);
   bala.setPosition(480, 300);
-  muro.setPosition(200, 240);
+  muro.setPosition(200, 420);
 
   //Bucle del juego
   while (window.isOpen()) {
@@ -115,11 +124,17 @@ int main() {
       sprite.setPosition(sPosition);
     }
     window.clear();
-    window.draw(sprite);
     window.draw(muro);
+    for(int i=0; i<piedras->size();i++){//bucle que recorre todos los sprites del vector
+      window.draw(piedras->at(i)); //Pinta todos los sprites del vector
+
+      if(spriteCollides(sprite.getGlobalBounds(), piedras->at(i).getGlobalBounds()))
+        sprite.setPosition(sPosition);
+    }
+
     //(Optimización) Añade un int para no volver a calcular las boundingBoxes en cada Update si ya se tocaron
     if(hit==0 && !hitboxCollision(hit, sprite.getGlobalBounds(), bala.getGlobalBounds())) window.draw(bala);
-    
+    window.draw(sprite); //El jugador deberia de dibujarse siempre el ultimo para que no tenga "tembleque"
     window.display();
   }
 

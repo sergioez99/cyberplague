@@ -10,8 +10,8 @@
 					"path": "src/pro/Hitbox",
 				},
 				{
-					"name": "PROT: IA_Enemigo",
-					"path": "src/pro/IA_Enemigo",
+					"name": "PROT: IA Enemigo Pathfinding",
+					"path": "src/pro/IA_Enemigo_Pathfinding",
 		
 				},
 				{
@@ -50,7 +50,14 @@
 					"name": "Mapa movCamara",
 					"path": "src/pro/movCamara"
 				},
-
+				{
+					"name": "PROT: Menu Principal",
+					"path": "src/pro/menu_principal"
+				},
+				{
+					"name": "PROT: Zombi",
+					"path": "src/pro/IA_Zombi"
+				},
 				{
 					"name": "PROT: FV",
 					"path": "src/pro/plantilla_fv"
