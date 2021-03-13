@@ -9,6 +9,7 @@
 #define kVelBala 800
 #define fps 60
 #define cad 10   //Cadencia: Cada "cad" frames, el pj dispara.
+#define dmg 7
 
 
 using namespace sf;
@@ -64,7 +65,8 @@ int main() {
 
   Time timeStartUpdate = reloj1.getElapsedTime();
   int frameCount = 0; //Contador de Frames.
-    
+
+  bool teclaPulsada = false; 
 
   //Bucle del juego
   while (window.isOpen()) {
@@ -83,6 +85,10 @@ int main() {
           //Si se recibe el evento de cerrar la ventana la cierro
           case sf::Event::Closed:
             window.close();
+            delete pj;
+            delete en;
+
+            return 0;
             break;
 
           //Se pulsó una tecla, imprimo su codigo
@@ -103,7 +109,7 @@ int main() {
               //Tecla Z para disparar.
               case sf::Keyboard::Z:
 
-                if(frameCount > cad - 1){
+                if(frameCount > cad - 1 && teclaPulsada == false){
                 
                   bala.setPosition(pj->getPosicion());
                   balas.push_back(CircleShape(bala));
@@ -111,18 +117,42 @@ int main() {
                   frameCount = 0;
                 }
 
+                teclaPulsada = true;
+
                 break;
 
               //Tecla ESC para salir.
               case sf::Keyboard::Escape:
+
                 window.close();
+                delete pj;
+                delete en;
+
+                return 0;
                 break;
 
               //Cualquier tecla desconocida se imprime por pantalla su código
               default:
                 std::cout << event.key.code << std::endl;
                 break;
+            }
+
+            break;
+
+          case Event::KeyReleased:
+
+              switch (event.key.code){
+              
+                case Keyboard::Z:
+
+                  teclaPulsada = false;
+
+                  break;
+              
               }
+
+
+            break;   
         }
       }
 
@@ -136,9 +166,21 @@ int main() {
 
           balas[i].move(kVelBala * delta, 0);
 
-          if(balas[i].getPosition().x >= en->getPosicion().x && !en->estoyMuerto()){
+          if(balas[i].getGlobalBounds().intersects(en_sprite->getGlobalBounds()) && !en->estoyMuerto()){
 
-            en->setVida(en->getVida() - 5);
+            if(dmg - en->getArmadura() <= 0){en->setVida(en->getVida() - 1);}
+            else{
+
+              en->setVida(en->getVida() - (dmg - en->getArmadura()));
+
+              cout << en->getVida() << endl;
+            }
+            
+            balas.erase(balas.begin() + i);
+          }
+
+          else if(balas[i].getPosition().x >= 640){
+
             balas.erase(balas.begin() + i);
           }
         }
@@ -146,7 +188,7 @@ int main() {
 
       frameCount ++;
       if(frameCount ==  INT_MAX){frameCount=0;}
-      cout << frameCount << endl;
+      //cout << frameCount << endl;
 
       /* ------------------------------------------------------- */
 

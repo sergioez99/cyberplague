@@ -8,7 +8,7 @@
 #define kVel 150
 #define kVelBala 800
 #define fps 60
-#define cad 3   //Cadencia: Cada "cad" frames, el pj dispara.
+#define cad 1   //Cadencia: Cada "cad" frames, el pj dispara.
 
 #define mejora true
 
@@ -55,10 +55,9 @@ int main() {
   /* ------------------------------------------------------------------------ */
 
   /* PROYECTILES */
-  RectangleShape bala(Vector2f(30,5));
-  bala.setFillColor(Color::Yellow);
-
-  vector<RectangleShape> balas;
+  RectangleShape lanzallamas(Vector2f(0,0));
+  lanzallamas.setPosition(pj->getPosicion());
+  lanzallamas.setFillColor(Color::Red);
 
   int* dmg = new int(0);
 
@@ -67,8 +66,7 @@ int main() {
 
   Time timeStartUpdate = reloj1.getElapsedTime();
   int frameCount = 0; //Contador de Frames.
-    
-  bool teclaPulsada = false;
+  bool disparo = false;
 
   //Bucle del juego
   while (window.isOpen()) {
@@ -92,7 +90,9 @@ int main() {
             delete en;
             delete dmg;
 
+
             return 0;
+
             break;
 
           //Se pulsó una tecla, imprimo su codigo
@@ -113,37 +113,41 @@ int main() {
               //Tecla Z para disparar.
               case sf::Keyboard::Z:
 
-                if(frameCount > cad - 1 && teclaPulsada == false){
-                  
-                  if(mejora){
+                if(frameCount > cad - 1){
+                
+                  disparo = true;
 
-                    *dmg = 5;
+                  if(mejora){
+                    
+                    lanzallamas.setSize(Vector2f(200, 20));
+                    lanzallamas.setPosition(pj->getPosicion());
+                    *dmg = 10;
                   }
+
                   else{
 
-                    *dmg = 2;
+                    lanzallamas.setSize(Vector2f(150, 20));
+                    lanzallamas.setPosition(pj->getPosicion());
+                    *dmg = 5;
                   }
-
-
-                  bala.setPosition(pj->getPosicion());
-                  balas.push_back(RectangleShape(bala));
 
                   
                 }
-
-                
-                teclaPulsada = true;
 
                 break;
 
               //Tecla ESC para salir.
               case sf::Keyboard::Escape:
+
                 window.close();
+
                 delete pj;
                 delete en;
                 delete dmg;
 
+
                 return 0;
+
                 break;
 
               //Cualquier tecla desconocida se imprime por pantalla su código
@@ -151,21 +155,20 @@ int main() {
                 std::cout << event.key.code << std::endl;
                 break;
               }
-            
-            break;
 
-          case Event::KeyReleased:
+          break;
 
-                switch(event.key.code){
+          case sf::Event::KeyReleased:
 
-                  case Keyboard::Z:
+            switch(event.key.code){
 
-                    teclaPulsada = false;
-                
-                  break;
-                }
+              case sf::Keyboard::Z:
 
-            break; 
+                disparo = false;
+                lanzallamas.setPosition(Vector2f(0,0));
+
+              break;
+            }
         }
       }
 
@@ -173,29 +176,16 @@ int main() {
 
       /* UPDATE */
 
-      if(balas.size() != 0){
+      if(lanzallamas.getGlobalBounds().intersects(en_sprite->getGlobalBounds()) && frameCount > 10 && !en->estoyMuerto()){
 
-        for(size_t i = 0; i < balas.size(); i++){
+        if(*dmg - en->getArmadura() <= 0){en->setVida(en->getVida() - 1);}
+        else{
 
-          balas[i].move(kVelBala * delta, 0);
-
-          if(balas[i].getGlobalBounds().intersects(en_sprite->getGlobalBounds()) && frameCount > 10 && !en->estoyMuerto()){
-
-            if(*dmg - en->getArmadura() <= 0){en->setVida(en->getVida() - 1);}
-            else{
-
-              en->setVida(en->getVida() - (*dmg - en->getArmadura()));
-            }
-            
-            cout << en->getVida() << endl;
-            frameCount = 0;
-          }
-
-          else if(balas[i].getPosition().x >= 640){
-
-            balas.erase(balas.begin() + i);
-          }
+          en->setVida(en->getVida() - (*dmg - en->getArmadura()));
+          cout << en->getVida() << endl;
         }
+
+        frameCount = 0;
       }
 
       frameCount ++;
@@ -208,18 +198,19 @@ int main() {
 
       window.clear();
 
-      for(size_t i = 0; i < balas.size(); i++){
+      if(disparo == true){
 
-        window.draw(balas[i]);
+        window.draw(lanzallamas);
       }
-      
 
-      if(!en->estoyMuerto()){
+      if(en != NULL && !en->estoyMuerto()){
         
         window.draw(*en_sprite);
       }
 
-      window.draw(*pj_sprite);
+      if(pj != NULL){window.draw(*pj_sprite);}
+
+      
       
       window.display();
 
@@ -234,6 +225,8 @@ int main() {
 
   delete pj;
   delete en;
+  delete dmg;
+
 
   return 0;
 }

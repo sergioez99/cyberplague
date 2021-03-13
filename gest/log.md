@@ -30,3 +30,18 @@ Prototipo de la tercera arma creada.
 
 ## 20210310 RamónRodríguez @(2h14min)
 Creación de la clase Nodo e implementación de una parte del Algoritmo A* para el pathfinding del enemigo.
+
+## 20210311 RamónRodríguez @(3h15min)
+Implementación total del Algoritmo A* a falta de pruebas.
+
+## 20210312 CarlosVillena @(1h30min)
+Ultimos retoques a las armas, inclusión del lanzallamas, cálculo de daño y mejor cálculo de colisiones.
+
+## 20210312 CarlosVillena @(2h)
+Mejoras de las armas añadidas y algunos ajustes más.
+
+## 20210312 RamónRodríguez @(2h)
+Debug del Algoritmo A*, solucionado un par de errores y localizado otro.
+
+## 20210310 JoseSansano @(2h)
+Añadido implementación de hitbox a puntero vector de sprites.

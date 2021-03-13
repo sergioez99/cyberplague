@@ -9,6 +9,36 @@ Nodo::Nodo(Nodo *p, int coorX, int coorY){
     y = coorY;
 }
 
+Nodo::Nodo(const Nodo &n){
+    padre = n.padre;
+    f = n.f;
+    g = n.g;
+    h = n.h;
+    x = n.x;
+    y = n.y;
+}
+
+Nodo::~Nodo(){
+    padre = NULL;
+}
+
+Nodo & Nodo::operator=(const Nodo &n){
+    if(this != &n){
+        padre = n.padre;
+        f = n.f;
+        g = n.g;
+        h = n.h;
+        x = n.x;
+        y = n.y;
+    }
+
+    return *this;
+}
+
+Nodo* Nodo::getPadre(){
+    return padre;
+}
+
 int Nodo::getF(){
     return f;
 }
@@ -21,6 +51,18 @@ int Nodo::getH(){
     return h;
 }
 
+int Nodo::getX(){
+    return x;
+}
+
+int Nodo::getY(){
+    return y;
+}
+
+void Nodo::setPadre(Nodo *p){
+    padre = p;
+}
+
 void Nodo::setF(int fn){
     f = fn;
 }
@@ -31,4 +73,18 @@ void Nodo::setG(int gn){
 
 void Nodo::setH(int hn){
     h = hn;
+}
+
+bool Nodo::operator==(const Nodo &n){
+    if(x == n.x && y == n.y)
+        return true;
+    else
+        return false;
+}
+
+bool Nodo::operator!=(const Nodo &n){
+    if(x != n.x || y != n.y)
+        return true;
+    else
+        return false;
 }

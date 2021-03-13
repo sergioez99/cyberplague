@@ -5,14 +5,12 @@
 #include <list>
 
 #include "include/config.h"
-#include "ej_modulos/Nodo.h"
+#include "ej_modulos/Pathfinding.h"
 
 #define kVel 55
 #define kVelEnemigo 50
 #define rangoEnemigo 200.0f
 #define kUpdateTimePS 1000/15
-#define costeRecto 10
-#define costeDiagonal 14
 
 int main() {
   //Creamos una ventana
@@ -141,8 +139,7 @@ int main() {
         enemigo.setScale(-1,1);
 
         //Algoritmo A*
-        std::list<Nodo> listaInterior;
-        std::list<Nodo> listaFrontera;
+        Pathfinding path;
 
         //Crear nodo inicio (enemigo) y calculamos donde esta en la matriz de colisiones
         int xEnemigo = ceil(enemigo.getPosition().x / 40) - 1;
@@ -154,49 +151,10 @@ int main() {
         int yJugador = ceil(personaje.getPosition().y / 40) - 1;
         Nodo *meta = new Nodo(NULL, xJugador, yJugador);
 
-        //Anadimos a listaForntera el nodo inicio y los de alrededor
-        listaFrontera.push_back(*inicio);
-        Nodo *hijo;
+        list<Nodo> camino = path.encontrarCamino(matriz, *inicio, *meta);
 
-        //Direccion arriba izquierda (diagonal)
-        if(xEnemigo - 1 > -1 && yEnemigo - 1 > -1 && matriz[xEnemigo - 1][yEnemigo - 1] == 0){
-          hijo = new Nodo(*inicio);
-          hijo->setG(costeDiagonal);
-          hijo->setH(abs(xEnemigo - xJugador) + abs(yEnemigo - yJugador));
-          hijo->setF(hijo->getG() + hijo->getH());
-          listaFrontera.push_back(*hijo);
-        }
-        //Direccion izquierda (recto)
-        if(xEnemigo - 1 > -1 && matriz[xEnemigo - 1][yEnemigo] == 0){
-          hijo = new Nodo(*inicio);
-          hijo->setG(costeRecto);
-          hijo->setH(abs(xEnemigo - xJugador) + abs(yEnemigo - yJugador));
-          hijo->setF(hijo->getG() + hijo->getH());
-          listaFrontera.push_back(*hijo);
-        }
-        //Direccion arriba derecha (diagonal)
-        if(xEnemigo + 1 < 16 && yEnemigo - 1 > -1 && matriz[xEnemigo + 1][yEnemigo - 1] == 0){
-          hijo = new Nodo(*inicio);
-          hijo->setG(costeDiagonal);
-          hijo->setH(abs(xEnemigo - xJugador) + abs(yEnemigo - yJugador));
-          hijo->setF(hijo->getG() + hijo->getH());
-          listaFrontera.push_back(*hijo);
-        }
-        //Direccion derecha (recto)
-        if(xEnemigo + 1 < 16 && matriz[xEnemigo + 1][yEnemigo] == 0){
-          hijo = new Nodo(*inicio);
-          hijo->setG(costeRecto);
-          hijo->setH(abs(xEnemigo - xJugador) + abs(yEnemigo - yJugador));
-          hijo->setF(hijo->getG() + hijo->getH());
-          listaFrontera.push_back(*hijo);
-        }
-        
-        //Nodo actual
-        Nodo *actual = inicio;
-
-        //Recorrer listaFrontera
-        while(!listaFrontera.empty()){
-          Nodo n = listaFrontera.front();
+        for(int i = 0; i < (int)camino.size(); i++){
+          cout << camino.front().getX() << ", " << camino.front().getY() << endl;
         }
         
         /*//El enemigo se mueve hasta el jugador

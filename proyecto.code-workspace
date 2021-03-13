@@ -30,6 +30,11 @@
 		
 				},
 				{
+					"name": "PROT: Lanzallamas",
+					"path": "src/pro/lanzallamas",
+		
+				},
+				{
 					"name": "PROT: movPersonaje",
 					"path": "src/pro/movPersonaje"
 				},
