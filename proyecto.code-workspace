@@ -50,7 +50,11 @@
 					"name": "Mapa movCamara",
 					"path": "src/pro/movCamara"
 				},
-
+				{
+					"name": "PROT: Menu Principal",
+					"path": "src/pro/menu_principal"
+				},
+			
 				{
 					"name": "PROT: FV",
 					"path": "src/pro/plantilla_fv"
