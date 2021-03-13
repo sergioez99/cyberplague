@@ -15,8 +15,23 @@
 		
 				},
 				{
-					"name": "PROT: Ataques",
-					"path": "src/pro/ataques",
+					"name": "PROT: Arma Basica",
+					"path": "src/pro/arma_basica",
+		
+				},
+				{
+					"name": "PROT: Arco Hojas",
+					"path": "src/pro/arco_hojas",
+		
+				},
+				{
+					"name": "PROT: Rayo Laser",
+					"path": "src/pro/rayoLaser",
+		
+				},
+				{
+					"name": "PROT: Lanzallamas",
+					"path": "src/pro/lanzallamas",
 		
 				},
 				{
