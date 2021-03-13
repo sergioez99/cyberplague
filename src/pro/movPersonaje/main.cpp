@@ -2,20 +2,17 @@
 #include <iostream>
 
 #include "include/config.h"
-#include "ej_modulos/Animacion.h"
+#include "ej_modulos/Player.h"
 
 int main() {
 
   //Creamos una ventana
   sf::RenderWindow window(sf::VideoMode(640, 480), "P0. Fundamentos de los Videojuegos. DCCIA", sf::Style::Close | sf::Style::Resize);
 
-  sf::RectangleShape player(sf::Vector2f(100.0f, 150.0f));
-  player.setPosition(320.0f, 240.0f);
-
   //Cargo la imagen donde reside la textura del sprite
   sf::Texture playerTexture;
 
-  playerTexture.loadFromFile("resources/spritesdef.png");
+  playerTexture.loadFromFile("resources/UnionDEFDEF.png");
 
   /*
   if (!tex.loadFromFile("resources/spritesdef.png")) {
@@ -34,9 +31,7 @@ int main() {
   // Lo dispongo en el centro de la pantalla
   // sprite.setPosition(320, 240);
 
-  player.setTexture(&playerTexture);
-
-  Animacion animacion(&playerTexture, sf::Vector2u(1, 4), 0.5f);
+  Player player(&playerTexture, sf::Vector2u(6, 2), 0.3f, 200.0f);
 
   float deltaTime = 0.0f;
   sf::Clock clock;
@@ -56,31 +51,13 @@ int main() {
       case sf::Event::Closed:
         window.close();
         break;
-
-      //Se pulsó una tecla, imprimo su codigo
-      case sf::Event::KeyPressed:
-
-        //Verifico si se pulsa alguna tecla de movimiento
-        switch (event.key.code) {
-            //Tecla ESC para salir
-          case sf::Keyboard::Escape:
-            window.close();
-            break;
-
-          //Cualquier tecla desconocida se imprime por pantalla su código
-          default:
-            std::cout << event.key.code << std::endl;
-            break;
-        }
-        
       }
     }
 
-    animacion.Update(0, deltaTime);
-    player.setTextureRect(animacion.uvRect);
+    player.Update(deltaTime);
 
     window.clear(sf::Color(150, 150, 150));
-    window.draw(player);
+    player.Draw(window);
     window.display();
   }
   return 0;

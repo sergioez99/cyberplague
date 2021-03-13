@@ -1,5 +1,6 @@
 #include "Animacion.h"
 
+
 Animacion::Animacion(sf::Texture* texture, sf::Vector2u imageCount, float switchTime) {
 	this->imageCount = imageCount;
 	this->switchTime = switchTime;
@@ -11,22 +12,32 @@ Animacion::Animacion(sf::Texture* texture, sf::Vector2u imageCount, float switch
 }
 
 Animacion::~Animacion() {
+	
 }
 
-void Animacion::Update(int row, float deltaTime)
+void Animacion::Update(int row, float deltaTime, bool faceRigth)
 {
-	currentImage.x = row;
+	currentImage.y = row;
 	totalTime += deltaTime;
 
 	if (totalTime >= switchTime) {
 		totalTime -= switchTime;
-		currentImage.y++;
+		currentImage.x++;
 
-		if (currentImage.y >= imageCount.y) {
-			currentImage.y = 0;
+		if (currentImage.x >= imageCount.x) {
+			currentImage.x = 0;
 		}
 	}
 
-	uvRect.left = currentImage.x * uvRect.width;
 	uvRect.top = currentImage.y * uvRect.height;
+	
+	if (faceRigth)
+	{
+		uvRect.left = currentImage.x * uvRect.width;
+		uvRect.width = abs(uvRect.width);
+	}
+	else {
+		uvRect.left = (currentImage.x + 1) * abs(uvRect.width);
+		uvRect.width = -abs(uvRect.width);
+	}
 }
