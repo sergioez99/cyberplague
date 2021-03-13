@@ -21,3 +21,6 @@ Creación de la versión preliminar de la clase Bala.
 
 ## 20210310 JoseSansano @(50min)
 Añadido a Hitbox colisiones.
+
+## 20210310 JoseSansano @(2h)
+Añadido implementación de hitbox a puntero vector de sprites.
