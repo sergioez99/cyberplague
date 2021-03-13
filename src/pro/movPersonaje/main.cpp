@@ -2,37 +2,50 @@
 #include <iostream>
 
 #include "include/config.h"
-#include "ej_modulos/mimodulo.h"
-
-#define kVel 5
+#include "ej_modulos/Animacion.h"
 
 int main() {
 
-  MiModulo *mod = new MiModulo();
-
   //Creamos una ventana
-  sf::RenderWindow window(sf::VideoMode(640, 480), "P0. Fundamentos de los Videojuegos. DCCIA");
+  sf::RenderWindow window(sf::VideoMode(640, 480), "P0. Fundamentos de los Videojuegos. DCCIA", sf::Style::Close | sf::Style::Resize);
+
+  sf::RectangleShape player(sf::Vector2f(100.0f, 150.0f));
+  player.setPosition(320.0f, 240.0f);
 
   //Cargo la imagen donde reside la textura del sprite
-  sf::Texture tex;
-  if (!tex.loadFromFile("resources/spritadef.png")) {
+  sf::Texture playerTexture;
+
+  playerTexture.loadFromFile("resources/spritesdef.png");
+
+  /*
+  if (!tex.loadFromFile("resources/spritesdef.png")) {
     std::cerr << "Error cargando la imagen sprites.png";
     exit(0);
-  }
-
+  }*/
+  
   //Y creo el spritesheet a partir de la imagen anterior
-  sf::Sprite sprite(tex);
+  //sf::Sprite sprite(tex);
 
   //Le pongo el centroide donde corresponde
-  sprite.setOrigin(17 / 2, 44 / 2);
+  //sprite.setOrigin(17 / 2, 44 / 2);
   //Cojo el sprite que me interesa por defecto del sheet
-  sprite.setTextureRect(sf::IntRect(0 * 17, 0 * 44, 17, 44));
+  //sprite.setTextureRect(sf::IntRect(0 * 17, 0 * 44, 17, 44));
 
   // Lo dispongo en el centro de la pantalla
-  sprite.setPosition(320, 240);
+  // sprite.setPosition(320, 240);
+
+  player.setTexture(&playerTexture);
+
+  Animacion animacion(&playerTexture, sf::Vector2u(1, 4), 0.5f);
+
+  float deltaTime = 0.0f;
+  sf::Clock clock;
 
   //Bucle del juego
   while (window.isOpen()) {
+
+    deltaTime = clock.restart().asSeconds();
+
     //Bucle de obtención de eventos
     sf::Event event;
     while (window.pollEvent(event)) {
@@ -49,49 +62,26 @@ int main() {
 
         //Verifico si se pulsa alguna tecla de movimiento
         switch (event.key.code) {
+            //Tecla ESC para salir
+          case sf::Keyboard::Escape:
+            window.close();
+            break;
 
-        //Mapeo del cursor
-        case sf::Keyboard::Right:
-          sprite.setTextureRect(sf::IntRect(1 * 22, 0 * 45, 18, 45));
-          //Escala por defecto
-          sprite.setScale(1, 1);
-          sprite.move(kVel, 0);
-          break;
-
-        case sf::Keyboard::Left:
-          sprite.setTextureRect(sf::IntRect(1 * 22, 0 * 45, 18, 45));
-          //Reflejo vertical
-          sprite.setScale(-1, 1);
-          sprite.move(-kVel, 0);
-          break;
-        /*
-        case sf::Keyboard::Up:
-          sprite.setTextureRect(sf::IntRect(0 * 75, 3 * 75, 75, 75));
-          sprite.move(0, -kVel);
-          break;
-        */
-        case sf::Keyboard::Down:
-          sprite.setTextureRect(sf::IntRect(0 * 17, 0 * 44, 17, 44));
-          sprite.move(0, kVel);
-          break;
-      
-        //Tecla ESC para salir
-        case sf::Keyboard::Escape:
-          window.close();
-          break;
-
-        //Cualquier tecla desconocida se imprime por pantalla su código
-        default:
-          std::cout << event.key.code << std::endl;
-          break;
+          //Cualquier tecla desconocida se imprime por pantalla su código
+          default:
+            std::cout << event.key.code << std::endl;
+            break;
         }
+        
       }
     }
 
-    window.clear();
-    window.draw(sprite);
+    animacion.Update(0, deltaTime);
+    player.setTextureRect(animacion.uvRect);
+
+    window.clear(sf::Color(150, 150, 150));
+    window.draw(player);
     window.display();
   }
-
   return 0;
 }
