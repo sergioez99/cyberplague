@@ -54,7 +54,10 @@
 					"name": "PROT: Menu Principal",
 					"path": "src/pro/menu_principal"
 				},
-			
+				{
+					"name": "PROT: Zombi",
+					"path": "src/pro/IA_Zombi"
+				},
 				{
 					"name": "PROT: FV",
 					"path": "src/pro/plantilla_fv"
