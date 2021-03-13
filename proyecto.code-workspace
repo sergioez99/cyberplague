@@ -54,6 +54,23 @@
 					"name": "PROT: Menu Principal",
 					"path": "src/pro/menu_principal"
 				},
+				{
+					"name": "PROT: Menu Pausa",
+					"path": "src/pro/menu_pausa"
+				},
+
+				{
+					"name": "PROT: Menu Lobby",
+					"path": "src/pro/menu_lobby"
+				},
+				{
+					"name": "PROT: Menu Niveles",
+					"path": "src/pro/menu_niveles"
+				},
+				{
+					"name": "PROT: Menu Tienda",
+					"path": "src/pro/menu_tienda"
+				},
 			
 				{
 					"name": "PROT: FV",
