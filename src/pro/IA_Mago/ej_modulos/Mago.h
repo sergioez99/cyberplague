@@ -1,0 +1,25 @@
+#pragma once
+#include <SFML/Graphics.hpp>
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+using namespace sf;
+
+class Mago{
+    private:
+        Texture textura;
+        Sprite* sprite;
+        Clock clock;
+        Time time;
+        Int32 kUpdateTime;  //Tiempo de spawneo
+        float rango;
+    public:
+        Mago(Vector2f pos);
+        Mago(const Mago &);
+        ~Mago();
+
+        Sprite getSprite();
+        bool deteccion(Vector2f pos);
+        void spawnEnemigo();
+};

@@ -59,6 +59,10 @@
 					"path": "src/pro/IA_Zombi"
 				},
 				{
+					"name": "PROT: Mago",
+					"path": "src/pro/IA_Mago"
+				},
+				{
 					"name": "PROT: FV",
 					"path": "src/pro/plantilla_fv"
 				}
