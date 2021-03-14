@@ -11,6 +11,10 @@ Debe ser el mismo que figura en el github classroom
 - **email_ua:** jmc119@alu.ua.es
 - **usuario_github:** jorgemompe
 
+## Espinosa Zaragoza, Sergio
+- **email_ua:** sez1@alu.ua.es
+- **usuario_github:** sergioez99
+
 
 # Cyber Plague
 Breve resumen del mismo (10 líneas)
