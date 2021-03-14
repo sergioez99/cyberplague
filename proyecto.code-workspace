@@ -10,11 +10,6 @@
 					"path": "src/pro/Hitbox",
 				},
 				{
-					"name": "PROT: IA Enemigo Pathfinding",
-					"path": "src/pro/IA_Enemigo_Pathfinding",
-		
-				},
-				{
 					"name": "PROT: Arma Basica",
 					"path": "src/pro/arma_basica",
 		
