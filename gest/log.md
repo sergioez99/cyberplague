@@ -69,3 +69,6 @@ Prototipo del enemigo Mago creado.
 
 ## 20210314 SergioEspinosa @(1h35min)
 Solución de problemas al exportar el mapa de tiled (formato de tile data layer se exportaba en csv y no en xml que es como lo tenemos)
+
+## 20210314 RamónRodríguez @(45min)
+Prototipo del enemigo Soldado creado.

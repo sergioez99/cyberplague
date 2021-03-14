@@ -63,6 +63,10 @@
 					"path": "src/pro/IA_Mago"
 				},
 				{
+					"name": "PROT: Soldado",
+					"path": "src/pro/IA_Soldado"
+				},
+				{
 					"name": "PROT: FV",
 					"path": "src/pro/plantilla_fv"
 				}
