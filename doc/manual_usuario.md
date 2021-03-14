@@ -21,3 +21,49 @@ Observaremos al enemigo Soldado situado al lado izquierdo de la pantalla sobre u
 ### Mapa: Tiled y Mapa: Nivel 1 Mapa 1
 
 Simplemente son ejecutables para visualizar que funciona la carga de mapa y el dibujado. No hay interacción con estos.
+
+## Prototipos de Armas
+
+En estos prototipos se definen las diferentes armas que tenga el personaje principal. Para disparar, pulsar la tecla 'Z'. 
+En cada prototipo hay algunos parámetros que pueden ser ajustados a gusto del usuario, por ejemplo, la cadencia de disparo del arma, el daño y si se le quiere aplicar alguna mejora.
+
+Estos parámetros son:
+
+    - cad: Ajustar la cadencia de disparo, cada 'cad' frames, el personaje disparará. (+cad = cadencia más lenta, -cad = cadencia más rapida.)
+
+    - dmg: Ajustar el daño del arma. (En algunos prototipos el daño se encuentra como una variable para aplicar correctamente la mejora.) 
+
+    - mejora: Activar o desactivar la mejora del arma. (El arma básica no tiene mejora.)
+
+Además en la parte derecha de la pantalla, aparecerá un enemigo de prueba. Cada vez un proyectil impacte con el, la consola mostrará la vida que le falte.
+
+### PROT: Arma_Basica
+
+Dispara un proyectil simple con una cadencia media. Hace un daño moderado.
+
+
+### PROT: Arco_Hojas
+
+Dispara un proyectil poderoso pero muy lento. Con esta arma es posible atravesar enemigos. 
+
+#### MEJORA:
+
+Con la mejora aplicada es posible disparar tres proyectiles en vez de uno.
+
+
+### PROT: Rayo_Laser
+
+Dispara un proyectil con una cadencia muy alta pero un daño muy bajo. Su munición atraviesa al enemigo.
+
+#### MEJORA:
+
+La mejora aumenta el daño del arma.
+
+
+### PROT: Lanzallamas
+
+Esta es un arma especial, en vez de disparar proyectiles, dispara un llama que hace daño constante. Hace mucho daño pero gasta mucha munición.
+
+#### MEJORA:
+
+Con la mejora aplicada, aumenta el daño y el rango del arma.
