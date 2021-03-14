@@ -39,11 +39,11 @@
 					"path": "src/pro/movPersonaje"
 				},
 				{
-					"name": "Mapa Tiled",
+					"name": "Mapa: Tiled",
 					"path": "src/pro/mapa"
 				},
 				{
-					"name": "Mapa Tutorial",
+					"name": "Mapa: Nivel 1 Mapa 1",
 					"path": "src/pro/mapa_tutorial"
 				},
 				{

@@ -4,11 +4,23 @@
 ## 20210301 JoseSansano @(53min)
 Creación de hitbox básico, borra un sprite al tocarlo.
 
+## 20210301 SergioEspinosa @(1h03min)
+Visualización de los videos de TMX
+
+## 20210302 SergioEspinosa @(2h48min)
+Creación código carga de mapa TMX con la libreria tinyxml
+
 ## 20210305 CarlosVillena @(1h)
 Creación de la version preliminar de la clase NPC, añadir libreria tinyXML para el prototipo.
 
+## 20210306 SergioEspinosa @(50min)
+Debug de la carga de mapa con un mapa de ejemplo
+
 ## 20210308 JoseSansano @(2h)
 Modulación del método hitbox y borrado de la rama Hitbox del git. He estado trabajando más de lo esperado por realizar mal el merge y tener que restaurar la rama experimental a como estaba antes.
+
+## 20210309 SergioEspinosa @(3h08min)
+Tutorial del editor tiled, creación del primer mapa del nivel 1 para el juego en el editor TILED, búsqueda de sprites para todos los mapas que hagamos (aprox)
 
 ## 20210309 CarlosVillena @(30min)
 Creación de enemigo para pruebas.
@@ -54,3 +66,6 @@ Prototipo del enemigo Zombi creado.
 
 ## 20210314 RamónRodríguez @(30min)
 Prototipo del enemigo Mago creado.
+
+## 20210314 SergioEspinosa @(1h35min)
+Solución de problemas al exportar el mapa de tiled (formato de tile data layer se exportaba en csv y no en xml que es como lo tenemos)

@@ -4,14 +4,8 @@ Map::Map(int nivel) {
       
     TiXmlDocument doc;
 
-    if(nivel == 1){
-        if(!doc.LoadFile("assets/map.tmx")){
+    if(!doc.LoadFile("assets/Mapa1Nivel1.tmx")){
         std::cout << "Error al cargar el mapa." << std::endl;
-        }
-    }else{
-        if(!doc.LoadFile("assets/mapaTutorial.tmx")){
-        std::cout << "Error al cargar el mapa." << std::endl;
-        }
     }
 
      TiXmlElement* map = doc.FirstChildElement("map");
@@ -28,15 +22,11 @@ Map::Map(int nivel) {
     const char* filename = img->Attribute("source");
     
 
-    if(nivel == 1){
-        if(!_tilesetTexture.loadFromFile("assets/celeste.png")){
-            std::cout << "Error al cargar el tileset." << std::endl;
-        }
-    }else{
-         if(!_tilesetTexture.loadFromFile("assets/celeste2.png")){
-            std::cout << "Error al cargar el tileset." << std::endl;
-        }
+
+    if(!_tilesetTexture.loadFromFile("assets/bg001.png")){
+        std::cout << "Error al cargar el tileset." << std::endl;
     }
+   
     
     //Leemos diferentes capas
     map->FirstChildElement("layer");
@@ -147,47 +137,3 @@ Map::~Map() {
 }
 
 
-/* bool Map::checkColision(int tx, int ty){       
-    bool hay = false;
-    if  (_tilemap[0][ty][tx]!=71 && _tilemap[0][ty][tx]!=2 
-        && _tilemap[0][ty][tx]!=3 && _tilemap[0][ty][tx]!=1 
-        && _tilemap[0][ty][tx]!=23 && _tilemap[0][ty][tx]!=24){
-        hay = true;
-    }
-    return hay;
-}
-
-bool Map::checkPinchos(int tx, int ty){
-    bool hay = false;
-    if(_tilemap[0][ty][tx]==45){
-        hay = true;
-    }
-    return hay;
-}
-
-void Map::colocarEnemigos(){
-    for(int l=0; l<_numlayers; l++){
-        for(int y=0; y<_height; y++){
-            for(int x=0; x<_width;x++){
-                // PRUEBA
-                if(_tilemap[l][y][x] == 1){       // solo anda
-                    coord_enemy1.push_back(sf::Vector2f(x, y));
-                }
-                if(_tilemap[l][y][x] == 2){        // anda y persigue
-                    coord_enemy2.push_back(sf::Vector2f(x, y));
-                }   
-                if(_tilemap[l][y][x] == 3){        // lanza flechas
-                    coord_enemy3.push_back(sf::Vector2f(x, y));
-                }
-                if(_tilemap[l][y][x] == 23){       // dispara y anda    // 23
-                    coord_enemy4.push_back(sf::Vector2f(x, y));
-                }
-                if(_tilemap[l][y][x] == 24){       // persigue y dispara
-                    coord_enemy5.push_back(sf::Vector2f(x, y));
-                }
-            }
-        }
-    }
-}
-
-*/
