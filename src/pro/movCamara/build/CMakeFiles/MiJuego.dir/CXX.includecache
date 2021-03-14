@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/carlos-fv/FV/proyectoabp-grupo-c4/src/pro/movCamara/ej_modulos/mimodulo.h
+
+/home/carlos-fv/FV/proyectoabp-grupo-c4/src/pro/movCamara/include/config.h
+
+/home/carlos-fv/FV/proyectoabp-grupo-c4/src/pro/movCamara/main.cpp
+SFML/Graphics.hpp
+-
+iostream
+-
+include/config.h
+/home/carlos-fv/FV/proyectoabp-grupo-c4/src/pro/movCamara/include/config.h
+ej_modulos/mimodulo.h
+/home/carlos-fv/FV/proyectoabp-grupo-c4/src/pro/movCamara/ej_modulos/mimodulo.h
+
