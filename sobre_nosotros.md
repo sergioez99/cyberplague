@@ -1,15 +1,14 @@
-# Nombre del grupo
+# Grupo C4
 Debe ser el mismo que figura en el github classroom
 
 # Componentes
 
-## Apellido, Nombre (una entrada por miembro)
-* Apellido, Nombre
-* email_ua
-* usuario_github
+## Rodríguez Pedraza, Ramón
+- **email_ua:** rrp38@alu.ua.es
+- **usuario_github:** ramonrp99
 
 
-# Nombre del juego
+# Cyber Plague
 Breve resumen del mismo (10 líneas)
 
 # Carátula del juego
