@@ -72,3 +72,30 @@ Solución de problemas al exportar el mapa de tiled (formato de tile data layer 
 
 ## 20210314 RamónRodríguez @(45min)
 Prototipo del enemigo Soldado creado.
+
+## 20210309 JorgeMompeán @(40min)
+Familiarización con SFML, entorno de trabado en VSC de la máquina virtual, Sprites y movimiento de personajes con C++.
+
+## 20210312 JorgeMompeán @(25min)
+Creación entorno de trabajo externo al de la máquina virtual para no estropear o fastifiar los ejemplos iniciales de los prototipos con la intención de poder testear libremente.
+
+## 20210312 JorgeMompeán @(1h49min)
+Investigación y desarrollo de animación personaje principal en estático en entorno externo.
+
+## 20210312 JorgeMompeán @(2h46min)
+Desarrollo de animación personaje principal en estático en entorno externo, pero sin el sprite definitivo.
+
+## 20210313 JorgeMompeán @(25min)
+Búsqueda y adaptación necesaria del sprite definitivo para animación.
+
+## 20210313 JorgeMompeán @(33min)
+Implementación y adaptación de la animación en estático del entorno de trabajo externo al proyecto definitivo.
+
+## 20210313 JorgeMompeán @(3h31min)
+Investigación, adaptación de los sprites y desarrollo en entorno externo la animación de andar/correr del personaje.
+
+## 20210313 JorgeMompeán @(44min)
+Implementación y adaptación de la animación de andar/correr del entorno externo al proyecto definitivo.
+
+## 20210313 JorgeMompeán @(50min)
+Investigación de la animación de saltar del personaje. Adaptar los sprites de dicha animación. 
