@@ -9,3 +9,6 @@ Esta información debe estár sincronizada con el GDD. Debe contener la informac
 
 ## Hitbox/Colisiones
 Realizado por José Antonio Sansano, Hito 0
+
+## Carlos Villena Cerdá
+Realización de las diferentes armas.
