@@ -2,17 +2,17 @@
 #include <iostream>
 #include <cmath>
 #include <vector>
-#include <list>
 
 #include "include/config.h"
 #include "ej_modulos/Mago.h"
 
 #define kVel 55
 #define kUpdateTimePS 1000/15
+#define magoSpawnTime 2
 
 int main() {
   //Creamos una ventana
-  sf::RenderWindow window(sf::VideoMode(640, 480), "IA Enemigo");
+  sf::RenderWindow window(sf::VideoMode(640, 480), "IA Mago");
 
   //Cargo la imagen donde reside la textura del sprite
   sf::Texture tex;
@@ -39,6 +39,9 @@ int main() {
 
   //ENEMIGO
   Mago *mago = new Mago(Vector2f(540, 240));
+  vector<Sprite> enemigos;
+  Clock spawnClock;
+  Time time = spawnClock.getElapsedTime();
 
   sf::Time timeStartUpdate = clock.getElapsedTime();
   //Bucle del juego
@@ -92,7 +95,30 @@ int main() {
 
       //Mago
       if(mago->deteccion(personaje.getPosition())){
-        mago->spawnEnemigo();
+        //Spawn enemigos cada magoSpawnTime (2s)
+        if(spawnClock.getElapsedTime().asSeconds() - time.asSeconds() > magoSpawnTime){
+          Sprite enemigo1(tex), enemigo2(tex);
+
+          enemigo1.setOrigin(75 / 2, 75 / 2);
+          enemigo1.setTextureRect(sf::IntRect(2 * 85, 2 * 75, 75, 75));
+          enemigo1.setPosition(mago->getSprite().getPosition().x - 90, mago->getSprite().getPosition().y - 80);
+          enemigo1.setScale(-0.5, 0.5);
+
+          enemigo2.setOrigin(75 / 2, 75 / 2);
+          enemigo2.setTextureRect(sf::IntRect(2 * 85, 2 * 75, 75, 75));
+          enemigo2.setPosition(mago->getSprite().getPosition().x - 90, mago->getSprite().getPosition().y - 30);
+          enemigo2.setScale(-0.5, 0.5);
+
+          enemigos.push_back(enemigo1);
+          enemigos.push_back(enemigo2);
+
+          time = spawnClock.getElapsedTime();
+        }
+      }
+      
+      //Movimiento enemigos spawneados (posteriormente seguiran Algoritmo A* pathfinding)
+      for(int i = 0; i < (int)enemigos.size(); i++){
+        enemigos[i].setPosition(enemigos[i].getPosition().x - (delta * 50.0f), enemigos[i].getPosition().y);
       }
 
       timeStartUpdate = clock.getElapsedTime();
@@ -101,8 +127,12 @@ int main() {
     window.clear();
     window.draw(personaje);
     window.draw(mago->getSprite());
+    for(int i = 0; i < (int)enemigos.size(); i++)
+      window.draw(enemigos[i]);
     window.display();
   }
+
+  delete mago;
 
   return 0;
 }

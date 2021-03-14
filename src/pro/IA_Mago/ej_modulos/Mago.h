@@ -10,9 +10,7 @@ class Mago{
     private:
         Texture textura;
         Sprite* sprite;
-        Clock clock;
-        Time time;
-        Int32 kUpdateTime;  //Tiempo de spawneo
+        Int32 spawnTime;
         float rango;
     public:
         Mago(Vector2f pos);
@@ -21,5 +19,4 @@ class Mago{
 
         Sprite getSprite();
         bool deteccion(Vector2f pos);
-        void spawnEnemigo();
 };

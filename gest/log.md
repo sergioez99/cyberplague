@@ -64,7 +64,7 @@ Debug del Algoritmo A*, solucionado error encontrado pero sigue sin funcionar co
 ## 20210313 RamónRodríguez @(1h15min)
 Prototipo del enemigo Zombi creado.
 
-## 20210314 RamónRodríguez @(30min)
+## 20210314 RamónRodríguez @(1h30min)
 Prototipo del enemigo Mago creado.
 
 ## 20210314 SergioEspinosa @(1h35min)

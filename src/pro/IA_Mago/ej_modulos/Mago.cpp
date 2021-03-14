@@ -7,17 +7,18 @@ Mago::Mago(Vector2f pos) {
     }
 
     sprite = new Sprite(textura);
-    sprite->setOrigin(75 / 2, 75);
-    sprite->setTextureRect(sf::IntRect(5 * 85, 0 * 75, 75, 75));
+    sprite->setOrigin(75 / 2, 75 / 2);
+    sprite->setTextureRect(sf::IntRect(5 * 85, 2 * 75, 75, 75));
+    sprite->setScale(-1, 1);
     sprite->setPosition(pos);
 
-    kUpdateTime = 2;
-    rango = 200.0;
+    spawnTime = 2;
+    rango = 400.0;
 }
 
 Mago::Mago(const Mago &m){
     sprite = m.sprite;
-    kUpdateTime = m.kUpdateTime;
+    spawnTime = m.spawnTime;
     rango = m.rango;
 }
 
@@ -34,18 +35,15 @@ bool Mago::deteccion(Vector2f pos){
 
     //Jugador detecctado
     if(distancia <= rango){
-        sprite->setTextureRect(sf::IntRect(2 * 85, 2 * 75, 75, 75));
-        sprite->setScale(-1,1);
+        sprite->setTextureRect(sf::IntRect(5 * 85, 2 * 75, 75, 75));
+        sprite->setScale(1,1);
 
         return true;
     }
     else{
-        sprite->setTextureRect(sf::IntRect(5 * 85, 0 * 75, 75, 75));
+        sprite->setTextureRect(sf::IntRect(5 * 85, 2 * 75, 75, 75));
+        sprite->setScale(-1, 1);
 
         return false;
     }
-}
-
-void Mago::spawnEnemigo(){
-    
 }
