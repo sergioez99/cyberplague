@@ -17,3 +17,5 @@ Se recomienda gastar alguna herramienta que permita medir el tiempo y administra
 * Todo+: Plugin de VSCODE: fabiospampinato.vscode-todo-plus
 
 Este fichero puede ser un PDF si la herramienta que gastáis lo requiere, pero **debe estar actualizado semanalmente**.
+
+`20210301; Creacion de colisiones e Hitbox; 7h; finalizado; Zindov`
