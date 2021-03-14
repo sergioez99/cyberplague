@@ -3,16 +3,6 @@
 		{
 			"path": "."
 		},
-		
-		//Aquí se agrega cada subproyecto, separado por comas
-		{
-			"name": "PROT: plantilla_fv",
-			"path": "src/pro/plantilla_fv"
-		},
-
-	],
-	"settings": {
-		"editor.wordWrap": "on"
 
 				//Aquí se agrega cada subproyecto, separado por comas
 				{

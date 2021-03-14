@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-# Nombre del grupo
-=======
 # Grupo C4
->>>>>>> origin/ENTREGA_HITO1
 Debe ser el mismo que figura en el github classroom
 
 # Componentes
