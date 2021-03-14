@@ -13,5 +13,107 @@
 	],
 	"settings": {
 		"editor.wordWrap": "on"
+
+				//Aquí se agrega cada subproyecto, separado por comas
+				{
+					"name": "PROT: Hitbox",
+					"path": "src/pro/Hitbox",
+				},
+				{
+					"name": "PROT: Arma Basica",
+					"path": "src/pro/arma_basica",
+		
+				},
+				{
+					"name": "PROT: Arco Hojas",
+					"path": "src/pro/arco_hojas",
+		
+				},
+				{
+					"name": "PROT: Rayo Laser",
+					"path": "src/pro/rayoLaser",
+		
+				},
+				{
+					"name": "PROT: Lanzallamas",
+					"path": "src/pro/lanzallamas",
+		
+				},
+				{
+					"name": "PROT: movPersonaje",
+					"path": "src/pro/movPersonaje"
+				},
+				{
+					"name": "Mapa: Tiled",
+					"path": "src/pro/mapa"
+				},
+				{
+					"name": "Mapa: Nivel 1 Mapa 1",
+					"path": "src/pro/mapa_tutorial"
+				},
+				{
+					"name": "Mapa movCamara",
+					"path": "src/pro/movCamara"
+				},
+				{
+					"name": "PROT: Menu Principal",
+					"path": "src/pro/menu_principal"
+				},
+				{
+					"name": "PROT: Zombi",
+					"path": "src/pro/IA_Zombi"
+				},
+				{
+					"name": "PROT: Mago",
+					"path": "src/pro/IA_Mago"
+				},
+				{
+					"name": "PROT: Soldado",
+					"path": "src/pro/IA_Soldado"
+				},
+				{
+					"name": "PROT: FV",
+					"path": "src/pro/plantilla_fv"
+				}
+	],
+	"settings": {
+		"editor.wordWrap": "on",
+		"files.associations": {
+			"array": "cpp",
+			"*.tcc": "cpp",
+			"cctype": "cpp",
+			"clocale": "cpp",
+			"cmath": "cpp",
+			"cstdarg": "cpp",
+			"cstdint": "cpp",
+			"cstdio": "cpp",
+			"cstdlib": "cpp",
+			"ctime": "cpp",
+			"cwchar": "cpp",
+			"cwctype": "cpp",
+			"deque": "cpp",
+			"unordered_map": "cpp",
+			"vector": "cpp",
+			"exception": "cpp",
+			"algorithm": "cpp",
+			"functional": "cpp",
+			"system_error": "cpp",
+			"tuple": "cpp",
+			"type_traits": "cpp",
+			"fstream": "cpp",
+			"initializer_list": "cpp",
+			"iosfwd": "cpp",
+			"iostream": "cpp",
+			"istream": "cpp",
+			"limits": "cpp",
+			"new": "cpp",
+			"ostream": "cpp",
+			"numeric": "cpp",
+			"sstream": "cpp",
+			"stdexcept": "cpp",
+			"streambuf": "cpp",
+			"utility": "cpp",
+			"typeinfo": "cpp"
+		}
 	}
 }

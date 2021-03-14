@@ -1,0 +1,17 @@
+[
+{
+  "directory": "/home/osboxes/Escritorio/proyectoabp-grupo-c4/src/pro/plantilla_fv/build",
+  "command": "/usr/bin/clang++-3.8    -I/home/osboxes/Escritorio/proyectoabp-grupo-c4/src/pro/plantilla_fv/ej_modulos   -std=c++1y -Wall -Wextra -g   -o CMakeFiles/MiJuego.dir/main.cpp.o -c /home/osboxes/Escritorio/proyectoabp-grupo-c4/src/pro/plantilla_fv/main.cpp",
+  "file": "/home/osboxes/Escritorio/proyectoabp-grupo-c4/src/pro/plantilla_fv/main.cpp"
+},
+{
+  "directory": "/home/osboxes/Escritorio/proyectoabp-grupo-c4/src/pro/plantilla_fv/build",
+  "command": "/usr/bin/clang++-3.8    -I/home/osboxes/Escritorio/proyectoabp-grupo-c4/src/pro/plantilla_fv/ej_modulos   -std=c++1y -Wall -Wextra -g   -o CMakeFiles/libModulos.dir/ej_modulos/mimodulo.cpp.o -c /home/osboxes/Escritorio/proyectoabp-grupo-c4/src/pro/plantilla_fv/ej_modulos/mimodulo.cpp",
+  "file": "/home/osboxes/Escritorio/proyectoabp-grupo-c4/src/pro/plantilla_fv/ej_modulos/mimodulo.cpp"
+},
+{
+  "directory": "/home/osboxes/Escritorio/proyectoabp-grupo-c4/src/pro/plantilla_fv/build",
+  "command": "/usr/bin/clang++-3.8    -I/home/osboxes/Escritorio/proyectoabp-grupo-c4/src/pro/plantilla_fv/ej_modulos   -std=c++1y -Wall -Wextra -g   -o CMakeFiles/libModulos.dir/ej_modulos/mimodulo2.cpp.o -c /home/osboxes/Escritorio/proyectoabp-grupo-c4/src/pro/plantilla_fv/ej_modulos/mimodulo2.cpp",
+  "file": "/home/osboxes/Escritorio/proyectoabp-grupo-c4/src/pro/plantilla_fv/ej_modulos/mimodulo2.cpp"
+}
+]
