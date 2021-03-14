@@ -17,3 +17,7 @@ Observaremos al enemigo Mago situado al lado izquierdo de la pantalla. Si nos ac
 En este prototipo el jugador podrá moverse hacia la derecha o izquierda con las flechas del teclado.
 
 Observaremos al enemigo Soldado situado al lado izquierdo de la pantalla sobre una plataforma representada con un rectángulo blanco. Si nos acercamos un poco a él entraremos en su rango de visión y este nos diparará cada 1 segundo. Mientrás no estemos en su rango de visión este se moverá sobre la plataforma sin caerse.
+
+### Mapa: Tiled y Mapa: Nivel 1 Mapa 1
+
+Simplemente son ejecutables para visualizar que funciona la carga de mapa y el dibujado. No hay interacción con estos.

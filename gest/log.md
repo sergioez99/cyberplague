@@ -16,6 +16,9 @@ Creación de la version preliminar de la clase NPC, añadir libreria tinyXML par
 ## 20210306 SergioEspinosa @(50min)
 Debug de la carga de mapa con un mapa de ejemplo
 
+## 20210307 RamónRodríguez @(1h)
+Investigación sobre el Algoritmo A* y comienzo de su implementación.
+
 ## 20210308 JoseSansano @(2h)
 Modulación del método hitbox y borrado de la rama Hitbox del git. He estado trabajando más de lo esperado por realizar mal el merge y tener que restaurar la rama experimental a como estaba antes.
 

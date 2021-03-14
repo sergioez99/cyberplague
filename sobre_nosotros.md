@@ -11,6 +11,10 @@ Debe ser el mismo que figura en el github classroom
 - **email_ua:** jmc119@alu.ua.es
 - **usuario_github:** jorgemompe
 
+## Espinosa Zaragoza, Sergio
+- **email_ua:** sez1@alu.ua.es
+- **usuario_github:** sergioez99
+
 ## Sansano Melero, José Antonio
 - **email_ua:** jasm37@alu.ua.es
 - **usuario_github:** Zindov
