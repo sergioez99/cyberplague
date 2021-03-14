@@ -7,3 +7,5 @@ Esta información debe estár sincronizada con el GDD. Debe contener la informac
 -Carga de mapa tmx con tinyxml
 -Crear Mapa nivel 1 y cargarlo
 
+## Hitbox/Colisiones
+Realizado por José Antonio Sansano, Hito 0
