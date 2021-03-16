@@ -10,11 +10,6 @@
 					"path": "src/pro/Hitbox",
 				},
 				{
-					"name": "PROT: IA_Enemigo",
-					"path": "src/pro/IA_Enemigo",
-		
-				},
-				{
 					"name": "PROT: Arma Basica",
 					"path": "src/pro/arma_basica",
 		
@@ -39,11 +34,11 @@
 					"path": "src/pro/movPersonaje"
 				},
 				{
-					"name": "Mapa Tiled",
+					"name": "Mapa: Tiled",
 					"path": "src/pro/mapa"
 				},
 				{
-					"name": "Mapa Tutorial",
+					"name": "Mapa: Nivel 1 Mapa 1",
 					"path": "src/pro/mapa_tutorial"
 				},
 				{
@@ -71,7 +66,18 @@
 					"name": "PROT: Menu Tienda",
 					"path": "src/pro/menu_tienda"
 				},
-			
+				{
+					"name": "PROT: Zombi",
+					"path": "src/pro/IA_Zombi"
+				},
+				{
+					"name": "PROT: Mago",
+					"path": "src/pro/IA_Mago"
+				},
+				{
+					"name": "PROT: Soldado",
+					"path": "src/pro/IA_Soldado"
+				},
 				{
 					"name": "PROT: FV",
 					"path": "src/pro/plantilla_fv"

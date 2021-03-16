@@ -10,6 +10,12 @@ Ejemplo:
 * `[X]` - `20210107; Revisar formato de documentación; 120'; fidelaznar`
 * `[.]` - `20210108; Acabar plantilla; 120'; fidelaznar`
 
+# Tareas 
+
+* `[X] Finalizado` - `20210228; Carga de mapa tmx con tinyxml; 4h50min; sergioez99`
+* `[X] Finalizado` - `20210306; Crear Mapa nivel 1 y cargarlo; 4h45min'; sergioez99`
+
+
 # Otras cuestiones relacionadas
 Se recomienda gastar alguna herramienta que permita medir el tiempo y administrar las tareas:
 
@@ -17,3 +23,5 @@ Se recomienda gastar alguna herramienta que permita medir el tiempo y administra
 * Todo+: Plugin de VSCODE: fabiospampinato.vscode-todo-plus
 
 Este fichero puede ser un PDF si la herramienta que gastáis lo requiere, pero **debe estar actualizado semanalmente**.
+
+`20210301; Creacion de colisiones e Hitbox; 7h; finalizado; Zindov`

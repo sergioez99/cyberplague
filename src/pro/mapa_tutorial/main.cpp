@@ -44,7 +44,7 @@ int main() {
       }
     }
 
-    Map *map = new Map(2);
+    Map *map = new Map(1);
 
     window->clear(sf::Color::Black);
     //window->draw(sprite);
