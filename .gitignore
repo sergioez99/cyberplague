@@ -9,3 +9,8 @@ src/pro/lanzallamas/build/
 src/pro/IA_Zombi/build/
 src/pro/IA_Mago/build/
 src/pro/IA_Soldado/build/
+src/pro/menu_principal/build/
+src/pro/menu_lobby/build/
+src/pro/menu_niveles/build/
+src/pro/menu_pausa/build/
+src/pro/menu_tienda/build/

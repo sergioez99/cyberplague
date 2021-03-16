@@ -1,6 +1,6 @@
 #Especificar donde se encuentran los ficheros cpp a compilar
 target_sources(libModulos PRIVATE
-    "${CMAKE_CURRENT_SOURCE_DIR}/Menu.cpp"
+    "${CMAKE_CURRENT_SOURCE_DIR}/Menu_lobby.cpp"
     "${CMAKE_CURRENT_SOURCE_DIR}/mimodulo2.cpp"
 )
 

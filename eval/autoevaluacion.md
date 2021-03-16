@@ -1,7 +1,8 @@
 # Autoevaluación individual
 
-## Miembro 1
-Reflejar tanto el progreso como los problemas encontrados con el grupo, código, juego... Si no se refleja ningún problema se asume que no existen.
+## Carlos Villena Cerdá
+Por regla general no he tenido ningún problema serio ni nada de eso, lo único que he tenido ha sido la adaptación al motor y el aprendizaje del mismo. Al empezar a hacer algún prototipo ya fui aprendiendo y cada vez tuve menos problemas.
+
 
 ## Miembro 2...
 

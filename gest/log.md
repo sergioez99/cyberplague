@@ -60,6 +60,14 @@ Debug del Algoritmo A*, solucionado un par de errores y localizado otro.
 ## 20210310 JoseSansano @(2h)
 Añadido implementación de hitbox a puntero vector de sprites.
 
+## 20210309 RubenHerrera @(1h)
+Intento de implementar una versión de menú vista por internet que no sale bien
+
+## 20210310 RubenHerrera @(2h)
+Primera versión del menu principal que funciona
+
+## 20210313 RubenHerrera @(2h30m)
+Implementados el resto de menus. Dado que siguen una estructura similar tardo menos.
 ## 20210313 RamónRodríguez @(1h30min)
 Debug del Algoritmo A*, solucionado error encontrado pero sigue sin funcionar correctamente. Antes el error era que buscando el camino se quedaba en bucle infinito y ahora encuentra el camino pero no lo devuelve correctamente (posible problema con los punteros a los nodos padre).
 
