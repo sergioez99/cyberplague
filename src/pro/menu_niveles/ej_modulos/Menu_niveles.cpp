@@ -4,7 +4,7 @@
 
 MenuN::MenuN(float width, float height) {
     if(!font.loadFromFile("arial.ttf")){
-
+        font.loadFromFile("./resources/Ubuntu-Regular.ttf");
     }
 
     menu[0].setFont(font);

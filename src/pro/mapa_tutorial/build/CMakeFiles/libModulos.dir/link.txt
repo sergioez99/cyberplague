@@ -1,2 +1,0 @@
-/usr/bin/ar qc liblibModulos.a  CMakeFiles/libModulos.dir/ej_modulos/Map.cpp.o CMakeFiles/libModulos.dir/ej_modulos/tinystr.cpp.o CMakeFiles/libModulos.dir/ej_modulos/tinyxml.cpp.o CMakeFiles/libModulos.dir/ej_modulos/tinyxmlerror.cpp.o CMakeFiles/libModulos.dir/ej_modulos/tinyxmlparser.cpp.o
-/usr/bin/ranlib liblibModulos.a

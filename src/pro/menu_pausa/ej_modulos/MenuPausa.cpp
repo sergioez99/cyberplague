@@ -4,7 +4,7 @@
 
 MenuPausa::MenuPausa(float width, float height) {
     if(!font.loadFromFile("arial.ttf")){
-
+        font.loadFromFile("./resources/Ubuntu-Regular.ttf");
     }
 
     menupausa[0].setFont(font);
