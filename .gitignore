@@ -3,9 +3,9 @@ src/pro/IA_Enemigo_Pathfinding/build/
 src/pro/arma_basica/build/
 src/pro/movCamara/build/
 src/pro/movPersonaje/build/
-src/pro/arco_hojas/build
-src/pro/rayoLaser/build
-src/pro/lanzallamas/build
+src/pro/arco_hojas/build/
+src/pro/rayoLaser/build/
+src/pro/lanzallamas/build/
 src/pro/IA_Zombi/build/
 src/pro/IA_Mago/build/
 src/pro/IA_Soldado/build/

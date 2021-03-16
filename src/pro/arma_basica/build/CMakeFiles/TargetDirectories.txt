@@ -1,6 +1,0 @@
-/home/carlos-fv/FV/proyectoabp-grupo-c4/src/pro/arma_basica/build/CMakeFiles/rebuild_cache.dir
-/home/carlos-fv/FV/proyectoabp-grupo-c4/src/pro/arma_basica/build/CMakeFiles/edit_cache.dir
-/home/carlos-fv/FV/proyectoabp-grupo-c4/src/pro/arma_basica/build/CMakeFiles/MiJuego.dir
-/home/carlos-fv/FV/proyectoabp-grupo-c4/src/pro/arma_basica/build/CMakeFiles/libModulos.dir
-/home/carlos-fv/FV/proyectoabp-grupo-c4/src/pro/arma_basica/build/ej_modulos/CMakeFiles/edit_cache.dir
-/home/carlos-fv/FV/proyectoabp-grupo-c4/src/pro/arma_basica/build/ej_modulos/CMakeFiles/rebuild_cache.dir

@@ -1,6 +1,0 @@
-/home/osboxes/Escritorio/proyectoabp-grupo-c4/src/pro/mapa/build/CMakeFiles/rebuild_cache.dir
-/home/osboxes/Escritorio/proyectoabp-grupo-c4/src/pro/mapa/build/CMakeFiles/edit_cache.dir
-/home/osboxes/Escritorio/proyectoabp-grupo-c4/src/pro/mapa/build/CMakeFiles/MiJuego.dir
-/home/osboxes/Escritorio/proyectoabp-grupo-c4/src/pro/mapa/build/CMakeFiles/libModulos.dir
-/home/osboxes/Escritorio/proyectoabp-grupo-c4/src/pro/mapa/build/ej_modulos/CMakeFiles/edit_cache.dir
-/home/osboxes/Escritorio/proyectoabp-grupo-c4/src/pro/mapa/build/ej_modulos/CMakeFiles/rebuild_cache.dir
