@@ -9,6 +9,9 @@ src/pro/lanzallamas/build/
 src/pro/IA_Zombi/build/
 src/pro/IA_Mago/build/
 src/pro/IA_Soldado/build/
+src/pro/mapa/build/
+src/pro/mapa_tutorial/build/
+src/pro/movCamara/build/
 src/pro/menu_principal/build/
 src/pro/menu_lobby/build/
 src/pro/menu_niveles/build/
