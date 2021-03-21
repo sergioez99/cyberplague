@@ -9,7 +9,7 @@
 int main() {
 
   //Creamos una ventana
-  sf::RenderWindow *window = new sf::RenderWindow(sf::VideoMode(640, 480), "P0. Fundamentos de los Videojuegos. DCCIA");
+  sf::RenderWindow *window = new sf::RenderWindow(sf::VideoMode(1020, 840), "P0. Fundamentos de los Videojuegos. DCCIA");
 
   //Bucle del juego
   while (window->isOpen()) {

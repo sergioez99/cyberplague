@@ -4,7 +4,7 @@ Map::Map(int nivel) {
       
     TiXmlDocument doc;
 
-    if(!doc.LoadFile("assets/Mapa1Nivel1.tmx")){
+    if(!doc.LoadFile("assets/mapa.tmx")){
         std::cout << "Error al cargar el mapa." << std::endl;
     }
 
@@ -20,12 +20,6 @@ Map::Map(int nivel) {
     //Leemos los tilesets
     TiXmlElement *img = map->FirstChildElement("tileset");//->FirstChildElement("image");  
     const char* filename = img->Attribute("source");
-    
-
-
-    if(!_tilesetTexture.loadFromFile("assets/bg001.png")){
-        std::cout << "Error al cargar el tileset." << std::endl;
-    }
    
     
     //Leemos diferentes capas
@@ -36,6 +30,7 @@ Map::Map(int nivel) {
         _numlayers++;
         layer= layer->NextSiblingElement("layer");
     } 
+    
     
     //Reserva de memoria
     _tilemap=new int**[_numlayers];
@@ -52,10 +47,20 @@ Map::Map(int nivel) {
     layer = map->FirstChildElement("layer");
     string *name=new string[_numlayers];
     int j=0;
-    int l=0;
        
     //Leo los tiles
             for(int l=0;l<_numlayers;l++){
+                //Depende de la capa cambiamos el tileset
+                if(l == 1 || l == 3){
+                    if(!_tilesetTexture.loadFromFile("assets/ground_tiles.png")){
+                        std::cout << "Error al cargar el tileset." << std::endl;
+                    }
+                }
+                else{
+                    if(!_tilesetTexture.loadFromFile("assets/Tree Set.png")){
+                        std::cout << "Error al cargar el tileset." << std::endl;
+                    }
+                }
                 TiXmlElement *data= layer->FirstChildElement("data")->FirstChildElement("tile");
                 name[j]= (string)layer->Attribute("name");
                 for(int y=0; y<_height; y++){
