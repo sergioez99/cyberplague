@@ -79,6 +79,10 @@
 					"path": "src/pro/IA_Soldado"
 				},
 				{
+					"name": "PROT: Pajaro",
+					"path": "src/pro/IA_Pajaro"
+				},
+				{
 					"name": "PROT: FV",
 					"path": "src/pro/plantilla_fv"
 				}

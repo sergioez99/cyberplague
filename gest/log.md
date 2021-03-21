@@ -107,3 +107,6 @@ Implementación y adaptación de la animación de andar/correr del entorno exter
 
 ## 20210313 JorgeMompeán @(50min)
 Investigación de la animación de saltar del personaje. Adaptar los sprites de dicha animación. 
+
+## 20210321 RamónRodríguez @(1h12min)
+Debug para intentar arreglar el Algortimo A*.
