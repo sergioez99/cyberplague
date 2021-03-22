@@ -12,26 +12,9 @@ int main() {
   //Cargo la imagen donde reside la textura del sprite
   sf::Texture playerTexture;
 
-  playerTexture.loadFromFile("resources/UnionDEFDEF.png");
+  playerTexture.loadFromFile("resources/Union.png");
 
-  /*
-  if (!tex.loadFromFile("resources/spritesdef.png")) {
-    std::cerr << "Error cargando la imagen sprites.png";
-    exit(0);
-  }*/
-  
-  //Y creo el spritesheet a partir de la imagen anterior
-  //sf::Sprite sprite(tex);
-
-  //Le pongo el centroide donde corresponde
-  //sprite.setOrigin(17 / 2, 44 / 2);
-  //Cojo el sprite que me interesa por defecto del sheet
-  //sprite.setTextureRect(sf::IntRect(0 * 17, 0 * 44, 17, 44));
-
-  // Lo dispongo en el centro de la pantalla
-  // sprite.setPosition(320, 240);
-
-  Player player(&playerTexture, sf::Vector2u(6, 2), 0.3f, 200.0f);
+  Player player(&playerTexture, sf::Vector2u(8, 2), 0.3f, 200.0f);
 
   float deltaTime = 0.0f;
   sf::Clock clock;
