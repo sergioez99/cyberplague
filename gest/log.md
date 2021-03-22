@@ -110,3 +110,6 @@ Investigación de la animación de saltar del personaje. Adaptar los sprites de 
 
 ## 20210321 RamónRodríguez @(1h12min)
 Debug para intentar arreglar el Algortimo A*.
+
+## 20210322 JorgeMompeán @(1h42min)
+Cambiar sprite al definitivo, adaptarlo por photoshop e introducirlo al proyecto.
