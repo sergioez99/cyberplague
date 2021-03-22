@@ -113,3 +113,6 @@ Debug para intentar arreglar el Algortimo A*.
 
 ## 20210322 JorgeMompeán @(1h42min)
 Cambiar sprite al definitivo, adaptarlo por photoshop e introducirlo al proyecto.
+
+## 20210322 JorgeMompeán @(46min)
+Añadir el sprite del salto, con el nuevo tipo de sprite.
