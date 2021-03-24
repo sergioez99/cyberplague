@@ -2,13 +2,13 @@
 #include <iostream>
 
 #include "include/config.h"
-#include "ej_modulos/mimodulo.h"
+#include "modulos/sprite.h"
 
 #define kVel 5
 
 int main() {
 
-  MiModulo *mod = new MiModulo();
+  Sprite *mod = new Sprite();
 
   //Creamos una ventana
   sf::RenderWindow window(sf::VideoMode(640, 480), "CyberPlague");

@@ -12,6 +12,9 @@
 
 	],
 	"settings": {
-		"editor.wordWrap": "on"
+		"editor.wordWrap": "on",
+		"files.associations": {
+			"iostream": "cpp"
+		}
 	}
 }

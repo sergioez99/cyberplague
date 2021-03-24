@@ -1,8 +1,8 @@
 #pragma once
 
-class MiModulo{
+class Window{
     
     public:
-     MiModulo();
+     Window();
 
 };
