@@ -11,7 +11,7 @@ int main() {
   MiModulo *mod = new MiModulo();
 
   //Creamos una ventana
-  sf::RenderWindow window(sf::VideoMode(640, 480), "P0. Fundamentos de los Videojuegos. DCCIA");
+  sf::RenderWindow window(sf::VideoMode(640, 480), "CyberPlague");
 
   //Cargo la imagen donde reside la textura del sprite
   sf::Texture tex;

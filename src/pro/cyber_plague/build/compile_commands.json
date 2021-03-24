@@ -1,0 +1,17 @@
+[
+{
+  "directory": "/home/osboxes/Escritorio/FV/proyectoabp-grupo-c4/src/pro/cyber_plague/build",
+  "command": "/usr/bin/g++-5    -I/home/osboxes/Escritorio/FV/proyectoabp-grupo-c4/src/pro/cyber_plague/ej_modulos   -std=c++1y -Wall -Wextra -g   -o CMakeFiles/CyberPlague.dir/main.cpp.o -c /home/osboxes/Escritorio/FV/proyectoabp-grupo-c4/src/pro/cyber_plague/main.cpp",
+  "file": "/home/osboxes/Escritorio/FV/proyectoabp-grupo-c4/src/pro/cyber_plague/main.cpp"
+},
+{
+  "directory": "/home/osboxes/Escritorio/FV/proyectoabp-grupo-c4/src/pro/cyber_plague/build",
+  "command": "/usr/bin/g++-5    -I/home/osboxes/Escritorio/FV/proyectoabp-grupo-c4/src/pro/cyber_plague/ej_modulos   -std=c++1y -Wall -Wextra -g   -o CMakeFiles/libModulos.dir/ej_modulos/mimodulo.cpp.o -c /home/osboxes/Escritorio/FV/proyectoabp-grupo-c4/src/pro/cyber_plague/ej_modulos/mimodulo.cpp",
+  "file": "/home/osboxes/Escritorio/FV/proyectoabp-grupo-c4/src/pro/cyber_plague/ej_modulos/mimodulo.cpp"
+},
+{
+  "directory": "/home/osboxes/Escritorio/FV/proyectoabp-grupo-c4/src/pro/cyber_plague/build",
+  "command": "/usr/bin/g++-5    -I/home/osboxes/Escritorio/FV/proyectoabp-grupo-c4/src/pro/cyber_plague/ej_modulos   -std=c++1y -Wall -Wextra -g   -o CMakeFiles/libModulos.dir/ej_modulos/mimodulo2.cpp.o -c /home/osboxes/Escritorio/FV/proyectoabp-grupo-c4/src/pro/cyber_plague/ej_modulos/mimodulo2.cpp",
+  "file": "/home/osboxes/Escritorio/FV/proyectoabp-grupo-c4/src/pro/cyber_plague/ej_modulos/mimodulo2.cpp"
+}
+]
