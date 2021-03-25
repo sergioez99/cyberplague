@@ -116,3 +116,6 @@ Cambiar sprite al definitivo, adaptarlo por photoshop e introducirlo al proyecto
 
 ## 20210322 JorgeMompeán @(46min)
 Añadir el sprite del salto, con el nuevo tipo de sprite.
+
+## 20210325 RamónRodríguez @(45min)
+Solucionado error del Algoritmo A*. Ya devuelve el camino correctamente. El error era que nos los nodos se destruían antes de tiempo y al intentar acceder a ellos para reconstruir el camino valían NULL.

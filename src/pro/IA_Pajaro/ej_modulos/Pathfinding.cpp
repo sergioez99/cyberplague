@@ -28,14 +28,13 @@ Pathfinding & Pathfinding::operator=(const Pathfinding &p){
     return *this;
 }
 
-list<Nodo> Pathfinding::encontrarCamino(int matriz[16][12], Nodo ini, Nodo fin){
+list<Nodo> Pathfinding::encontrarCamino(int matriz[16][12], Nodo inicio, Nodo meta){
     //Vaciar listas si no lo estan
     if(!listaInterior.empty())
         listaInterior.clear();
     if(!listaFrontera.empty())
         listaFrontera.clear();
 
-    Nodo inicio = ini, meta = fin;
     list<Nodo> camino;
 
     listaFrontera.push_back(inicio);
@@ -53,6 +52,9 @@ list<Nodo> Pathfinding::encontrarCamino(int matriz[16][12], Nodo ini, Nodo fin){
                 n = aux;
         }
 
+        listaFrontera.remove(n);
+        listaInterior.push_back(n);
+
         if(n == meta){
             //Reconstruir camino siguiendo los punteros
             for(Nodo *aux = &n; aux != NULL; aux = aux->getPadre())
@@ -60,9 +62,6 @@ list<Nodo> Pathfinding::encontrarCamino(int matriz[16][12], Nodo ini, Nodo fin){
 
             return camino;
         }
-
-        listaFrontera.remove(n);
-        listaInterior.push_back(n);
 
         //Comprobar nodos adyacentes al actual
         list<Nodo> adyacentes = nodosAdyacentes(matriz, n, meta);
@@ -74,7 +73,7 @@ list<Nodo> Pathfinding::encontrarCamino(int matriz[16][12], Nodo ini, Nodo fin){
             for(; *it2 != m && it2 != listaFrontera.end(); it2++);
 
             //Hijo m no esta en listaFrontera
-            if(it2 == listaFrontera.end() || *it2 != m)
+            if(it2 == listaFrontera.end())
                 listaFrontera.push_back(m);
             else{
                 Nodo aux = *it2;
@@ -100,70 +99,74 @@ list<Nodo> Pathfinding::encontrarCamino(int matriz[16][12], Nodo ini, Nodo fin){
 
 list<Nodo> Pathfinding::nodosAdyacentes(int matriz[16][12], Nodo n, Nodo meta){
     list<Nodo> adyacentes;
+    list<Nodo>::iterator it = listaInterior.begin();
+
+    //Recorrer lista interior para poner como padre el nodo n almacenado en esta lista
+    for(; *it != n && it != listaFrontera.end(); it++);
     
     //Direccion arriba izquierda (diagonal)
     if(n.getX() - 1 > -1 && n.getY() - 1 > -1 && matriz[n.getX() - 1][n.getY() - 1] == 0){
-        Nodo *hijo = new Nodo(&n, n.getX() - 1, n.getY() - 1);
-        hijo->setG(n.getG() + costeDiagonal);
-        hijo->setH(abs(n.getX() - meta.getX()) + abs(n.getY() - meta.getY()));
-        hijo->setF(hijo->getG() + hijo->getH());
-        adyacentes.push_back(*hijo);
+        Nodo hijo(&*it, n.getX() - 1, n.getY() - 1);
+        hijo.setG(n.getG() + costeDiagonal);
+        hijo.setH(abs(n.getX() - meta.getX()) + abs(n.getY() - meta.getY()));
+        hijo.setF(hijo.getG() + hijo.getH());
+        adyacentes.push_back(hijo);
     }
     //Direccion izquierda (recto)
     if(n.getX() - 1 > -1 && matriz[n.getX() - 1][n.getY()] == 0){
-        Nodo *hijo = new Nodo(&n, n.getX() - 1, n.getY());
-        hijo->setG(n.getG() + costeRecto);
-        hijo->setH(abs(n.getX() - meta.getX()) + abs(n.getY() - meta.getY()));
-        hijo->setF(hijo->getG() + hijo->getH());
-        adyacentes.push_back(*hijo);
+        Nodo hijo(&*it, n.getX() - 1, n.getY());
+        hijo.setG(n.getG() + costeRecto);
+        hijo.setH(abs(n.getX() - meta.getX()) + abs(n.getY() - meta.getY()));
+        hijo.setF(hijo.getG() + hijo.getH());
+        adyacentes.push_back(hijo);
     }
     //Direccion abajo izquierda (diagonal)
     if(n.getX() - 1 > -1 && n.getY() + 1 < 12 && matriz[n.getX() - 1][n.getY() + 1] == 0){
-        Nodo *hijo = new Nodo(&n, n.getX() - 1, n.getY() + 1);
-        hijo->setG(n.getG() + costeDiagonal);
-        hijo->setH(abs(n.getX() - meta.getX()) + abs(n.getY() - meta.getY()));
-        hijo->setF(hijo->getG() + hijo->getH());
-        adyacentes.push_back(*hijo);
+        Nodo hijo(&*it, n.getX() - 1, n.getY() + 1);
+        hijo.setG(n.getG() + costeDiagonal);
+        hijo.setH(abs(n.getX() - meta.getX()) + abs(n.getY() - meta.getY()));
+        hijo.setF(hijo.getG() + hijo.getH());
+        adyacentes.push_back(hijo);
     }
     //Direccion arriba (recto)
     if(n.getY() - 1 > -1 && matriz[n.getX()][n.getY() - 1] == 0){
-        Nodo *hijo = new Nodo(&n, n.getX(), n.getY() - 1);
-        hijo->setG(n.getG() + costeRecto);
-        hijo->setH(abs(n.getX() - meta.getX()) + abs(n.getY() - meta.getY()));
-        hijo->setF(hijo->getG() + hijo->getH());
-        adyacentes.push_back(*hijo);
+        Nodo hijo(&*it, n.getX(), n.getY() - 1);
+        hijo.setG(n.getG() + costeRecto);
+        hijo.setH(abs(n.getX() - meta.getX()) + abs(n.getY() - meta.getY()));
+        hijo.setF(hijo.getG() + hijo.getH());
+        adyacentes.push_back(hijo);
     }
     //Direccion abajo (recto)
     if(n.getY() + 1 < 12 && matriz[n.getX()][n.getY() + 1] == 0){
-        Nodo *hijo = new Nodo(&n, n.getX(), n.getY() + 1);
-        hijo->setG(n.getG() + costeRecto);
-        hijo->setH(abs(n.getX() - meta.getX()) + abs(n.getY() - meta.getY()));
-        hijo->setF(hijo->getG() + hijo->getH());
-        adyacentes.push_back(*hijo);
+        Nodo hijo(&*it, n.getX(), n.getY() + 1);
+        hijo.setG(n.getG() + costeRecto);
+        hijo.setH(abs(n.getX() - meta.getX()) + abs(n.getY() - meta.getY()));
+        hijo.setF(hijo.getG() + hijo.getH());
+        adyacentes.push_back(hijo);
     }
     //Direccion arriba derecha (diagonal)
     if(n.getX() + 1 < 16 && n.getY() - 1 > -1 && matriz[n.getX() + 1][n.getY() - 1] == 0){
-        Nodo *hijo = new Nodo(&n, n.getX() + 1, n.getY() - 1);
-        hijo->setG(n.getG() + costeDiagonal);
-        hijo->setH(abs(n.getX() - meta.getX()) + abs(n.getY() - meta.getY()));
-        hijo->setF(hijo->getG() + hijo->getH());
-        adyacentes.push_back(*hijo);
+        Nodo hijo(&*it, n.getX() + 1, n.getY() - 1);
+        hijo.setG(n.getG() + costeDiagonal);
+        hijo.setH(abs(n.getX() - meta.getX()) + abs(n.getY() - meta.getY()));
+        hijo.setF(hijo.getG() + hijo.getH());
+        adyacentes.push_back(hijo);
     }
     //Direccion derecha (recto)
     if(n.getX() + 1 < 16 && matriz[n.getX() + 1][n.getY()] == 0){
-        Nodo *hijo = new Nodo(&n, n.getX() + 1, n.getY());
-        hijo->setG(n.getG() + costeRecto);
-        hijo->setH(abs(n.getX() - meta.getX()) + abs(n.getY() - meta.getY()));
-        hijo->setF(hijo->getG() + hijo->getH());
-        adyacentes.push_back(*hijo);
+        Nodo hijo(&*it, n.getX() + 1, n.getY());
+        hijo.setG(n.getG() + costeRecto);
+        hijo.setH(abs(n.getX() - meta.getX()) + abs(n.getY() - meta.getY()));
+        hijo.setF(hijo.getG() + hijo.getH());
+        adyacentes.push_back(hijo);
     }
     //Direccion abajo derecha (diagonal)
     if(n.getX() + 1 < 16 && n.getY() + 1 < 12 && matriz[n.getX() + 1][n.getY() + 1] == 0){
-        Nodo *hijo = new Nodo(&n, n.getX() + 1, n.getY() + 1);
-        hijo->setG(n.getG() + costeDiagonal);
-        hijo->setH(abs(n.getX() - meta.getX()) + abs(n.getY() - meta.getY()));
-        hijo->setF(hijo->getG() + hijo->getH());
-        adyacentes.push_back(*hijo);
+        Nodo hijo(&*it, n.getX() + 1, n.getY() + 1);
+        hijo.setG(n.getG() + costeDiagonal);
+        hijo.setH(abs(n.getX() - meta.getX()) + abs(n.getY() - meta.getY()));
+        hijo.setF(hijo.getG() + hijo.getH());
+        adyacentes.push_back(hijo);
     }
 
     return adyacentes;

@@ -144,20 +144,20 @@ int main() {
         //Crear nodo inicio (enemigo) y calculamos donde esta en la matriz de colisiones
         int xEnemigo = ceil(enemigo.getPosition().x / 40) - 1;
         int yEnemigo = ceil(enemigo.getPosition().y / 40) - 1;
-        Nodo *inicio = new Nodo(NULL, xEnemigo, yEnemigo);
+        Nodo inicio(NULL, xEnemigo, yEnemigo);
 
         //Crear nodo meta (jugador) y calculamos donde esta en la matriz de colisiones
         int xJugador = ceil(personaje.getPosition().x / 40) - 1;
         int yJugador = ceil(personaje.getPosition().y / 40) - 1;
-        Nodo *meta = new Nodo(NULL, xJugador, yJugador);
+        Nodo meta(NULL, xJugador, yJugador);
 
-        list<Nodo> camino = path.encontrarCamino(matriz, *inicio, *meta);
+        list<Nodo> camino = path.encontrarCamino(matriz, inicio, meta);
 
         list<Nodo>::iterator it;
         int i = 0;
 
-        cout << "Pos inicio: " << inicio->getX() << "," << inicio->getY() << endl;
-        cout << "Pos meta: " << meta->getX() << "," << meta->getY() << endl;
+        cout << "Pos inicio: " << inicio.getX() << "," << inicio.getY() << endl;
+        cout << "Pos meta: " << meta.getX() << "," << meta.getY() << endl;
 
         for(it = camino.begin(); it != camino.end(); it++){
           Nodo aux = *it;
