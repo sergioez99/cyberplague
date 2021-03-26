@@ -5,7 +5,7 @@
 #include <list>
 
 #include "include/config.h"
-#include "ej_modulos/Pathfinding.h"
+#include "ej_modulos/Pajaro.h"
 
 #define kVel 55
 #define kVelEnemigo 50
@@ -40,16 +40,7 @@ int main() {
   personaje.setPosition(100, 240);
 
   //ENEMIGO
-  //Y creo el spritesheet a partir de la imagen anterior
-  sf::Sprite enemigo(tex);
-
-  //Le pongo el centroide donde corresponde
-  enemigo.setOrigin(75 / 2, 75 / 2);
-  //Cojo el sprite que me interesa por defecto del sheet
-  enemigo.setTextureRect(sf::IntRect(5 * 85, 0 * 75, 75, 75));
-
-  // Lo dispongo en el lado izquierdo de la pantalla
-  enemigo.setPosition(540, 240);
+  Pajaro *pajaro = new Pajaro(Vector2f(380, 60));
 
   //Creamos una matriz de colisiones de prueba (se obtiene de un tilemap)
   int matriz[16][12]; //Tiles de 40x40
@@ -60,13 +51,14 @@ int main() {
     }
   }
 
-  matriz[6][6] = 1;
-  matriz[7][5] = 1;
-  matriz[7][6] = 1;
-  matriz[8][5] = 1;
-  matriz[8][6] = 1;
-  matriz[9][6] = 1;
-  matriz[10][6] = 1;
+  for(int i = 0; i < 4; i++)
+    matriz[7][i] = 1;
+
+  for(int i = 0; i < 3; i++)
+    matriz[8 + i][3] = 1;
+
+  for(int i = 0; i < 16; i++)
+    matriz[i][7] = 1;
 
   //Esto es solo para pintar las colisiones por pantalla
   std::vector<sf::RectangleShape> colisiones;
@@ -130,55 +122,11 @@ int main() {
           }
         }
       }
-
-      //Enemigo: Deteccion del personaje
-      float distancia = sqrt(pow(abs(personaje.getPosition().x - enemigo.getPosition().x), 2) + pow(abs(personaje.getPosition().y - enemigo.getPosition().y), 2));
       
-      if(distancia <= rangoEnemigo){
-        enemigo.setTextureRect(sf::IntRect(2 * 85, 2 * 75, 75, 75));
-        enemigo.setScale(-1,1);
-
-        //Algoritmo A*
-        Pathfinding path;
-
-        //Crear nodo inicio (enemigo) y calculamos donde esta en la matriz de colisiones
-        int xEnemigo = ceil(enemigo.getPosition().x / 40) - 1;
-        int yEnemigo = ceil(enemigo.getPosition().y / 40) - 1;
-        Nodo inicio(NULL, xEnemigo, yEnemigo);
-
-        //Crear nodo meta (jugador) y calculamos donde esta en la matriz de colisiones
-        int xJugador = ceil(personaje.getPosition().x / 40) - 1;
-        int yJugador = ceil(personaje.getPosition().y / 40) - 1;
-        Nodo meta(NULL, xJugador, yJugador);
-
-        list<Nodo> camino = path.encontrarCamino(matriz, inicio, meta);
-
-        list<Nodo>::iterator it;
-        int i = 0;
-
-        cout << "Pos inicio: " << inicio.getX() << "," << inicio.getY() << endl;
-        cout << "Pos meta: " << meta.getX() << "," << meta.getY() << endl;
-
-        for(it = camino.begin(); it != camino.end(); it++){
-          Nodo aux = *it;
-
-          cout << "Pos " << i << ": " << aux.getX() << "," << aux.getY() << endl;
-          i++;
-        }
-        
-        /*//El enemigo se mueve hasta el jugador
-        if(enemigo.getPosition().x > personaje.getPosition().x + 50.0f)
-          enemigo.move(-(kVelEnemigo * delta), 0);*/
-      }
-      else{
-        enemigo.setScale(1,1);
-
-        //El enemigo vuelve a su posicion inicial
-        if(enemigo.getPosition().x < 540.0f)
-          enemigo.move(kVelEnemigo * delta, 0);
-        else
-          enemigo.setTextureRect(sf::IntRect(5 * 85, 0 * 75, 75, 75));
-      }
+      //Pajaro
+      //Si detecta al jugador se mueve hacia el
+      if(pajaro->deteccion(personaje.getPosition()))
+        pajaro->mover(delta, matriz, personaje.getPosition());
 
       timeStartUpdate = clock.getElapsedTime();
     }
@@ -187,9 +135,11 @@ int main() {
     for(int i = 0; i < (int)colisiones.size(); i++)
       window.draw(colisiones[i]);
     window.draw(personaje);
-    window.draw(enemigo);
+    window.draw(pajaro->getSprite());
     window.display();
   }
+
+  delete pajaro;
 
   return 0;
 }

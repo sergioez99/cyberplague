@@ -119,3 +119,6 @@ Añadir el sprite del salto, con el nuevo tipo de sprite.
 
 ## 20210325 RamónRodríguez @(45min)
 Solucionado error del Algoritmo A*. Ya devuelve el camino correctamente. El error era que nos los nodos se destruían antes de tiempo y al intentar acceder a ellos para reconstruir el camino valían NULL.
+
+## 20210326 RamónRodríguez @(1h30min)
+Implementación de la clase Pájaro y del movimiento de este NPC siguiendo el camino encontrado por el Algoritmo A* de pathfinding.
