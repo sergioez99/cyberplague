@@ -1,5 +1,5 @@
 # Log del trabajo realizado por dia
 **El log es obligatorio**
 
-## 20210108 FidelAznar @(1h)
-Debe contener un sub item como el anterior, con la fecha de la entrada y las cuestiones generales que se realizaron, así como el tiempo total dedicado en la sesión. 
+## 20210328 CarlosVillena @(2h)
+Creación preliminar de las fachada, clases M_Sprite y M_Window.
