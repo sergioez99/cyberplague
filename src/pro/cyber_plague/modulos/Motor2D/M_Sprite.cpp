@@ -1,5 +1,3 @@
-#pragma once
-#include <SFML/Graphics.hpp>
 #include "M_Sprite.h"
 
 
@@ -8,7 +6,7 @@ M_Sprite::M_Sprite(string nomFichero, int texLeft, int texTop, int tex_width, in
 
     Texture *tex = new Texture();
 
-    if (!tex->loadFromFile("resources/" + nomFichero, IntRect(texLeft, texTop, tex_width, tex_height))) {
+    if (!tex->loadFromFile("resources/" + nomFichero)) {
       std::cerr << "Error cargando la imagen sprites.png";
       exit(0);
     }
@@ -16,6 +14,7 @@ M_Sprite::M_Sprite(string nomFichero, int texLeft, int texTop, int tex_width, in
     sprite = new Sprite(*tex);
 
     sprite->setOrigin(tex_width / 2, tex_height / 2);
+    sprite->setTextureRect(IntRect(texLeft, texTop, tex_width, tex_height));
     sprite->setPosition(posX, posY);
 }
 
