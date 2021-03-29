@@ -11,6 +11,7 @@ class M_Window{
     private:
 
         RenderWindow* ventana;
+        bool dir=false;
     
     public:
 
@@ -22,6 +23,10 @@ class M_Window{
 
         //Metodo para renderizar un Sprite.
         void render(M_Sprite* spr);
+
+        void keyPressed(M_Sprite* sprite);
+
+        void limpiar();
 
         //Metodo para comprobar si la ventana esta abierta.
         bool abierta();

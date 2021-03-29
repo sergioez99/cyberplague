@@ -17,3 +17,8 @@ Se recomienda gastar alguna herramienta que permita medir el tiempo y administra
 * Todo+: Plugin de VSCODE: fabiospampinato.vscode-todo-plus
 
 Este fichero puede ser un PDF si la herramienta que gastáis lo requiere, pero **debe estar actualizado semanalmente**.
+
+
+* `[Hecho]` - `20210323; Preparación de la rama para trabajar; 40'; zindov`
+* `[En progreso]` - `20210323; Motor2D; 40'; zindov`
+* `[Hecho]` - `20210329; Motor2D; 140'; zindov`
