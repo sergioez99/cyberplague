@@ -1,6 +1,12 @@
 # Log del trabajo realizado por dia
 **El log es obligatorio**
 
+## 20210323 SergioEspinosa @(30m)
+Investigación con Ramón sobre los problemas que tenemos en la creación del Algoritmo A*
+
+## 20210323 RamónRodríguez @(30m)
+Investigación con Sergio sobre los problemas que tenemos en la creación del Algoritmo A*
+
 ## 20210324 JoseSansano @(1h 30m)
 Creación básica de Motor2D y inicialización de la rama, cambiando cosas de CMake, como el nombre del juego y workspace.
 
@@ -18,3 +24,6 @@ Creación de la fachada Motor2D con el mismo funcionamiento que en el main anter
 
 ## 20210329 RamónRodríguez @(2h5min)
 Creación preliminar de las clases NPC, Zombi, Soldado, Mago y Pajaro.
+
+## 202110330 SergioEspinosa @(1h)
+Añadida la clase Mapa a developer y creada una carpeta para la librería TinyXML usada para el cargador de mapas. Añadida la clase Juego (CyberPlague) la cual creará el juego con el patrón State. Tiene código pero no funciona todavía.

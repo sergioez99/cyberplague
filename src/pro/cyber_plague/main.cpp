@@ -3,6 +3,7 @@
 #include "include/config.h"
 #include "modulos/Motor2D/M_Sprite.h"
 #include "modulos/Motor2D/M_Window.h"
+#include "modulos/CyberPlague.h"
 
 
 #define kVel 5
@@ -53,5 +54,6 @@ int main() {
 
     
 */
+  //CyberPlague::Instance()->Handle(); -> iniciar el juego desde los estados
   return 0;
 }
