@@ -25,5 +25,8 @@ Creación de la fachada Motor2D con el mismo funcionamiento que en el main anter
 ## 20210329 RamónRodríguez @(2h5min)
 Creación preliminar de las clases NPC, Zombi, Soldado, Mago y Pajaro.
 
-## 202110330 SergioEspinosa @(1h)
+## 20210330 SergioEspinosa @(1h)
 Añadida la clase Mapa a developer y creada una carpeta para la librería TinyXML usada para el cargador de mapas. Añadida la clase Juego (CyberPlague) la cual creará el juego con el patrón State. Tiene código pero no funciona todavía.
+
+## 20210401 RamónRodríguez @(1h)
+Añadidos los métodos update y render a la clase NPC y actualizados los métodos update de cada tipo de NPC.

@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include "Motor2D/M_Sprite.h"
+#include "Motor2D/M_Window.h"
 
 using namespace std;
 
@@ -17,4 +18,6 @@ class NPC{
         M_Sprite* getSprite();
         float getVelMovimiento();
         float getRango();
+        virtual void update(float deltaTime);
+        void render(M_Window *ventana);
 };

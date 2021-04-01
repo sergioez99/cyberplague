@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include <cmath>
+#include <list>
 #include "../NPC.h"
 
 using namespace std;
@@ -12,6 +13,7 @@ class Pajaro : public NPC{
         Pajaro(string nomFichero, int texLeft, int texTop, int tex_width, int tex_height, float posX, float posY);
         ~Pajaro();
 
-        void mover(float deltaTime, float x, float y);
-        bool deteccion(float x, float y);
+        void update(float deltaTime);
+        bool deteccion();
+        void mover(float deltaTime);
 };

@@ -8,11 +8,16 @@ Zombi::~Zombi(){
     
 }
 
-void Zombi::mover(float deltaTime){
+void Zombi::update(float deltaTime){
+    //Mover
     //Cambiar direccion del sprite
     if(hayCaida())
         getSprite()->escalar(getSprite()->getSprite()->getScale().x * -1, getSprite()->getSprite()->getScale().y);
 
+    mover(deltaTime);
+}
+
+void Zombi::mover(float deltaTime){
     if(getSprite()->getSprite()->getScale().x < 0)
         getSprite()->mover(-(getVelMovimiento() * deltaTime), 0);
     else
@@ -20,5 +25,5 @@ void Zombi::mover(float deltaTime){
 }
 
 bool Zombi::hayCaida(){
-    //Colisiones
+    //Pasar posicion del sprite a colisiones y comprobar si en el nodo siguiente hay una caida
 }

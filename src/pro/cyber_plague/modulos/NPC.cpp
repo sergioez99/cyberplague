@@ -21,3 +21,7 @@ float NPC::getVelMovimiento(){
 float NPC::getRango(){
     return rango;
 }
+
+void NPC::render(M_Window *ventana){
+    ventana->render(sprite);
+}
