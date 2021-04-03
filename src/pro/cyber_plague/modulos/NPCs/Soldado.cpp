@@ -1,37 +1,65 @@
 #include "Soldado.h"
 
-Soldado::Soldado(string nomFichero, int texLeft, int texTop, int tex_width, int tex_height, float posX, float posY) : NPC(nomFichero, texLeft, texTop, tex_width, tex_height, posX, posY, 50.0f, 200.0f){
-    cadencia = 1.0f;
+/* STATS */
+
+#define kVida  50
+#define kArm  20
+#define kVel  200.0f
+#define kRang  50.0f
+#define kCad 1.0f
+
+/*--------------*/
+
+Soldado::Soldado(string nomFichero, int texLeft, int texTop, int tex_width, int tex_height, float posX, float posY) : NPC(){
+
+    spr = new M_Sprite(nomFichero, texLeft, texTop, tex_width, tex_height, posX, posY);
+
+    vida = new int( kVida );
+    armadura = new int( kArm );
+    vel = new float( kVel );
+
+    rango = new float( kRang );
+
+    cadencia = kCad;
+
     time = spawnClock.getElapsedTime();
 }
 
 Soldado::~Soldado(){
     
+    delete spr;
+    delete vida;
+    delete armadura;
+    delete vel;
+    delete rango;
+
 }
 
 void Soldado::update(float deltaTime){
     //Disparar
     if(deteccion()){
-        if(disparar()){
+        if(puedoAtacar()){
             //Generar bala
+
+            ataque();
         }
     }
     //Mover
     else{
         //Cambiar direccion del sprite
         if(hayCaida())
-            getSprite()->escalar(getSprite()->getSprite()->getScale().x * -1, getSprite()->getSprite()->getScale().y);
+            this->escalar(this->getScaleX() * - 1, this->getScaleY());
 
-        mover(deltaTime);
+        moverse(deltaTime);
     }
 }
 
 bool Soldado::deteccion(){
-    float x, y; //Acceder a la posicion de jugador
-    float distancia = sqrt(pow(abs(x - getSprite()->getSprite()->getPosition().x), 2) + pow(abs(y - getSprite()->getSprite()->getPosition().y), 2));
+    float x = 0, y = 0; //Acceder a la posicion de jugador
+    float distancia = sqrt(pow(abs(x - this->getPosX()), 2) + pow(abs(y - this->getPosY()), 2));
     
     if(distancia <= getRango()){
-        getSprite()->escalar(-1, 1);
+        this->escalar(-1, 1);
 
         return true;
     }
@@ -39,15 +67,21 @@ bool Soldado::deteccion(){
     return false;
 }
 
-bool Soldado::disparar(){
+void Soldado::ataque(){
+
+    //EL ENEMIGO ATACA.
+    cout << "Atacando..." << endl;
+}
+
+bool Soldado::puedoAtacar(){
     if(spawnClock.getElapsedTime().asSeconds() - time.asSeconds() > cadencia)
         return true;
 
     return false;
 }
 
-void Soldado::mover(float deltaTime){
-    if(getSprite()->getSprite()->getScale().x < 0)
+void Soldado::moverse(float deltaTime){
+    if(this->getScaleX() < 0)
         getSprite()->mover(-(getVelMovimiento() * deltaTime), 0);
     else
         getSprite()->mover(getVelMovimiento() * deltaTime, 0);
@@ -55,4 +89,6 @@ void Soldado::mover(float deltaTime){
 
 bool Soldado::hayCaida(){
     //Pasar posicion del sprite a colisiones y comprobar si en el nodo siguiente hay una caida
+
+    return false;
 }

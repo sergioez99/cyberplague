@@ -1,9 +1,15 @@
 #include "M_Window.h"
 
+#define fps 60
+
+
+/* CONSTRUCTOR Y DESTRUCTOR */
+
 M_Window::M_Window(int width, int heigth, string nom) {
 
   ventana = new RenderWindow(VideoMode(width, heigth), nom);
 
+  ventana->setFramerateLimit( fps );
 }
 
 
@@ -11,6 +17,11 @@ M_Window::~M_Window(){
 
   delete ventana;
 }
+
+/* ---------------------------- */
+
+
+/* METODOS */
 
 void M_Window::limpiar(){
   ventana->clear();
@@ -41,7 +52,7 @@ void M_Window::keyPressed(M_Sprite* sprite){
               sprite->escalar(-1,1);
               dir=false;
             }
-            sprite->mover(5, 0);
+            sprite->mover(50 * deltaTime, 0);
             break;
 
           case sf::Keyboard::Left:
@@ -51,17 +62,17 @@ void M_Window::keyPressed(M_Sprite* sprite){
               sprite->escalar(-1, 1);
               dir=true;
             }
-            sprite->mover(-5, 0);
+            sprite->mover(-50 * deltaTime, 0);
             break;
 
           case sf::Keyboard::Up:
             sprite->cambiarPosTextura(0 * 75, 3 * 75, 75, 75);
-            sprite->mover(0, -5);
+            sprite->mover(0, -50 * deltaTime);
             break;
 
           case sf::Keyboard::Down:
             sprite->cambiarPosTextura(0 * 75, 0 * 75, 75, 75);
-            sprite->mover(0, 5);
+            sprite->mover(0, 50 * deltaTime);
             break;
 
           //Tecla ESC para salir
@@ -84,24 +95,34 @@ void M_Window::cerrar(){
   cout << "Ventana Cerrada." << endl;
 }
 
-
-void M_Window::render(M_Sprite* spr){
-
-  ventana->draw(*(spr->getSprite()));
-}
-
-
 bool M_Window::abierta(){
 
   return ventana->isOpen();
 }
 
+void M_Window::render(M_Sprite* spr){
+
+  ventana->draw(*(spr->getSprite()));
+
+}
 
 void M_Window::display(){
+
+  Time dt = reloj.restart();
+
+  deltaTime = dt.asSeconds();
+
+  cout << deltaTime << endl;
 
   ventana->display();
 }
 
+float M_Window::getDt(){
 
+  return deltaTime;
+}
+
+
+/* ------------------------------------------- */
 
 

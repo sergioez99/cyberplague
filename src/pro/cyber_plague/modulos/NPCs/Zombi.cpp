@@ -1,24 +1,41 @@
 #include "Zombi.h"
 
-Zombi::Zombi(string nomFichero, int texLeft, int texTop, int tex_width, int tex_height, float posX, float posY) : NPC(nomFichero, texLeft, texTop, tex_width, tex_height, posX, posY, 50.0f, 0.0f){
+/* STATS */
+
+#define kVida  50
+#define kArm  20
+#define kVel  200.0f
+
+/*--------------*/
+
+Zombi::Zombi(string nomFichero, int texLeft, int texTop, int tex_width, int tex_height, float posX, float posY) : NPC(){
     
+    spr = new M_Sprite(nomFichero, texLeft, texTop, tex_width, tex_height, posX, posY);
+
+    vida = new int( kVida );
+    armadura = new int( kArm );
+    vel = new float( kVel );
 }
 
 Zombi::~Zombi(){
     
+    delete spr;
+    delete vida;
+    delete armadura;
+    delete vel;
 }
 
 void Zombi::update(float deltaTime){
     //Mover
     //Cambiar direccion del sprite
     if(hayCaida())
-        getSprite()->escalar(getSprite()->getSprite()->getScale().x * -1, getSprite()->getSprite()->getScale().y);
+        this->escalar(this->getScaleX() * -1, this->getScaleY());
 
-    mover(deltaTime);
+    moverse(deltaTime);
 }
 
-void Zombi::mover(float deltaTime){
-    if(getSprite()->getSprite()->getScale().x < 0)
+void Zombi::moverse(float deltaTime){
+    if(this->getScaleX() < 0)
         getSprite()->mover(-(getVelMovimiento() * deltaTime), 0);
     else
         getSprite()->mover(getVelMovimiento() * deltaTime, 0);
