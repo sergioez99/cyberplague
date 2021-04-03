@@ -1,24 +1,52 @@
 #include "Pajaro.h"
 
-Pajaro::Pajaro(string nomFichero, int texLeft, int texTop, int tex_width, int tex_height, float posX, float posY) : NPC(nomFichero, texLeft, texTop, tex_width, tex_height, posX, posY, 50.0f, 300.0f){
+/* STATS */
+
+#define kVida  5
+#define kArm  1
+#define kVel  300.0f
+#define kRang  50.0f
+
+/*--------------*/
+
+
+
+Pajaro::Pajaro(string nomFichero, int texLeft, int texTop, int tex_width, int tex_height, float posX, float posY) : NPC(){
+
+    spr = new M_Sprite(nomFichero, texLeft, texTop, tex_width, tex_height, posX, posY);
+
+    vida = new int( kVida );
+    armadura = new int( kArm );
+    vel = new float( kVel );
+
+    rango = new float( kRang );
+
+
 }
+
 
 Pajaro::~Pajaro(){
     
+    delete vida;
+    delete armadura;
+    delete vel;
+    delete rango;
 }
 
 void Pajaro::update(float deltaTime){
     //Mover
     if(deteccion())
-        mover(deltaTime);
+        moverse(deltaTime);
 }
 
 bool Pajaro::deteccion(){
-    float x, y; //Acceder a la posicion de jugador
-    float distancia = sqrt(pow(abs(x - getSprite()->getSprite()->getPosition().x), 2) + pow(abs(y - getSprite()->getSprite()->getPosition().y), 2));
+
+    float x = 0, y = 0; //Acceder a la posicion de jugador
+    float distancia = sqrt(pow(abs(x - this->getPosX()), 2) + pow(abs(y - this->getPosY()), 2));
     
     if(distancia <= getRango()){
-        getSprite()->escalar(-1, 1);
+        
+        this->escalar(-1, 1);
 
         return true;
     }
@@ -26,7 +54,7 @@ bool Pajaro::deteccion(){
     return false;
 }
 
-void Pajaro::mover(float deltaTime){
+void Pajaro::moverse(float deltaTime){
     list<Vector2f> camino;  //Incluir nodo y pathfinding a AI_Agent y obtener una lista con el camino a seguir pasandole posEnemigo y posJugador
 
     //Si el enemigo no esta ya junto al jugador

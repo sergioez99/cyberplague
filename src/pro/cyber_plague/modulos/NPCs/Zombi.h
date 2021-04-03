@@ -4,6 +4,8 @@
 
 using namespace std;
 
+
+
 class Zombi : public NPC{
     private:
 
@@ -11,7 +13,16 @@ class Zombi : public NPC{
         Zombi(string nomFichero, int texLeft, int texTop, int tex_width, int tex_height, float posX, float posY);
         ~Zombi();
 
+         /* METODOS HEREDADOS DE ENTIDAD. */
+        virtual void ataque(){};
+        virtual bool puedoAtacar(){return false;};
+        void moverse(float deltaTime);
         void update(float deltaTime);
-        void mover(float deltaTime);
+        /* ----------------------------- */
+
+        /* METODOS HEREDADOS DE NPC */
+        bool deteccion(){return false;};
+        /* ------------------------ */
+
         bool hayCaida();
 };

@@ -1,23 +1,22 @@
 #pragma once
 #include <iostream>
-#include "Motor2D/M_Sprite.h"
-#include "Motor2D/M_Window.h"
+
+#include "Entidad.h"
 
 using namespace std;
 
-class NPC{
+class NPC : public Entidad{
+   
     private:
-        M_Sprite* sprite;
-        float velMovimiento;
-        float rango;
+
+    protected:
+        float* rango;
 
     public:
-        NPC(string nomFichero, int texLeft, int texTop, int tex_width, int tex_height, float posX, float posY, float vel, float rang);
-        ~NPC();
+        NPC();
+        virtual ~NPC() = 0;
 
-        M_Sprite* getSprite();
-        float getVelMovimiento();
+       
         float getRango();
-        virtual void update(float deltaTime);
-        void render(M_Window *ventana);
+        virtual bool deteccion() = 0;
 };

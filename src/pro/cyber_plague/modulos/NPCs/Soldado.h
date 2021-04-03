@@ -16,10 +16,17 @@ class Soldado : public NPC{
     public:
         Soldado(string nomFichero, int texLeft, int texTop, int tex_width, int tex_height, float posX, float posY);
         ~Soldado();
-
+        
+        /* METODOS HEREDADOS DE ENTIDAD. */
+        void ataque();
+        bool puedoAtacar();
+        void moverse(float deltaTime);
         void update(float deltaTime);
+        /* ----------------------------- */
+
+        /* METODOS HEREDADOS DE NPC */
         bool deteccion();
-        bool disparar();
-        void mover(float deltaTime);
+        /* ------------------------ */  
+        
         bool hayCaida();
 };

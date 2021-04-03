@@ -4,6 +4,7 @@ target_sources(libModulos PRIVATE
  
     "${CMAKE_CURRENT_SOURCE_DIR}/Motor2D/M_Window.cpp"
 
+    "${CMAKE_CURRENT_SOURCE_DIR}/Entidad.cpp"
     "${CMAKE_CURRENT_SOURCE_DIR}/NPC.cpp"
     "${CMAKE_CURRENT_SOURCE_DIR}/NPCs/Zombi.cpp"
     "${CMAKE_CURRENT_SOURCE_DIR}/NPCs/Soldado.cpp"

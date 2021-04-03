@@ -13,7 +13,14 @@ class Pajaro : public NPC{
         Pajaro(string nomFichero, int texLeft, int texTop, int tex_width, int tex_height, float posX, float posY);
         ~Pajaro();
 
+        /* METODOS HEREDADOS DE ENTIDAD. */
+        virtual void ataque(){};
+        virtual bool puedoAtacar(){};
+        void moverse(float deltaTime);
         void update(float deltaTime);
+        /* ----------------------------- */
+
+        /* METODOS HEREDADOS DE NPC */
         bool deteccion();
-        void mover(float deltaTime);
+        /* ------------------------ */  
 };

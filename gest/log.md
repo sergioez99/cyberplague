@@ -30,3 +30,6 @@ Añadida la clase Mapa a developer y creada una carpeta para la librería TinyXM
 
 ## 20210401 RamónRodríguez @(1h)
 Añadidos los métodos update y render a la clase NPC y actualizados los métodos update de cada tipo de NPC.
+
+## 20210403 CarlosVillena @(3h)
+Creación de la clase Entidad, ajustes en los NPCs para adaptarlos a la clase Entidad. Creación del deltatime en la clase M_Window.

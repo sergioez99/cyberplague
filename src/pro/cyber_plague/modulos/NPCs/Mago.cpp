@@ -1,29 +1,70 @@
 #include "Mago.h"
 
-Mago::Mago(string nomFichero, int texLeft, int texTop, int tex_width, int tex_height, float posX, float posY) : NPC(nomFichero, texLeft, texTop, tex_width, tex_height, posX, posY, 0.0f, 400.0f){
-    spawnTime = 2.0f;
+/* STATS */
+
+#define kVida  20
+#define kArm  10
+#define kVel  400.0f
+#define kRang  0.0f
+#define kSt  2.0f
+
+/*--------------*/
+
+
+Mago::Mago(string nomFichero, int texLeft, int texTop, int tex_width, int tex_height, float posX, float posY) : NPC(){
+
+    spr = new M_Sprite(nomFichero, texLeft, texTop, tex_width, tex_height, posX, posY);
+
+    vida = new int( kVida );
+    armadura = new int( kArm );
+    vel = new float( kVel );
+
+    rango = new float( kRang );
+
+    spawnTime = kSt;
     time = spawnClock.getElapsedTime();
 }
 
 Mago::~Mago(){
-    
+
+    delete spr;
+    delete vida;
+    delete armadura;
+    delete vel;
+    delete rango;
+
+}
+
+void Mago::ataque(){
+
+    //ATAQUE DEL ENEMIGO
+    cout << "Ataque" << endl;
+
+}
+
+void Mago::moverse(float deltaTime){
+
+    //PATRON DE MOVIMIENTO DEL ENEMIGO
+    cout << "Movimiento" << endl;
 }
 
 void Mago::update(float deltaTime){
     //Spawnear enemigo
     if(deteccion()){
-        if(spawnEnemigo()){
+        if(puedoAtacar()){
             //Generar enemigo
+
+            ataque(); // Su ataque sera el de invocar enemigos. 
         }
     }
 }
 
 bool Mago::deteccion(){
-    float x, y; //Acceder a la posicion de jugador
-    float distancia = sqrt(pow(abs(x - getSprite()->getSprite()->getPosition().x), 2) + pow(abs(y - getSprite()->getSprite()->getPosition().y), 2));
+    float x = 0, y = 0; //Acceder a la posicion de jugador
+    float distancia = sqrt(pow(abs(x - this->getPosX()), 2) + pow(abs(y - this->getPosY()), 2));
     
     if(distancia <= getRango()){
-        getSprite()->escalar(-1, 1);
+        this->escalar(-1, 1);
 
         return true;
     }
@@ -31,7 +72,7 @@ bool Mago::deteccion(){
     return false;
 }
 
-bool Mago::spawnEnemigo(){
+bool Mago::puedoAtacar(){
     if(spawnClock.getElapsedTime().asSeconds() - time.asSeconds() > spawnTime)
         return true;
 
