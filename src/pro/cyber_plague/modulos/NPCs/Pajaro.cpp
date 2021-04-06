@@ -55,7 +55,10 @@ bool Pajaro::deteccion(){
 }
 
 void Pajaro::moverse(float deltaTime){
-    list<Vector2f> camino;  //Incluir nodo y pathfinding a AI_Agent y obtener una lista con el camino a seguir pasandole posEnemigo y posJugador
+    AI_Agent ai;
+    Vector2f ini = getSprite()->getSprite()->getPosition();
+    Vector2f fin;   //Poscion jugador
+    list<Vector2f> camino = ai.encontrarCamino(ini, fin);
 
     //Si el enemigo no esta ya junto al jugador
     if(camino.size() > 1){

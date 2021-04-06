@@ -33,3 +33,6 @@ Añadidos los métodos update y render a la clase NPC y actualizados los método
 
 ## 20210403 CarlosVillena @(3h)
 Creación de la clase Entidad, ajustes en los NPCs para adaptarlos a la clase Entidad. Creación del deltatime en la clase M_Window.
+
+## 20210406 RamónRodríguez @(1h10min)
+Creación de la clase AI_Agent, encargada de obtener un camino a recorrer usando el Algoritmo A*. Falta que tenga en cuenta las colisiones.

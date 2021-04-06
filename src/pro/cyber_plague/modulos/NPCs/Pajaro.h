@@ -3,6 +3,7 @@
 #include <cmath>
 #include <list>
 #include "../NPC.h"
+#include "../AI_Agent.h"
 
 using namespace std;
 
