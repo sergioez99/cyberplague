@@ -36,3 +36,6 @@ Creación de la clase Entidad, ajustes en los NPCs para adaptarlos a la clase En
 
 ## 20210406 RamónRodríguez @(1h10min)
 Creación de la clase AI_Agent, encargada de obtener un camino a recorrer usando el Algoritmo A*. Falta que tenga en cuenta las colisiones.
+
+## 20210408 JoseSansano @(1h 45m)
+Modificación del metodo KeyPresed de ventana e integración de la clase Map al Main del proyecto(antes estaba, pero con errores y no se buildeaba con Cmake).
