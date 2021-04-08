@@ -10,7 +10,7 @@ class M_Window{
     
     private:
 
-        RenderWindow* ventana;
+        //RenderWindow* ventana;
         Clock reloj;
         bool dir=false;
         float deltaTime = 0;
@@ -18,6 +18,7 @@ class M_Window{
     
     public:
 
+        RenderWindow* ventana;
         //Constructor
         M_Window(int width, int heigth, string nom);
 
