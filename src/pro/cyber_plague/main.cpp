@@ -33,11 +33,36 @@ int main() {
   enemigos.push_back(sold);
   enemigos.push_back(zom);
 
-  //int cont = 0;
+  int key = 0;
+  bool dir = false;
 
   //Bucle juego
   while(vent->abierta()){
-    vent->keyPressed(mago->getSprite());
+    key = vent->keyPressed();
+    if(key == 1){
+            mago->getSprite()->cambiarPosTextura(0 * 75, 2 * 75, 75, 75);
+            //Escala por defecto
+            if(dir==true){
+              mago->getSprite()->escalar(-1,1);
+              dir=false;
+            }
+            mago->getSprite()->mover(50 * vent->getDt() * 2, 0);
+    }else if(key == 2){
+            mago->getSprite()->cambiarPosTextura(0 * 75, 2 * 75, 75, 75);
+            //Reflejo vertical
+            if(dir==false){
+              mago->getSprite()->escalar(-1, 1);
+              dir=true;
+            }
+            mago->getSprite()->mover(-50 * vent->getDt() * 2, 0);
+    }else if(key == 3){
+            mago->getSprite()->cambiarPosTextura(0 * 75, 3 * 75, 75, 75);
+            mago->getSprite()->mover(0, -50 * vent->getDt() * 2);
+    }else if(key == 4){
+            mago->getSprite()->cambiarPosTextura(0 * 75, 0 * 75, 75, 75);
+            mago->getSprite()->mover(0, 50 * vent->getDt() * 2);
+    }
+
     vent->limpiar();
 
     for(unsigned int i = 0; i < enemigos.size(); i++){

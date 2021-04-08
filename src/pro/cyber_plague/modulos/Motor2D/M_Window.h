@@ -27,7 +27,7 @@ class M_Window{
         //Metodo para renderizar un Sprite.
         void render(M_Sprite* spr);
 
-        void keyPressed(M_Sprite* sprite);
+        int keyPressed();
 
         void limpiar();
 

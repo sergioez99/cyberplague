@@ -27,7 +27,7 @@ void M_Window::limpiar(){
   ventana->clear();
 }
 
-void M_Window::keyPressed(M_Sprite* sprite){
+int M_Window::keyPressed(){
   sf::Event event;
   while (ventana->pollEvent(event)) {
 
@@ -46,33 +46,19 @@ void M_Window::keyPressed(M_Sprite* sprite){
 
           //Mapeo del cursor
           case sf::Keyboard::Right:
-            sprite->cambiarPosTextura(0 * 75, 2 * 75, 75, 75);
-            //Escala por defecto
-            if(dir==true){
-              sprite->escalar(-1,1);
-              dir=false;
-            }
-            sprite->mover(50 * deltaTime, 0);
+            return 1;
             break;
 
           case sf::Keyboard::Left:
-            sprite->cambiarPosTextura(0 * 75, 2 * 75, 75, 75);
-            //Reflejo vertical
-            if(dir==false){
-              sprite->escalar(-1, 1);
-              dir=true;
-            }
-            sprite->mover(-50 * deltaTime, 0);
+            return 2;
             break;
 
           case sf::Keyboard::Up:
-            sprite->cambiarPosTextura(0 * 75, 3 * 75, 75, 75);
-            sprite->mover(0, -50 * deltaTime);
+            return 3;
             break;
 
           case sf::Keyboard::Down:
-            sprite->cambiarPosTextura(0 * 75, 0 * 75, 75, 75);
-            sprite->mover(0, 50 * deltaTime);
+            return 4;
             break;
 
           //Tecla ESC para salir
@@ -87,6 +73,8 @@ void M_Window::keyPressed(M_Sprite* sprite){
           }
         }
       }
+
+  return 0;
 }
 
 void M_Window::cerrar(){
