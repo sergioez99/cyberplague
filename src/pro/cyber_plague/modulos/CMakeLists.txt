@@ -10,6 +10,7 @@ target_sources(libModulos PRIVATE
     "${CMAKE_CURRENT_SOURCE_DIR}/NPCs/Soldado.cpp"
     "${CMAKE_CURRENT_SOURCE_DIR}/NPCs/Mago.cpp"
     "${CMAKE_CURRENT_SOURCE_DIR}/NPCs/Pajaro.cpp"
+    "${CMAKE_CURRENT_SOURCE_DIR}/AI_Agent.cpp"
 )
 
 #Y donde se encuentran los .h
