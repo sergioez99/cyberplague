@@ -42,4 +42,6 @@ class M_Window{
 
         //Metodo para cerrar la ventana.
         void cerrar();
+
+        RenderWindow* getWindow();
 };

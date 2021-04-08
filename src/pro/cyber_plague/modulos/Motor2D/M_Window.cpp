@@ -110,6 +110,9 @@ float M_Window::getDt(){
   return deltaTime;
 }
 
+RenderWindow* M_Window::getWindow(){
+  return ventana; //No se debería usar esto. Es para DEBUG
+}
 
 /* ------------------------------------------- */
 

@@ -13,6 +13,7 @@
 #include "modulos/NPCs/Pajaro.h"
 #include "modulos/NPCs/Soldado.h"
 #include "modulos/NPCs/Zombi.h"
+//#include "modulos/Map.h"
 
 
 using namespace std;
@@ -32,6 +33,8 @@ int main() {
   enemigos.push_back(paj);
   enemigos.push_back(sold);
   enemigos.push_back(zom);
+
+  //Map *tutorial = new Map(1);
 
   int key = 0;
   bool dir = false;
@@ -75,6 +78,8 @@ int main() {
     paj->update(vent->getDt());
     zom->update(vent->getDt());
     sold->update(vent->getDt());
+
+    //tutorial->drawTile(vent->getWindow());
 
     vent->display();
   }
