@@ -4,11 +4,15 @@ Map::Map(int nivel) {
       
     TiXmlDocument doc;
 
-    if(!doc.LoadFile("assets/mapa.tmx")){
+    if(!doc.LoadFile("resources/MapaNivel1.tmx")){
         std::cout << "Error al cargar el mapa." << std::endl;
     }
 
-     TiXmlElement* map = doc.FirstChildElement("map");
+    if(!_tilesetTexture.loadFromFile("resources/mapa_1.png")){
+        std::cout << "Error al cargar el tileset." << std::endl;
+    }
+
+    TiXmlElement* map = doc.FirstChildElement("map");
 
     
     //Tamanio del mapa y de los tiles
@@ -50,17 +54,6 @@ Map::Map(int nivel) {
        
     //Leo los tiles
             for(int l=0;l<_numlayers;l++){
-                //Depende de la capa cambiamos el tileset
-                if(l == 1 || l == 3){
-                    if(!_tilesetTexture.loadFromFile("assets/ground_tiles.png")){
-                        std::cout << "Error al cargar el tileset." << std::endl;
-                    }
-                }
-                else{
-                    if(!_tilesetTexture.loadFromFile("assets/Tree Set.png")){
-                        std::cout << "Error al cargar el tileset." << std::endl;
-                    }
-                }
                 TiXmlElement *data= layer->FirstChildElement("data")->FirstChildElement("tile");
                 name[j]= (string)layer->Attribute("name");
                 for(int y=0; y<_height; y++){

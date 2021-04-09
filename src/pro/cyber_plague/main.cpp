@@ -82,13 +82,18 @@ int main() {
   */
 
  //Bucle juego
+  int key = 0;
   while(vent->abierta()){
-
+    key = vent->keyPressed();
     Map* map = new Map(1);
 
+    vent->limpiar();
     map->drawTile(vent->ventana);
     
-    vent->limpiar();
+    //No hace falta con el nuevo mapa
+    //sf::View view(sf::Vector2f(700.0f,700.0f), sf::Vector2f(500.0f, 500.0f));
+    //vent->ventana->setView(view);
+    
     vent->display();
   }
 
