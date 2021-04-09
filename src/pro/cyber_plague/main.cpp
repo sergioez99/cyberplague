@@ -7,6 +7,7 @@
 #include "modulos/Motor2D/M_Window.h"
 
 #include "modulos/CyberPlague.h"
+#include "modulos/Map.h"
 
 
 #include "modulos/NPCs/Mago.h"
@@ -23,7 +24,7 @@ int main() {
 
   M_Window* vent = new M_Window(640,480,"Cyber Plague");
 
-  Mago* mago = new Mago("sprites.png", 0*75, 0*75, 75, 75, 640/2, 480/2);
+  /*Mago* mago = new Mago("sprites.png", 0*75, 0*75, 75, 75, 640/2, 480/2);
   Pajaro* paj = new Pajaro("sprites.png", 1*75, 0*75, 75, 75, 640/4, 480/4);
   Soldado* sold = new Soldado("sprites.png", 2.3*75, 0*75, 75, 75, 640/6, 480/6);
   Zombi* zom = new Zombi("sprites.png", 3.3*75, 0*75, 75, 75, 640/8, 480/8);
@@ -83,6 +84,24 @@ int main() {
 
     vent->display();
   }
+  */
+
+ //Bucle juego
+  int key = 0;
+  while(vent->abierta()){
+    key = vent->keyPressed();
+    Map* map = new Map(1);
+
+    vent->limpiar();
+    map->drawTile(vent->ventana);
+    
+    //No hace falta con el nuevo mapa
+    //sf::View view(sf::Vector2f(700.0f,700.0f), sf::Vector2f(500.0f, 500.0f));
+    //vent->ventana->setView(view);
+    
+    vent->display();
+  }
+
 /*
   while(cont < 20000){
 
@@ -95,10 +114,12 @@ int main() {
   vent->cerrar();
 */
   delete vent;
+  /*
   delete zom;
   delete sold;
   delete mago;
   delete paj;
+  */
 /*
     //Bucle del juego
     while (ventana->abierta()) {
