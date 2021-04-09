@@ -45,3 +45,6 @@ Reunión con el grupo para organizar trabajo, uso de view en el mapa antiguo con
 
 ## 20210409 SergioEspinosa @(1h 10m)
 Nuevo mapa con un tileset que es una fusión de 3 pngs (suelo, arboles y un fondo de cielo), reajuste del mapa para que tenga menos cielo (ya que no vamos a saltar tan alto), creación de capas intermedias para el personaje ya que creo que para las colisiones serán útiles.
+
+## 20210409 JoseSansano @(2h)
+Creación de Vector2D para no usar SFML, más getters y setters en M_Sprite/Entidad y prueba de colisiones en el mapa funcional.

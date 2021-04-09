@@ -24,3 +24,5 @@ Este fichero puede ser un PDF si la herramienta que gastáis lo requiere, pero *
 * `[Hecho]` - `20210329; Motor2D; 140'; zindov`
 * `[Hecho]` - `20210408; Integración de la clase Map al main del proyecto principal; 75'; zindov`
 * `[Hecho]` - `20210408; Método KeyPressed de Ventana sin sprite, más generico; 30'; zindov`
+* `[Hecho]` - `20210409; Vector2D propio creado; 30'; zindov`
+* `[Hecho]` - `20210409; Colisiones con el mapa básicas funcionales; 90'; zindov`
