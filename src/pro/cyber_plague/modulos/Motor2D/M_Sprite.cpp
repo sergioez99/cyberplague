@@ -58,3 +58,7 @@ float M_Sprite::getPosX(){
 float M_Sprite::getPosY(){
     return sprite->getPosition().y;
 }
+
+void M_Sprite::setPosition(Vector2D pos){
+    sprite->setPosition(pos.x,pos.y);
+}

@@ -1,5 +1,6 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+#include <../modulos/Tools/Vector2D.cpp>//Recordar que include es como un cd de terminal. ../ es subir una carpeta.
 
 #include <iostream>
 
@@ -38,6 +39,8 @@ class M_Sprite{
         float getPosX();
 
         float getPosY();
+
+        void setPosition(Vector2D pos);
         //NO SE PUEDE USAR ESTO. SOLO DEBUG
         Sprite* getSprite();      
 };

@@ -22,7 +22,7 @@ public:
     int getWidth()                  { return _width;            };
     int getHeight()                 { return _height;           };
 
-    bool checkCollision(Sprite sp); //Utilizar RectShapes de sfml para comprobar colisiones
+    bool checkCollision(Sprite* sp); //Utilizar RectShapes de sfml para comprobar colisiones
     
     //bool checkColision(int tx, int ty);             // nuevo
     //bool checkPinchos(int tx, int ty);             // nuevo

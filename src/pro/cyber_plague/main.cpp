@@ -71,6 +71,8 @@ int main() {
 
     vent->limpiar();
 
+    if(tutorial->checkCollision(mago->getSprite()->getSprite()))//si es verdadero, no debe de estar en esa posicion
+      mago->getSprite()->setPosition(mago->getLastPosition());
     //Updates antes de los renders o el personaje vibra por las colisiones.
     mago->update(vent->getDt()); //Mago es personaje por ahora
     paj->update(vent->getDt());
@@ -82,7 +84,6 @@ int main() {
 
       enemigos.at(i)->render(vent); //Renderiza todos los personajes por ahora
     }
-
 
 
     vent->display();

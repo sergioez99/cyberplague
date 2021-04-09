@@ -92,4 +92,13 @@ void Entidad::setVelocidad(float velMov){
     }
 }
 
+Vector2D Entidad::getLastPosition(){
+    return lastPosition;
+}
+
+void Entidad::setLastPosition(){
+    lastPosition.x = getPosX();
+    lastPosition.y = getPosY();
+}
+
 /* ---------------------------------------------------------- */

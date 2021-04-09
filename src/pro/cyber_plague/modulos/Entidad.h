@@ -2,7 +2,7 @@
 #include <iostream>
 #include "Motor2D/M_Sprite.h"
 #include "Motor2D/M_Window.h"
-#include "Tools/Vector2D.cpp"
+
 
 using namespace std;
 
@@ -56,6 +56,8 @@ class Entidad{
         void setVelocidad(float velMov);
 
         Vector2D getLastPosition();
+        void setLastPosition();
+        void setPosition(Vector2D pos);
 
 
 
