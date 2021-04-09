@@ -45,7 +45,16 @@ void M_Sprite::escalar(float x, float y){
 }
 
 //Metodos Setters y Getters
+//NO USAR ESTO. DEBUG.
 Sprite* M_Sprite::getSprite(){
 
     return sprite;
+}
+
+float M_Sprite::getPosX(){
+    return sprite->getPosition().x;
+}
+
+float M_Sprite::getPosY(){
+    return sprite->getPosition().y;
 }

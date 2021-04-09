@@ -2,6 +2,7 @@
 #include <iostream>
 #include "Motor2D/M_Sprite.h"
 #include "Motor2D/M_Window.h"
+#include "Tools/Vector2D.cpp"
 
 using namespace std;
 
@@ -20,6 +21,7 @@ class Entidad{
         int* vida;
         int* armadura;
         float* vel;
+        Vector2D lastPosition;
 
     public:
         Entidad();
@@ -52,6 +54,8 @@ class Entidad{
         void setVida(int vi);
         void setArmadura(int arm);
         void setVelocidad(float velMov);
+
+        Vector2D getLastPosition();
 
 
 

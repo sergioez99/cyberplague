@@ -15,6 +15,7 @@
 #include "modulos/NPCs/Soldado.h"
 #include "modulos/NPCs/Zombi.h"
 #include "modulos/Map.h"
+#include "modulos/Player.h"
 
 
 using namespace std;
@@ -23,6 +24,7 @@ using namespace std;
 int main() {
 
   M_Window* vent = new M_Window(640,480,"Cyber Plague");
+
 
   Mago* mago = new Mago("sprites.png", 0*75, 0*75, 75, 75, 640/2, 480/2);
   Pajaro* paj = new Pajaro("sprites.png", 1*75, 0*75, 75, 75, 640/4, 480/4);
@@ -34,7 +36,7 @@ int main() {
   enemigos.push_back(paj);
   enemigos.push_back(sold);
   enemigos.push_back(zom);
-
+//TODO: Poner al personaje para dejar de controlar al MAGO
   Map *tutorial = new Map(1);
 
   int key = 0;
@@ -69,16 +71,19 @@ int main() {
 
     vent->limpiar();
 
+    //Updates antes de los renders o el personaje vibra por las colisiones.
+    mago->update(vent->getDt()); //Mago es personaje por ahora
+    paj->update(vent->getDt());
+    zom->update(vent->getDt());
+    sold->update(vent->getDt());
+
     tutorial->drawTile(vent->getWindow());
     for(unsigned int i = 0; i < enemigos.size(); i++){
 
       enemigos.at(i)->render(vent); //Renderiza todos los personajes por ahora
     }
 
-    mago->update(vent->getDt()); //Mago es personaje por ahora
-    paj->update(vent->getDt());
-    zom->update(vent->getDt());
-    sold->update(vent->getDt());
+
 
     vent->display();
   }

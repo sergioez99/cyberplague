@@ -21,9 +21,11 @@ public:
     sf::Sprite**** getTileMap()     { return _tilemapSprite;    };
     int getWidth()                  { return _width;            };
     int getHeight()                 { return _height;           };
+
+    bool checkCollision(Sprite sp); //Utilizar RectShapes de sfml para comprobar colisiones
     
-    bool checkColision(int tx, int ty);             // nuevo
-    bool checkPinchos(int tx, int ty);             // nuevo
+    //bool checkColision(int tx, int ty);             // nuevo
+    //bool checkPinchos(int tx, int ty);             // nuevo
     void colocarEnemigos();                         // nuevo
     std::vector<Vector2f> coord_enemy1;             // nuevo
     std::vector<Vector2f> coord_enemy2;             // nuevo

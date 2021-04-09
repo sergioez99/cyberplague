@@ -34,5 +34,10 @@ class M_Sprite{
 
 
         //Metodos Setters y Getters.
+
+        float getPosX();
+
+        float getPosY();
+        //NO SE PUEDE USAR ESTO. SOLO DEBUG
         Sprite* getSprite();      
 };

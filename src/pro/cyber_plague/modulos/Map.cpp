@@ -131,6 +131,15 @@ void Map::drawTile(sf::RenderWindow *window){
     }  
 }
 
+bool Map::checkCollision(Sprite sp){
+    for(int y=0; y<_height; y++)
+            for(int x=0; x<_width; x++){
+                if(sp.getGlobalBounds().intersects(_tilemapSprite[1][y][x]->getGlobalBounds()))
+                    return true;//Colisiona con algo no atravesable
+            }
+    return false;
+}
+
 Map::~Map() {
 }
 
