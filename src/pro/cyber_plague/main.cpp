@@ -24,7 +24,7 @@ int main() {
 
   M_Window* vent = new M_Window(640,480,"Cyber Plague");
 
-  /*Mago* mago = new Mago("sprites.png", 0*75, 0*75, 75, 75, 640/2, 480/2);
+  Mago* mago = new Mago("sprites.png", 0*75, 0*75, 75, 75, 640/2, 480/2);
   Pajaro* paj = new Pajaro("sprites.png", 1*75, 0*75, 75, 75, 640/4, 480/4);
   Soldado* sold = new Soldado("sprites.png", 2.3*75, 0*75, 75, 75, 640/6, 480/6);
   Zombi* zom = new Zombi("sprites.png", 3.3*75, 0*75, 75, 75, 640/8, 480/8);
@@ -35,7 +35,7 @@ int main() {
   enemigos.push_back(sold);
   enemigos.push_back(zom);
 
-  Map *tutorial = new Map(0);
+  Map *tutorial = new Map(1);
 
   int key = 0;
   bool dir = false;
@@ -69,57 +69,24 @@ int main() {
 
     vent->limpiar();
 
+    tutorial->drawTile(vent->getWindow());
     for(unsigned int i = 0; i < enemigos.size(); i++){
 
-      enemigos.at(i)->render(vent);
+      enemigos.at(i)->render(vent); //Renderiza todos los personajes por ahora
     }
 
-
-    mago->update(vent->getDt());
+    mago->update(vent->getDt()); //Mago es personaje por ahora
     paj->update(vent->getDt());
     zom->update(vent->getDt());
     sold->update(vent->getDt());
 
-    tutorial->drawTile(vent->getWindow());
-
     vent->display();
   }
-  */
-
- //Bucle juego
-  int key = 0;
-  while(vent->abierta()){
-    key = vent->keyPressed();
-    Map* map = new Map(1);
-
-    vent->limpiar();
-    map->drawTile(vent->ventana);
-    
-    //No hace falta con el nuevo mapa
-    //sf::View view(sf::Vector2f(700.0f,700.0f), sf::Vector2f(500.0f, 500.0f));
-    //vent->ventana->setView(view);
-    
-    vent->display();
-  }
-
-/*
-  while(cont < 20000){
-
-    cout << cont << endl;
-
-
-    cont++;
-  }
-  
-  vent->cerrar();
-*/
   delete vent;
-  /*
   delete zom;
   delete sold;
   delete mago;
   delete paj;
-  */
 /*
     //Bucle del juego
     while (ventana->abierta()) {
@@ -132,8 +99,6 @@ int main() {
       window.draw(*sprite);
       window.display();
     }
-
-    
 */
   //CyberPlague::Instance()->Handle(); -> iniciar el juego desde los estados
   return 0;
