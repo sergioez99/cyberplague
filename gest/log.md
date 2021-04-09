@@ -39,3 +39,9 @@ Creación de la clase AI_Agent, encargada de obtener un camino a recorrer usando
 
 ## 20210408 JoseSansano @(1h 45m)
 Modificación del metodo KeyPresed de ventana e integración de la clase Map al Main del proyecto(antes estaba, pero con errores y no se buildeaba con Cmake).
+
+## 20210408 SergioEspinosa @(3h)
+Reunión con el grupo para organizar trabajo, uso de view en el mapa antiguo con el que me he dado cuenta de que dibujaba mal por el uso de dos tileset diferentes que se solapan al bindear la textura con el sprite, se ha intentado arreglar pero decido fusionar los tileset, porque con un tileset el mapa si pinta bien.
+
+## 20210409 SergioEspinosa @(1h 10m)
+Nuevo mapa con un tileset que es una fusión de 3 pngs (suelo, arboles y un fondo de cielo), reajuste del mapa para que tenga menos cielo (ya que no vamos a saltar tan alto), creación de capas intermedias para el personaje ya que creo que para las colisiones serán útiles.
