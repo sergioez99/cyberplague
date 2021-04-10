@@ -1,21 +1,5 @@
 #include <iostream>
-
-#include <SFML/Graphics.hpp>
-#include "include/config.h"
-
-#include "modulos/Motor2D/M_Sprite.h"
-#include "modulos/Motor2D/M_Window.h"
-
-#include "modulos/CyberPlague.h"
-#include "modulos/Map.h"
-
-
-#include "modulos/NPCs/Mago.h"
-#include "modulos/NPCs/Pajaro.h"
-#include "modulos/NPCs/Soldado.h"
-#include "modulos/NPCs/Zombi.h"
-#include "modulos/Map.h"
-#include "modulos/Player.h"
+#include "include/includes.h" //Añadir aqui los includes.
 
 
 using namespace std;
@@ -26,10 +10,13 @@ int main() {
   M_Window* vent = new M_Window(640,480,"Cyber Plague");
 
 
-  Mago* mago = new Mago("sprites.png", 0*75, 0*75, 75, 75, 640/2, 480/2);
-  Pajaro* paj = new Pajaro("sprites.png", 1*75, 0*75, 75, 75, 640/4, 480/4);
-  Soldado* sold = new Soldado("sprites.png", 2.3*75, 0*75, 75, 75, 640/6, 480/6);
-  Zombi* zom = new Zombi("sprites.png", 3.3*75, 0*75, 75, 75, 640/8, 480/8);
+  NPC* mago = new Mago("sprites.png", 0*75, 0*75, 75, 75, 640/2, 480/2);
+  NPC* paj = new Pajaro("sprites.png", 1*75, 0*75, 75, 75, 640/4, 480/4);
+  NPC* sold = new Soldado("sprites.png", 2.3*75, 0*75, 75, 75, 640/6, 480/6);
+  NPC* zom = new Zombi("sprites.png", 3.3*75, 0*75, 75, 75, 640/8, 480/8);
+
+  Arma* arc = new Arco();
+  arc->mejorar();
 
   vector<NPC*> enemigos;
   enemigos.push_back(mago);
@@ -67,17 +54,23 @@ int main() {
     }else if(key == 4){
             mago->getSprite()->cambiarPosTextura(0 * 75, 0 * 75, 75, 75);
             mago->getSprite()->mover(0, 50 * vent->getDt() * 2);
+    }else if(key == 5){
+
+        arc->disparo();
     }
 
     vent->limpiar();
 
     if(tutorial->checkCollision(mago->getSprite()->getSprite()))//si es verdadero, no debe de estar en esa posicion
       mago->getSprite()->setPosition(mago->getLastPosition());
+
     //Updates antes de los renders o el personaje vibra por las colisiones.
     mago->update(vent->getDt()); //Mago es personaje por ahora
     paj->update(vent->getDt());
     zom->update(vent->getDt());
     sold->update(vent->getDt());
+
+    arc->update(vent->getDt());
 
     tutorial->drawTile(vent->getWindow());
     for(unsigned int i = 0; i < enemigos.size(); i++){
@@ -85,6 +78,7 @@ int main() {
       enemigos.at(i)->render(vent); //Renderiza todos los personajes por ahora
     }
 
+    arc->render(vent);
 
     vent->display();
   }
@@ -93,6 +87,8 @@ int main() {
   delete sold;
   delete mago;
   delete paj;
+
+  delete arc;
 /*
     //Bucle del juego
     while (ventana->abierta()) {
