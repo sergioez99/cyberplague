@@ -17,12 +17,10 @@ class Zombi : public NPC{
         virtual void ataque(){};
         virtual bool puedoAtacar(){return false;};
         void moverse(float deltaTime);
-        void update(float deltaTime);
+        void update(float deltaTime, Map *m);
         /* ----------------------------- */
 
         /* METODOS HEREDADOS DE NPC */
         bool deteccion(){return false;};
         /* ------------------------ */
-
-        bool hayCaida();
 };

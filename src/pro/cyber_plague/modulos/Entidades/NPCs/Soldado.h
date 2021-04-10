@@ -21,12 +21,10 @@ class Soldado : public NPC{
         void ataque();
         bool puedoAtacar();
         void moverse(float deltaTime);
-        void update(float deltaTime);
+        void update(float deltaTime, Map *m);
         /* ----------------------------- */
 
         /* METODOS HEREDADOS DE NPC */
         bool deteccion();
         /* ------------------------ */  
-        
-        bool hayCaida();
 };

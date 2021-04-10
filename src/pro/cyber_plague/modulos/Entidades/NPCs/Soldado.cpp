@@ -35,7 +35,7 @@ Soldado::~Soldado(){
 
 }
 
-void Soldado::update(float deltaTime){
+void Soldado::update(float deltaTime, Map *m){
     //Disparar
     if(deteccion()){
         if(puedoAtacar()){
@@ -47,8 +47,8 @@ void Soldado::update(float deltaTime){
     //Mover
     else{
         //Cambiar direccion del sprite
-        if(hayCaida())
-            this->escalar(this->getScaleX() * - 1, this->getScaleY());
+        if(m->checkCaida(this->getSprite()->getSprite()))
+            this->escalar(-1.0f, 1.0f);
 
         moverse(deltaTime);
     }
@@ -85,10 +85,4 @@ void Soldado::moverse(float deltaTime){
         getSprite()->mover(-(getVelMovimiento() * deltaTime), 0);
     else
         getSprite()->mover(getVelMovimiento() * deltaTime, 0);
-}
-
-bool Soldado::hayCaida(){
-    //Pasar posicion del sprite a colisiones y comprobar si en el nodo siguiente hay una caida
-
-    return false;
 }

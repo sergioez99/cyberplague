@@ -82,7 +82,7 @@ AI_Agent::~AI_Agent(){
     listaFrontera.clear();
 }
 
-list<Vector2f> AI_Agent::encontrarCamino(Vector2f ini, Vector2f fin){
+list<Vector2f> AI_Agent::encontrarCamino(Map *m, Vector2f ini, Vector2f fin){
     //Vaciar listas si no lo estan
     if(!listaInterior.empty())
         listaInterior.clear();
@@ -123,7 +123,7 @@ list<Vector2f> AI_Agent::encontrarCamino(Vector2f ini, Vector2f fin){
         }
 
         //Comprobat nodos adyacentes al actual (n)
-        list<Nodo> adyacentes = nodosAdyacentes(n, meta);
+        list<Nodo> adyacentes = nodosAdyacentes(m, n, meta);
 
         for(it = adyacentes.begin(); it != adyacentes.end(); it++){
             Nodo m = *it;
@@ -158,7 +158,7 @@ list<Vector2f> AI_Agent::encontrarCamino(Vector2f ini, Vector2f fin){
     return camino;
 }
 
-list<Nodo> AI_Agent::nodosAdyacentes(Nodo n, Nodo meta){
+list<Nodo> AI_Agent::nodosAdyacentes(Map *m, Nodo n, Nodo meta){
     list<Nodo> adyacentes;
     list<Nodo>::iterator it = listaInterior.begin();
 

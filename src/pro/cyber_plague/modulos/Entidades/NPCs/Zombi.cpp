@@ -4,7 +4,7 @@
 
 #define kVida  50
 #define kArm  20
-#define kVel  200.0f
+#define kVel  55.0f
 
 /*--------------*/
 
@@ -25,11 +25,11 @@ Zombi::~Zombi(){
     delete vel;
 }
 
-void Zombi::update(float deltaTime){
+void Zombi::update(float deltaTime, Map *m){
     //Mover
     //Cambiar direccion del sprite
-    if(hayCaida())
-        this->escalar(this->getScaleX() * -1, this->getScaleY());
+    if(m->checkCaida(this->getSprite()->getSprite()))
+        this->escalar(-1.0f, 1.0f);
 
     moverse(deltaTime);
 }
@@ -39,8 +39,4 @@ void Zombi::moverse(float deltaTime){
         getSprite()->mover(-(getVelMovimiento() * deltaTime), 0);
     else
         getSprite()->mover(getVelMovimiento() * deltaTime, 0);
-}
-
-bool Zombi::hayCaida(){
-    //Pasar posicion del sprite a colisiones y comprobar si en el nodo siguiente hay una caida
 }

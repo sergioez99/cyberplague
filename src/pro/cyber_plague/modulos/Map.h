@@ -6,6 +6,7 @@
 #include "TinyXML/tinystr.h"
 #include "TinyXML/tinyxml.h"
 #include <string>
+#include <cmath>
 
 
 using namespace std;
@@ -23,6 +24,7 @@ public:
     int getHeight()                 { return _height;           };
 
     bool checkCollision(Sprite* sp); //Utilizar RectShapes de sfml para comprobar colisiones
+    bool checkCaida(Sprite *sp);    //Utilizar para el movimiento de Zombi y Soldado
     
     //bool checkColision(int tx, int ty);             // nuevo
     //bool checkPinchos(int tx, int ty);             // nuevo

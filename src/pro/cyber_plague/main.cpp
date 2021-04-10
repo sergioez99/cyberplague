@@ -1,6 +1,9 @@
 #include <iostream>
 #include "include/includes.h" //Añadir aqui los includes.
 
+#define kUpdateTimePS 1000/15
+#define kVel 200  //Temporal, mientras mago actue como jugador
+
 
 using namespace std;
 
@@ -9,19 +12,21 @@ int main() {
 
   M_Window* vent = new M_Window(640,480,"Cyber Plague");
 
+  Clock clock;
+  Clock clock2;
 
   NPC* mago = new Mago("sprites.png", 0*75, 0*75, 75, 75, 640/2, 480/2);
-  NPC* paj = new Pajaro("sprites.png", 1*75, 0*75, 75, 75, 640/4, 480/4);
-  NPC* sold = new Soldado("sprites.png", 2.3*75, 0*75, 75, 75, 640/6, 480/6);
-  NPC* zom = new Zombi("sprites.png", 3.3*75, 0*75, 75, 75, 640/8, 480/8);
+  //NPC* paj = new Pajaro("sprites.png", 1*75, 0*75, 75, 75, 640/4, 480/4);
+  //NPC* sold = new Soldado("sprites.png", 2.3*75, 0*75, 75, 75, 640/6, 480/6);
+  NPC* zom = new Zombi("sprites.png", 3.3*75, 0*75, 75, 75, 380, 288);
 
   Arma* arc = new Arco();
   arc->mejorar();
 
   vector<NPC*> enemigos;
   enemigos.push_back(mago);
-  enemigos.push_back(paj);
-  enemigos.push_back(sold);
+  //enemigos.push_back(paj);
+  //enemigos.push_back(sold);
   enemigos.push_back(zom);
 //TODO: Poner al personaje para dejar de controlar al MAGO
   Map *tutorial = new Map(1);
@@ -29,49 +34,54 @@ int main() {
   int key = 0;
   bool dir = false;
 
+  Time timeStartUpdate = clock.getElapsedTime();
+
   //Bucle juego
   while(vent->abierta()){
-    key = vent->keyPressed();
-    if(key == 1){
-            mago->getSprite()->cambiarPosTextura(0 * 75, 2 * 75, 75, 75);
-            //Escala por defecto
-            if(dir==true){
-              mago->getSprite()->escalar(-1,1);
-              dir=false;
-            }
-            mago->getSprite()->mover(50 * vent->getDt() * 2, 0);
-    }else if(key == 2){
-            mago->getSprite()->cambiarPosTextura(0 * 75, 2 * 75, 75, 75);
-            //Reflejo vertical
-            if(dir==false){
-              mago->getSprite()->escalar(-1, 1);
-              dir=true;
-            }
-            mago->getSprite()->mover(-50 * vent->getDt() * 2, 0);
-    }else if(key == 3){
-            mago->getSprite()->cambiarPosTextura(0 * 75, 3 * 75, 75, 75);
-            mago->getSprite()->mover(0, -50 * vent->getDt() * 2);
-    }else if(key == 4){
-            mago->getSprite()->cambiarPosTextura(0 * 75, 0 * 75, 75, 75);
-            mago->getSprite()->mover(0, 50 * vent->getDt() * 2);
-    }else if(key == 5){
+    if(clock.getElapsedTime().asMilliseconds() - timeStartUpdate.asMilliseconds() > kUpdateTimePS){
+      float deltaTime = clock2.restart().asSeconds();
+      cout << deltaTime << endl;
 
-        arc->disparo();
+      key = vent->keyPressed();
+      if(key == 1){
+              mago->getSprite()->cambiarPosTextura(0 * 75, 2 * 75, 75, 75);
+              //Escala por defecto
+              if(dir==true){
+                mago->getSprite()->escalar(-1,1);
+                dir=false;
+              }
+              mago->getSprite()->mover(kVel * deltaTime, 0);
+      }else if(key == 2){
+              mago->getSprite()->cambiarPosTextura(0 * 75, 2 * 75, 75, 75);
+              //Reflejo vertical
+              if(dir==false){
+                mago->getSprite()->escalar(-1, 1);
+                dir=true;
+              }
+              mago->getSprite()->mover(-kVel * deltaTime, 0);
+      }else if(key == 3){
+              mago->getSprite()->cambiarPosTextura(0 * 75, 3 * 75, 75, 75);
+              mago->getSprite()->mover(0, -kVel * deltaTime);
+      }else if(key == 4){
+              mago->getSprite()->cambiarPosTextura(0 * 75, 0 * 75, 75, 75);
+              mago->getSprite()->mover(0, kVel * deltaTime);
+      }else if(key == 5){
+
+          arc->disparo();
+      }
+
+      if(tutorial->checkCollision(mago->getSprite()->getSprite()))//si es verdadero, no debe de estar en esa posicion
+        mago->getSprite()->setPosition(mago->getLastPosition());
+
+      //Updates antes de los renders o el personaje vibra por las colisiones.
+      //Mago es personaje por ahora
+      for(int i = 0; i < (int)enemigos.size(); i++)
+        enemigos.at(i)->update(deltaTime, tutorial);
+
+      arc->update(deltaTime);
     }
 
     vent->limpiar();
-
-    if(tutorial->checkCollision(mago->getSprite()->getSprite()))//si es verdadero, no debe de estar en esa posicion
-      mago->getSprite()->setPosition(mago->getLastPosition());
-
-    //Updates antes de los renders o el personaje vibra por las colisiones.
-    mago->update(vent->getDt()); //Mago es personaje por ahora
-    paj->update(vent->getDt());
-    zom->update(vent->getDt());
-    sold->update(vent->getDt());
-
-    arc->update(vent->getDt());
-
     tutorial->drawTile(vent->getWindow());
     for(unsigned int i = 0; i < enemigos.size(); i++){
 
@@ -84,9 +94,9 @@ int main() {
   }
   delete vent;
   delete zom;
-  delete sold;
+  //delete sold;
   delete mago;
-  delete paj;
+  //delete paj;
 
   delete arc;
 /*

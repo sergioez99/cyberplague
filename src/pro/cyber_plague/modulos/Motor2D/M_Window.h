@@ -13,7 +13,7 @@ class M_Window{
         //RenderWindow* ventana;
         Clock reloj;
         bool dir=false;
-        float deltaTime = 0;
+        //float deltaTime = 0;
 
     
     public:
@@ -33,7 +33,7 @@ class M_Window{
         void limpiar();
 
         //Metodo para devolver el deltaTime.
-        float getDt();
+        //float getDt();
         
         //Metodo para comprobar si la ventana esta abierta.
         bool abierta();

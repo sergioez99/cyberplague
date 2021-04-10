@@ -33,10 +33,10 @@ Pajaro::~Pajaro(){
     delete rango;
 }
 
-void Pajaro::update(float deltaTime){
+void Pajaro::update(float deltaTime, Map *m){
     //Mover
     if(deteccion())
-        moverse(deltaTime);
+        moverse(deltaTime, m);
 }
 
 bool Pajaro::deteccion(){
@@ -54,11 +54,11 @@ bool Pajaro::deteccion(){
     return false;
 }
 
-void Pajaro::moverse(float deltaTime){
+void Pajaro::moverse(float deltaTime, Map *m){
     AI_Agent ai;
     Vector2f ini = getSprite()->getSprite()->getPosition();
     Vector2f fin;   //Poscion jugador
-    list<Vector2f> camino = ai.encontrarCamino(ini, fin);
+    list<Vector2f> camino = ai.encontrarCamino(m, ini, fin);
 
     //Si el enemigo no esta ya junto al jugador
     if(camino.size() > 1){

@@ -137,19 +137,19 @@ void M_Window::render(M_Sprite* spr){
 
 void M_Window::display(){
 
-  Time dt = reloj.restart();
+  /*Time dt = reloj.restart();
 
   deltaTime = dt.asSeconds();
 
-  cout << deltaTime << endl;
+  cout << deltaTime << endl;*/
 
   ventana->display();
 }
 
-float M_Window::getDt(){
+/*float M_Window::getDt(){
 
   return deltaTime;
-}
+}*/
 
 RenderWindow* M_Window::getWindow(){
   return ventana; //No se debería usar esto. Es para DEBUG

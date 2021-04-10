@@ -51,3 +51,6 @@ Creación de Vector2D para no usar SFML, más getters y setters en M_Sprite/Enti
 
 ## 20210410 CarlosVillena @(3h 30m)
 Cambios en los directorios, creación preliminar de las clases de las armas, implementacion de la clase Arco, creación del sprite del proyectil del arco, cambios en los includes, cambio en la clase M_Window para que pueda leer el boton de disparo, el boton de salto y para que detecte que se ha dejado de pulsar el disparo para la futura clase Lanzallamas.
+
+## 20210410 RamónRodríguez @(2h 30m)
+Movimiento de Zombi y Soldado por las plataformas sin caerse, ajustes en deltaTime, limitar llamadas a update a 15 veces por segundo y preparar AI_Agent para usar colisiones. He tardado bastante más de lo previsto en hacer esto ya que hice muchas pruebas con el movimiento de Zombi porque no funcionaba correctamente. El problema resultó ser una tonteria y es que la función escalar de M_Sprite no funcionaba como yo esperaba que funcionase, lo que hace es multiplicar el escalado del sprite por los valores que le pases no cambiar su escalado por dichos valores.

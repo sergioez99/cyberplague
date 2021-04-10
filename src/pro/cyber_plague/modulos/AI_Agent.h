@@ -3,6 +3,7 @@
 #include <list>
 #include <cmath>
 #include <SFML/Graphics.hpp> //Para acceder a Vector2f (no se si se puede de otra forma)
+#include "Map.h"
 
 using namespace std;
 using namespace sf;
@@ -47,6 +48,6 @@ class AI_Agent{
         AI_Agent();
         ~AI_Agent();
 
-        list<Vector2f> encontrarCamino(Vector2f ini, Vector2f fin);
-        list<Nodo> nodosAdyacentes(Nodo n, Nodo meta);
+        list<Vector2f> encontrarCamino(Map *m, Vector2f ini, Vector2f fin);
+        list<Nodo> nodosAdyacentes(Map *m, Nodo n, Nodo meta);
 };

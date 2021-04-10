@@ -140,6 +140,23 @@ bool Map::checkCollision(Sprite* sp){
     return false;
 }
 
+bool Map::checkCaida(Sprite *sp){
+    //Posicion del npc en la matriz de tiles
+    int x = ceil(sp->getPosition().x / _tilewidth) - 1;
+    int y = ceil(sp->getPosition().y / _tileheigth) - 1;
+
+    if(sp->getScale().x > 0){
+        if(_tilemapSprite[0][y + 2][x + 1] == NULL)
+            return true;
+    }
+    else{
+        if(_tilemapSprite[0][y + 2][x - 1] == NULL)
+            return true;
+    }
+
+    return false;
+}
+
 Map::~Map() {
 }
 

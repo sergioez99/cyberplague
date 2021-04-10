@@ -48,7 +48,7 @@ void Mago::moverse(float deltaTime){
     cout << "Movimiento" << endl;
 }
 
-void Mago::update(float deltaTime){
+void Mago::update(float deltaTime, Map *m){
     //Spawnear enemigo
     if(deteccion()){
         if(puedoAtacar()){
