@@ -3,7 +3,7 @@
 #include <cmath>
 #include <list>
 #include "../NPC.h"
-#include "../AI_Agent.h"
+#include "../../AI_Agent.h"
 
 using namespace std;
 
@@ -16,7 +16,7 @@ class Pajaro : public NPC{
 
         /* METODOS HEREDADOS DE ENTIDAD. */
         virtual void ataque(){};
-        virtual bool puedoAtacar(){};
+        virtual bool puedoAtacar(){return false;};
         void moverse(float deltaTime);
         void update(float deltaTime);
         /* ----------------------------- */

@@ -48,3 +48,6 @@ Nuevo mapa con un tileset que es una fusión de 3 pngs (suelo, arboles y un fond
 
 ## 20210409 JoseSansano @(2h)
 Creación de Vector2D para no usar SFML, más getters y setters en M_Sprite/Entidad y prueba de colisiones en el mapa funcional.
+
+## 20210410 CarlosVillena @(3h 30m)
+Cambios en los directorios, creación preliminar de las clases de las armas, implementacion de la clase Arco, creación del sprite del proyectil del arco, cambios en los includes, cambio en la clase M_Window para que pueda leer el boton de disparo, el boton de salto y para que detecte que se ha dejado de pulsar el disparo para la futura clase Lanzallamas.

@@ -33,45 +33,86 @@ int M_Window::keyPressed(){
 
         switch (event.type) {
 
-        //Si se recibe el evento de cerrar la ventana la cierro
-        case sf::Event::Closed:
-          ventana->close();
-          break;
-
-        //Se pulsó una tecla, imprimo su codigo
-        case sf::Event::KeyPressed:
-
-          //Verifico si se pulsa alguna tecla de movimiento
-          switch (event.key.code) {
-
-          //Mapeo del cursor
-          case sf::Keyboard::Right:
-            return 1;
-            break;
-
-          case sf::Keyboard::Left:
-            return 2;
-            break;
-
-          case sf::Keyboard::Up:
-            return 3;
-            break;
-
-          case sf::Keyboard::Down:
-            return 4;
-            break;
-
-          //Tecla ESC para salir
-          case sf::Keyboard::Escape:
+          //Si se recibe el evento de cerrar la ventana la cierro
+          case sf::Event::Closed:
             ventana->close();
             break;
 
-          //Cualquier tecla desconocida se imprime por pantalla su código
-          default:
-            std::cout << event.key.code << std::endl;
-            break;
-          }
+          //Se pulsó una tecla, imprimo su codigo
+          case sf::Event::KeyPressed:
+
+            //Verifico si se pulsa alguna tecla de movimiento
+            switch (event.key.code) {
+
+              //Mapeo del cursor
+              case sf::Keyboard::Right:
+                return 1;
+                break;
+
+              case sf::Keyboard::Left:
+                return 2;
+                break;
+
+              case sf::Keyboard::Up:
+                return 3;
+                break;
+
+              case sf::Keyboard::Down:
+                return 4;
+                break;
+              
+              case sf::Keyboard::Z:
+                return 5;
+                break;
+              
+              case sf::Keyboard::X:
+                return 6;
+                break;
+              
+              case sf::Keyboard::P:
+                return 7;
+                break;
+              
+              case sf::Keyboard::C:
+                return 8;
+                break;
+
+              //Tecla ESC para salir
+              case sf::Keyboard::Escape:
+                ventana->close();
+                break;
+
+              //Cualquier tecla desconocida se imprime por pantalla su código
+              default:
+                std::cout << event.key.code << std::endl;
+                break;
+            }
+
+              break;
+
+
+            //Detectar si se ha soltado alguna tecla.
+            case sf::Event::KeyReleased:
+
+              switch(event.key.code){
+
+                case sf::Keyboard::Z:
+                  return -5;
+                  break;
+
+                default:
+                  break;
+              }
+
+              break;
+
+            default:
+              break;
         }
+
+        
+
+
       }
 
   return 0;
