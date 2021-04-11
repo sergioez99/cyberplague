@@ -24,6 +24,7 @@ public:
     int getHeight()                 { return _height;           };
 
     bool checkCollision(Sprite* sp); //Utilizar RectShapes de sfml para comprobar colisiones
+    bool checkCollision(int x, int y);  //Utilizar para crear el camino en AI_Agent
     bool checkCaida(Sprite *sp);    //Utilizar para el movimiento de Zombi y Soldado
     
     //bool checkColision(int tx, int ty);             // nuevo

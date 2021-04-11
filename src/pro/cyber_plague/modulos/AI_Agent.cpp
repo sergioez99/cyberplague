@@ -166,5 +166,70 @@ list<Nodo> AI_Agent::nodosAdyacentes(Map *m, Nodo n, Nodo meta){
     //Esto se podria evitar usando listas de punteros a nodo (list<Nodo*>) en vez de las actuales pero cuando lo probe me daba errores y no funcionaba
     for(; *it != n && it != listaInterior.end(); it++);
 
-    //Crear nodos e incluirlos a adyacentes en funcion de la direccion en la que se muevan (colisiones)
+    //Direccion arriba izquierda (diagonal)
+    if(!m->checkCollision(n.getX() - 1, n.getY() - 1)){
+        Nodo hijo(&*it, n.getX() - 1, n.getY() - 1);
+        hijo.setG(n.getG() + costeDiagonal);
+        hijo.setH(abs(n.getX() - meta.getX()) + abs(n.getY() - meta.getY()));
+        hijo.setF(hijo.getG() + hijo.getH());
+        adyacentes.push_back(hijo);
+    }
+    //Direccion izquierda (recto)
+    if(!m->checkCollision(n.getX() - 1, n.getY())){
+        Nodo hijo(&*it, n.getX() - 1, n.getY());
+        hijo.setG(n.getG() + costeRecto);
+        hijo.setH(abs(n.getX() - meta.getX()) + abs(n.getY() - meta.getY()));
+        hijo.setF(hijo.getG() + hijo.getH());
+        adyacentes.push_back(hijo);
+    }
+    //Direccion abajo izquierda (diagonal)
+    if(!m->checkCollision(n.getX() - 1, n.getY() + 1)){
+        Nodo hijo(&*it, n.getX() - 1, n.getY() + 1);
+        hijo.setG(n.getG() + costeDiagonal);
+        hijo.setH(abs(n.getX() - meta.getX()) + abs(n.getY() - meta.getY()));
+        hijo.setF(hijo.getG() + hijo.getH());
+        adyacentes.push_back(hijo);
+    }
+    //Direccion arriba (recto)
+    if(!m->checkCollision(n.getX(), n.getY() - 1)){
+        Nodo hijo(&*it, n.getX(), n.getY() - 1);
+        hijo.setG(n.getG() + costeRecto);
+        hijo.setH(abs(n.getX() - meta.getX()) + abs(n.getY() - meta.getY()));
+        hijo.setF(hijo.getG() + hijo.getH());
+        adyacentes.push_back(hijo);
+    }
+    //Direccion abajo (recto)
+    if(!m->checkCollision(n.getX(), n.getY() + 1)){
+        Nodo hijo(&*it, n.getX(), n.getY() + 1);
+        hijo.setG(n.getG() + costeRecto);
+        hijo.setH(abs(n.getX() - meta.getX()) + abs(n.getY() - meta.getY()));
+        hijo.setF(hijo.getG() + hijo.getH());
+        adyacentes.push_back(hijo);
+    }
+    //Direccion arriba derecha (diagonal)
+    if(!m->checkCollision(n.getX() + 1, n.getY() - 1)){
+        Nodo hijo(&*it, n.getX() + 1, n.getY() - 1);
+        hijo.setG(n.getG() + costeDiagonal);
+        hijo.setH(abs(n.getX() - meta.getX()) + abs(n.getY() - meta.getY()));
+        hijo.setF(hijo.getG() + hijo.getH());
+        adyacentes.push_back(hijo);
+    }
+    //Direccion derecha (recto)
+    if(!m->checkCollision(n.getX() + 1, n.getY())){
+        Nodo hijo(&*it, n.getX() + 1, n.getY());
+        hijo.setG(n.getG() + costeRecto);
+        hijo.setH(abs(n.getX() - meta.getX()) + abs(n.getY() - meta.getY()));
+        hijo.setF(hijo.getG() + hijo.getH());
+        adyacentes.push_back(hijo);
+    }
+    //Direccion abajo derecha (diagonal)
+    if(!m->checkCollision(n.getX() + 1, n.getY() + 1)){
+        Nodo hijo(&*it, n.getX() + 1, n.getY() + 1);
+        hijo.setG(n.getG() + costeDiagonal);
+        hijo.setH(abs(n.getX() - meta.getX()) + abs(n.getY() - meta.getY()));
+        hijo.setF(hijo.getG() + hijo.getH());
+        adyacentes.push_back(hijo);
+    }
+
+    return adyacentes;
 }
