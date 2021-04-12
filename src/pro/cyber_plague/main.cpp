@@ -31,7 +31,7 @@ int main() {
 //TODO: Poner al personaje para dejar de controlar al MAGO
   Map *tutorial = new Map(1);
 
-  int key = 0;
+  vector<bool> key;
   bool dir = false;
 
   Time timeStartUpdate = clock.getElapsedTime();
@@ -43,7 +43,8 @@ int main() {
       cout << deltaTime << endl;
 
       key = vent->keyPressed();
-      if(key == 1){
+      //TODO: Cambiar todo este codigo de movimiento y Colisiones a una nueva clase Physics
+      if(key[0]){
               mago->getSprite()->cambiarPosTextura(0 * 75, 2 * 75, 75, 75);
               //Escala por defecto
               if(dir==true){
@@ -51,7 +52,7 @@ int main() {
                 dir=false;
               }
               mago->getSprite()->mover(kVel * deltaTime, 0);
-      }else if(key == 2){
+      }if(key[1]){
               mago->getSprite()->cambiarPosTextura(0 * 75, 2 * 75, 75, 75);
               //Reflejo vertical
               if(dir==false){
@@ -59,13 +60,13 @@ int main() {
                 dir=true;
               }
               mago->getSprite()->mover(-kVel * deltaTime, 0);
-      }else if(key == 3){
+      }if(key[2]){
               mago->getSprite()->cambiarPosTextura(0 * 75, 3 * 75, 75, 75);
               mago->getSprite()->mover(0, -kVel * deltaTime);
-      }else if(key == 4){
+      }if(key[3]){
               mago->getSprite()->cambiarPosTextura(0 * 75, 0 * 75, 75, 75);
               mago->getSprite()->mover(0, kVel * deltaTime);
-      }else if(key == 5){
+      }if(key[4]){
 
           arc->disparo();
       }

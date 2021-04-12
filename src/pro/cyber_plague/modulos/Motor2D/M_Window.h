@@ -28,7 +28,7 @@ class M_Window{
         //Metodo para renderizar un Sprite.
         void render(M_Sprite* spr);
 
-        int keyPressed();
+        std::vector<bool> keyPressed();
 
         void limpiar();
 
