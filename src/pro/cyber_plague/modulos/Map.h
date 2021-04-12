@@ -22,6 +22,7 @@ public:
     sf::Sprite**** getTileMap()     { return _tilemapSprite;    };
     int getWidth()                  { return _width;            };
     int getHeight()                 { return _height;           };
+    int getTileWidth()              { return _tilewidth;        };
 
     bool checkCollision(Sprite* sp); //Utilizar RectShapes de sfml para comprobar colisiones
     bool checkCollision(int x, int y);  //Utilizar para crear el camino en AI_Agent

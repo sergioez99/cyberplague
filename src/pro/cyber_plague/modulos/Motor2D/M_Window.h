@@ -1,6 +1,7 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include "M_Sprite.h"
+#include "M_View.h"
 #include <iostream>
 
 using namespace std;
@@ -43,6 +44,9 @@ class M_Window{
 
         //Metodo para cerrar la ventana.
         void cerrar();
+
+        //Metodo para cambiar la vista a mostrar
+        void setView(M_View *camara);
 
         RenderWindow* getWindow();
 };

@@ -11,11 +11,12 @@ using namespace std;
 int main() {
 
   M_Window* vent = new M_Window(640,480,"Cyber Plague");
+  M_View *camara = new M_View(0, 0, 640, 480);
 
   Clock clock;
   Clock clock2;
 
-  NPC* mago = new Mago("sprites.png", 0*75, 0*75, 75, 75, 640/2, 480/2);
+  NPC* mago = new Mago("sprites.png", 0*75, 0*75, 75, 75, 640/4, 480/2);
   //NPC* paj = new Pajaro("sprites.png", 1*75, 0*75, 75, 75, 640/4, 480/4);
   //NPC* sold = new Soldado("sprites.png", 2.3*75, 0*75, 75, 75, 640/6, 480/6);
   NPC* zom = new Zombi("sprites.png", 3.3*75, 0*75, 75, 75, 380, 288);
@@ -41,8 +42,6 @@ int main() {
   while(vent->abierta()){
     if(clock.getElapsedTime().asMilliseconds() - timeStartUpdate.asMilliseconds() > kUpdateTimePS){
       float deltaTime = clock2.restart().asSeconds();
-
-      cout << deltaTime << endl;
 
       key = vent->keyPressed();
       //TODO: Cambiar todo este codigo de movimiento y Colisiones a una nueva clase Physics
@@ -97,6 +96,15 @@ int main() {
 
       if(tutorial->checkCollision(mago->getSprite()->getSprite()))//si es verdadero, no debe de estar en esa posicion
         mago->getSprite()->setPosition(mago->getLastPosition());
+
+      //Mover camara
+      if(mago->getPosX() < 320.0f)
+        camara->reset(0, 0, 640, 480);
+      if(mago->getPosX() >= 320.0f && mago->getPosX() < tutorial->getWidth() * tutorial->getTileWidth() - 320.0f)
+        camara->mover(mago->getPosX() - mago->getLastPosition().x, 0);
+      if(mago->getPosX() >= tutorial->getWidth() * tutorial->getTileWidth() - 320.0f)
+        camara->reset(tutorial->getWidth() * tutorial->getTileWidth() - 640.0f, 0, 640, 480);
+
       //Updates antes de los renders o el personaje vibra por las colisiones.
       //Mago es personaje por ahora
       for(int i = 0; i < (int)enemigos.size(); i++)
@@ -114,6 +122,7 @@ int main() {
 
     arc->render(vent);
 
+    vent->setView(camara);
     vent->display();
   }
   delete vent;

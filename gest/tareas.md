@@ -21,10 +21,15 @@ Este fichero puede ser un PDF si la herramienta que gastáis lo requiere, pero *
 
 * `[Hecho]` - `20210323; Preparación de la rama para trabajar; 40'; zindov`
 * `[En progreso]` - `20210323; Motor2D; 40'; zindov`
+* `[Hecho]` - `20210323; Finalización de PROT: IA Pájaro; 165'; ramonrp99`
 * `[Hecho]` - `20210329; Motor2D; 140'; zindov`
+* `[Hecho]` - `20210323; Implementación de las clases NPC, Zombi, Soldado, Mago y Pájaro; 185'; ramonrp99`
+* `[Hecho]` - `20210406; Implementación de la clase AI_Agent; 100'; ramonrp99`
 * `[Hecho]` - `20210408; Integración de la clase Map al main del proyecto principal; 75'; zindov`
 * `[Hecho]` - `20210408; Método KeyPressed de Ventana sin sprite, más generico; 30'; zindov`
 * `[Hecho]` - `20210409; Vector2D propio creado; 30'; zindov`
 * `[Hecho]` - `20210409; Colisiones con el mapa básicas funcionales; 90'; zindov`
+* `[Hecho]` - `20210406; Movimiento de Zombi y Soldado por las plataformas; 150'; ramonrp99`
 * `[Hecho]` - `20210412; KeyInput mejorado para soportar leer varias teclas en un frame; 132'; zindov`
 * `[Hecho]` - `20210412; Salto básico y gravedad básica; 60'; zindov`
+* `[Hecho]` - `20210412; Crear M_View e implementar movimiento cámara; 100'; ramonrp99`

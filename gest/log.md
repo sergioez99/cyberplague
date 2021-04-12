@@ -61,5 +61,8 @@ Añadido a AI_Agent la creación de nodos hijos en función de las colisiones de
 ## 20210412 JoseSansano @(2h 12m)
 Mejora del método KeyInput de M_Window, diferenciando entre pulsaciones de teclas, que es lo que se especializa el sf::Event, de las pulsaciones mantenidas en tiempo real, que es lo que se especializa sf::Keyboard::isKeyPressed. Ahora devuelve un vector de booleanos, siendo cada posición del vector una tecla pulsada, para que se pueda controlar varias teclas pulsadas a la vez en un frame, ya que el juego que estamos haciendo requiere esto.
 
-## 20210409 JoseSansano @(1h)
+## 20210412 JoseSansano @(1h)
 Físicas básicas. Gravedad aplicada al jugador y salto básico implementado. Ahora Entidad tiene un valor nuevo booleano: Grounded, que indica si esa Entidad esta tocando el suelo o no. El jugador debe estar Grounded para poder saltar. (Y si puede saltar doble, grounded resetearía su contador de saltos disponibles).
+
+## 20210412 RamónRodríguez @(1h 40m)
+Añadida clase M_View a la fachada Motor2D para no usar el View de sfml y implementación del movimiento de la cámara. La cámara comenzará a moverse cuando el jugador llegue al centro de la pantalla.

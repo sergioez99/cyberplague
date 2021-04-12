@@ -212,6 +212,10 @@ void M_Window::display(){
   ventana->display();
 }
 
+void M_Window::setView(M_View *camara){
+  ventana->setView(*(camara->getView()));
+}
+
 /*float M_Window::getDt(){
 
   return deltaTime;
