@@ -33,6 +33,7 @@ int main() {
 
   vector<bool> key;
   bool dir = false;
+  int salto = 0;
 
   Time timeStartUpdate = clock.getElapsedTime();
 
@@ -40,10 +41,32 @@ int main() {
   while(vent->abierta()){
     if(clock.getElapsedTime().asMilliseconds() - timeStartUpdate.asMilliseconds() > kUpdateTimePS){
       float deltaTime = clock2.restart().asSeconds();
+
       cout << deltaTime << endl;
 
       key = vent->keyPressed();
       //TODO: Cambiar todo este codigo de movimiento y Colisiones a una nueva clase Physics
+
+      //Salto suave.
+      //TODO: Hacer salto suave bien.
+      if(salto>0){
+        if(salto>12)
+          mago->getSprite()->mover(0, 3 *-kVel * deltaTime);
+        else{
+          mago->getSprite()->mover(0, (float)(salto/4)*-kVel * deltaTime);
+        }
+        salto--;
+      }
+      //Gravedad
+      if(salto==0){
+        mago->getSprite()->mover(0, kVel * deltaTime);
+        if(tutorial->checkCollision(mago->getSprite()->getSprite())){//si es verdadero, ya estaba en el suelo.
+          mago->getSprite()->mover(0, -kVel * deltaTime);
+          mago->setGrounded(true);
+        }else{
+          mago->setGrounded(false);//Se puede caer por un agujero y no estar grounded igualmente
+        }
+      }
       if(key[0]){
               mago->getSprite()->cambiarPosTextura(0 * 75, 2 * 75, 75, 75);
               //Escala por defecto
@@ -60,9 +83,10 @@ int main() {
                 dir=true;
               }
               mago->getSprite()->mover(-kVel * deltaTime, 0);
-      }if(key[2]){
-              mago->getSprite()->cambiarPosTextura(0 * 75, 3 * 75, 75, 75);
+      }if(key[2] && mago->isGrounded()){
               mago->getSprite()->mover(0, -kVel * deltaTime);
+              mago->setGrounded(false);//Ha saltado, ya no esta en el suelo.
+              salto = 15;
       }if(key[3]){
               mago->getSprite()->cambiarPosTextura(0 * 75, 0 * 75, 75, 75);
               mago->getSprite()->mover(0, kVel * deltaTime);
@@ -73,7 +97,6 @@ int main() {
 
       if(tutorial->checkCollision(mago->getSprite()->getSprite()))//si es verdadero, no debe de estar en esa posicion
         mago->getSprite()->setPosition(mago->getLastPosition());
-
       //Updates antes de los renders o el personaje vibra por las colisiones.
       //Mago es personaje por ahora
       for(int i = 0; i < (int)enemigos.size(); i++)

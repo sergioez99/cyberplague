@@ -28,6 +28,16 @@ M_Sprite* Entidad::getSprite(){
     return spr;
 }
 
+
+bool Entidad::isGrounded(){
+
+    return grounded;
+
+}
+
+void Entidad::setGrounded(bool ground){
+    grounded = ground;
+}
 int Entidad::getVida(){
 
     return *vida;

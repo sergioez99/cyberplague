@@ -23,6 +23,7 @@ class Entidad{
         int* armadura;
         float* vel;
         Vector2D lastPosition;
+        bool grounded;
 
     public:
         Entidad();
@@ -59,6 +60,9 @@ class Entidad{
         Vector2D getLastPosition();
         void setLastPosition();
         void setPosition(Vector2D pos);
+
+        bool isGrounded();
+        void setGrounded(bool ground);
 
 
 
