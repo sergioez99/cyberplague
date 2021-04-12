@@ -57,3 +57,9 @@ Movimiento de Zombi y Soldado por las plataformas sin caerse, ajustes en deltaTi
 
 ## 20210411 RamónRodríguez @(1h 30m)
 Añadido a AI_Agent la creación de nodos hijos en función de las colisiones de Map y pseudocódigo de una idea para realizar el movimiento del mapa en función de la posición del jugador (aún le faltan algunos detalles).
+
+## 20210412 JoseSansano @(2h 12m)
+Mejora del método KeyInput de M_Window, diferenciando entre pulsaciones de teclas, que es lo que se especializa el sf::Event, de las pulsaciones mantenidas en tiempo real, que es lo que se especializa sf::Keyboard::isKeyPressed. Ahora devuelve un vector de booleanos, siendo cada posición del vector una tecla pulsada, para que se pueda controlar varias teclas pulsadas a la vez en un frame, ya que el juego que estamos haciendo requiere esto.
+
+## 20210409 JoseSansano @(1h)
+Físicas básicas. Gravedad aplicada al jugador y salto básico implementado. Ahora Entidad tiene un valor nuevo booleano: Grounded, que indica si esa Entidad esta tocando el suelo o no. El jugador debe estar Grounded para poder saltar. (Y si puede saltar doble, grounded resetearía su contador de saltos disponibles).

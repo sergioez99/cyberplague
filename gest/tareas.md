@@ -26,3 +26,5 @@ Este fichero puede ser un PDF si la herramienta que gastáis lo requiere, pero *
 * `[Hecho]` - `20210408; Método KeyPressed de Ventana sin sprite, más generico; 30'; zindov`
 * `[Hecho]` - `20210409; Vector2D propio creado; 30'; zindov`
 * `[Hecho]` - `20210409; Colisiones con el mapa básicas funcionales; 90'; zindov`
+* `[Hecho]` - `20210412; KeyInput mejorado para soportar leer varias teclas en un frame; 132'; zindov`
+* `[Hecho]` - `20210412; Salto básico y gravedad básica; 60'; zindov`
