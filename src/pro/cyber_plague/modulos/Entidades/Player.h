@@ -1,15 +1,16 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include "Animacion.h"
+#include "Entidad.h"
 
-class Player
+class Player : public Entidad
 {
 public: 
 	Player(sf::Texture* texture, sf::Vector2u imageCount, float switchTime, float speed);
 	~Player();
 
 	void Update(float deltaTime);
-	void Draw(sf::RenderWindow& window);
+	//void Draw(sf::RenderWindow& window);
 
 private:
 	sf::RectangleShape body;
@@ -17,4 +18,10 @@ private:
 	unsigned int row;
 	float speed;
 	bool faceRight;
+
+
+	virtual void ataque(){};
+    virtual bool puedoAtacar(){return false;};
+    virtual void moverse(float deltaTime){};
+    virtual void update(float deltaTime, Map *m){};
 };

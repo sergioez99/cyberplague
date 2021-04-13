@@ -41,6 +41,9 @@ class M_Sprite{
         float getPosY();
 
         void setPosition(Vector2D pos);
-        //NO SE PUEDE USAR ESTO. SOLO DEBUG
+
+        void setTextureRect(VectorInt4D);
+
+        //Solo las clases de Motor2D deberían usar esto
         Sprite* getSprite();      
 };

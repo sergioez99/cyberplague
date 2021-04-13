@@ -6,8 +6,11 @@ target_sources(libModulos PRIVATE
 
     "${CMAKE_CURRENT_SOURCE_DIR}/Tools/Vector2D.cpp"
     
+    "${CMAKE_CURRENT_SOURCE_DIR}/Animacion.cpp"
     "${CMAKE_CURRENT_SOURCE_DIR}/Entidad.cpp"
     "${CMAKE_CURRENT_SOURCE_DIR}/Entidades/NPC.cpp"
+    "${CMAKE_CURRENT_SOURCE_DIR}/Entidades/NPC.cpp"
+    "${CMAKE_CURRENT_SOURCE_DIR}/Entidades/Player.cpp"
     "${CMAKE_CURRENT_SOURCE_DIR}/Entidades/NPCs/Zombi.cpp"
     "${CMAKE_CURRENT_SOURCE_DIR}/Entidades/NPCs/Soldado.cpp"
     "${CMAKE_CURRENT_SOURCE_DIR}/Entidades/NPCs/Mago.cpp"

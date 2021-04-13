@@ -16,7 +16,7 @@ int main() {
 
   //Cargo la imagen donde reside la textura del sprite protagonista
   sf::Texture playerTexture;
-  playerTexture.loadFromFile("resources/Union3.png");
+  playerTexture.loadFromFile("resources/Union 3.png");
   Player player(&playerTexture, sf::Vector2u(8, 3), 0.15f, 200.0f);
   float deltaTime = 0.0f;
 
@@ -125,8 +125,9 @@ int main() {
     for(unsigned int i = 0; i < enemigos.size(); i++){
 
       enemigos.at(i)->render(vent); //Renderiza todos los personajes por ahora
+      
     }
-
+    player.render(vent);
     arc->render(vent);
 
     vent->setView(camara);

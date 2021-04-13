@@ -7,9 +7,10 @@ Player::Player(sf::Texture* texture, sf::Vector2u imageCount, float switchTime, 
 	row = 0;
 	faceRight = true;
 
-	body.setSize(sf::Vector2f(100.0f, 150.0f));
-	body.setPosition(206.f, 206.f);
-	body.setTexture(texture);
+	spr = new M_Sprite("Union 3.png",0,0,100,150,206,206);
+	//body.setSize(sf::Vector2f(100.0f, 150.0f));
+	//body.setPosition(206.f, 206.f);
+	//body.setTexture(texture);
 
 }
 
@@ -41,11 +42,12 @@ void Player::Update(float deltaTime)
 		}
 	}
 	animacion.Update(row, deltaTime, faceRight);
-	body.setTextureRect(animacion.uvRect);
-	body.move(movement);
+	VectorInt4D vect{animacion.uvRect.left,animacion.uvRect.top,animacion.uvRect.width,animacion.uvRect.height};
+	spr->setTextureRect(vect);
+	spr->mover(movement.x,movement.y);
 }
 
-void Player::Draw(sf::RenderWindow& window)
+/*void Player::Draw(sf::RenderWindow& window)
 {
 	window.draw(body);
-}
+}*/
