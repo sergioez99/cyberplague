@@ -44,11 +44,6 @@ void M_Sprite::escalar(float x, float y){
     sprite->scale(x, y);
 }
 
-void M_Sprite::setTextureRect(VectorInt4D vect){
-
-    sprite->setTextureRect(sf::IntRect(vect.x,vect.y,vect.width,vect.height));
-}
-
 //Metodos Setters y Getters
 //NO USAR ESTO. DEBUG.
 Sprite* M_Sprite::getSprite(){

@@ -42,8 +42,7 @@ void Player::Update(float deltaTime)
 		}
 	}
 	animacion.Update(row, deltaTime, faceRight);
-	VectorInt4D vect{animacion.uvRect.left,animacion.uvRect.top,animacion.uvRect.width,animacion.uvRect.height};
-	spr->setTextureRect(vect);
+	spr->cambiarPosTextura(animacion.uvRect.left,animacion.uvRect.top,animacion.uvRect.width,animacion.uvRect.height);
 	spr->mover(movement.x,movement.y);
 }
 
