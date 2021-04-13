@@ -72,3 +72,6 @@ Intento de cambio del personaje principal por el realizado en la rama experiment
 
 ## 20210413 JoseSansano @(1h 30m)
 Actualizado el Player, que ahora hereda de Entidad. Ahora en vez de controlar a un enemigo, el jugador controla la clase Player y todo el input y colision con el mapa que hacia en el main se ha movido a su respectivo update.
+
+## 20210413 CarlosVillena @(3h)
+Cambios para que las armas disparen en la posicion del jugador, solucion de un error en la clase Player en donde el tamaño del sprite era mayor al de la animación, eso provocaba que las armas se disparasen muy lejos del jugador.

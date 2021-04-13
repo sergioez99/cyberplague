@@ -3,6 +3,8 @@
 #include "../../Motor2D/M_Sprite.h"
 #include "../../Motor2D/M_Window.h"
 
+#include "../Player.h"
+
 using namespace std;
 
 /*
@@ -13,9 +15,33 @@ class Arma {
 
     private:
 
+        
+
+
     protected:
         
-        vector<M_Sprite*> proyectiles;
+        class Bala{
+
+            private:
+
+                M_Sprite* sprite_bala;
+
+            public:
+
+                int orientacion;
+
+                Bala(float posX, float posY, int ori);
+                ~Bala();
+
+                void moverse(float posX, float posY);
+                void rotar(float grad);
+                M_Sprite* getSprite();
+
+        };
+
+        Player* jugador;
+
+        vector<Bala*> proyectiles;
         int dmg;        
         int cad;        // Cadencia de Disparo del Arma en Segundos. (En el lanzallamas representa cada cuanto tiempo hace daño.)
         float vel;  // Velocidad del proyectil.
@@ -23,6 +49,8 @@ class Arma {
         bool mejora;
 
         Clock contDisparo;
+        
+        
 
     public:
 

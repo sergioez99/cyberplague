@@ -7,9 +7,12 @@ class Arco : public Arma{
 
     private:
 
+        
+
+
     public:
 
-        Arco();
+        Arco(Player* p);
        ~Arco();
 
       void disparo();

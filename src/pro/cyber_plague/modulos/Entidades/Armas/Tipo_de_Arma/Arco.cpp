@@ -18,13 +18,43 @@
 #define kTexHeight 10
 
 
+Arma::Bala::Bala(float posX, float posY, int ori){
+
+    sprite_bala = new M_Sprite( kFich , kTexLeft , kTexTop , kTexWidth , kTexHeight , posX, posY);
+
+    orientacion = ori;
+
+    if(ori != 1){
+
+        sprite_bala->rotar(180);
+    }
+
+}
+
+void Arma::Bala::moverse(float posX, float posY){
+
+    sprite_bala->mover(posX, posY);
+}
+
+void Arma::Bala::rotar(float grad){
+
+    sprite_bala->rotar(grad);
+}
+
+M_Sprite* Arma::Bala::getSprite(){
+
+    return sprite_bala;
+}
+
 /* ---------------- */
 
 
 
-Arco::Arco() : Arma(){
+Arco::Arco(Player * p) : Arma(){
 
-    dmg = kDmg;
+    jugador = p;
+
+    dmg = kDmg + p->getDmg();
     cad = kCad;
     vel = kVel;
 
@@ -43,22 +73,39 @@ void Arco::disparo(){
 
                 //La posicion habria que ajustarla a la del jugador.
 
-                M_Sprite* bala = new M_Sprite(kFich, kTexLeft, kTexTop, kTexWidth, kTexHeight, 640 / 2, 480 / 2); 
-                proyectiles.push_back(bala);
+                
+
+                Bala* bala = new Bala(jugador->getPosX(), jugador->getPosY(), jugador->mirandoDerecha()); 
+
+                switch (i) {
+
+                    case 0:
+
+                        bala->rotar(30);
+                        break;
+                    
+                    case 2:
+
+                        bala->rotar(-30);
+                        break;
+
+                    default:
+                        break;
+                }
+
+                proyectiles.push_back(bala);        
             }
 
         }
         
         else{
 
-            M_Sprite* bala = new M_Sprite(kFich,kTexLeft, kTexTop, kTexWidth, kTexHeight, 640 / 2, 480 / 2);
+            Bala* bala = new Bala(jugador->getPosX(), jugador->getPosY(), jugador->mirandoDerecha()); 
             proyectiles.push_back(bala);
         }
 
        contDisparo.restart();
     }
-
-    
 }
 
 void Arco::mejorar(){
@@ -80,17 +127,22 @@ void Arco::update(float dt){
 
                 case 0: 
 
-                    proyectiles.at(i)->mover(vel * dt, (vel * dt) / 3);  //BALA SUPERIOR.
+
+
+                    proyectiles.at(i)->moverse(proyectiles.at(i)->orientacion * (vel * dt), proyectiles.at(i)->orientacion * ((vel * dt) / 3));  //BALA SUPERIOR.
+                    
+
+                    
                     break;
 
                 case 1:
 
-                    proyectiles.at(i)->mover(vel * dt, 0); //BALA MEDIA
+                    proyectiles.at(i)->moverse(proyectiles.at(i)->orientacion * (vel * dt), 0); //BALA MEDIA
                     break;
 
                 case 2:
 
-                    proyectiles.at(i)->mover(vel * dt, -(vel * dt) / 3); //BALA INFERIOR.
+                    proyectiles.at(i)->moverse(proyectiles.at(i)->orientacion * (vel * dt), -proyectiles.at(i)->orientacion * (vel * dt)/ 3); //BALA INFERIOR.
                     break;
             }
 
@@ -102,7 +154,7 @@ void Arco::update(float dt){
 
         for(unsigned int i = 0; i < proyectiles.size(); i++){
 
-            proyectiles.at(i)->mover(vel * dt, 0);
+            proyectiles.at(i)->moverse(proyectiles.at(i)->orientacion * (vel * dt), 0);
         }
     }
 }
