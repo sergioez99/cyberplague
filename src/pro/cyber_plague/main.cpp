@@ -13,6 +13,13 @@ int main() {
   M_Window* vent = new M_Window(640,480,"Cyber Plague");
   M_View *camara = new M_View(0, 0, 640, 480);
 
+
+  //Cargo la imagen donde reside la textura del sprite protagonista
+  sf::Texture playerTexture;
+  playerTexture.loadFromFile("resources/Union3.png");
+  Player player(&playerTexture, sf::Vector2u(8, 3), 0.15f, 200.0f);
+  float deltaTime = 0.0f;
+
   Clock clock;
   Clock clock2;
 
