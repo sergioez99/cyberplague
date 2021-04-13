@@ -7,7 +7,7 @@ Player::Player(sf::Texture* texture, sf::Vector2u imageCount, float switchTime, 
 	row = 0;
 	faceRight = true;
 
-	spr = new M_Sprite("Union 3.png",0,0,100,150,206,206);
+	spr = new M_Sprite("Union 3.png",0,0,texture->getSize().x,texture->getSize().y,206,206);
 	//body.setSize(sf::Vector2f(100.0f, 150.0f));
 	//body.setPosition(206.f, 206.f);
 	//body.setTexture(texture);
@@ -18,7 +18,7 @@ Player::~Player()
 {
 }
 
-void Player::Update(float deltaTime)
+void Player::update(float deltaTime)
 {
 	sf::Vector2f movement(0.0f, 0.0f);
 

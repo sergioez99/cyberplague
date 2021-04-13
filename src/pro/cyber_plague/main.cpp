@@ -118,6 +118,7 @@ int main() {
         enemigos.at(i)->update(deltaTime, tutorial);
 
       arc->update(deltaTime);
+      player.update(deltaTime);
     }
 
     vent->limpiar();
@@ -127,7 +128,7 @@ int main() {
       enemigos.at(i)->render(vent); //Renderiza todos los personajes por ahora
       
     }
-    //player.render(vent);
+    player.render(vent);
     arc->render(vent);
 
     vent->setView(camara);
