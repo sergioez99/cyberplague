@@ -12,15 +12,22 @@ public:
     void update(float deltaTime, Map *m);
 	//void Draw(sf::RenderWindow& window);
 
+	int mirandoDerecha();
+	int getDmg();
+	void setDmg(int d);
+
+
 private:
 	sf::RectangleShape body;
 	Animacion animacion;
 	unsigned int row;
 	float speed;
 	bool faceRight;
+	int dmg;
 	
 	virtual void ataque(){};
     virtual bool puedoAtacar(){return false;};
     virtual void moverse(float deltaTime){};
+
 
 };

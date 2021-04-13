@@ -1,22 +1,21 @@
 #include "Player.h"
 
+
+
+
 Player::Player(sf::Texture* texture, sf::Vector2u imageCount, float switchTime, float speed) : 
 	animacion(texture, imageCount, switchTime)
 {	
 	this->speed = speed;
 	row = 0;
 	faceRight = true;
+	dmg = 0;
 
-	spr = new M_Sprite("Union 3.png",0,0,texture->getSize().x,texture->getSize().y,206,206);
-	//body.setSize(sf::Vector2f(100.0f, 150.0f));
-	//body.setPosition(206.f, 206.f);
-	//body.setTexture(texture);
+	spr = new M_Sprite("Union 3.png",0,0,texture->getSize().x / float(imageCount.x),texture->getSize().y / float(imageCount.y),206,206);
 
 }
 
-Player::~Player()
-{
-}
+Player::~Player(){}
 
 void Player::update(float deltaTime, Map* m)
 {
@@ -68,7 +67,18 @@ void Player::update(float deltaTime, Map* m)
         getSprite()->setPosition(getLastPosition());
 }
 
-/*void Player::Draw(sf::RenderWindow& window)
-{
-	window.draw(body);
-}*/
+int Player::getDmg(){
+
+	return dmg;
+}
+
+void Player::setDmg(int d){
+
+	dmg = d;
+}
+
+int Player::mirandoDerecha(){
+
+	if(faceRight) return 1;
+	else return -1;
+}

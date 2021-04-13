@@ -28,8 +28,9 @@ int main() {
   //NPC* sold = new Soldado("sprites.png", 2.3*75, 0*75, 75, 75, 640/6, 480/6);
   NPC* zom = new Zombi("sprites.png", 3.3*75, 0*75, 75, 75, 380, 288);
 
-  Arma* arc = new Arco();
-  arc->mejorar();
+  Arma* arc = new Arco(&player);
+  cout << player.getPosX() << player.getPosY() << endl;
+  //arc->mejorar();
 
   vector<NPC*> enemigos;
   enemigos.push_back(mago);

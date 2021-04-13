@@ -1,6 +1,7 @@
 #include "Arma.h"
 
 Arma::Arma(){}
+
 Arma::~Arma(){}
 
 bool Arma::puedeDisparar(){
@@ -22,16 +23,13 @@ void Arma::render(M_Window* vent){
 
     for(unsigned int i = 0; i < proyectiles.size(); i++){
 
-        vent->render(proyectiles.at(i));
+        vent->render(proyectiles.at(i)->getSprite());
     }
 
     
 }
 
-vector<M_Sprite*> Arma::getProyectiles(){
 
-    return proyectiles;
-}
 
 int Arma::getDmg(){
 
