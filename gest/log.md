@@ -66,3 +66,6 @@ Físicas básicas. Gravedad aplicada al jugador y salto básico implementado. Ah
 
 ## 20210412 RamónRodríguez @(1h 40m)
 Añadida clase M_View a la fachada Motor2D para no usar el View de sfml y implementación del movimiento de la cámara. La cámara comenzará a moverse cuando el jugador llegue al centro de la pantalla.
+
+## 20210413 JoseSansano @(1h 30m)
+Actualizado el Player, que ahora hereda de Entidad. Ahora en vez de controlar a un enemigo, el jugador controla la clase Player y todo el input y colision con el mapa que hacia en el main se ha movido a su respectivo update.

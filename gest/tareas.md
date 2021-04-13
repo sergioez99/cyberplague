@@ -33,3 +33,4 @@ Este fichero puede ser un PDF si la herramienta que gastáis lo requiere, pero *
 * `[Hecho]` - `20210412; KeyInput mejorado para soportar leer varias teclas en un frame; 132'; zindov`
 * `[Hecho]` - `20210412; Salto básico y gravedad básica; 60'; zindov`
 * `[Hecho]` - `20210412; Crear M_View e implementar movimiento cámara; 100'; ramonrp99`
+* `[Hecho]` - `20210413; Player añadido con Input y Colisiones. Creado VectorInt4D; 90'; zindov`
