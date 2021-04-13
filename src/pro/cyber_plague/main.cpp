@@ -55,6 +55,7 @@ int main() {
 
       //Salto suave.
       //TODO: Hacer salto suave bien.
+      /*
       if(salto>0){
         if(salto>12)
           mago->getSprite()->mover(0, 3 *-kVel * deltaTime);
@@ -62,54 +63,21 @@ int main() {
           mago->getSprite()->mover(0, (float)(salto/4)*-kVel * deltaTime);
         }
         salto--;
-      }
+      }*/
       //Gravedad
-      if(salto==0){
-        mago->getSprite()->mover(0, kVel * deltaTime);
-        if(tutorial->checkCollision(mago->getSprite()->getSprite())){//si es verdadero, ya estaba en el suelo.
-          mago->getSprite()->mover(0, -kVel * deltaTime);
-          mago->setGrounded(true);
-        }else{
-          mago->setGrounded(false);//Se puede caer por un agujero y no estar grounded igualmente
-        }
-      }
-      if(key[0]){
-              mago->getSprite()->cambiarPosTextura(0 * 75, 2 * 75, 75, 75);
-              //Escala por defecto
-              if(dir==true){
-                mago->getSprite()->escalar(-1,1);
-                dir=false;
-              }
-              mago->getSprite()->mover(kVel * deltaTime, 0);
-      }if(key[1]){
-              mago->getSprite()->cambiarPosTextura(0 * 75, 2 * 75, 75, 75);
-              //Reflejo vertical
-              if(dir==false){
-                mago->getSprite()->escalar(-1, 1);
-                dir=true;
-              }
-              mago->getSprite()->mover(-kVel * deltaTime, 0);
-      }if(key[2] && mago->isGrounded()){
-              mago->getSprite()->mover(0, -kVel * deltaTime);
-              mago->setGrounded(false);//Ha saltado, ya no esta en el suelo.
-              salto = 15;
-      }if(key[3]){
-              mago->getSprite()->cambiarPosTextura(0 * 75, 0 * 75, 75, 75);
-              mago->getSprite()->mover(0, kVel * deltaTime);
-      }if(key[4]){
+     
+      player.update(deltaTime, tutorial);
+      if(key[4]){
 
           arc->disparo();
       }
 
-      if(tutorial->checkCollision(mago->getSprite()->getSprite()))//si es verdadero, no debe de estar en esa posicion
-        mago->getSprite()->setPosition(mago->getLastPosition());
-
       //Mover camara
-      if(mago->getPosX() < 320.0f)
+      if(player.getPosX() < 320.0f)
         camara->reset(0, 0, 640, 480);
-      if(mago->getPosX() >= 320.0f && mago->getPosX() < tutorial->getWidth() * tutorial->getTileWidth() - 320.0f)
-        camara->mover(mago->getPosX() - mago->getLastPosition().x, 0);
-      if(mago->getPosX() >= tutorial->getWidth() * tutorial->getTileWidth() - 320.0f)
+      if(player.getPosX() >= 320.0f && player.getPosX() < tutorial->getWidth() * tutorial->getTileWidth() - 320.0f)
+        camara->mover(player.getPosX() - player.getLastPosition().x, 0);
+      if(player.getPosX() >= tutorial->getWidth() * tutorial->getTileWidth() - 320.0f)
         camara->reset(tutorial->getWidth() * tutorial->getTileWidth() - 640.0f, 0, 640, 480);
 
       //Updates antes de los renders o el personaje vibra por las colisiones.
@@ -117,8 +85,9 @@ int main() {
       for(int i = 0; i < (int)enemigos.size(); i++)
         enemigos.at(i)->update(deltaTime, tutorial);
 
+      player.setLastPosition();
       arc->update(deltaTime);
-      player.update(deltaTime);
+      
     }
 
     vent->limpiar();

@@ -35,6 +35,13 @@ bool Entidad::isGrounded(){
 
 }
 
+bool Entidad::isJumping(){
+    if(salto>0)
+        return true;
+    return false;
+
+}
+
 void Entidad::setGrounded(bool ground){
     grounded = ground;
 }

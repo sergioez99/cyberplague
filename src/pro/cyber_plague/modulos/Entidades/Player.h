@@ -9,7 +9,7 @@ public:
 	Player(sf::Texture* texture, sf::Vector2u imageCount, float switchTime, float speed);
 	~Player();
 
-	void update(float deltaTime);
+    void update(float deltaTime, Map *m);
 	//void Draw(sf::RenderWindow& window);
 
 private:
@@ -18,10 +18,9 @@ private:
 	unsigned int row;
 	float speed;
 	bool faceRight;
-
-
+	
 	virtual void ataque(){};
     virtual bool puedoAtacar(){return false;};
     virtual void moverse(float deltaTime){};
-    virtual void update(float deltaTime, Map *m){};
+
 };

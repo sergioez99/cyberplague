@@ -21,6 +21,7 @@ class Entidad{
         M_Sprite* spr;
         int* vida;
         int* armadura;
+        int salto=0;
         float* vel;
         Vector2D lastPosition;
         bool grounded;
@@ -63,6 +64,7 @@ class Entidad{
 
         bool isGrounded();
         void setGrounded(bool ground);
+        bool isJumping();
 
 
 
