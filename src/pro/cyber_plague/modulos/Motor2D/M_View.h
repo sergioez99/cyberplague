@@ -18,7 +18,7 @@ class M_View{
         //Metodo para mover la vista
         void mover(float x, float y);
         //Metodo para resetear la camara a los valores pasados por parametro
-        void reset(int x, int y, int width, int height);
+        void reset(float x, float y, int width, int height);
 
         //DEBUG
         View* getView();

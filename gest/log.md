@@ -65,7 +65,7 @@ Mejora del método KeyInput de M_Window, diferenciando entre pulsaciones de tecl
 Físicas básicas. Gravedad aplicada al jugador y salto básico implementado. Ahora Entidad tiene un valor nuevo booleano: Grounded, que indica si esa Entidad esta tocando el suelo o no. El jugador debe estar Grounded para poder saltar. (Y si puede saltar doble, grounded resetearía su contador de saltos disponibles).
 
 ## 20210412 RamónRodríguez @(1h 40m)
-Añadida clase M_View a la fachada Motor2D para no usar el View de sfml y implementación del movimiento de la cámara. La cámara comenzará a moverse cuando el jugador llegue al centro de la pantalla.
+Añadida clase M_View a la fachada Motor2D para no usar el View de sfml e implementación del movimiento de la cámara. La cámara comenzará a moverse cuando el jugador llegue al centro de la pantalla.
 
 ## 20210413 JorgeMompe @(1h)
 Intento de cambio del personaje principal por el realizado en la rama experimental en hito anterior.
@@ -75,3 +75,6 @@ Actualizado el Player, que ahora hereda de Entidad. Ahora en vez de controlar a 
 
 ## 20210413 CarlosVillena @(3h)
 Cambios para que las armas disparen en la posicion del jugador, solucion de un error en la clase Player en donde el tamaño del sprite era mayor al de la animación, eso provocaba que las armas se disparasen muy lejos del jugador.
+
+## 20210414 RamónRodríguez @(2h 30m)
+Implementación del render interpolado. Para ello he creado la clase posInterpolada la cual contiene la posición calculada en el update y la posición anterior de cada Entidad. Modificados los métodos update y render de Entidad para que el movimiento del sprite se haga en el render ahora interpolado en vez de en update como estaba antes.

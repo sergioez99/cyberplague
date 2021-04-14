@@ -12,7 +12,7 @@ void M_View::mover(float x, float y){
     camara->move(x, y);
 }
 
-void M_View::reset(int x, int y, int width, int height){
+void M_View::reset(float x, float y, int width, int height){
     camara->reset(FloatRect(x, y, width, height));
 }
 

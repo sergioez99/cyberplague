@@ -15,6 +15,9 @@ Zombi::Zombi(string nomFichero, int texLeft, int texTop, int tex_width, int tex_
     vida = new int( kVida );
     armadura = new int( kArm );
     vel = new float( kVel );
+
+    pos.setPosition(posX, posY);
+    pos.setPosition(posX, posY);
 }
 
 Zombi::~Zombi(){
@@ -35,8 +38,15 @@ void Zombi::update(float deltaTime, Map *m){
 }
 
 void Zombi::moverse(float deltaTime){
+    Vector2D mov;
+    mov.y = 0.f;
+    
     if(this->getScaleX() < 0)
-        getSprite()->mover(-(getVelMovimiento() * deltaTime), 0);
+        mov.x = -deltaTime * getVelMovimiento();
+        //getSprite()->mover(-(getVelMovimiento() * deltaTime), 0);
     else
-        getSprite()->mover(getVelMovimiento() * deltaTime, 0);
+        mov.x = deltaTime * getVelMovimiento();
+        //getSprite()->mover(getVelMovimiento() * deltaTime, 0);
+
+    pos.setPosition(pos.getX() + mov.x, pos.getY() + mov.y);
 }

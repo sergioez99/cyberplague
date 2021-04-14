@@ -3,6 +3,7 @@
 #include "Motor2D/M_Sprite.h"
 #include "Motor2D/M_Window.h"
 #include "Map.h"
+#include "Tools/posInterpolada.h"
 
 
 using namespace std;
@@ -23,8 +24,9 @@ class Entidad{
         int* armadura;
         int salto=0;
         float* vel;
-        Vector2D lastPosition;
+        //Vector2D lastPosition;
         bool grounded;
+        posInterpolada pos;
 
     public:
         Entidad();
@@ -40,7 +42,7 @@ class Entidad{
         void escalar(float x, float y);
         
         bool muerto();
-        void render(M_Window* vent);
+        void render(M_Window* vent, float percentTick);
 
     
 
@@ -52,14 +54,15 @@ class Entidad{
         float getPosY();
         float getScaleX();
         float getScaleY();
+        posInterpolada getPosInterpolada()  { return pos;   }
 
 
         void setVida(int vi);
         void setArmadura(int arm);
         void setVelocidad(float velMov);
 
-        Vector2D getLastPosition();
-        void setLastPosition();
+        //Vector2D getLastPosition();
+        //void setLastPosition();
         void setPosition(Vector2D pos);
 
         bool isGrounded();

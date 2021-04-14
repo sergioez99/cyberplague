@@ -57,7 +57,7 @@ void Mago::update(float deltaTime, Map *m){
             ataque(); // Su ataque sera el de invocar enemigos. 
         }
     }
-    setLastPosition();//Ultima posicion buena del sprite
+    //setLastPosition();//Ultima posicion buena del sprite
 }
 
 bool Mago::deteccion(){

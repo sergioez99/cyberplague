@@ -16,8 +16,12 @@ bool Entidad::muerto(){
 
 }
 
-void Entidad::render(M_Window* vent){
+void Entidad::render(M_Window* vent, float percentTick){
+    Vector2D posicion;
+    posicion.x = pos.getLastX()*(1-percentTick) + pos.getX()*percentTick;
+    posicion.y = pos.getLastY()*(1-percentTick) + pos.getY()*percentTick;
 
+    spr->setPosition(posicion);
     vent->render(spr);
 }
 
@@ -109,13 +113,13 @@ void Entidad::setVelocidad(float velMov){
     }
 }
 
-Vector2D Entidad::getLastPosition(){
+/*Vector2D Entidad::getLastPosition(){
     return lastPosition;
 }
 
 void Entidad::setLastPosition(){
     lastPosition.x = getPosX();
     lastPosition.y = getPosY();
-}
+}*/
 
 /* ---------------------------------------------------------- */

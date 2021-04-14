@@ -13,18 +13,24 @@ Player::Player(sf::Texture* texture, sf::Vector2u imageCount, float switchTime, 
 
 	spr = new M_Sprite("Union 3.png",0,0,texture->getSize().x / float(imageCount.x),texture->getSize().y / float(imageCount.y),206,206);
 
+	pos.setPosition(206.f, 206.f);
+	pos.setPosition(206.f, 206.f);
 }
 
 Player::~Player(){}
 
 void Player::update(float deltaTime, Map* m)
 {
+	//setLastPosition();
+
 	sf::Vector2f movement(0.0f, 0.0f);
 	//Gravedad
 	 if(!isJumping()){//Si no salta, aplicar gravedad
         getSprite()->mover(0, 2 * speed * deltaTime);
+		movement.y += 2*speed*deltaTime;
         if(m->checkCollision(getSprite()->getSprite())){//si es verdadero, ya estaba en el suelo.
-          getSprite()->mover(0, -2 * speed * deltaTime);
+          //getSprite()->mover(0, -2 * speed * deltaTime);
+		  movement.y -= 2*speed*deltaTime;
           setGrounded(true);
         }else{
           setGrounded(false);//Se puede caer por un agujero y no estar grounded igualmente
@@ -62,9 +68,11 @@ void Player::update(float deltaTime, Map* m)
 	}
 	animacion.Update(row, deltaTime, faceRight);
 	spr->cambiarPosTextura(animacion.uvRect.left,animacion.uvRect.top,animacion.uvRect.width,animacion.uvRect.height);
-	spr->mover(movement.x,movement.y);
+	//spr->mover(movement.x,movement.y);
+	pos.setPosition(pos.getX() + movement.x, pos.getY() + movement.y);
 	if(m->checkCollision(getSprite()->getSprite()))//si es verdadero, no debe de estar en esa posicion
-        getSprite()->setPosition(getLastPosition());
+		pos.setPosition(pos.getX(), pos.getY());
+		//getSprite()->setPosition(getLastPosition());
 }
 
 int Player::getDmg(){
