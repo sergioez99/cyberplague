@@ -21,3 +21,4 @@
 //Otras Clases
 #include "../modulos/Map.h"
 #include "../modulos/CyberPlague.h"
+#include "../modulos/Menu.h"
