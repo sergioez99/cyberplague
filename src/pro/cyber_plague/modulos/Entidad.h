@@ -24,7 +24,8 @@ class Entidad{
         int* armadura;
         int salto=0;
         float* vel;
-        //Vector2D lastPosition;
+        int ataq;
+        Vector2D lastPosition;
         bool grounded;
         posInterpolada pos;
 
@@ -55,14 +56,15 @@ class Entidad{
         float getScaleX();
         float getScaleY();
         posInterpolada getPosInterpolada()  { return pos;   }
+        int getAtaque()                     { return ataq;  }
 
 
         void setVida(int vi);
         void setArmadura(int arm);
         void setVelocidad(float velMov);
 
-        //Vector2D getLastPosition();
-        //void setLastPosition();
+        Vector2D getLastPosition();
+        void setLastPosition();
         void setPosition(Vector2D pos);
 
         bool isGrounded();

@@ -67,6 +67,7 @@ int main() {
       //Gravedad
      
       player.update(deltaTime, tutorial);
+      player.checkEnemyColision(enemigos);
       if(key[4]){
 
           arc->disparo();
@@ -76,7 +77,7 @@ int main() {
       for(int i = 0; i < (int)enemigos.size(); i++)
         enemigos.at(i)->update(deltaTime, tutorial);
 
-      //player.setLastPosition();
+      player.setLastPosition();
       arc->update(deltaTime);
     }
 

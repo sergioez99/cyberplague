@@ -78,3 +78,6 @@ Cambios para que las armas disparen en la posicion del jugador, solucion de un e
 
 ## 20210414 RamónRodríguez @(2h 30m)
 Implementación del render interpolado. Para ello he creado la clase posInterpolada la cual contiene la posición calculada en el update y la posición anterior de cada Entidad. Modificados los métodos update y render de Entidad para que el movimiento del sprite se haga en el render ahora interpolado en vez de en update como estaba antes.
+
+## 20210417 RamónRodríguez @(2h)
+Ahora cuando el jugador colisiona con un enemigo, este le ataca y le inflinge daño. También he estado haciendo pruebas con el render interpolado y he comentado todo lo relacionado con él por mal funcionamiento.

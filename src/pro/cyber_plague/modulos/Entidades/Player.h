@@ -2,6 +2,7 @@
 #include <SFML/Graphics.hpp>
 #include "Animacion.h"
 #include "Entidad.h"
+#include "NPC.h"
 
 class Player : public Entidad
 {
@@ -15,6 +16,7 @@ public:
 	int mirandoDerecha();
 	int getDmg();
 	void setDmg(int d);
+	void checkEnemyColision(vector<NPC*> enemigos);
 
 
 private:
