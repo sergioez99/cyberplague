@@ -19,6 +19,9 @@ Trabajo realizado sobre un prototipo de experimental: Implementación de la clas
 ## 20210328 CarlosVillena @(2h)
 Creación preliminar de las fachada, clases M_Sprite y M_Window.
 
+## 20210328 RubénHerrera @(2h 15m)
+Unido los menús en un mismo archivo e implementado variable para su manejo.
+
 ## 20210329 JoseSansano @(2h 20m)
 Creación de la fachada Motor2D con el mismo funcionamiento que en el main anterior(con events, poder mover el personaje, etc.)
 
@@ -79,6 +82,9 @@ Cambios para que las armas disparen en la posicion del jugador, solucion de un e
 ## 20210414 RamónRodríguez @(2h 30m)
 Implementación del render interpolado. Para ello he creado la clase posInterpolada la cual contiene la posición calculada en el update y la posición anterior de cada Entidad. Modificados los métodos update y render de Entidad para que el movimiento del sprite se haga en el render ahora interpolado en vez de en update como estaba antes.
 
+## 20210415 RubénHerrera @(3h)
+Añadida las funciones para el patrón state en el menú.
+
 ## 20210417 RamónRodríguez @(2h)
 Ahora cuando el jugador colisiona con un enemigo, este le ataca y le inflinge daño. También he estado haciendo pruebas con el render interpolado y he comentado todo lo relacionado con él por mal funcionamiento.
 
@@ -87,3 +93,6 @@ Los NPC ya colisionan con los proyectiles y cuando lo hacen sufren daño. Si la 
 
 ## 20210418 SergioEspinosa @(1h)
 Actualizado el log y las tareas, creación de clases Menú y Mundo (estado ingame) con funciones de estado para el patrón state (son clases diferentes a juego ya que heredan de state) 
+
+## 20210418 RubénHerrera @(2h)
+Adaptación de la clase menú al patrón fachada para los controles y la vista. He añadido al motor la función para que dibuje texto. Actualizacion de la autoevaliación.

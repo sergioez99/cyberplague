@@ -18,6 +18,12 @@ Este hito comencé implementando la clase juego con el patrón estado en forma d
 También me di cuenta de que mi código de mapa tenia varios errores al coger los tiles y tuve que arreglarlo de inmediato. Además intenté usar la fachada en la clase mapa igual que Jose al haber hecho yo el código, pero lo dejamos para más adelante si hay tiempo para no liar mucho la cosa, ya que funciona correctamente así.
 Por último, he creado las clases mundo y menú con las funciones de estado nada más porque como he mencionado antes, no estamos trabajando aun con el juego usando el patrón estado.
 
+## Rubén Herrera Cervera
+Para este hito lo primero que hice fue unificar el código del menú que teniamos separado. Aquí tuve un error ya que al pasar el codigo al proyecto probe a llamarlo desde el main para ver el resultado y no conseguía que se dibujase. Era porque tenía un error con la variable que manejaba es estado del menu en el que se encontraba. 
+Implemente las diferentes funciones del patrón state en el menú e intenté continuar implementandolo en la clase CyberPlague pero sin éxito.
+Finalmente adapté el codigo del menú para que utilizase el patrón fachada y añadí a este para que pudiese dibujar el texto.
+Me ha quedado pendiente haber conseguido implementar el patrón state completo, aunque confío en tenerlo esta próxima semana.
+
 
 # Autoevaluación general
 Requiere añadir una propuesta de nota sobre 10
