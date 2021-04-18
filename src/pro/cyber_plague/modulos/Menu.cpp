@@ -10,18 +10,18 @@
 
 Menu* Menu::pinstance = 0;
 
-Menu* Menu::Instance(CyberPlague* contexto, sf::RenderWindow *w){
+Menu* Menu::Instance(CyberPlague* contexto, M_Window *w){
     pinstance = new Menu(contexto,w);
     return pinstance;
 }
 
-Menu::Menu(CyberPlague* contexto, sf::RenderWindow *w) {
+Menu::Menu(CyberPlague* contexto, M_Window *w) {
   
     _contexto = contexto;
     window=w;
 
-    width = 800;
-    height = 600;
+    width = 640;
+    height = 480;
     
     menu[0].setColor(sf::Color::Red);
     menu[0].setString("Nueva partida");
@@ -166,48 +166,41 @@ void Menu::Init(){
     run(*CyberPlague::Instance()->window);
 }
 
-int Menu::run(sf::RenderWindow &window){
-    while(window.isOpen()){
-        sf::Event event;
-        while(window.pollEvent(event)){ 
-            Eventos( event); //utilizamos la funcion para coger las teclas
-        }
+int Menu::run(M_Window &window){
+    vector<bool> key;
+    while(window.abierta()){
+        key = window.keyPressed();
+            Eventos( key); //utilizamos la funcion para coger las teclas
+        
         
         Render(); //dibujamos en pantalla el menu
     }
     return 0;
 }
 
-int Menu::Eventos(sf::Event event){
+int Menu::Eventos(vector<bool> key){
+            /*
             if (event.type == sf::Event::Closed){
-                window->close();
+                window->cerrar();
             }
+            */
             switch(menustate){ //para cada pantalla o estado del menu
-                case 1:
-                    switch(event.type){
-                        case sf::Event::KeyReleased:
-                            
-                            switch(event.key.code){
-                                case sf::Keyboard::Up:
+                case 1:  
+                    if(key[2])
                                     
-                                    MoveUp();
-                                    break;
-                                case sf::Keyboard::Down:
-                                    
-                                    MoveDown();
-                                    break;
-                                case sf::Keyboard::Return:
-                                    if(selectedItemIndex==1){    // Llamamos al juego
-                                       // Ingame::Instance(CyberPlague::Instance(),window, selected2)->Handle();
-                                    }
-                                    
-                                    break;
+                        MoveUp();
                                 
+                    else if (key[3])
+                                    
+                        MoveDown();
+                     
+                    else if(key[0]){
+                        if(selectedItemIndex==1){    // Llamamos al juego
+                            // Menu::Instance(CyberPlague::Instance(),window)->Handle();
                         }
-                        break;
-                    break;
+ 
                     }
-                    break;
+                break;
                 
             }
   
@@ -220,31 +213,31 @@ CyberPlague* Menu::getContexto(){
 }
 
 void Menu::Render(){
-    window->clear();
+    window->limpiar();
     switch(menustate){
         case 1:
             for (int i=0;i<MAX_NUMBER_OF_ITEMS;i++){
-                window->draw(menu[i]);
+                window->escribir(menu[i]);
             }
             break;
         case 2: 
             for (int i=0;i<MAX_NUMBER_OF_ITEMS_L;i++){
-                window->draw(menuL[i]);
+                window->escribir(menuL[i]);
             }
             break;   
         case 3: 
             for (int i=0;i<MAX_NUMBER_OF_ITEMS_N;i++){
-                window->draw(menuN[i]);
+                window->escribir(menuN[i]);
             }
             break;  
         case 4: 
             for (int i=0;i<MAX_NUMBER_OF_ITEMS_T;i++){
-                window->draw(menuT[i]);
+                window->escribir(menuT[i]);
             }
             break;   
         case 5: 
             for (int i=0;i<MAX_NUMBER_OF_ITEMS_P;i++){
-                window->draw(menuP[i]);
+                window->escribir(menuP[i]);
             }
             break;          
     }
@@ -363,4 +356,5 @@ void Menu::MoveDown(){
             break;              
     }
     
-}
+};
+

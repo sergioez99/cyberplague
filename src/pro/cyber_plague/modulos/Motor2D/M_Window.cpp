@@ -201,6 +201,12 @@ void M_Window::render(M_Sprite* spr){
 
 }
 
+void M_Window::escribir(sf::Text text){
+
+  ventana->draw(text);
+
+}
+
 void M_Window::display(){
 
   /*Time dt = reloj.restart();

@@ -25,7 +25,7 @@ Player::~Player(){
 
 void Player::update(float deltaTime, Map* m)
 {
-	//setLastPosition();
+	setLastPosition();
 
 	sf::Vector2f movement(0.0f, 0.0f);
 	//Gravedad

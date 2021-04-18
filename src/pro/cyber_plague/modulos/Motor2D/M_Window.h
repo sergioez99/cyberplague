@@ -48,5 +48,8 @@ class M_Window{
         //Metodo para cambiar la vista a mostrar
         void setView(M_View *camara);
 
+        //Metodo para escribir el menu
+        void escribir(sf::Text text);
+
         RenderWindow* getWindow();
 };

@@ -1,3 +1,4 @@
+
 #pragma once
 #include "SFML/Graphics.hpp"
 #include <vector>
@@ -13,12 +14,12 @@
 
 class Menu : public State{
     
-    public:
-        Menu(CyberPlague* contexto, sf::RenderWindow *w);
+    
+        
         ~Menu();
 
         void Render();
-        int run(sf::RenderWindow &window);
+        int run(M_Window &window);
         void MoveUp();
         void MoveDown();
         void Update();
@@ -26,8 +27,13 @@ class Menu : public State{
         void Init();
         CyberPlague* getContexto();
         int GetPressedItem();
-        int Eventos(sf::Event event);
-        static Menu* Instance(CyberPlague* contexto, sf::RenderWindow *w);
+        int Eventos(vector<bool> key);
+        static Menu* Instance(CyberPlague* contexto, M_Window *w);
+
+    protected: 
+        Menu(CyberPlague* contexto, M_Window *w);
+        Menu(const Menu &);
+        Menu &operator = (const Menu &);   
 
     private:
 
@@ -39,6 +45,8 @@ class Menu : public State{
         int selectedItemIndexP;
         int width;
         int height;
+        M_Window* window; 
+     //   vector<bool> key;
 
         static Menu* pinstance;
         CyberPlague *_contexto;
@@ -48,5 +56,6 @@ class Menu : public State{
         sf::Text menuN[MAX_NUMBER_OF_ITEMS_N];
         sf::Text menuT[MAX_NUMBER_OF_ITEMS_T];
         sf::Text menuP[MAX_NUMBER_OF_ITEMS_P];
-        sf::RenderWindow *window;
+        
+
 };

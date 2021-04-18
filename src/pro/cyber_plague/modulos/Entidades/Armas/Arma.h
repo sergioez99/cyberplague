@@ -4,6 +4,7 @@
 #include "../../Motor2D/M_Window.h"
 
 #include "../Player.h"
+#include "../NPC.h"
 
 using namespace std;
 
@@ -64,6 +65,7 @@ class Arma {
         void render(M_Window* vent);
 
         bool puedeDisparar();
+        void checkEnemyColision(vector<NPC*> enemigos);
 
         //GETTERS Y SETTERS
         vector<M_Sprite*> getProyectiles();

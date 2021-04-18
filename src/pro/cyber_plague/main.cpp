@@ -28,7 +28,6 @@ int main() {
   NPC* zom = new Zombi("sprites.png", 3.3*75, 0*75, 75, 75, 1216, 352);
 
   Arma* arc = new Arco(&player);
-  cout << player.getPosX() << player.getPosY() << endl;
   //arc->mejorar();
 
   vector<NPC*> enemigos;
@@ -65,20 +64,29 @@ int main() {
         salto--;
       }*/
       //Gravedad
-     
-      player.update(deltaTime, tutorial);
-      player.checkEnemyColision(enemigos);
-      if(key[4]){
+      if(!player.muerto()){
+        player.update(deltaTime, tutorial);
+        player.checkEnemyColision(enemigos);
+        if(key[4]){
 
-          arc->disparo();
+            arc->disparo();
+        }
+        //player.setLastPosition();
       }
       //Updates antes de los renders o el personaje vibra por las colisiones.
       //Mago es personaje por ahora
       for(int i = 0; i < (int)enemigos.size(); i++)
         enemigos.at(i)->update(deltaTime, tutorial);
 
-      player.setLastPosition();
       arc->update(deltaTime);
+      arc->checkEnemyColision(enemigos);
+
+      for(int i = 0; i < (int)enemigos.size(); i++){
+        if(enemigos.at(i)->muerto()){
+          delete enemigos.at(i);
+          enemigos.erase(enemigos.begin()+i);
+        }
+      }
     }
 
     //Mover camara
@@ -98,7 +106,8 @@ int main() {
       enemigos.at(i)->render(vent, percentTick); //Renderiza todos los personajes por ahora
       
     }
-    player.render(vent, percentTick);
+    if(!player.muerto())
+      player.render(vent, percentTick);
     arc->render(vent);
 
     vent->setView(camara);
@@ -106,10 +115,9 @@ int main() {
   }
   delete vent;
   delete camara;
-  delete zom;
-  //delete sold;
-  //delete mago;
-  //delete paj;
+
+  for(int i = 0; i < (int)enemigos.size(); i++)
+    delete enemigos.at(i);
 
   delete arc;
 /*

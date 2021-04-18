@@ -40,7 +40,5 @@ public:
   void Handle();
   void update();
   
-  //M_Window* window; Habrá que usar esta digo yo
-  sf::RenderWindow *window;
-  sf::Event event;
+  M_Window* window;
 };
