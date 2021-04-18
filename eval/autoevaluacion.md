@@ -24,6 +24,10 @@ Implemente las diferentes funciones del patrón state en el menú e intenté con
 Finalmente adapté el codigo del menú para que utilizase el patrón fachada y añadí a este para que pudiese dibujar el texto.
 Me ha quedado pendiente haber conseguido implementar el patrón state completo, aunque confío en tenerlo esta próxima semana.
 
+## Jorge Mompeán Cabezas
+En este hito he tenido bastante poca participación por mi parte por temas personales y de tiempo. Conseguí en la rama experimental que el personaje principal tenga una animación en estático y una animación corriendo de un lado para otro, y con la ayuda de Jose Antonio, una vez incluí en esta rama lo hecho en experimental, adaptamos mi código a lo que se había hecho en el main. Confio que para la entrega del proyecto final tenga más presencia y pueda aportar mucho más de lo poco que he hecho en relación al resto de compañeros.
+
+
 
 # Autoevaluación general
 Requiere añadir una propuesta de nota sobre 10
