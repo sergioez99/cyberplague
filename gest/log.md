@@ -84,3 +84,6 @@ Ahora cuando el jugador colisiona con un enemigo, este le ataca y le inflinge da
 
 ## 20210418 RamónRodríguez @(1h 15m)
 Los NPC ya colisionan con los proyectiles y cuando lo hacen sufren daño. Si la vida del NPC llega a 0 este muere y ya no aparece en el juego. Si la vida de Player llega 0 muere y de momento no se updatea ni se renderiza, en un futuro aparecerá la típica pantalla indicando que has muerto.
+
+## 20210418 SergioEspinosa @(1h)
+Actualizado el log y las tareas, creación de clases Menú y Mundo (estado ingame) con funciones de estado para el patrón state (son clases diferentes a juego ya que heredan de state) 

@@ -13,5 +13,11 @@ He implementado el movimiento de la cámara, haciendo que siga al jugador cuando
 He hecho que cuando el jugador colisione con un NPC sufra daño y muera cuando su vida llegue a 0 (actualmente cuando muere deja de llamar a su update y a su render, por lo que no se mostrará y no podremos interactuar, para el próximo hito lo que hará será mostrar la típica pantalla de Game Over). También he hecho que cuando un proyectil colisione con un NPC este reciba daño y el proyectil se elimine. Cuando la vida del NPC llegue a 0 este morirá.
 Por último, he limitado las llamadas a los update a 15 veces por segundo y he intentado implementar el render interpolado, pero como hasta el momento estabamos moviendo los sprites en los updates me han surgido varios errores al implementarlo y he tenido que quitarlo para este hito.
 
+## Sergio Espinosa Zaragoza
+Este hito comencé implementando la clase juego con el patrón estado en forma de ejemplo, pero se ha quedado sin implementar todavia el patrón al seguir trabajando en que el juego funcione.
+También me di cuenta de que mi código de mapa tenia varios errores al coger los tiles y tuve que arreglarlo de inmediato. Además intenté usar la fachada en la clase mapa igual que Jose al haber hecho yo el código, pero lo dejamos para más adelante si hay tiempo para no liar mucho la cosa, ya que funciona correctamente así.
+Por último, he creado las clases mundo y menú con las funciones de estado nada más porque como he mencionado antes, no estamos trabajando aun con el juego usando el patrón estado.
+
+
 # Autoevaluación general
 Requiere añadir una propuesta de nota sobre 10
