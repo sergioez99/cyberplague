@@ -1,22 +1,37 @@
+# HITO 2
 # Autoevaluación individual
 
-## Carlos Villena Cerdá
-Por regla general no he tenido ningún problema serio ni nada de eso, lo único que he tenido ha sido la adaptación al motor y el aprendizaje del mismo. Al empezar a hacer algún prototipo ya fui aprendiendo y cada vez tuve menos problemas.
+## José Antonio Sansano Melero
+En este hito 2, he transferido las colisiones al mapa, y he simulado la gravedad para que el jugador no pueda moverse en cualquier dirección. También he añadido la funcionalidad de saltar, que será mejorada más adelante (doble salto, por ejemplo).
+He creado una carpeta Tools con structs que son para sustituir a los de SFML (Vector2 de floats, Vector4 de Ints). También he intentado convertir todo el código que esta puesto de SFML a C++, utilizando solamente de SFML las clases de Motor2D (Fachada), pero no he podido por un error. Necesitaré hacerlo por partes, o dejar la clase Map (la que da el error) sin transformar y que siga utilizando funciones de SFML directamente.
+He ayudado a implementar la clase personaje que no tenía sprite porque no heredaba de Entidad.
+Y he ordenado como se realizaban los Inputs. Ahora los Inputs de movimiento los coge en tiempo real, y los pulsados (el botón de disparar, por ejemplo) utilizando el bucle de Events.
 
-## José Antonio Sansano
-He realizado la tarea Hitbox satisfactoriamente utilizando punteros y vectores, ya que es lo que utilizaremos en el proyecto real, aunque se cambiará el código para que se utilicen smart pointers, en vez de punteros normales. Aunque la tarea se llame Hitbox, en realidad se refiere a todas las interacciones que va a tener las BoundingBoxes de los personajes y entorno(No caerse, no atravesar muros, matar enemigos si se toca con algo...). El único problema encontrado ha sido la primera vez que intenté mergear en github, ya que lo hice mal y tuve que arreglar la rama experimental.
+## Ramón Rodríguez Pedraza
+En este hito 2, he solucionado los errores que tuve en el hito 1 con el Algoritmo A*, y he unificado todos los NPCs a través de la clase NPC de la que todos heredan. También he creado la clase AI_Agent que contiene una clase Nodo y que sirve para obtener un camino a seguir utilizando el Algoritmo A*, esta clase se utilizará en el NPC Pájaro.
+He hecho que los NPCs terrestres, Zombi y Soldado, se muevan de un lado a otro sin caerse de la plataforma en la que están utilizando la matriz de colisiones del mapa.
+He implementado el movimiento de la cámara, haciendo que siga al jugador cuando llegue a la mitad de la pantalla y que deje de seguirlo cuando llegue al final del mapa. Para esto he creado una clase M_View en Motor2D para no trabajar sobre la View de SFML.
+He hecho que cuando el jugador colisione con un NPC sufra daño y muera cuando su vida llegue a 0 (actualmente cuando muere deja de llamar a su update y a su render, por lo que no se mostrará y no podremos interactuar, para el próximo hito lo que hará será mostrar la típica pantalla de Game Over). También he hecho que cuando un proyectil colisione con un NPC este reciba daño y el proyectil se elimine. Cuando la vida del NPC llegue a 0 este morirá.
+Por último, he limitado las llamadas a los update a 15 veces por segundo y he intentado implementar el render interpolado, pero como hasta el momento estabamos moviendo los sprites en los updates me han surgido varios errores al implementarlo y he tenido que quitarlo para este hito.
 
 ## Sergio Espinosa Zaragoza
-He realizado las tareas de realizar el cargador de mapa y cargar un mapa propio para nuestro juego. No he tenido problemas al haber cursado el año pasado la asignatura y tener ya varios conocimientos, pero si he creado un mapa con una imagen cortada en tiles, y no con tiles en sí, sin darme cuenta y se tiene que volver a rehacer.
-
-## Ramón Rodriguez Pedraza
-Por lo general no he tenido ningún problema más alla de la familiarización con sfml y su aprendizaje. He estado trabajando con la IA de los enemigos la cual no me ha dado muchos problemas una vez comprendí como trabajar en función de la matriz de colisiones. El algoritmo A* es lo que más me ha costado comprender e implementar y es por ello por lo que aun no he conseguido finalizarlo del todo.
+Este hito comencé implementando la clase juego con el patrón estado en forma de ejemplo, pero se ha quedado sin implementar todavia el patrón al seguir trabajando en que el juego funcione.
+También me di cuenta de que mi código de mapa tenia varios errores al coger los tiles y tuve que arreglarlo de inmediato. Además intenté usar la fachada en la clase mapa igual que Jose al haber hecho yo el código, pero lo dejamos para más adelante si hay tiempo para no liar mucho la cosa, ya que funciona correctamente así.
+Por último, he creado las clases mundo y menú con las funciones de estado nada más porque como he mencionado antes, no estamos trabajando aun con el juego usando el patrón estado.
 
 ## Rubén Herrera Cervera
-Yo he hecho todo lo relacionado con los menús. Al principio me costo entender como debía funcionar por lo que perdí bastante tiempo. Tuve un problema con un merge que pensaba que se había hecho pero por alguna razón no se hizo y tuve que mergear cuando ya se habían hecho muchos cambios pero salió bien. Reconozco que posiblemente haya hecho menos horas que mis compañeros por eso para el próximo hito voy a tratar de aumentarlas.
+Para este hito lo primero que hice fue unificar el código del menú que teniamos separado. Aquí tuve un error ya que al pasar el codigo al proyecto probe a llamarlo desde el main para ver el resultado y no conseguía que se dibujase. Era porque tenía un error con la variable que manejaba es estado del menu en el que se encontraba. 
+Implemente las diferentes funciones del patrón state en el menú e intenté continuar implementandolo en la clase CyberPlague pero sin éxito.
+Finalmente adapté el codigo del menú para que utilizase el patrón fachada y añadí a este para que pudiese dibujar el texto.
+Me ha quedado pendiente haber conseguido implementar el patrón state completo, aunque confío en tenerlo esta próxima semana.
+
+## Carlos Villena Cerdá
+Al comienzo del hito empecé creando la clase M_Window y M_Sprite, después creé la clase Entidad y NPC e incluí algunas funcionalidades para que las clases de los NPCs (que ya estaban creadas) para que pudieran utilizar los métodos de las clases padre. También implementé las clases de las armas y creé sus sprites.
+En general creo que ha sido un buen hito, hemos conseguido implementar muchas funcionalidades y nuestro juego a dia de hoy parece algo muy diferente a cuando empecemos. A pesar de que aun quedan más funcionalidades por implementar, estoy muy satisfecho con el resultado. 
 
 ## Jorge Mompeán Cabezas
-Personalmente, me he visto bastante inexperto tanto en c++ como en SFML por lo que donde más problemas y tiempo he dedicado (y sé que me tocará dedicar), es en la investigación propia y autodidacta para desarrollar todo lo planteado en el proyecto y en la asignatura
+En este hito he tenido bastante poca participación por mi parte por temas personales y de tiempo. Conseguí en la rama experimental que el personaje principal tenga una animación en estático y una animación corriendo de un lado para otro, y con la ayuda de Jose Antonio, una vez incluí en esta rama lo hecho en experimental, adaptamos mi código a lo que se había hecho en el main. Confio que para la entrega del proyecto final tenga más presencia y pueda aportar mucho más de lo poco que he hecho en relación al resto de compañeros.
+
 
 # Autoevaluación general
-Hemos completado casi todos los objetivos propuestos para el Hito 1, a falta de algunas funcionalidades con las que hemos tenido problemas. Las finalizaremos a la vez que empezaremos a trabajar todos juntos en la rama develop. Pensamos que el flujo de trabajo en este hito ha sido el indicado, y que a partir de ahora hay que poner más dedicación si queremos sacar el juego adelante. Consideramos que analizando esfuerzo dedicado, trabajo conseguido y trabajo restante que merecemos una nota de 7'5.
+En este hito hemos conseguido asentar las bases de lo que será nuestro futuro videojuego y, a pesar de que nos queda más trabajo a realizar, estamos muy satisfechos con el resultado. Creemos que la nota de nuestro hito podría ser un 7/10.

@@ -3,102 +3,35 @@
 		{
 			"path": "."
 		},
+		
+		//Aquí se agrega cada subproyecto, separado por comas
+		{
+			"name": "GAME: Cyber Plague",
+			"path": "src/pro/cyber_plague"
+		},
 
-				//Aquí se agrega cada subproyecto, separado por comas
-				{
-					"name": "PROT: Hitbox",
-					"path": "src/pro/Hitbox",
-				},
-				{
-					"name": "PROT: Arma Basica",
-					"path": "src/pro/arma_basica",
-		
-				},
-				{
-					"name": "PROT: Arco Hojas",
-					"path": "src/pro/arco_hojas",
-		
-				},
-				{
-					"name": "PROT: Rayo Laser",
-					"path": "src/pro/rayoLaser",
-		
-				},
-				{
-					"name": "PROT: Lanzallamas",
-					"path": "src/pro/lanzallamas",
-		
-				},
-				{
-					"name": "PROT: movPersonaje",
-					"path": "src/pro/movPersonaje"
-				},
-				{
-					"name": "Mapa: Tiled",
-					"path": "src/pro/mapa"
-				},
-				{
-					"name": "Mapa: Nivel 1 Mapa 1",
-					"path": "src/pro/mapa_tutorial"
-				},
-				{
-					"name": "Mapa movCamara",
-					"path": "src/pro/movCamara"
-				},
-				{
-					"name": "PROT: Menu Principal",
-					"path": "src/pro/menu_principal"
-				},
-				{
-					"name": "PROT: Menu Pausa",
-					"path": "src/pro/menu_pausa"
-				},
-
-				{
-					"name": "PROT: Menu Lobby",
-					"path": "src/pro/menu_lobby"
-				},
-				{
-					"name": "PROT: Menu Niveles",
-					"path": "src/pro/menu_niveles"
-				},
-				{
-					"name": "PROT: Menu Tienda",
-					"path": "src/pro/menu_tienda"
-				},
-				{
-					"name": "PROT: Zombi",
-					"path": "src/pro/IA_Zombi"
-				},
-				{
-					"name": "PROT: Mago",
-					"path": "src/pro/IA_Mago"
-				},
-				{
-					"name": "PROT: Soldado",
-					"path": "src/pro/IA_Soldado"
-				},
-				{
-					"name": "PROT: FV",
-					"path": "src/pro/plantilla_fv"
-				}
 	],
 	"settings": {
 		"editor.wordWrap": "on",
 		"files.associations": {
+			"iostream": "cpp",
+			"ostream": "cpp",
 			"array": "cpp",
 			"*.tcc": "cpp",
 			"cctype": "cpp",
 			"clocale": "cpp",
 			"cmath": "cpp",
 			"cstdarg": "cpp",
+			"cstddef": "cpp",
 			"cstdint": "cpp",
 			"cstdio": "cpp",
 			"cstdlib": "cpp",
+			"cstring": "cpp",
 			"ctime": "cpp",
 			"cwchar": "cpp",
 			"cwctype": "cpp",
 			"deque": "cpp",
+			"list": "cpp",
 			"unordered_map": "cpp",
 			"vector": "cpp",
 			"exception": "cpp",
@@ -110,11 +43,9 @@
 			"fstream": "cpp",
 			"initializer_list": "cpp",
 			"iosfwd": "cpp",
-			"iostream": "cpp",
 			"istream": "cpp",
 			"limits": "cpp",
 			"new": "cpp",
-			"ostream": "cpp",
 			"numeric": "cpp",
 			"sstream": "cpp",
 			"stdexcept": "cpp",
