@@ -96,3 +96,6 @@ Actualizado el log y las tareas, creación de clases Menú y Mundo (estado ingam
 
 ## 20210418 RubénHerrera @(2h)
 Adaptación de la clase menú al patrón fachada para los controles y la vista. He añadido al motor la función para que dibuje texto. Actualizacion de la autoevaliación.
+
+## 20210418 CarlosVillena @(5h)
+Creación del resto de armas (excepto Lanzallamas) y ajustes para que funcionen. Creacion preliminar del sistema de municion. He tardado tanto porque habia un problema con la lógica que habia implementada en las armas. En principio ya debería funcionar todo. 

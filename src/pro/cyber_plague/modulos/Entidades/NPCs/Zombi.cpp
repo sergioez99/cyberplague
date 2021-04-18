@@ -2,8 +2,8 @@
 
 /* STATS */
 
-#define kVida  50
-#define kArm  20
+#define kVida  15
+#define kArm  2
 #define kVel  55.0f
 #define kAta  20
 #define kAtTime  2

@@ -10,3 +10,10 @@ Esta información debe estár sincronizada con el GDD. Debe contener la informac
 - Movimiento de la cámara.
 - Player y NPC sufren daño y pueden morir.
 - Render interpolado (aún no finalizado).
+
+### Carlos Villena Cerdá
+- Creación de las distintas armas y todo lo relacionado con ellas. (Excepto el Lanzallamas)
+- Creación inicial de la fachada.
+- Hacer que el jugador pueda cambiar de arma.
+- Creacion de la clase Entidad y NPC.
+- Pequeños ajustes en las clases de los NPCs para que puedan utilizar las clases anteriores.

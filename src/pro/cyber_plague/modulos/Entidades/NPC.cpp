@@ -13,3 +13,4 @@ NPC::~NPC(){}
 float NPC::getRango(){
     return *rango;
 }
+

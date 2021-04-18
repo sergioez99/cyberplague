@@ -8,6 +8,9 @@
 
 using namespace std;
 
+
+
+
 /*
 CLASE ABSTRACTA ENTIDAD, NO SE PUEDE INSTANCIAR. TODAS LAS ENTIDADES DEL JUEGO (EL PJ Y LOS NPCs), HEREDAN DE ESTA CLASE.
 
@@ -29,6 +32,8 @@ class Entidad{
         bool grounded;
         posInterpolada pos;
 
+        Clock invencibilidad;     //Reloj para controlar el tiempo que debe pasar para que la entidad reciba daño.
+
     public:
         Entidad();
         virtual ~Entidad() = 0;
@@ -43,6 +48,7 @@ class Entidad{
         void escalar(float x, float y);
         
         bool muerto();
+        void reciboDmg(int dmg);
         void render(M_Window* vent, float percentTick);
 
     

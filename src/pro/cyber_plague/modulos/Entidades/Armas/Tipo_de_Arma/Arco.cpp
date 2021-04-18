@@ -5,20 +5,22 @@
 #define kDmg 40
 #define kCad 2
 #define kVel 400.0f
+#define kMuncGas 10  //MUNICION QUE GASTA EL ARMA POR DISPARO
+
 
 /* -------------- */
 
 
 /* DATOS DE LA BALA */
 
-#define kFich "flecha.png"
+#define kFich "spritesheet_armas.png"
 #define kTexLeft 0
 #define kTexTop 0
 #define kTexWidth 32
 #define kTexHeight 10
 
 
-Arma::Bala::Bala(float posX, float posY, int ori){
+Arco::Bala::Bala(float posX, float posY, int ori){
 
     sprite_bala = new M_Sprite( kFich , kTexLeft , kTexTop , kTexWidth , kTexHeight , posX, posY);
 
@@ -31,37 +33,71 @@ Arma::Bala::Bala(float posX, float posY, int ori){
 
 }
 
-void Arma::Bala::moverse(float posX, float posY){
+void Arco::Bala::moverse(float posX, float posY){
 
     sprite_bala->mover(posX, posY);
 }
 
-void Arma::Bala::rotar(float grad){
+void Arco::Bala::rotar(float grad){
 
     sprite_bala->rotar(grad);
 }
 
-M_Sprite* Arma::Bala::getSprite(){
+M_Sprite* Arco::Bala::getSprite(){
 
     return sprite_bala;
+}
+
+bool Arco::Bala::heColisionado(NPC* enemigo){
+
+    if(sprite_bala->getSprite()->getGlobalBounds().intersects(enemigo->getSprite()->getSprite()->getGlobalBounds())){
+
+        return true;
+    }
+
+    else{
+
+        return false;
+    }
 }
 
 /* ---------------- */
 
 
 
-Arco::Arco(Player * p) : Arma(){
+Arco::Arco(float posX, float posY, int orie) : Arma(){
 
-    jugador = p;
+    pX = posX;
+    pY = posY;
+    ori = orie;
 
-    dmg = kDmg + p->getDmg();
+    dmg = kDmg;
     cad = kCad;
     vel = kVel;
 
     mejora = false;
+
+    municionMax = 100;
+    municionActual = 100;
 }
 
 Arco::~Arco(){}
+
+bool Arco::puedeDisparar(){
+
+    float tmp = (float) contDisparo.getElapsedTime().asMilliseconds() / 1000;
+
+    if(tmp >= cad && municionActual > 0){
+
+        return true;
+    }
+
+    else{
+
+        return false;
+    }
+}
+
 
 void Arco::disparo(){
 
@@ -70,12 +106,9 @@ void Arco::disparo(){
         if(mejora){
 
             for(unsigned int i = 0; i < 3; i++){
-
-                //La posicion habria que ajustarla a la del jugador.
-
                 
 
-                Bala* bala = new Bala(jugador->getPosX(), jugador->getPosY(), jugador->mirandoDerecha()); 
+                Bala* bala = new Bala(pX, pY, ori); 
 
                 switch (i) {
 
@@ -100,10 +133,11 @@ void Arco::disparo(){
         
         else{
 
-            Bala* bala = new Bala(jugador->getPosX(), jugador->getPosY(), jugador->mirandoDerecha()); 
+            Bala* bala = new Bala(pX, pY, ori); 
             proyectiles.push_back(bala);
         }
 
+        municionActual = municionActual - kMuncGas;
        contDisparo.restart();
     }
 }
@@ -127,12 +161,8 @@ void Arco::update(float dt){
 
                 case 0: 
 
-
-
                     proyectiles.at(i)->moverse(proyectiles.at(i)->orientacion * (vel * dt), proyectiles.at(i)->orientacion * ((vel * dt) / 3));  //BALA SUPERIOR.
-                    
-
-                    
+                
                     break;
 
                 case 1:
@@ -157,4 +187,24 @@ void Arco::update(float dt){
             proyectiles.at(i)->moverse(proyectiles.at(i)->orientacion * (vel * dt), 0);
         }
     }
+}
+
+void Arco::render(M_Window* vent){
+    for(unsigned int i = 0; i < proyectiles.size(); i++){
+
+        vent->render(proyectiles.at(i)->getSprite());
+    }
+
+    
+}
+
+void Arco::balaImpactada(NPC* enemigo){
+    for(unsigned int i = 0; i < proyectiles.size(); i++){
+
+        if(proyectiles.at(i)->heColisionado(enemigo)){
+
+            enemigo->reciboDmg(getDmg());
+        }
+
+	}
 }

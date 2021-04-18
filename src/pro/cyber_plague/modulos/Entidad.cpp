@@ -1,5 +1,7 @@
 #include "Entidad.h"
 
+#define kTempInv 0.5f
+
 Entidad::Entidad(){}
 
 Entidad::~Entidad(){}
@@ -14,6 +16,29 @@ bool Entidad::muerto(){
     if(*vida <= 0){return true;}
     else{return false;}
 
+}
+
+void Entidad::reciboDmg(int dmg){
+
+    int dmgRecibido = dmg - *armadura;
+
+    cout << "Vida: " << *vida << " --- " << "Armadura: " << *armadura << "Daño: " << dmgRecibido << endl;
+    float temp = (float) invencibilidad.getElapsedTime().asMilliseconds() / 1000;
+    cout << temp << endl;
+    if(temp > kTempInv){
+
+        if(dmgRecibido <= 0){
+
+            *vida = *vida - 1;
+        }
+
+        else{
+
+            *vida = *vida - dmgRecibido;
+        }
+
+        invencibilidad.restart();
+    } 
 }
 
 void Entidad::render(M_Window* vent, float percentTick){

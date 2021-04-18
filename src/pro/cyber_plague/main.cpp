@@ -26,8 +26,6 @@ int main() {
   //NPC* paj = new Pajaro("sprites.png", 1*75, 0*75, 75, 75, 640/4, 480/4);
   //NPC* sold = new Soldado("sprites.png", 2.3*75, 0*75, 75, 75, 640/6, 480/6);
   NPC* zom = new Zombi("sprites.png", 3.3*75, 0*75, 75, 75, 1216, 352);
-
-  Arma* arc = new Arco(&player);
   //arc->mejorar();
 
   vector<NPC*> enemigos;
@@ -39,8 +37,7 @@ int main() {
   Map *tutorial = new Map(1);
 
   vector<bool> key;
-  bool dir = false;
-  int salto = 0;
+
 
   Time timeStartUpdate = clock.getElapsedTime();
 
@@ -66,24 +63,30 @@ int main() {
       //Gravedad
       if(!player.muerto()){
         player.update(deltaTime, tutorial);
-        player.checkEnemyColision(enemigos);
+        //player.checkEnemyColision(enemigos);
         if(key[4]){
 
-            arc->disparo();
+          player.ataque();
+
         }
         //player.setLastPosition();
       }
       //Updates antes de los renders o el personaje vibra por las colisiones.
       //Mago es personaje por ahora
-      for(int i = 0; i < (int)enemigos.size(); i++)
-        enemigos.at(i)->update(deltaTime, tutorial);
 
-      arc->update(deltaTime);
-      arc->checkEnemyColision(enemigos);
+
 
       for(int i = 0; i < (int)enemigos.size(); i++){
+          player.getArmaEquipada()->balaImpactada(enemigos.at(i));
+          enemigos.at(i)->update(deltaTime, tutorial);
+      }
+        
+
+
+      for(int i = 0; i < (int)enemigos.size(); i++){
+
         if(enemigos.at(i)->muerto()){
-          delete enemigos.at(i);
+          
           enemigos.erase(enemigos.begin()+i);
         }
       }
@@ -107,8 +110,8 @@ int main() {
       
     }
     if(!player.muerto())
-      player.render(vent, percentTick);
-    arc->render(vent);
+
+      player.renders(vent, percentTick);
 
     vent->setView(camara);
     vent->display();
@@ -119,7 +122,6 @@ int main() {
   for(int i = 0; i < (int)enemigos.size(); i++)
     delete enemigos.at(i);
 
-  delete arc;
 /*
     //Bucle del juego
     while (ventana->abierta()) {

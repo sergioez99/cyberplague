@@ -24,6 +24,6 @@ Implemente las diferentes funciones del patrón state en el menú e intenté con
 Finalmente adapté el codigo del menú para que utilizase el patrón fachada y añadí a este para que pudiese dibujar el texto.
 Me ha quedado pendiente haber conseguido implementar el patrón state completo, aunque confío en tenerlo esta próxima semana.
 
-
-# Autoevaluación general
-Requiere añadir una propuesta de nota sobre 10
+## Carlos Villena Cerdá
+Al comienzo del hito empecé creando la clase M_Window y M_Sprite, después creé la clase Entidad y NPC e incluí algunas funcionalidades para que las clases de los NPCs (que ya estaban creadas) para que pudieran utilizar los métodos de las clases padre. También implementé las clases de las armas y creé sus sprites.
+En general creo que ha sido un buen hito, hemos conseguido implementar muchas funcionalidades y nuestro juego a dia de hoy parece algo muy diferente a cuando empecemos. A pesar de que aun quedan más funcionalidades por implementar, estoy muy satisfecho con el resultado. 

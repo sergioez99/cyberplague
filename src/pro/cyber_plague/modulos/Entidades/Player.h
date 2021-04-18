@@ -4,6 +4,13 @@
 #include "Entidad.h"
 #include "NPC.h"
 
+#include "Armas/Arma.h"
+#include "Armas/Tipo_de_Arma/Arco.h"
+#include "Armas/Tipo_de_Arma/Laser.h"
+#include "Armas/Tipo_de_Arma/Rayo.h"
+#include "Armas/Tipo_de_Arma/Lanzallamas.h"
+
+
 class Player : public Entidad
 {
 public: 
@@ -15,19 +22,29 @@ public:
 
 	int mirandoDerecha();
 	int getDmg();
-	void setDmg(int d);
-	void checkEnemyColision(vector<NPC*> enemigos);
+	Arma* getArmaEquipada();
 
+	void setDmg(int d);
+	//void checkEnemyColision(vector<NPC*> enemigos);
+	void ataque();
+
+	void renders(M_Window* vent, float percentTick);
 
 private:
 	sf::RectangleShape body;
 	Animacion animacion;
+
+	vector<Arma*> armas;
+	int arma_actual;
+
+	Clock temp_cambioArma;
+
 	unsigned int row;
 	float speed;
 	bool faceRight;
 	int dmg;
 	
-	virtual void ataque(){};
+	
     virtual bool puedoAtacar(){return false;};
     virtual void moverse(float deltaTime){};
 
