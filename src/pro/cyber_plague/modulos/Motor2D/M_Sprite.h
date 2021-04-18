@@ -43,5 +43,5 @@ class M_Sprite{
         void setPosition(Vector2D pos);
 
         //Solo las clases de Motor2D deberían usar esto
-        Sprite* getSprite();      
+        Sprite* getSprite();
 };
