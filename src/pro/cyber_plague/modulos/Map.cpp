@@ -140,6 +140,15 @@ bool Map::checkCollision(Sprite* sp){
     return false;
 }
 
+Sprite* Map::getCollision(Sprite* sp){
+    for(int y=0; y<_height; y++)
+            for(int x=0; x<_width; x++){
+                if(_tilemapSprite[0][y][x]!=NULL && sp->getGlobalBounds().intersects(_tilemapSprite[0][y][x]->getGlobalBounds()))
+                    return _tilemapSprite[0][y][x];//Sprite que colisiona con player
+            }
+    return NULL;//Devuelve null en caso contrario
+}
+
 bool Map::checkCollision(int x, int y){
     if(x > -1 && x < _width && y > - 1 && y < _height && _tilemapSprite[0][y][x] == NULL)
         return false;

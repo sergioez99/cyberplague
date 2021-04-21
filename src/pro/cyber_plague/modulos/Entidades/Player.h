@@ -44,7 +44,6 @@ private:
 	bool faceRight;
 	int dmg;
 	
-	
     virtual bool puedoAtacar(){return false;};
     virtual void moverse(float deltaTime){};
 

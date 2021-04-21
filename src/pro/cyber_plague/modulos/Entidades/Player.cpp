@@ -37,18 +37,19 @@ Player::~Player(){
 void Player::update(float deltaTime, Map* m)
 {
 	setLastPosition();
-
-	sf::Vector2f movement(0.0f, 0.0f);
+	Vector2D colPos{0,0};
+	sf::Vector2f movement(0.0f, 0.0f);//En cada frame, esto se pone a 0, por lo que el bucle interpolado no va a ir, tiene que ser de clase.
+	//Utilizar Vector2D en vez del sf::Vector2f para no usar SFML
 	//Gravedad
 	 if(!isJumping()){//Si no salta, aplicar gravedad
         getSprite()->mover(0, 2 * speed * deltaTime);
-		//movement.y += 2*speed*deltaTime;
         if(m->checkCollision(getSprite()->getSprite())){//si es verdadero, ya estaba en el suelo.
-          getSprite()->mover(0, -2 * speed * deltaTime);
-		  //movement.y -= 2*speed*deltaTime;
-          setGrounded(true);
+			colPos.x = getSprite()->getPosX();
+			colPos.y = m->getCollision(getSprite()->getSprite())->getGlobalBounds().top-getSprite()->getSprite()->getLocalBounds().height/2;
+        	getSprite()->setPosition(colPos); //Esto se utiliza para que este tocando el suelo, y no flotando.
+          	setGrounded(true);
         }else{
-          setGrounded(false);//Se puede caer por un agujero y no estar grounded igualmente
+          	setGrounded(false);//Se puede caer por un agujero y no estar grounded igualmente
         }
       }
 	if(salto>0){
@@ -123,7 +124,7 @@ void Player::update(float deltaTime, Map* m)
 
 	
 
-	if(m->checkCollision(getSprite()->getSprite()))//si es verdadero, no debe de estar en esa posicion
+	if(m->checkCollision(getSprite()->getSprite()) )//si es verdadero, no debe de estar en esa posicion
 		getSprite()->setPosition(getLastPosition());
 		
 	pos.setPosition(spr->getPosX(), spr->getPosY());

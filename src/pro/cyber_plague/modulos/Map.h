@@ -25,6 +25,7 @@ public:
     int getTileWidth()              { return _tilewidth;        };
 
     bool checkCollision(Sprite* sp); //Utilizar RectShapes de sfml para comprobar colisiones
+    Sprite* getCollision(Sprite* sp); //Devuelve la colisión que colisiona con el sprite
     bool checkCollision(int x, int y);  //Utilizar para crear el camino en AI_Agent
     bool checkCaida(Sprite *sp);    //Utilizar para el movimiento de Zombi y Soldado
     
