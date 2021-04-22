@@ -1,12 +1,5 @@
-#include "Menu.h"
-#include "../include/includes.h"
-#include <SFML/Graphics.hpp>
-#include <stdio.h>
-#include <iostream>
-#include <sstream>
-#include <SFML/System.hpp>
-#include <vector>
-#include <string> 
+#include "CyberPlague.h"
+
 
 Menu* Menu::pinstance = 0;
 
@@ -163,13 +156,13 @@ void Menu::Update(){
 }
 
 void Menu::Init(){
-    run(*CyberPlague::Instance()->window);
+    run(CyberPlague::Instance()->window);
 }
 
-int Menu::run(M_Window &window){
+int Menu::run(M_Window *window){
     vector<bool> key;
-    while(window.abierta()){
-        key = window.keyPressed();
+    while(window->abierta()){
+        key = window->keyPressed();
             Eventos( key); //utilizamos la funcion para coger las teclas
         
         
