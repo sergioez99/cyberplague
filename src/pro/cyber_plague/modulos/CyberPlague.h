@@ -87,7 +87,7 @@ class Menu : public State{
 
         static Menu* pinstance;
         CyberPlague *_contexto;
-      //  sf::Font font;
+        sf::Font font;
         sf::Text menu[MAX_NUMBER_OF_ITEMS];
         sf::Text menuL[MAX_NUMBER_OF_ITEMS_L];
         sf::Text menuN[MAX_NUMBER_OF_ITEMS_N];

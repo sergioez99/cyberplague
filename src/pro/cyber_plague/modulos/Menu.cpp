@@ -15,98 +15,109 @@ Menu::Menu(CyberPlague* contexto, M_Window *w) {
 
     width = 640;
     height = 480;
-    
+
+    if(!font.loadFromFile("./resources/arial.ttf")){
+        font.loadFromFile("./resources/Ubuntu-Regular.ttf");
+    }
+
+    menustate = 1;
+
+    menu[0].setFont(font);
     menu[0].setColor(sf::Color::Red);
     menu[0].setString("Nueva partida");
     menu[0].setPosition(sf::Vector2f(width / 2, height / (MAX_NUMBER_OF_ITEMS +1) * 1));
 
-
+    menu[1].setFont(font);
     menu[1].setColor(sf::Color::White);
     menu[1].setString("Continuar");
     menu[1].setPosition(sf::Vector2f(width / 2, height / (MAX_NUMBER_OF_ITEMS +1) * 2));
 
-  
+    menu[2].setFont(font);
     menu[2].setColor(sf::Color::White);
     menu[2].setString("Como jugar");
     menu[2].setPosition(sf::Vector2f(width / 2, height / (MAX_NUMBER_OF_ITEMS +1) * 3));
 
-  
+    menu[3].setFont(font);
     menu[3].setColor(sf::Color::White);
     menu[3].setString("Opciones");
     menu[3].setPosition(sf::Vector2f(width / 2, height / (MAX_NUMBER_OF_ITEMS +1) * 4));
 
-
+    menu[4].setFont(font);
     menu[4].setColor(sf::Color::White);
     menu[4].setString("Creditos");
     menu[4].setPosition(sf::Vector2f(width / 2, height / (MAX_NUMBER_OF_ITEMS +1) * 5));
 
+    menu[5].setFont(font);
     menu[5].setColor(sf::Color::White);
     menu[5].setString("Salir");
     menu[5].setPosition(sf::Vector2f(width / 2, height / (MAX_NUMBER_OF_ITEMS +1) * 6));
 
 ///////////////////////////////////////  LOBBY
-  
+    menuL[0].setFont(font);
     menuL[0].setColor(sf::Color::Red);
     menuL[0].setString("Sector 1");  
     menuL[0].setPosition(sf::Vector2f(width / 2, height / (MAX_NUMBER_OF_ITEMS_L +1) * 1));
 
-   
+    menuL[1].setFont(font);
     menuL[1].setColor(sf::Color::White);
     menuL[1].setString("Sector 2");
     menuL[1].setPosition(sf::Vector2f(width / 2, height / (MAX_NUMBER_OF_ITEMS_L +1) * 2));
 
-   
+    menuL[2].setFont(font);
     menuL[2].setColor(sf::Color::White);
     menuL[2].setString("Sector 3");
     menuL[2].setPosition(sf::Vector2f(width / 2, height / (MAX_NUMBER_OF_ITEMS_L +1) * 3));
 
+    menuL[3].setFont(font);
     menuL[3].setColor(sf::Color::White);
     menuL[3].setString("Tienda");
     menuL[3].setPosition(sf::Vector2f(width / 2, height / (MAX_NUMBER_OF_ITEMS_L +1) * 4));
 
-
+    menuL[4].setFont(font);
     menuL[4].setColor(sf::Color::White);
     menuL[4].setString("Volver al menu principal");
     menuL[4].setPosition(sf::Vector2f(width / 2, height / (MAX_NUMBER_OF_ITEMS_L +1) * 5));
 
     //////////////////////////  NIVELES
 
-  
+    menuN[0].setFont(font);
     menuN[0].setColor(sf::Color::Red);
     menuN[0].setString("Nivel 1"); 
     menuN[0].setPosition(sf::Vector2f(width / 2, height / (MAX_NUMBER_OF_ITEMS_N +1) * 1));
 
- 
+    menuN[1].setFont(font);
     menuN[1].setColor(sf::Color::White);
     menuN[1].setString("Nivel 2");
     menuN[1].setPosition(sf::Vector2f(width / 2, height / (MAX_NUMBER_OF_ITEMS_N +1) * 2));
 
-   
+    menuN[2].setFont(font);
     menuN[2].setColor(sf::Color::White);
     menuN[2].setString("Nivel 3");
     menuN[2].setPosition(sf::Vector2f(width / 2, height / (MAX_NUMBER_OF_ITEMS_N +1) * 3));
 
- 
+    menuN[3].setFont(font);
     menuN[3].setColor(sf::Color::White);
     menuN[3].setString("Jefe final");
     menuN[3].setPosition(sf::Vector2f(width / 2, height / (MAX_NUMBER_OF_ITEMS_N +1) * 4));
 
-
+    menuN[4].setFont(font);
     menuN[4].setColor(sf::Color::White);
     menuN[4].setString("Volver al lobby");
     menuN[4].setPosition(sf::Vector2f(width / 2, height / (MAX_NUMBER_OF_ITEMS_N +1) * 5));
 
     ////////////////////////////   TIENDA
 
- 
+    menuT[0].setFont(font);
     menuT[0].setColor(sf::Color::Red);
     menuT[0].setString("Armas");
     menuT[0].setPosition(sf::Vector2f(width / 2, height / (MAX_NUMBER_OF_ITEMS_T +1) * 1));
 
+    menuT[1].setFont(font);
     menuT[1].setColor(sf::Color::White);
     menuT[1].setString("Habilidades");
     menuT[1].setPosition(sf::Vector2f(width / 2, height / (MAX_NUMBER_OF_ITEMS_T +1) * 2));
 
+    menuT[2].setFont(font);
     menuT[2].setColor(sf::Color::White);
     menuT[2].setString("Volver");
     menuT[2].setPosition(sf::Vector2f(width / 2, height / (MAX_NUMBER_OF_ITEMS_T +1) * 3));
@@ -114,22 +125,22 @@ Menu::Menu(CyberPlague* contexto, M_Window *w) {
 
     //////////////////////////// PAUSA
 
-
+    menuP[0].setFont(font);
     menuP[0].setColor(sf::Color::Red);
     menuP[0].setString("Guardar partida");
     menuP[0].setPosition(sf::Vector2f(width / 2, height / (MAX_NUMBER_OF_ITEMS_P +1) * 1));
 
-
+    menuP[1].setFont(font);
     menuP[1].setColor(sf::Color::White);
     menuP[1].setString("Opciones");
     menuP[1].setPosition(sf::Vector2f(width / 2, height / (MAX_NUMBER_OF_ITEMS_P +1) * 2));
 
-
+    menuP[2].setFont(font);
     menuP[2].setColor(sf::Color::White);
     menuP[2].setString("Volver al menu de niveles");
     menuP[2].setPosition(sf::Vector2f(width / 2, height / (MAX_NUMBER_OF_ITEMS_P +1) * 3));
 
-
+    menuP[3].setFont(font);
     menuP[3].setColor(sf::Color::White);
     menuP[3].setString("Salir");
     menuP[3].setPosition(sf::Vector2f(width / 2, height / (MAX_NUMBER_OF_ITEMS_P +1) * 4));
