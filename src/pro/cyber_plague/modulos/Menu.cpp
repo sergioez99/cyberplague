@@ -199,7 +199,7 @@ int Menu::Eventos(vector<bool> key){
                         MoveDown();
                      
                     else if(key[0]){
-                        if(selectedItemIndex==1){    // Llamamos al juego
+                        if(selectedItemIndex==0){    // Llamamos al juego
                             // Menu::Instance(CyberPlague::Instance(),window)->Handle();
                         }
  
