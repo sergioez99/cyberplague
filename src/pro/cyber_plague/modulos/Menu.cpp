@@ -34,7 +34,7 @@ Menu::Menu(CyberPlague* contexto, M_Window *w) {
 
     menu[2].setFont(font);
     menu[2].setColor(sf::Color::White);
-    menu[2].setString("Como jugar");
+    menu[2].setString("Lobby");
     menu[2].setPosition(sf::Vector2f(width / 2, height / (MAX_NUMBER_OF_ITEMS +1) * 3));
 
     menu[3].setFont(font);
@@ -75,7 +75,7 @@ Menu::Menu(CyberPlague* contexto, M_Window *w) {
 
     menuL[4].setFont(font);
     menuL[4].setColor(sf::Color::White);
-    menuL[4].setString("Volver al menu principal");
+    menuL[4].setString("Volver");
     menuL[4].setPosition(sf::Vector2f(width / 2, height / (MAX_NUMBER_OF_ITEMS_L +1) * 5));
 
     //////////////////////////  NIVELES
@@ -102,7 +102,7 @@ Menu::Menu(CyberPlague* contexto, M_Window *w) {
 
     menuN[4].setFont(font);
     menuN[4].setColor(sf::Color::White);
-    menuN[4].setString("Volver al lobby");
+    menuN[4].setString("Volver");
     menuN[4].setPosition(sf::Vector2f(width / 2, height / (MAX_NUMBER_OF_ITEMS_N +1) * 5));
 
     ////////////////////////////   TIENDA
@@ -137,7 +137,7 @@ Menu::Menu(CyberPlague* contexto, M_Window *w) {
 
     menuP[2].setFont(font);
     menuP[2].setColor(sf::Color::White);
-    menuP[2].setString("Volver al menu de niveles");
+    menuP[2].setString("Menu Principal");
     menuP[2].setPosition(sf::Vector2f(width / 2, height / (MAX_NUMBER_OF_ITEMS_P +1) * 3));
 
     menuP[3].setFont(font);
@@ -171,9 +171,10 @@ void Menu::Init(){
 }
 
 int Menu::run(M_Window *window){
-    vector<bool> key;
+   // vector<bool> key;
+   int key;
     while(window->abierta()){
-        key = window->keyPressed();
+        key = window->MenuController();
             Eventos( key); //utilizamos la funcion para coger las teclas
         
         
@@ -182,30 +183,133 @@ int Menu::run(M_Window *window){
     return 0;
 }
 
-int Menu::Eventos(vector<bool> key){
+int Menu::Eventos(int key){
             /*
             if (event.type == sf::Event::Closed){
                 window->cerrar();
             }
             */
             switch(menustate){ //para cada pantalla o estado del menu
-                case 1:  
-                    if(key[2])
+                case 1:     //MENU PRINCIPAL
+                    if(key==1){
                                     
                         MoveUp();
+                        
                                 
-                    else if (key[3])
+                    }else if (key==2)
                                     
                         MoveDown();
                      
-                    else if(key[0]){
-                        if(selectedItemIndex==0){    // Llamamos al juego
-                            // Menu::Instance(CyberPlague::Instance(),window)->Handle();
-                        }
+                    else if(key==3){
+                        switch(selectedItemIndex){
+                            case 0: 
+                                //menustate = 5;
+                                // Menu::Instance(CyberPlague::Instance(),window)->Handle();
+                            break;
+                            case 1:
+                                //menustate = 5;
+                                // Menu::Instance(CyberPlague::Instance(),window)->Handle();
+                            break;
+                            case 2:
+                                //lobby
+                                menustate = 2;
+                            break;
+                            case 3:
+                                
+                            break;
+                            case 4:
+
+                            break;
+                            case 5:
+                                window->cerrar();
+                            break;
+                        }    
+
  
                     }
                 break;
-                
+                case 2:     //LOBBY
+                    if(key==1)
+                                    
+                        MoveUp();
+                        
+                                
+                    else if (key==2)
+                                    
+                        MoveDown();
+                     
+                    else if(key==3){
+                        switch(selectedItemIndexL){
+                            case 0: 
+                                //SECTOR O NIVEL 1
+                                //menustate = 5;
+                                // Menu::Instance(CyberPlague::Instance(),window)->Handle();
+                            break;
+                            case 1:
+                                //SECTOR O NIVEL 2
+                                //menustate = 5;
+                                // Menu::Instance(CyberPlague::Instance(),window)->Handle();
+                            break;
+                            case 2:
+                                //SECTOR O NIVEL 3
+                                //menustate = 5;
+                                // Menu::Instance(CyberPlague::Instance(),window)->Handle();
+                            break;
+                            case 3:
+                                //TIENDA
+                                menustate = 4;
+                            break;
+                            case 4:
+                                menustate = 1;
+                            break;
+                            
+                        }    
+
+ 
+                    }
+                break;
+                 case 4:             //TIENDA  
+                    if(key==1)
+                                    
+                        MoveUp();
+                                
+                    else if (key==2)
+                                    
+                        MoveDown();
+                     
+                    else if(key==3){
+                        switch(selectedItemIndexT){
+                            case 0: 
+                                //SECTOR O NIVEL 1
+                                //menustate = 5;
+                                // Menu::Instance(CyberPlague::Instance(),window)->Handle();
+                            break;
+                            case 1:
+                                //SECTOR O NIVEL 2
+                                //menustate = 5;
+                                // Menu::Instance(CyberPlague::Instance(),window)->Handle();
+                            break;
+                            case 2:
+                                //SECTOR O NIVEL 3
+                                //menustate = 5;
+                                // Menu::Instance(CyberPlague::Instance(),window)->Handle();
+                                menustate = 2;
+                            break;
+                            case 3:
+                                //MENU PRINCIPAL
+                                menustate = 2;
+                            break;
+                            case 4:
+
+                            break;
+                            case 5:
+                                menustate = 1;
+                            break;
+                        }    
+
+ 
+                    }
+                break;
             }
   
     return 0;

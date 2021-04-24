@@ -8,6 +8,8 @@
 #include "Motor2D/M_Window.h"
 
 
+
+
 #define MAX_NUMBER_OF_ITEMS 6
 #define MAX_NUMBER_OF_ITEMS_L 5
 #define MAX_NUMBER_OF_ITEMS_N 5
@@ -64,7 +66,7 @@ class Menu : public State{
         void Init();
         CyberPlague* getContexto();
         int GetPressedItem();
-        int Eventos(vector<bool> key);
+        int Eventos(int key);
         static Menu* Instance(CyberPlague* contexto, M_Window *w);
 
     protected: 
@@ -93,6 +95,5 @@ class Menu : public State{
         sf::Text menuN[MAX_NUMBER_OF_ITEMS_N];
         sf::Text menuT[MAX_NUMBER_OF_ITEMS_T];
         sf::Text menuP[MAX_NUMBER_OF_ITEMS_P];
-        
 
 };
