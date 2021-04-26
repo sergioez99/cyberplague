@@ -16,8 +16,8 @@ Menu::Menu(CyberPlague* contexto, M_Window *w) {
     width = 640;
     height = 480;
 
-    if(!font.loadFromFile("./resources/arial.ttf")){
-        font.loadFromFile("./resources/Ubuntu-Regular.ttf");
+    if(!font.loadFromFile("./resources/FIGHTT3_.ttf")){
+        font.loadFromFile("./resources/arial.ttf");
     }
 
     menustate = 1;
@@ -323,6 +323,10 @@ CyberPlague* Menu::getContexto(){
 
 void Menu::Render(){
     window->limpiar();
+    sf::Texture tex;
+    tex.loadFromFile("./resources/Fondo.jpg");
+    sf::Sprite fondo1(tex);
+    window->fondo(fondo1);
     switch(menustate){
         case 1:
             for (int i=0;i<MAX_NUMBER_OF_ITEMS;i++){

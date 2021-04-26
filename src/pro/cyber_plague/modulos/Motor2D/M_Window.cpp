@@ -211,6 +211,10 @@ void M_Window::escribir(sf::Text text){
 
 }
 
+void M_Window::fondo(sf::Sprite fon){
+  ventana->draw(fon);
+}
+
 int M_Window::MenuController(){
 
     sf::Event event;

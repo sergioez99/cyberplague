@@ -53,6 +53,9 @@ class M_Window{
         //Metodo para escribir el menu
         void escribir(sf::Text text);
 
+        //Metodo para dibujar el fondo del menu
+        void fondo(sf::Sprite fon);
+
         //Metodo para los controles del menu
         int MenuController();
 
