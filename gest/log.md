@@ -102,3 +102,6 @@ Adaptación de la clase menú al patrón fachada para los controles y la vista. 
 
 ## 20210418 CarlosVillena @(5h)
 Creación del resto de armas (excepto Lanzallamas) y ajustes para que funcionen. Creacion preliminar del sistema de municion. He tardado tanto porque habia un problema con la lógica que habia implementada en las armas. En principio ya debería funcionar todo. 
+
+## 20210426 JoseSansano @(1h 40m)
+Mejora del salto para que sea más realista y que no haga el efecto "ascensor". Ahora cuando llega al punto más alto del salto se ralentiza, y cuando llega al suelo no puede saltar inmediatamente, hay un pequeño cooldown entre saltos. Añadidos los porcentajes de notas al master.
