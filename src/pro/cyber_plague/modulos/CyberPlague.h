@@ -107,7 +107,7 @@ class Mundo: public State{ //Class ingame
         void Init();
         void Render();
     private:
-        M_Window *window;
+        M_Window *vent;
         CyberPlague* _context;
         static Mundo* pinstance;
         int lvl = 0;
