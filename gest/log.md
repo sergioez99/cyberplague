@@ -109,5 +109,6 @@ He creado una rama aparte para ir implementando los estados. Desde CyberPlague (
 ## 20210426 JoseSansano @(1h 40m)
 Mejora del salto para que sea más realista y que no haga el efecto "ascensor". Ahora cuando llega al punto más alto del salto se ralentiza, y cuando llega al suelo no puede saltar inmediatamente, hay un pequeño cooldown entre saltos. Añadidos los porcentajes de notas al master.
 
-## 20210422 SergioEspinosa @(1h 05m)
+## 20210422 SergioEspinosa @(2h 10m)
 El personaje ahora se dibuja en su capa, y aparece detrás de los árboles.
+Ahora está el menú integrado en develop y se puede jugar el nivel desde nueva partida
