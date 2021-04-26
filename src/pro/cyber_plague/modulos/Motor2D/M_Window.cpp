@@ -211,6 +211,34 @@ void M_Window::escribir(sf::Text text){
 
 }
 
+int M_Window::MenuController(){
+
+    sf::Event event;
+
+    int mov=0;
+    while (ventana->pollEvent(event)) {
+
+        switch (event.key.code) {
+            case sf::Keyboard::Up:
+                mov=1;
+            break;
+
+            case sf::Keyboard::Down:
+                mov=2;
+            break;
+
+            case sf::Keyboard::Return:
+                mov=3;
+            break;
+            case sf::Keyboard::Escape:
+                ventana->close();
+            break;
+            
+        }
+    } 
+    return mov;     
+}
+
 void M_Window::display(){
 
   /*Time dt = reloj.restart();

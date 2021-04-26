@@ -53,5 +53,8 @@ class M_Window{
         //Metodo para escribir el menu
         void escribir(sf::Text text);
 
+        //Metodo para los controles del menu
+        int MenuController();
+
         RenderWindow* getWindow();
 };

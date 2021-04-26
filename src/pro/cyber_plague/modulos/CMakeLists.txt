@@ -26,6 +26,8 @@ target_sources(libModulos PRIVATE
     "${CMAKE_CURRENT_SOURCE_DIR}/AI_Agent.cpp"
 
     "${CMAKE_CURRENT_SOURCE_DIR}/Map.cpp"
+    "${CMAKE_CURRENT_SOURCE_DIR}/CyberPlague.cpp"
+    "${CMAKE_CURRENT_SOURCE_DIR}/Menu.cpp"
     "${CMAKE_CURRENT_SOURCE_DIR}/TinyXML/tinystr.cpp"
     "${CMAKE_CURRENT_SOURCE_DIR}/TinyXML/tinyxml.cpp"
     "${CMAKE_CURRENT_SOURCE_DIR}/TinyXML/tinyxmlparser.cpp"
