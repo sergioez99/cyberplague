@@ -43,6 +43,7 @@ private:
 	float speed;
 	bool faceRight;
 	int dmg;
+	int saltoCD=0;
 	
     virtual bool puedoAtacar(){return false;};
     virtual void moverse(float deltaTime){};
