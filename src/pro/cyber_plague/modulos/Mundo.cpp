@@ -1,16 +1,17 @@
-#include "Mundo.h"
+#include "CyberPlague.h"
 
 Mundo* Mundo::pinstance = 0;
 Mundo* Mundo::Instance(CyberPlague* context, M_Window *w, int nivel){
-    
-    //Instancia de mundo le pasamos el contexto del juego (donde estamos ahora mismo), la ventana para render y el nivel (para el mapa)
     pinstance = new Mundo(context,w, nivel);
-
+    //lvl = nivel;
     return pinstance;
 }
 
 Mundo::Mundo(CyberPlague* context,M_Window *w, int nivel){ 
-//Clase constructor (aquí poner como se pintan los menús)
+window = w;
+_context = context;
+
+//Aqui hacer un fondo animado a ver (el q hay esta con tiles pero se puede cambiar)
 
 }
 
@@ -22,7 +23,7 @@ void Mundo::Update(){
 }
 
 void Mundo::Init(){
-    //Cada vez que cambiemos de contexto al mundo se llamará a esta función (se puede cambiar)
+    
 }
 
 void Mundo::Render(){

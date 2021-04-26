@@ -202,11 +202,11 @@ int Menu::Eventos(int key){
                      
                     else if(key==3){
                         switch(selectedItemIndex){
-                            case 0: 
+                            case 0: // Nueva Partida
                                 //menustate = 5;
-                                // Menu::Instance(CyberPlague::Instance(),window)->Handle();
+                                Mundo::Instance(CyberPlague::Instance(),window, 0)->Handle();
                             break;
-                            case 1:
+                            case 1: //¿continuarrr?
                                 //menustate = 5;
                                 // Menu::Instance(CyberPlague::Instance(),window)->Handle();
                             break;
