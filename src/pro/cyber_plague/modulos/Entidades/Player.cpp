@@ -42,18 +42,20 @@ void Player::update(float deltaTime, Map* m)
 	//Utilizar Vector2D en vez del sf::Vector2f para no usar SFML
 	//Gravedad
 	 if(!isJumping()){//Si no salta, aplicar gravedad
-        getSprite()->mover(0, 2 * speed * deltaTime);
+	 	salto--;
+        getSprite()->mover(0, salto * salto * deltaTime);
         if(m->checkCollision(getSprite()->getSprite())){//si es verdadero, ya estaba en el suelo.
 			colPos.x = getSprite()->getPosX();
 			colPos.y = m->getCollision(getSprite()->getSprite())->getGlobalBounds().top-getSprite()->getSprite()->getLocalBounds().height/2;
         	getSprite()->setPosition(colPos); //Esto se utiliza para que este tocando el suelo, y no flotando.
           	setGrounded(true);
+			salto=0;
         }else{
           	setGrounded(false);//Se puede caer por un agujero y no estar grounded igualmente
         }
       }
 	if(salto>0){
-		movement.y -= 2 * speed * deltaTime;
+		movement.y -= salto * salto * deltaTime;
 		salto--;
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
@@ -62,9 +64,9 @@ void Player::update(float deltaTime, Map* m)
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
 		movement.x += speed * deltaTime;
 
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && isGrounded()){
-		movement.y -= 2 * speed * deltaTime;
-		salto = 15;
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && isGrounded()){//TODO: CD al salto
+		salto = 22;
+		movement.y -= salto * salto * deltaTime;
 		setGrounded(false);
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z)){
