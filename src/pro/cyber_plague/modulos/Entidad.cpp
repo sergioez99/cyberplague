@@ -36,13 +36,19 @@ void Entidad::reciboDmg(int dmg){
 
             *vida = *vida - dmgRecibido;
         }
-
         invencibilidad.restart();
-    } 
+        getSprite()->setColor(1);
+        dmgColor=15;
+    }
+
 }
 
 void Entidad::render(M_Window* vent, float percentTick){
     Vector2D posicion;
+    if(dmgColor!=0)
+        dmgColor --;
+    if(dmgColor==0)
+        getSprite()->setColor(0);
     posicion.x = pos.getLastX()*(1-percentTick) + pos.getX()*percentTick;
     posicion.y = pos.getLastY()*(1-percentTick) + pos.getY()*percentTick;
 

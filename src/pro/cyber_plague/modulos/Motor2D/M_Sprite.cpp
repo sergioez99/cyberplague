@@ -44,6 +44,20 @@ void M_Sprite::escalar(float x, float y){
     sprite->scale(x, y);
 }
 
+void M_Sprite::setColor(int i){
+    switch (i)
+    {
+    case 1:
+        sprite->setColor(sf::Color::Red);
+        break;
+    
+    
+    default:
+        sprite->setColor(sf::Color::White);
+        break;
+    }
+}
+
 //Metodos Setters y Getters
 //NO USAR ESTO. DEBUG.
 Sprite* M_Sprite::getSprite(){

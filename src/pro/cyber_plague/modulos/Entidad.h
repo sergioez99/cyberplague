@@ -26,6 +26,7 @@ class Entidad{
         int* vida;
         int* armadura;
         int salto=0;
+        int dmgColor=0;
         float* vel;
         int ataq;
         Vector2D lastPosition;

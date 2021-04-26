@@ -42,6 +42,8 @@ class M_Sprite{
 
         void setPosition(Vector2D pos);
 
+        void setColor(int i);
+
         //Solo las clases de Motor2D deberían usar esto
         Sprite* getSprite();
 };
