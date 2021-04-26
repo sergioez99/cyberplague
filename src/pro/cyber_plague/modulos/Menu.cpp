@@ -204,7 +204,8 @@ int Menu::Eventos(int key){
                         switch(selectedItemIndex){
                             case 0: // Nueva Partida
                                 //menustate = 5;
-                                Mundo::Instance(CyberPlague::Instance(),window, 0)->Handle();
+                                nivel = 0;
+                                Mundo::Instance(CyberPlague::Instance(), window, nivel)->Handle();
                             break;
                             case 1: //¿continuarrr?
                                 //menustate = 5;

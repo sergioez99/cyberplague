@@ -76,6 +76,7 @@ class Menu : public State{
 
     private:
 
+        int nivel;
         int menustate = 2;
         int selectedItemIndex;
         int selectedItemIndexL;

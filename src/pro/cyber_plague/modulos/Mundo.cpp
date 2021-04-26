@@ -1,5 +1,5 @@
 #include "CyberPlague.h"
-#include "include/includes.h"
+#include "../include/includes.h"
 
 #define kUpdateTimePS 1000/15
 #define kVel 200  //Temporal, mientras mago actue como jugador
