@@ -47,11 +47,9 @@ void Zombi::moverse(float deltaTime){
     mov.y = 0.f;
     
     if(this->getScaleX() < 0)
-        //mov.x = -deltaTime * getVelMovimiento();
-        getSprite()->mover(-(getVelMovimiento() * deltaTime), 0);
+        mov.x = -deltaTime * getVelMovimiento();
     else
-        //mov.x = deltaTime * getVelMovimiento();
-        getSprite()->mover(getVelMovimiento() * deltaTime, 0);
+        mov.x = deltaTime * getVelMovimiento();
 
     pos.setPosition(pos.getX() + mov.x, pos.getY() + mov.y);
 }

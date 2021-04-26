@@ -108,17 +108,11 @@ void Mundo::Init()
                     enemigos.erase(enemigos.begin() + i);
                 }
             }
+
+            timeStartUpdate = clock.getElapsedTime();
         }
 
-        //Mover camara
-        if (player.getPosX() < 320.0f)
-            camara->reset(0.f, 0.f, 640, 480);
-        if (player.getPosX() >= 320.0f && player.getPosX() < tutorial->getWidth() * tutorial->getTileWidth() - 320.0f)
-            camara->reset(player.getPosX() - 320.f, 0.f, 640, 480);
-        if (player.getPosX() >= tutorial->getWidth() * tutorial->getTileWidth() - 320.0f)
-            camara->reset((float)tutorial->getWidth() * tutorial->getTileWidth() - 640.0f, 0.f, 640, 480);
-
-        float percentTick = min(1.f, (float)clock.getElapsedTime().asMilliseconds() / kUpdateTimePS);
+        float percentTick = min(1.f, clock2.getElapsedTime().asMilliseconds() / (float)(kUpdateTimePS));
 
         vent->limpiar();
         tutorial->drawTile(vent->getWindow());
@@ -128,8 +122,15 @@ void Mundo::Init()
             enemigos.at(i)->render(vent, percentTick); //Renderiza todos los personajes por ahora
         }
         if (!player.muerto())
-
             player.renders(vent, percentTick, tutorial);
+
+        //Mover camara
+        if (player.getPosX() < 320.0f)
+            camara->reset(0.f, 0.f, 640, 480);
+        if (player.getPosX() >= 320.0f && player.getPosX() < tutorial->getWidth() * tutorial->getTileWidth() - 320.0f)
+            camara->reset(player.getPosX() - 320.f, 0.f, 640, 480);
+        if (player.getPosX() >= tutorial->getWidth() * tutorial->getTileWidth() - 320.0f)
+            camara->reset((float)tutorial->getWidth() * tutorial->getTileWidth() - 640.0f, 0.f, 640, 480);
 
         vent->setView(camara);
         vent->display();

@@ -109,6 +109,10 @@ He creado una rama aparte para ir implementando los estados. Desde CyberPlague (
 ## 20210426 JoseSansano @(1h 40m)
 Mejora del salto para que sea más realista y que no haga el efecto "ascensor". Ahora cuando llega al punto más alto del salto se ralentiza, y cuando llega al suelo no puede saltar inmediatamente, hay un pequeño cooldown entre saltos. Añadidos los porcentajes de notas al master.
 
-## 20210422 SergioEspinosa @(2h 10m)
+## 20210426 SergioEspinosa @(2h 10m)
 El personaje ahora se dibuja en su capa, y aparece detrás de los árboles.
 Ahora está el menú integrado en develop y se puede jugar el nivel desde nueva partida
+
+## 20210426 RamónRodríguez @(2h 20m)
+Render interpolado ya funciona en Player y Zombi, ahora las llamadas a update estan limintadas correctamente, y cambios en el salto para que se ajuste a la limitación de las llamadas a update.
+He tardado bastante más de lo previsto ya que he estado como 1h para arreglar el fallo del render interpolado que resultó ser una tonteria. El fallo estaba en el cálculo de percentTick.

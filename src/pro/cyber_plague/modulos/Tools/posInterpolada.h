@@ -15,5 +15,4 @@ class posInterpolada{
         float getLastY()    { return lastY;     }
 
         void setPosition(float nx, float ny);
-        void setLastPosition(float nx, float ny);
 };

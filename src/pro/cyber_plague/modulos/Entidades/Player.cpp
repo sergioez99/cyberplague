@@ -43,7 +43,7 @@ void Player::update(float deltaTime, Map* m)
 	//Gravedad
 	 if(!isJumping()){//Si no salta, aplicar gravedad
 	 	salto--;
-        getSprite()->mover(0, 2 * salto * salto * deltaTime);
+        getSprite()->mover(0, 5 * salto * salto * deltaTime);
         if(m->checkCollision(getSprite()->getSprite())){//si es verdadero, ya estaba en el suelo.
 			colPos.x = getSprite()->getPosX();
 			colPos.y = m->getCollision(getSprite()->getSprite())->getGlobalBounds().top-getSprite()->getSprite()->getLocalBounds().height/2;
@@ -57,7 +57,7 @@ void Player::update(float deltaTime, Map* m)
         }
       }
 	if(salto>0){
-		movement.y -= 2 * salto * salto * deltaTime;
+		movement.y -= 5 * salto * salto * deltaTime;
 		salto--;
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
@@ -67,9 +67,9 @@ void Player::update(float deltaTime, Map* m)
 		movement.x += speed * deltaTime;
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && isGrounded() && saltoCD<=0){//TODO: CD al salto
-		salto = 20;
-		movement.y -= 2 * salto * salto * deltaTime;
-		saltoCD = 10;
+		salto = 9;
+		movement.y -= 5 * salto * salto * deltaTime;
+		saltoCD = 4;
 		setGrounded(false);
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z)){
