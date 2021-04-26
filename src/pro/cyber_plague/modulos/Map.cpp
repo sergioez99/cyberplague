@@ -120,7 +120,7 @@ Map::Map(int nivel) {
 
 void Map::drawTile(sf::RenderWindow *window){
 
-    for(int t=0; t<_numlayers; t++){
+    for(int t=0; t<4; t++){
         for(int y=0; y<_height; y++){
             for(int x=0; x<_width; x++){
                 if(_tilemapSprite[t][y][x]!=NULL){
@@ -129,6 +129,17 @@ void Map::drawTile(sf::RenderWindow *window){
             }
         }
     }  
+}
+
+void Map::drawPersonaje(sf::RenderWindow *window, Sprite* sp){
+    window->draw(*sp);
+    for(int y=0; y<_height; y++){
+            for(int x=0; x<_width; x++){
+                if(_tilemapSprite[4][y][x]!=NULL){
+                    window->draw(*(_tilemapSprite[4][y][x]));
+                }
+            }
+        }
 }
 
 bool Map::checkCollision(Sprite* sp){

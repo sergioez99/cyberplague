@@ -111,7 +111,7 @@ int main() {
     }
     if(!player.muerto())
 
-      player.renders(vent, percentTick);
+      player.renders(vent, percentTick, tutorial);
 
     vent->setView(camara);
     vent->display();

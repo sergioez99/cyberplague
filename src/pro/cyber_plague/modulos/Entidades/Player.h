@@ -3,6 +3,7 @@
 #include "Animacion.h"
 #include "Entidad.h"
 #include "NPC.h"
+#include "Map.h"
 
 #include "Armas/Arma.h"
 #include "Armas/Tipo_de_Arma/Arco.h"
@@ -28,7 +29,7 @@ public:
 	//void checkEnemyColision(vector<NPC*> enemigos);
 	void ataque();
 
-	void renders(M_Window* vent, float percentTick);
+	void renders(M_Window* vent, float percentTick, Map* mapa);
 
 private:
 	sf::RectangleShape body;

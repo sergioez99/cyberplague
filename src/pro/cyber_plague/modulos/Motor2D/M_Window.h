@@ -2,6 +2,7 @@
 #include <SFML/Graphics.hpp>
 #include "M_Sprite.h"
 #include "M_View.h"
+#include "Map.h"
 #include <iostream>
 
 using namespace std;
@@ -28,6 +29,7 @@ class M_Window{
 
         //Metodo para renderizar un Sprite.
         void render(M_Sprite* spr);
+        void renderPlayer(M_Sprite* spr, Map* mapa);
 
         std::vector<bool> keyPressed();
 

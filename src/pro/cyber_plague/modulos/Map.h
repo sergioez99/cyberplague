@@ -29,14 +29,7 @@ public:
     bool checkCollision(int x, int y);  //Utilizar para crear el camino en AI_Agent
     bool checkCaida(Sprite *sp);    //Utilizar para el movimiento de Zombi y Soldado
     
-    //bool checkColision(int tx, int ty);             // nuevo
-    //bool checkPinchos(int tx, int ty);             // nuevo
-    void colocarEnemigos();                         // nuevo
-    std::vector<Vector2f> coord_enemy1;             // nuevo
-    std::vector<Vector2f> coord_enemy2;             // nuevo
-    std::vector<Vector2f> coord_enemy3;             // nuevo
-    std::vector<Vector2f> coord_enemy4;             // nuevo
-    std::vector<Vector2f> coord_enemy5;             // nuevo
+    void drawPersonaje(sf::RenderWindow *window, Sprite* sp);
 
 private:
     //Tilemap
