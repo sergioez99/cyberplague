@@ -35,3 +35,11 @@ En este hito he tenido bastante poca participación por mi parte por temas perso
 
 # Autoevaluación general
 En este hito hemos conseguido asentar las bases de lo que será nuestro futuro videojuego y, a pesar de que nos queda más trabajo a realizar, estamos muy satisfechos con el resultado. Creemos que la nota de nuestro hito podría ser un 7/10.
+
+# Porcentaje de Nota
+José Antonio Sansano Melero : 18%
+Ramón Rodríguez Pedraza : 18%
+Sergio Espinosa Zaragoza: 18%
+Rubén Herrera Cervera : 14%
+Carlos Villena Cerdá : 18%
+Jorge Mompeán Cabezas: 14%
