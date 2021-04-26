@@ -170,9 +170,9 @@ void Player::ataque(){
 	armas[arma_actual]->disparo();
 }
 
-void Player::renders(M_Window* vent, float percentTick){
+void Player::renders(M_Window* vent, float percentTick, Map* mapa){
 
-	this->render(vent, percentTick);
+	this->renderPlayer(vent, percentTick, mapa);
 
 	for(unsigned int  i = 0; i < armas.size(); i++){
 

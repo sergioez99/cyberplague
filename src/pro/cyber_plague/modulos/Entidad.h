@@ -49,6 +49,7 @@ class Entidad{
         
         bool muerto();
         void reciboDmg(int dmg);
+        void renderPlayer(M_Window* vent, float percentTick, Map* mapa);
         void render(M_Window* vent, float percentTick);
 
     

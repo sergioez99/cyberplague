@@ -103,5 +103,11 @@ Adaptación de la clase menú al patrón fachada para los controles y la vista. 
 ## 20210418 CarlosVillena @(5h)
 Creación del resto de armas (excepto Lanzallamas) y ajustes para que funcionen. Creacion preliminar del sistema de municion. He tardado tanto porque habia un problema con la lógica que habia implementada en las armas. En principio ya debería funcionar todo. 
 
+## 20210422 SergioEspinosa @(1h 20m)
+He creado una rama aparte para ir implementando los estados. Desde CyberPlague (juego) llamo a Menú y hace el render, pero no pinta nada y lo he dejado ahi hasta que mi compañero Rubén solucione los problemas.
+
 ## 20210426 JoseSansano @(1h 40m)
 Mejora del salto para que sea más realista y que no haga el efecto "ascensor". Ahora cuando llega al punto más alto del salto se ralentiza, y cuando llega al suelo no puede saltar inmediatamente, hay un pequeño cooldown entre saltos. Añadidos los porcentajes de notas al master.
+
+## 20210422 SergioEspinosa @(1h 05m)
+El personaje ahora se dibuja en su capa, y aparece detrás de los árboles.

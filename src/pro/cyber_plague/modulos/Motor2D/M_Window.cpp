@@ -195,10 +195,14 @@ bool M_Window::abierta(){
   return ventana->isOpen();
 }
 
+void M_Window::renderPlayer(M_Sprite* spr, Map* mapa){
+
+  mapa->drawPersonaje(getWindow(), spr->getSprite());
+
+}
+
 void M_Window::render(M_Sprite* spr){
-
   ventana->draw(*(spr->getSprite()));
-
 }
 
 void M_Window::escribir(sf::Text text){
