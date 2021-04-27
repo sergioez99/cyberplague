@@ -38,12 +38,12 @@ void Player::update(float deltaTime, Map* m)
 {
 	setLastPosition();
 	Vector2D colPos{0,0};
-	sf::Vector2f movement(0.0f, 0.0f);//En cada frame, esto se pone a 0, por lo que el bucle interpolado no va a ir, tiene que ser de clase.
+	Vector2D movement{0.0f, 0.0f};
 	//Utilizar Vector2D en vez del sf::Vector2f para no usar SFML
 	//Gravedad
 	 if(!isJumping()){//Si no salta, aplicar gravedad
-	 	salto--;
-        getSprite()->mover(0, 5 * salto * salto * deltaTime);
+	 	salto-=2;
+        getSprite()->mover(0, 4 * salto * salto * deltaTime);
         if(m->checkCollision(getSprite()->getSprite())){//si es verdadero, ya estaba en el suelo.
 			colPos.x = getSprite()->getPosX();
 			colPos.y = m->getCollision(getSprite()->getSprite())->getGlobalBounds().top-getSprite()->getSprite()->getLocalBounds().height/2;
@@ -58,7 +58,7 @@ void Player::update(float deltaTime, Map* m)
       }
 	if(salto>0){
 		movement.y -= 5 * salto * salto * deltaTime;
-		salto--;
+		salto-=2;
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
 		movement.x -= speed * deltaTime;
@@ -66,9 +66,9 @@ void Player::update(float deltaTime, Map* m)
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
 		movement.x += speed * deltaTime;
 
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && isGrounded() && saltoCD<=0){//TODO: CD al salto
-		salto = 9;
-		movement.y -= 5 * salto * salto * deltaTime;
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && isGrounded() && saltoCD<=0){
+		salto = 10;
+		movement.y -= 4 * salto * salto * deltaTime;
 		saltoCD = 4;
 		setGrounded(false);
 	}

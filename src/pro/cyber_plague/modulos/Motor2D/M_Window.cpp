@@ -212,7 +212,8 @@ void M_Window::escribir(sf::Text text){
 }
 
 void M_Window::fondo(sf::Sprite fon){
-  ventana->draw(fon);
+  if(ventana)
+    ventana->draw(fon);
 }
 
 int M_Window::MenuController(){
@@ -223,6 +224,7 @@ int M_Window::MenuController(){
     while (ventana->pollEvent(event)) {
 
         switch (event.key.code) {
+
             case sf::Keyboard::Up:
                 mov=1;
             break;
@@ -236,6 +238,10 @@ int M_Window::MenuController(){
             break;
             case sf::Keyboard::Escape:
                 ventana->close();
+            break;
+
+            default:
+              std::cout << event.key.code << std::endl;
             break;
             
         }
