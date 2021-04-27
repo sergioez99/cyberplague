@@ -222,6 +222,15 @@ int M_Window::MenuController(){
 
     int mov=0;
     while (ventana->pollEvent(event)) {
+     switch (event.type) {
+
+      //Si se recibe el evento de cerrar la ventana la cierro
+      case sf::Event::Closed:
+        ventana->close();
+      break;
+
+      //Se pulsó una tecla, imprimo su codigo
+      case sf::Event::KeyPressed:
 
         switch (event.key.code) {
 
@@ -245,8 +254,13 @@ int M_Window::MenuController(){
             break;
             
         }
-    } 
-    return mov;     
+      break;
+      
+      default:
+      break;
+      }   
+    }
+  return mov;   
 }
 
 void M_Window::display(){
