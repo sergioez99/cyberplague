@@ -22,6 +22,9 @@ Rayo::Bala::Bala(float posX, float posY, int ori){
 
     sprite_bala = new M_Sprite( kFich , kTexLeft , kTexTop , kTexWidth , kTexHeight , posX, posY);
 
+    pos.setPosition(posX, posY);
+	pos.setPosition(posX, posY);
+
     orientacion = ori;
 
     if(ori != 1){
@@ -34,6 +37,8 @@ Rayo::Bala::Bala(float posX, float posY, int ori){
 void Rayo::Bala::moverse(float posX, float posY){
 
     sprite_bala->mover(posX, posY);
+
+    pos.setPosition(sprite_bala->getPosX(), sprite_bala->getPosY());
 }
 
 void Rayo::Bala::rotar(float grad){
@@ -111,17 +116,25 @@ void Rayo::mejorar(){
     //ESTA ARMA NO SE MEJORA.
 }
 
-void Rayo::update(float dt){
+void Rayo::update(float dt, Map* m){
 
     for(unsigned int i = 0; i < proyectiles.size(); i++){
-
         proyectiles.at(i)->moverse(proyectiles.at(i)->orientacion * (vel * dt), 0);
+
+        if(m->checkCollision(proyectiles.at(i)->getSprite()->getSprite()))
+            proyectiles.erase(proyectiles.begin() + i);
     }
     
 }
 
-void Rayo::render(M_Window* vent){
+void Rayo::render(M_Window* vent, float percentTick){
     for(unsigned int i = 0; i < proyectiles.size(); i++){
+        Vector2D posicion;
+   
+        posicion.x = proyectiles.at(i)->pos.getLastX()*(1-percentTick) + proyectiles.at(i)->pos.getX()*percentTick;
+        posicion.y = proyectiles.at(i)->pos.getLastY()*(1-percentTick) + proyectiles.at(i)->pos.getY()*percentTick;
+
+        proyectiles.at(i)->getSprite()->setPosition(posicion);
 
         vent->render(proyectiles.at(i)->getSprite());
     }

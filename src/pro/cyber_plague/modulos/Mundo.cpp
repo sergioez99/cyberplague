@@ -80,19 +80,17 @@ void Mundo::Init()
         salto--;
       }*/
             //Gravedad
-            if (!player.muerto())
-            {
-                player.update(deltaTime, tutorial);
-                //player.checkEnemyColision(enemigos);
-                if (key[4])
-                {
-
-                    player.ataque();
-                }
-                //player.setLastPosition();
+            player.update(deltaTime, tutorial);
+            //player.checkEnemyColision(enemigos);
+            if (key[4]){
+                player.ataque();
             }
+
+            //Aqui habra que cambiar de State
+            if(player.muerto())
+                cout << "HE MUERTO" << endl;
+
             //Updates antes de los renders o el personaje vibra por las colisiones.
-            //Mago es personaje por ahora
 
             for (int i = 0; i < (int)enemigos.size(); i++)
             {
@@ -122,8 +120,8 @@ void Mundo::Init()
 
             enemigos.at(i)->render(vent, percentTick); //Renderiza todos los personajes por ahora
         }
-        if (!player.muerto())
-            player.renders(vent, percentTick, tutorial);
+        
+        player.renders(vent, percentTick, tutorial);
 
         //Mover camara
         if (player.getPosX() < 320.0f)

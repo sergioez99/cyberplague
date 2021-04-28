@@ -15,6 +15,7 @@ class Rayo : public Arma{
             public:
 
                 int orientacion;
+                posInterpolada pos;
 
                 Bala(float posX, float posY, int ori);
                 ~Bala();
@@ -36,8 +37,8 @@ class Rayo : public Arma{
       bool puedeDisparar();
       void disparo();
       void mejorar();
-      void update(float deltaTime);
-      void render(M_Window* vent);
+      void update(float deltaTime, Map* m);
+      void render(M_Window* vent, float percentTick);
       void balaImpactada(NPC* enemigos);
 };
 

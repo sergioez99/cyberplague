@@ -24,6 +24,9 @@ Arco::Bala::Bala(float posX, float posY, int ori){
 
     sprite_bala = new M_Sprite( kFich , kTexLeft , kTexTop , kTexWidth , kTexHeight , posX, posY);
 
+    pos.setPosition(posX, posY);
+	pos.setPosition(posX, posY);
+
     orientacion = ori;
 
     if(ori != 1){
@@ -36,6 +39,8 @@ Arco::Bala::Bala(float posX, float posY, int ori){
 void Arco::Bala::moverse(float posX, float posY){
 
     sprite_bala->mover(posX, posY);
+
+    pos.setPosition(sprite_bala->getPosX(), sprite_bala->getPosY());
 }
 
 void Arco::Bala::rotar(float grad){
@@ -147,7 +152,7 @@ void Arco::mejorar(){
     mejora = true; 
 }
 
-void Arco::update(float dt){
+void Arco::update(float dt, Map* m){
 
     if(mejora){
 
@@ -183,14 +188,22 @@ void Arco::update(float dt){
     else{
 
         for(unsigned int i = 0; i < proyectiles.size(); i++){
-
             proyectiles.at(i)->moverse(proyectiles.at(i)->orientacion * (vel * dt), 0);
+
+            if(m->checkCollision(proyectiles.at(i)->getSprite()->getSprite()))
+                proyectiles.erase(proyectiles.begin() + i);
         }
     }
 }
 
-void Arco::render(M_Window* vent){
+void Arco::render(M_Window* vent, float percentTick){
     for(unsigned int i = 0; i < proyectiles.size(); i++){
+        Vector2D posicion;
+   
+        posicion.x = proyectiles.at(i)->pos.getLastX()*(1-percentTick) + proyectiles.at(i)->pos.getX()*percentTick;
+        posicion.y = proyectiles.at(i)->pos.getLastY()*(1-percentTick) + proyectiles.at(i)->pos.getY()*percentTick;
+
+        proyectiles.at(i)->getSprite()->setPosition(posicion);
 
         vent->render(proyectiles.at(i)->getSprite());
     }

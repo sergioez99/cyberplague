@@ -131,3 +131,7 @@ Arreglado un bug del menu que hacia que la posición X del ratón actuase como "
 
 ## 20210428 JoseSansano @(1h 10m)
 El personaje ya no se queda flotando en la pared sin caer. Ahora siempre cae. 
+
+## 20210428 RamónRodríguez @(1h 40 m)
+Las Armas ya funcionan con el render interpolado y las balas se destruyen al colisionar con el mapa (la función intersects no siempre detecta las colisiones, solo en la parte superior de los obstaculos, no sé por qué).
+El personaje ya no puede salir de la pantalla al inicio y al final del mapa y cuando cae por un hueco muere.

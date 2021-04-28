@@ -108,16 +108,21 @@ void Player::update(float deltaTime, Map* m)
 	for(unsigned int i = 0; i < armas.size(); i++){
 
 		armas.at(i)->setDatosJugador(getPosX(), getPosY(), mirandoDerecha());
-		armas.at(i)->update(deltaTime);
+		armas.at(i)->update(deltaTime, m);
 	}
 
-	
-
-	if(m->checkCollision(getSprite()->getSprite()) )//si es verdadero, no debe de estar en esa posicion
+	if(m->checkCollision(getSprite()->getSprite()))//si es verdadero, no debe de estar en esa posicion
 		getSprite()->setPosition(getLastPosition());
 
-		//Gravedad
-	 if(!isJumping()){//Si no salta, aplicar gravedad
+	//Evita que pueda salir del mapa
+	float posLadoDerecho = getPosX() - getSprite()->getSprite()->getGlobalBounds().width / 2;
+	float posLadoIzquierdo = getPosX() + getSprite()->getSprite()->getGlobalBounds().width / 2;
+
+	if(posLadoDerecho < 0 || posLadoIzquierdo > m->getWidth() * m->getTileWidth())
+		getSprite()->setPosition(getLastPosition());
+
+	//Gravedad
+	if(!isJumping()){//Si no salta, aplicar gravedad
 	 	salto-=2;
         getSprite()->mover(0, 4 * salto * salto * deltaTime);
         if(m->checkCollision(getSprite()->getSprite())){//si es verdadero, ya estaba en el suelo.
@@ -131,7 +136,12 @@ void Player::update(float deltaTime, Map* m)
         }else{
           	setGrounded(false);//Se puede caer por un agujero y no estar grounded igualmente
         }
-      }	
+    }
+
+	//Si se cae por un hueco muere
+	if(getPosY() > m->getHeight() * m->getTileHeight())
+		setVida(0);
+	
 	pos.setPosition(spr->getPosX(), spr->getPosY());
 }
 
@@ -176,7 +186,7 @@ void Player::renders(M_Window* vent, float percentTick, Map* mapa){
 
 	for(unsigned int  i = 0; i < armas.size(); i++){
 
-		armas[i]->render(vent);
+		armas[i]->render(vent, percentTick);
 	}
 
 	

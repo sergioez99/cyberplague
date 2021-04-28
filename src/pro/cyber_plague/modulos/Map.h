@@ -23,6 +23,7 @@ public:
     int getWidth()                  { return _width;            };
     int getHeight()                 { return _height;           };
     int getTileWidth()              { return _tilewidth;        };
+    int getTileHeight()             { return _tileheigth;       };
 
     bool checkCollision(Sprite* sp); //Utilizar RectShapes de sfml para comprobar colisiones
     Sprite* getCollision(Sprite* sp); //Devuelve la colisión que colisiona con el sprite

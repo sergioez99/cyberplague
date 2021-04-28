@@ -46,8 +46,8 @@ class Arma {
         virtual void disparo() = 0;
         virtual void mejorar() = 0;
 
-        virtual void render(M_Window* vent) = 0;
-        virtual void update(float deltaTime) = 0;
+        virtual void render(M_Window* vent, float percentTick) = 0;
+        virtual void update(float deltaTime, Map* m) = 0;
         virtual void balaImpactada(NPC* enemigos) = 0;
 
         virtual bool puedeDisparar() = 0;
