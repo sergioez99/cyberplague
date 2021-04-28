@@ -40,22 +40,6 @@ void Player::update(float deltaTime, Map* m)
 	Vector2D colPos{0,0};
 	Vector2D movement{0.0f, 0.0f};
 	//Utilizar Vector2D en vez del sf::Vector2f para no usar SFML
-	//Gravedad
-	 if(!isJumping()){//Si no salta, aplicar gravedad
-	 	salto-=2;
-        getSprite()->mover(0, 4 * salto * salto * deltaTime);
-        if(m->checkCollision(getSprite()->getSprite())){//si es verdadero, ya estaba en el suelo.
-			colPos.x = getSprite()->getPosX();
-			colPos.y = m->getCollision(getSprite()->getSprite())->getGlobalBounds().top-getSprite()->getSprite()->getLocalBounds().height/2;
-        	getSprite()->setPosition(colPos); //Esto se utiliza para que este tocando el suelo, y no flotando.
-          	setGrounded(true);
-			salto=0;
-			if(saltoCD>0)
-				saltoCD--;
-        }else{
-          	setGrounded(false);//Se puede caer por un agujero y no estar grounded igualmente
-        }
-      }
 	if(salto>0){
 		movement.y -= 5 * salto * salto * deltaTime;
 		salto-=2;
@@ -131,7 +115,23 @@ void Player::update(float deltaTime, Map* m)
 
 	if(m->checkCollision(getSprite()->getSprite()) )//si es verdadero, no debe de estar en esa posicion
 		getSprite()->setPosition(getLastPosition());
-		
+
+		//Gravedad
+	 if(!isJumping()){//Si no salta, aplicar gravedad
+	 	salto-=2;
+        getSprite()->mover(0, 4 * salto * salto * deltaTime);
+        if(m->checkCollision(getSprite()->getSprite())){//si es verdadero, ya estaba en el suelo.
+			colPos.x = getSprite()->getPosX();
+			colPos.y = m->getCollision(getSprite()->getSprite())->getGlobalBounds().top-getSprite()->getSprite()->getLocalBounds().height/2;
+        	getSprite()->setPosition(colPos); //Esto se utiliza para que este tocando el suelo, y no flotando.
+          	setGrounded(true);
+			salto=0;
+			if(saltoCD>0)
+				saltoCD--;
+        }else{
+          	setGrounded(false);//Se puede caer por un agujero y no estar grounded igualmente
+        }
+      }	
 	pos.setPosition(spr->getPosX(), spr->getPosY());
 }
 
