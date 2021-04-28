@@ -20,7 +20,7 @@ Menu::Menu(CyberPlague* contexto, M_Window *w) {
         font.loadFromFile("./resources/arial.ttf");
     }
 
-    menustate = 1;
+  //  menustate = 1;
 
     menu[0].setFont(font);
     menu[0].setColor(sf::Color::Red);
@@ -173,6 +173,7 @@ void Menu::Init(){
 int Menu::run(M_Window *window){
    // vector<bool> key;
    int key;
+   fondo = new M_Sprite("Fondo.jpg",0, 0, 640, 480,320, 240);
     while(window->abierta()){
         key = window->MenuController();
             Eventos( key); //utilizamos la funcion para coger las teclas
@@ -180,6 +181,7 @@ int Menu::run(M_Window *window){
         
         Render(); //dibujamos en pantalla el menu
     }
+    delete fondo;
     return 0;
 }
 
@@ -203,8 +205,10 @@ int Menu::Eventos(int key){
                     else if(key==3){
                         switch(selectedItemIndex){
                             case 0: // Nueva Partida
-                                //menustate = 5;
+                                menustate = 5;
+                                
                                 nivel = 0;
+                                
                                 Mundo::Instance(CyberPlague::Instance(), window, nivel)->Handle();
                             break;
                             case 1: //¿continuarrr?
@@ -322,40 +326,42 @@ CyberPlague* Menu::getContexto(){
 }
 
 void Menu::Render(){
+
     window->limpiar();
-    sf::Texture tex;
-    tex.loadFromFile("./resources/Fondo.jpg");
-    sf::Sprite fondo1(tex);
-    window->fondo(fondo1);
+    
+  //  sf::Texture tex;
+  //  tex.loadFromFile("./resources/Fondo.jpg");
+  //  sf::Sprite fondo1(tex);
+  //  window->fondo(fondo1);
+
+    
+    window->render(fondo);
+    
     switch(menustate){
         case 1:
             for (int i=0;i<MAX_NUMBER_OF_ITEMS;i++){
-                window->escribir(menu[i]);
+                window->escribir(&menu[i]);
             }
             break;
         case 2: 
             for (int i=0;i<MAX_NUMBER_OF_ITEMS_L;i++){
-                window->escribir(menuL[i]);
+                window->escribir(&menuL[i]);
             }
             break;   
         case 3: 
             for (int i=0;i<MAX_NUMBER_OF_ITEMS_N;i++){
-                window->escribir(menuN[i]);
+                window->escribir(&menuN[i]);
             }
             break;  
-        case 4: 
-            for (int i=0;i<MAX_NUMBER_OF_ITEMS_T;i++){
-                window->escribir(menuT[i]);
-            }
-            break;   
         case 5: 
             for (int i=0;i<MAX_NUMBER_OF_ITEMS_P;i++){
-                window->escribir(menuP[i]);
+                window->escribir(&menuP[i]);
             }
             break;          
     }
-
+    
     window->display();
+    
 }
 
 int Menu::GetPressedItem(){

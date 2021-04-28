@@ -77,7 +77,7 @@ class Menu : public State{
     private:
 
         int nivel;
-        int menustate = 2;
+        int menustate = 1;
         int selectedItemIndex;
         int selectedItemIndexL;
         int selectedItemIndexN;
@@ -86,6 +86,7 @@ class Menu : public State{
         int width;
         int height;
         M_Window* window; 
+        M_Sprite* fondo;
      //   vector<bool> key;
 
         static Menu* pinstance;

@@ -1,4 +1,5 @@
 #include "M_Window.h"
+#include <stdlib.h>
 
 #define fps 60
 
@@ -79,8 +80,10 @@ std::vector<bool> M_Window::keyPressed(){
       }
 
     //Pulsar ESC para salir. sf::Event no tiene el botón Escape
-      if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
+      if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)){
         ventana->close();
+        exit(0);
+      }
 
     //Tienen que ser ifs sin elses, para ver si el usuario pulsa más de un botón a la vez.
 
@@ -205,16 +208,18 @@ void M_Window::render(M_Sprite* spr){
   ventana->draw(*(spr->getSprite()));
 }
 
-void M_Window::escribir(sf::Text text){
+void M_Window::escribir(sf::Text* text){
 
-  ventana->draw(text);
+  ventana->draw(*text);
 
 }
 
-void M_Window::fondo(sf::Sprite fon){
+/*
+void M_Window::fondo(sf::Sprite* fon){
   if(ventana)
-    ventana->draw(fon);
+    ventana->draw(*(fon));
 }
+*/
 
 int M_Window::MenuController(){
 
