@@ -125,3 +125,9 @@ Añadido un nuevo fondo de menu y cambiada la tipografía. Añadida estructura a
 
 ## 20210426 RubenHerrera @(1h 30m)
 Arreglado bug del fondo (se creaba cada vez que renderizaba) y aparición de bug al pulsar escape en el texto. Lo he arreglado junto a Fidel forzando un exit al pulsar escape.
+
+## 20210427 JoseSansano @(1h 10m)
+Arreglado un bug del menu que hacia que la posición X del ratón actuase como "botones" del teclado, activando cosas aunque no pulsases nada, y retocado el salto del personaje.
+
+## 20210428 JoseSansano @(1h 10m)
+El personaje ya no se queda flotando en la pared sin caer. Ahora siempre cae. 
