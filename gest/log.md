@@ -106,6 +106,9 @@ Creación del resto de armas (excepto Lanzallamas) y ajustes para que funcionen.
 ## 20210422 SergioEspinosa @(1h 20m)
 He creado una rama aparte para ir implementando los estados. Desde CyberPlague (juego) llamo a Menú y hace el render, pero no pinta nada y lo he dejado ahi hasta que mi compañero Rubén solucione los problemas.
 
+## 20210423 RubenHerrera @(2h 30m)
+Arreglado el problema de pintar el texto y añadida nueva función para el control del menú. Ahora se mueve bien pero da saltos de dos en dos.
+
 ## 20210426 JoseSansano @(1h 40m)
 Mejora del salto para que sea más realista y que no haga el efecto "ascensor". Ahora cuando llega al punto más alto del salto se ralentiza, y cuando llega al suelo no puede saltar inmediatamente, hay un pequeño cooldown entre saltos. Añadidos los porcentajes de notas al master.
 
@@ -116,3 +119,9 @@ Ahora está el menú integrado en develop y se puede jugar el nivel desde nueva 
 ## 20210426 RamónRodríguez @(2h 20m)
 Render interpolado ya funciona en Player y Zombi, ahora las llamadas a update estan limintadas correctamente, y cambios en el salto para que se ajuste a la limitación de las llamadas a update.
 He tardado bastante más de lo previsto ya que he estado como 1h para arreglar el fallo del render interpolado que resultó ser una tonteria. El fallo estaba en el cálculo de percentTick.
+
+## 20210426 RubenHerrera @(1h 30m)
+Añadido un nuevo fondo de menu y cambiada la tipografía. Añadida estructura al menú.
+
+## 20210426 RubenHerrera @(1h 30m)
+Arreglado bug del fondo (se creaba cada vez que renderizaba) y aparición de bug al pulsar escape en el texto. Lo he arreglado junto a Fidel forzando un exit al pulsar escape.

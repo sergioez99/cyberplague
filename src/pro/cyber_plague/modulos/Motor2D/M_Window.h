@@ -51,10 +51,10 @@ class M_Window{
         void setView(M_View *camara);
 
         //Metodo para escribir el menu
-        void escribir(sf::Text text);
+        void escribir(sf::Text* text);
 
         //Metodo para dibujar el fondo del menu
-        void fondo(sf::Sprite fon);
+        void fondo(sf::Sprite* fon);
 
         //Metodo para los controles del menu
         int MenuController();

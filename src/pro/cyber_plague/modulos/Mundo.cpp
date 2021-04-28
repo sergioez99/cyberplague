@@ -30,6 +30,7 @@ void Mundo::Update()
 void Mundo::Init()
 {
     M_View *camara = new M_View(0, 0, 640, 480);
+    
 
     //Cargo la imagen donde reside la textura del sprite protagonista
     sf::Texture playerTexture;
