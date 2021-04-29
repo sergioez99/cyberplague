@@ -8,7 +8,6 @@ Mundo *Mundo::pinstance = 0;
 Mundo *Mundo::Instance(CyberPlague *context, M_Window *w, int nivel)
 {
     pinstance = new Mundo(context, w, nivel);
-    //lvl = nivel;
     return pinstance;
 }
 
@@ -16,6 +15,7 @@ Mundo::Mundo(CyberPlague *context, M_Window *w, int nivel)
 {
     vent = w;
     _context = context;
+    lvl = nivel;
 }
 
 void Mundo::Handle()
@@ -52,7 +52,8 @@ void Mundo::Init()
     //enemigos.push_back(sold);
     enemigos.push_back(zom);
     //TODO: Poner al personaje para dejar de controlar al MAGO
-    Map *tutorial = new Map(1);
+    Map *tutorial = new Map(lvl); 
+    
 
     vector<bool> key;
 
@@ -89,6 +90,10 @@ void Mundo::Init()
             //Aqui habra que cambiar de State
             if(player.muerto())
                 cout << "HE MUERTO" << endl;
+
+            if(player.superado()){
+                Mundo::Instance(CyberPlague::Instance(), vent, lvl+1)->Handle();
+            }
 
             //Updates antes de los renders o el personaje vibra por las colisiones.
 

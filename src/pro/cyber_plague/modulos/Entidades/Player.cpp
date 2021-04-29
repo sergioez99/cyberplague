@@ -118,8 +118,11 @@ void Player::update(float deltaTime, Map* m)
 	float posLadoDerecho = getPosX() - getSprite()->getSprite()->getGlobalBounds().width / 2;
 	float posLadoIzquierdo = getPosX() + getSprite()->getSprite()->getGlobalBounds().width / 2;
 
-	if(posLadoDerecho < 0 || posLadoIzquierdo > m->getWidth() * m->getTileWidth())
+	if(posLadoDerecho < 0)
 		getSprite()->setPosition(getLastPosition());
+
+	if(posLadoIzquierdo > m->getWidth() * m->getTileWidth())
+		next = true;
 
 	//Gravedad
 	if(!isJumping()){//Si no salta, aplicar gravedad
@@ -153,6 +156,10 @@ int Player::getDmg(){
 Arma* Player::getArmaEquipada(){
 
 	return armas.at(arma_actual);
+}
+
+bool Player::superado(){
+	return next;
 }
 
 void Player::setDmg(int d){
@@ -191,3 +198,4 @@ void Player::renders(M_Window* vent, float percentTick, Map* mapa){
 
 	
 }
+

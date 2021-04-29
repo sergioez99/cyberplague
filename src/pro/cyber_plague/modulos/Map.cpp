@@ -4,13 +4,25 @@ Map::Map(int nivel) {
       
     TiXmlDocument doc;
 
-    if(!doc.LoadFile("resources/MapaNivel1.tmx")){
-        std::cout << "Error al cargar el mapa." << std::endl;
-    }
+    if(nivel == 1){
+        if(!doc.LoadFile("resources/MapaNivel1.tmx")){
+            std::cout << "Error al cargar el mapa." << std::endl;
+        }
 
-    if(!_tilesetTexture.loadFromFile("resources/mapa_1.png")){
-        std::cout << "Error al cargar el tileset." << std::endl;
+        if(!_tilesetTexture.loadFromFile("resources/mapa_1.png")){
+            std::cout << "Error al cargar el tileset." << std::endl;
+        }
     }
+    if(nivel == 2){
+        if(!doc.LoadFile("resources/Mapa2.tmx")){
+            std::cout << "Error al cargar el mapa." << std::endl;
+        }
+
+        if(!_tilesetTexture.loadFromFile("resources/citytiles2.png")){
+            std::cout << "Error al cargar el tileset." << std::endl;
+        }
+    }
+    
 
     TiXmlElement* map = doc.FirstChildElement("map");
 
@@ -120,7 +132,7 @@ Map::Map(int nivel) {
 
 void Map::drawTile(sf::RenderWindow *window){
 
-    for(int t=0; t<4; t++){
+    for(int t=0; t<_numlayers; t++){
         for(int y=0; y<_height; y++){
             for(int x=0; x<_width; x++){
                 if(_tilemapSprite[t][y][x]!=NULL){

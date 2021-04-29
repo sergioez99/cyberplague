@@ -11,6 +11,7 @@ void Entidad::escalar(float x, float y){
     spr->escalar(x, y);
 }
 
+
 bool Entidad::muerto(){
 
     if(*vida <= 0){return true;}

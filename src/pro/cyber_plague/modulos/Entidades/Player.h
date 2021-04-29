@@ -24,10 +24,12 @@ public:
 	int mirandoDerecha();
 	int getDmg();
 	Arma* getArmaEquipada();
+	
 
 	void setDmg(int d);
 	//void checkEnemyColision(vector<NPC*> enemigos);
 	void ataque();
+	bool superado();
 
 	void renders(M_Window* vent, float percentTick, Map* mapa);
 
@@ -45,6 +47,7 @@ private:
 	bool faceRight;
 	int dmg;
 	int saltoCD=0;
+	bool next = false;
 	
     virtual bool puedoAtacar(){return false;};
     virtual void moverse(float deltaTime){};

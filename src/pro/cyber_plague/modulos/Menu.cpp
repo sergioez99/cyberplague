@@ -205,15 +205,18 @@ int Menu::Eventos(int key){
                     else if(key==3){
                         switch(selectedItemIndex){
                             case 0: // Nueva Partida
-                                menustate = 5;
+                                //menustate = 5;
                                 
-                                nivel = 0;
+                                nivel = 1;
                                 
                                 Mundo::Instance(CyberPlague::Instance(), window, nivel)->Handle();
                             break;
                             case 1: //¿continuarrr?
                                 //menustate = 5;
-                                // Menu::Instance(CyberPlague::Instance(),window)->Handle();
+                                
+                                nivel = 2;
+                                
+                                Mundo::Instance(CyberPlague::Instance(), window, nivel)->Handle();
                             break;
                             case 2:
                                 //lobby

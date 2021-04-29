@@ -112,6 +112,6 @@ class Mundo: public State{ //Class ingame
         M_Window *vent;
         CyberPlague* _context;
         static Mundo* pinstance;
-        int lvl = 0;
+        int lvl;
         
 };

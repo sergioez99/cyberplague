@@ -18,7 +18,7 @@ void CyberPlague::cambiarEstado(State* estado){
 }
 
 void CyberPlague::Handle(){
-    window = new M_Window(640,480,"Cyber Plague");
+    window = new M_Window(640, 480,"Cyber Plague");
 
     Menu::Instance(this,window)->Handle(); 
 
