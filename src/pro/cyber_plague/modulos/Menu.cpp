@@ -178,7 +178,6 @@ int Menu::run(M_Window *window){
     while(window->abierta()){
 
         key = M_Input::InputController();
-        cout << M_Input::getKeys() << endl;
 
         Eventos(key); //utilizamos la funcion para coger las teclas
         

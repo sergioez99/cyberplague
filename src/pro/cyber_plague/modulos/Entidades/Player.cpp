@@ -48,7 +48,6 @@ void Player::update(float deltaTime, Map* m)
 	if(salto > 0){
 
 		movement.y -= 5 * salto * salto * deltaTime;
-		cout << salto << endl;
 		salto -= 0.98f;
 	}
 	if (M_Input::isKeyPressedLeft())
@@ -59,7 +58,7 @@ void Player::update(float deltaTime, Map* m)
 
 	if (key == "UP" && isGrounded() && saltoCD <= 0){
 
-		salto = 13;
+		salto = 14;
 		movement.y -= 4 * salto * salto * deltaTime;
 		saltoCD = 4;
 		setGrounded(false);
@@ -159,7 +158,6 @@ void Player::update(float deltaTime, Map* m)
 		setVida(0);
 	
 	pos.setPosition(spr->getPosX(), spr->getPosY());
-
 }
 
 int Player::getDmg(){
