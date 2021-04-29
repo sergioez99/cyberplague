@@ -19,6 +19,8 @@ Se recomienda gastar alguna herramienta que permita medir el tiempo y administra
 Este fichero puede ser un PDF si la herramienta que gastáis lo requiere, pero **debe estar actualizado semanalmente**.
 
 
+# HITO 2
+
 * `[Hecho]` - `20210323; Preparación de la rama para trabajar; 40'; zindov`
 * `[En progreso]` - `20210323; Motor2D; 40'; zindov`
 * `[Hecho]` - `20210323; Finalización de PROT: IA Pájaro; 165'; ramonrp99`
@@ -47,3 +49,8 @@ Este fichero puede ser un PDF si la herramienta que gastáis lo requiere, pero *
 * `[Hecho]` - `20210418; Muerte de Player y NPC; 15'; ramonrp99`
 * `[Hecho]` - `20210418; Clases Menú y Mundo con funciones de estado; 60', sergioez99`
 * `[Hecho]` - `20210418; Creación del resto de armas; 300', CarlosVC-UA`
+
+# HITO 3
+
+* `[Hecho]` - `20210428; Creacion clase M_Input para manejar la entrada del teclado; 180', CarlosVC-UA`
+* `[Hecho]` - `20210429; Cambios en clases para ajustarlas a M_Input, arreglos varios; 240', CarlosVC-UA`

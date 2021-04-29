@@ -53,17 +53,18 @@ void Player::update(float deltaTime, Map* m)
 	if (M_Input::isKeyPressedRight())
 		movement.x += speed * deltaTime;
 
-	if (M_Input::isKeyPressedUp() && isGrounded() && saltoCD <= 0){
+	if (M_Input::isKeyPressedUp() && isGrounded() && heSaltado == false){
 
 		salto = 10;
 		movement.y -= 4 * salto * salto * deltaTime;
-		saltoCD = 4;
+		heSaltado = true;
 		setGrounded(false);
 	}
 
-	//cout << M_Input::getKeys() << endl;
+	if(!M_Input::isKeyPressedUp() && isGrounded()){
 
-	cout << heDisparado << endl;
+		heSaltado = false;
+	}
 
 	if(arma_actual != 3){
 
@@ -158,8 +159,8 @@ void Player::update(float deltaTime, Map* m)
         	getSprite()->setPosition(colPos); //Esto se utiliza para que este tocando el suelo, y no flotando.
           	setGrounded(true);
 			salto=0;
-			if(saltoCD>0)
-				saltoCD--;
+			/*if(saltoCD>0)
+				saltoCD--;*/
         }else{
           	setGrounded(false);//Se puede caer por un agujero y no estar grounded igualmente
         }
