@@ -135,3 +135,6 @@ El personaje ya no se queda flotando en la pared sin caer. Ahora siempre cae.
 ## 20210428 RamónRodríguez @(1h 40 m)
 Las Armas ya funcionan con el render interpolado y las balas se destruyen al colisionar con el mapa (la función intersects no siempre detecta las colisiones, solo en la parte superior de los obstaculos, no sé por qué).
 El personaje ya no puede salir de la pantalla al inicio y al final del mapa y cuando cae por un hueco muere.
+
+## 20210426 SergioEspinosa @(2h 45m)
+Solucionados problemas de colision del arma en el mapa 1. He creado un nuevo mapa y lo he implementado, cuando acabe el nivel 1 se pasa directamente y desde la opcion del continuar menú se puede entrar también de momento
