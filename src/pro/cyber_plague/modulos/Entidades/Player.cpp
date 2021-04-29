@@ -3,8 +3,6 @@
 #define kVida  50
 #define kTmpCamb 0.5f
 
-vector<bool> inputs(7,0);
-
 Player::Player(sf::Texture* texture, sf::Vector2u imageCount, float switchTime, float speed) : 
 	animacion(texture, imageCount, switchTime)
 {	
@@ -35,10 +33,9 @@ Player::~Player(){
 	delete vida;
 }
 
+
 void Player::update(float deltaTime, Map* m)
 {
-
-	string key = M_Input::InputController();
 
 	setLastPosition();
 	Vector2D colPos{0,0};
@@ -48,7 +45,7 @@ void Player::update(float deltaTime, Map* m)
 	if(salto > 0){
 
 		movement.y -= 5 * salto * salto * deltaTime;
-		salto -= 0.98f;
+		salto -= 2;
 	}
 	if (M_Input::isKeyPressedLeft())
 		movement.x -= speed * deltaTime;
@@ -56,22 +53,37 @@ void Player::update(float deltaTime, Map* m)
 	if (M_Input::isKeyPressedRight())
 		movement.x += speed * deltaTime;
 
-	if (key == "UP" && isGrounded() && saltoCD <= 0){
+	if (M_Input::isKeyPressedUp() && isGrounded() && saltoCD <= 0){
 
-		salto = 14;
+		salto = 10;
 		movement.y -= 4 * salto * salto * deltaTime;
 		saltoCD = 4;
 		setGrounded(false);
-
-		
 	}
 
 	//cout << M_Input::getKeys() << endl;
 
-	if (key == "Z"){
-		ataque();
+	cout << heDisparado << endl;
+
+	if(arma_actual != 3){
+
+		if (M_Input::isKeyPressedZ() && heDisparado == false){
+
+			ataque();
+			heDisparado = true;
+
+		}
+
+		if(!M_Input::isKeyPressedZ()){
+
+			heDisparado = false;
+		}
+
 	}
-	if(key == "C"){
+
+	
+
+	if(M_Input::isKeyPressedC()){
 		
 		float tmp = temp_cambioArma.getElapsedTime().asMilliseconds() / 1000;
 
@@ -138,7 +150,7 @@ void Player::update(float deltaTime, Map* m)
 
 	//Gravedad
 	if(!isJumping()){//Si no salta, aplicar gravedad
-	 	salto-=0.98f;
+	 	salto -= 2;
         getSprite()->mover(0, 4 * salto * salto * deltaTime);
         if(m->checkCollision(getSprite()->getSprite())){//si es verdadero, ya estaba en el suelo.
 			colPos.x = getSprite()->getPosX();
@@ -158,6 +170,8 @@ void Player::update(float deltaTime, Map* m)
 		setVida(0);
 	
 	pos.setPosition(spr->getPosX(), spr->getPosY());
+
+	//cout << M_Input::getKeys() << endl;
 }
 
 int Player::getDmg(){

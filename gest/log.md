@@ -143,4 +143,4 @@ Solucionados problemas de colision del arma en el mapa 1. He creado un nuevo map
 Creacion clase M_Input para manejar la entrada del teclado.
 
 ## 20210429 CarlosVillena @(4h)
-Cambios en el resto de clases del proyecto para ajustarlos a los inputs, desbloqueo de framerate (estaba a 15fps el juego, ahora va a 60) y arreglos de problemas que esto llevaba.
+Cambios en el resto de clases del proyecto para ajustarlos a los inputs. Hacer que el arma se dispare por pulsacion y no por tecla mantenida.

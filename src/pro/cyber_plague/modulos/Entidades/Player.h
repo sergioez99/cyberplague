@@ -18,13 +18,12 @@ public:
 	Player(sf::Texture* texture, sf::Vector2u imageCount, float switchTime, float speed);
 	~Player();
 
-    void update(float deltaTime, Map *m);
+	void update(float deltaTime, Map *m);
 	//void Draw(sf::RenderWindow& window);
 
 	int mirandoDerecha();
 	int getDmg();
 
-	void detectarInputs();
 	Arma* getArmaEquipada();
 	
 
@@ -48,8 +47,10 @@ private:
 	float speed;
 	bool faceRight;
 	int dmg;
-	int saltoCD=0;
+	float saltoCD=0;
 	bool next = false;
+
+	bool heDisparado = false;
 	
     virtual bool puedoAtacar(){return false;};
     virtual void moverse(float deltaTime){};

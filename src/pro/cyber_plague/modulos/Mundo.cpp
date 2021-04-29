@@ -1,7 +1,7 @@
 #include "CyberPlague.h"
 #include "../include/includes.h"
 
-#define kUpdateTimePS 1/60
+#define kUpdateTimePS 1000/15
 
 Mundo *Mundo::pinstance = 0;
 Mundo *Mundo::Instance(CyberPlague *context, M_Window *w, int nivel)
@@ -29,13 +29,12 @@ void Mundo::Update()
 void Mundo::Init()
 {
     M_View *camara = new M_View(0, 0, 640, 480);
-    
 
     //Cargo la imagen donde reside la textura del sprite protagonista
     sf::Texture playerTexture;
     playerTexture.loadFromFile("resources/Union 3.png");
 
-    Player player(&playerTexture, sf::Vector2u(8, 3), 0.17f, 250.0f);
+    Player player(&playerTexture, sf::Vector2u(8, 3), 0.15f, 250.0f);
 
     Clock clock;
     Clock clock2;
@@ -62,6 +61,8 @@ void Mundo::Init()
     //Bucle juego
     while (vent->abierta())
     {
+
+        string key = M_Input::InputController();
 
         if (clock.getElapsedTime().asMilliseconds() - timeStartUpdate.asMilliseconds() > kUpdateTimePS)
         {
