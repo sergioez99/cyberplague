@@ -135,8 +135,8 @@ void Map::drawPersonaje(sf::RenderWindow *window, Sprite* sp){
     window->draw(*sp);
     for(int y=0; y<_height; y++){
             for(int x=0; x<_width; x++){
-                if(_tilemapSprite[4][y][x]!=NULL){
-                    window->draw(*(_tilemapSprite[4][y][x]));
+                if(_tilemapSprite[3][y][x]!=NULL){
+                    window->draw(*(_tilemapSprite[3][y][x]));
                 }
             }
         }
