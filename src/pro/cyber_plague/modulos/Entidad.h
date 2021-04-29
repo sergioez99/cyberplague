@@ -2,6 +2,7 @@
 #include <iostream>
 #include "Motor2D/M_Sprite.h"
 #include "Motor2D/M_Window.h"
+#include "Motor2D/M_Input.h"
 #include "Map.h"
 #include "Tools/posInterpolada.h"
 
@@ -25,7 +26,7 @@ class Entidad{
         M_Sprite* spr;
         int* vida;
         int* armadura;
-        int salto=0;
+        float salto=0;
         int dmgColor=0;
         float* vel;
         int ataq;

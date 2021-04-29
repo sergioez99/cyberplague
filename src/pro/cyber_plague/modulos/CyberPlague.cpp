@@ -20,12 +20,9 @@ void CyberPlague::cambiarEstado(State* estado){
 void CyberPlague::Handle(){
     window = new M_Window(640,480,"Cyber Plague");
 
-    Menu::Instance(this,window)->Handle(); 
+    M_Input::Instanciar(window);
 
-    /*while(window->abierta()){
-        update();
-    }
-    */
+    Menu::Instance(this,window)->Handle();
 }
 
 CyberPlague::CyberPlague(){

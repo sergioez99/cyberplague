@@ -6,6 +6,7 @@
 #include <vector>
 #include <string> 
 #include "Motor2D/M_Window.h"
+#include "Motor2D/M_Input.h"
 
 
 
@@ -66,7 +67,7 @@ class Menu : public State{
         void Init();
         CyberPlague* getContexto();
         int GetPressedItem();
-        int Eventos(int key);
+        int Eventos(string key);
         static Menu* Instance(CyberPlague* contexto, M_Window *w);
 
     protected: 

@@ -171,38 +171,39 @@ void Menu::Init(){
 }
 
 int Menu::run(M_Window *window){
-   // vector<bool> key;
-   int key;
+
+   string key;
    fondo = new M_Sprite("Fondo.jpg",0, 0, 640, 480,320, 240);
+
     while(window->abierta()){
-        key = window->MenuController();
-            Eventos( key); //utilizamos la funcion para coger las teclas
+
+        key = M_Input::InputController();
+        cout << M_Input::getKeys() << endl;
+
+        Eventos(key); //utilizamos la funcion para coger las teclas
         
         
         Render(); //dibujamos en pantalla el menu
     }
+
     delete fondo;
     return 0;
 }
 
-int Menu::Eventos(int key){
-            /*
-            if (event.type == sf::Event::Closed){
-                window->cerrar();
-            }
-            */
+int Menu::Eventos(string key){
+
             switch(menustate){ //para cada pantalla o estado del menu
                 case 1:     //MENU PRINCIPAL
-                    if(key==1){
+                    if(key == "UP"){
                                     
                         MoveUp();
                         
                                 
-                    }else if (key==2)
+                    }else if (key == "DOWN")
                                     
                         MoveDown();
                      
-                    else if(key==3){
+                    else if(key == "ENTER"){
                         switch(selectedItemIndex){
                             case 0: // Nueva Partida
                                 menustate = 5;
@@ -234,16 +235,16 @@ int Menu::Eventos(int key){
                     }
                 break;
                 case 2:     //LOBBY
-                    if(key==1)
+                    if(key == "UP")
                                     
                         MoveUp();
                         
                                 
-                    else if (key==2)
+                    else if (key == "DOWN")
                                     
                         MoveDown();
                      
-                    else if(key==3){
+                    else if(key == "ENTER"){
                         switch(selectedItemIndexL){
                             case 0: 
                                 //SECTOR O NIVEL 1
@@ -274,15 +275,15 @@ int Menu::Eventos(int key){
                     }
                 break;
                  case 4:             //TIENDA  
-                    if(key==1)
+                    if(key == "UP")
                                     
                         MoveUp();
                                 
-                    else if (key==2)
+                    else if (key == "DOWN")
                                     
                         MoveDown();
                      
-                    else if(key==3){
+                    else if(key == "ENTER"){
                         switch(selectedItemIndexT){
                             case 0: 
                                 //SECTOR O NIVEL 1

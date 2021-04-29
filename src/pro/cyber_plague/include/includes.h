@@ -1,6 +1,7 @@
 //Clases del Motor.
 #include "../modulos/Motor2D/M_Sprite.h"
 #include "../modulos/Motor2D/M_View.h"
+#include "../modulos/Motor2D/M_Input.h"
 
 //Clases de las Entidades.
 #include "../modulos/Entidades/NPCs/Mago.h"

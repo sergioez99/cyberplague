@@ -3,6 +3,7 @@
 #define kVida  50
 #define kTmpCamb 0.5f
 
+vector<bool> inputs(7,0);
 
 Player::Player(sf::Texture* texture, sf::Vector2u imageCount, float switchTime, float speed) : 
 	animacion(texture, imageCount, switchTime)
@@ -36,30 +37,42 @@ Player::~Player(){
 
 void Player::update(float deltaTime, Map* m)
 {
+
+	string key = M_Input::InputController();
+
 	setLastPosition();
 	Vector2D colPos{0,0};
 	Vector2D movement{0.0f, 0.0f};
 	//Utilizar Vector2D en vez del sf::Vector2f para no usar SFML
-	if(salto>0){
+
+	if(salto > 0){
+
 		movement.y -= 5 * salto * salto * deltaTime;
-		salto-=2;
+		cout << salto << endl;
+		salto -= 0.98f;
 	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+	if (M_Input::isKeyPressedLeft())
 		movement.x -= speed * deltaTime;
 
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+	if (M_Input::isKeyPressedRight())
 		movement.x += speed * deltaTime;
 
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && isGrounded() && saltoCD<=0){
-		salto = 10;
+	if (key == "UP" && isGrounded() && saltoCD <= 0){
+
+		salto = 13;
 		movement.y -= 4 * salto * salto * deltaTime;
 		saltoCD = 4;
 		setGrounded(false);
+
+		
 	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z)){
+
+	//cout << M_Input::getKeys() << endl;
+
+	if (key == "Z"){
 		ataque();
 	}
-	if(sf::Keyboard::isKeyPressed(sf::Keyboard::C)){
+	if(key == "C"){
 		
 		float tmp = temp_cambioArma.getElapsedTime().asMilliseconds() / 1000;
 
@@ -118,7 +131,7 @@ void Player::update(float deltaTime, Map* m)
 
 		//Gravedad
 	 if(!isJumping()){//Si no salta, aplicar gravedad
-	 	salto-=2;
+	 	salto-=0.98f;
         getSprite()->mover(0, 4 * salto * salto * deltaTime);
         if(m->checkCollision(getSprite()->getSprite())){//si es verdadero, ya estaba en el suelo.
 			colPos.x = getSprite()->getPosX();
@@ -133,6 +146,7 @@ void Player::update(float deltaTime, Map* m)
         }
       }	
 	pos.setPosition(spr->getPosX(), spr->getPosY());
+
 }
 
 int Player::getDmg(){

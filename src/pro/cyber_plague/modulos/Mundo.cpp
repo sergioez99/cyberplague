@@ -1,8 +1,7 @@
 #include "CyberPlague.h"
 #include "../include/includes.h"
 
-#define kUpdateTimePS 1000/15
-#define kVel 200  //Temporal, mientras mago actue como jugador
+#define kUpdateTimePS 1/60
 
 Mundo *Mundo::pinstance = 0;
 Mundo *Mundo::Instance(CyberPlague *context, M_Window *w, int nivel)
@@ -35,7 +34,8 @@ void Mundo::Init()
     //Cargo la imagen donde reside la textura del sprite protagonista
     sf::Texture playerTexture;
     playerTexture.loadFromFile("resources/Union 3.png");
-    Player player(&playerTexture, sf::Vector2u(8, 3), 0.15f, 200.0f);
+
+    Player player(&playerTexture, sf::Vector2u(8, 3), 0.17f, 250.0f);
 
     Clock clock;
     Clock clock2;
@@ -61,38 +61,17 @@ void Mundo::Init()
     //Bucle juego
     while (vent->abierta())
     {
+
         if (clock.getElapsedTime().asMilliseconds() - timeStartUpdate.asMilliseconds() > kUpdateTimePS)
         {
             float deltaTime = clock2.restart().asSeconds();
 
-            key = vent->keyPressed();
-            //TODO: Cambiar todo este codigo de movimiento y Colisiones a una nueva clase Physics
-
-            //Salto suave.
-            //TODO: Hacer salto suave bien.
-            /*
-      if(salto>0){
-        if(salto>12)
-          mago->getSprite()->mover(0, 3 *-kVel * deltaTime);
-        else{
-          mago->getSprite()->mover(0, (float)(salto/4)*-kVel * deltaTime);
-        }
-        salto--;
-      }*/
             //Gravedad
             if (!player.muerto())
             {
                 player.update(deltaTime, tutorial);
-                //player.checkEnemyColision(enemigos);
-                if (key[4])
-                {
-
-                    player.ataque();
-                }
-                //player.setLastPosition();
             }
-            //Updates antes de los renders o el personaje vibra por las colisiones.
-            //Mago es personaje por ahora
+
 
             for (int i = 0; i < (int)enemigos.size(); i++)
             {
@@ -136,6 +115,7 @@ void Mundo::Init()
         vent->setView(camara);
         vent->display();
     }
+
     delete vent;
     delete camara;
 

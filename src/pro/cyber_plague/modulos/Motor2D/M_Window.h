@@ -12,15 +12,12 @@ class M_Window{
     
     private:
 
-        //RenderWindow* ventana;
+        RenderWindow* ventana;
         Clock reloj;
         bool dir=false;
-        //float deltaTime = 0;
 
-    
     public:
 
-        RenderWindow* ventana;
         //Constructor
         M_Window(int width, int heigth, string nom);
 
@@ -31,12 +28,7 @@ class M_Window{
         void render(M_Sprite* spr);
         void renderPlayer(M_Sprite* spr, Map* mapa);
 
-        std::vector<bool> keyPressed();
-
         void limpiar();
-
-        //Metodo para devolver el deltaTime.
-        //float getDt();
         
         //Metodo para comprobar si la ventana esta abierta.
         bool abierta();
@@ -56,8 +48,8 @@ class M_Window{
         //Metodo para dibujar el fondo del menu
         void fondo(sf::Sprite* fon);
 
-        //Metodo para los controles del menu
-        int MenuController();
+        //Metodo pollEvent de la Ventana.
+        bool pollEvent(Event* event);
 
         RenderWindow* getWindow();
 };
