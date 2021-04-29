@@ -139,7 +139,7 @@ void Player::update(float deltaTime, Map* m)
 
 	//Gravedad
 	if(!isJumping()){//Si no salta, aplicar gravedad
-	 	salto-=9.8f;
+	 	salto-=0.98f;
         getSprite()->mover(0, 4 * salto * salto * deltaTime);
         if(m->checkCollision(getSprite()->getSprite())){//si es verdadero, ya estaba en el suelo.
 			colPos.x = getSprite()->getPosX();
