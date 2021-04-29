@@ -131,3 +131,9 @@ Arreglado un bug del menu que hacia que la posición X del ratón actuase como "
 
 ## 20210428 JoseSansano @(1h 10m)
 El personaje ya no se queda flotando en la pared sin caer. Ahora siempre cae. 
+
+## 20210428 CarlosVillena @(3h)
+Creacion clase M_Input para manejar la entrada del teclado.
+
+## 20210429 CarlosVillena @(4h)
+Cambios en el resto de clases del proyecto para ajustarlos a los inputs, desbloqueo de framerate (estaba a 15fps el juego, ahora va a 60) y arreglos de problemas que esto llevaba.
