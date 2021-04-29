@@ -23,6 +23,8 @@ public:
 
 	int mirandoDerecha();
 	int getDmg();
+
+	void detectarInputs();
 	Arma* getArmaEquipada();
 	
 

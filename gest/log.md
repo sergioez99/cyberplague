@@ -138,3 +138,9 @@ El personaje ya no puede salir de la pantalla al inicio y al final del mapa y cu
 
 ## 20210426 SergioEspinosa @(2h 45m)
 Solucionados problemas de colision del arma en el mapa 1. He creado un nuevo mapa y lo he implementado, cuando acabe el nivel 1 se pasa directamente y desde la opcion del continuar menú se puede entrar también de momento
+
+## 20210428 CarlosVillena @(3h)
+Creacion clase M_Input para manejar la entrada del teclado.
+
+## 20210429 CarlosVillena @(4h)
+Cambios en el resto de clases del proyecto para ajustarlos a los inputs, desbloqueo de framerate (estaba a 15fps el juego, ahora va a 60) y arreglos de problemas que esto llevaba.
