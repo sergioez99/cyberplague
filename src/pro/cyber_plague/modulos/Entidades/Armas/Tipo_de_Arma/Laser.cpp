@@ -47,6 +47,7 @@ void Laser::Bala::rotar(float grad){
     sprite_bala->rotar(grad);
 }
 
+
 M_Sprite* Laser::Bala::getSprite(){
 
     return sprite_bala;
@@ -128,10 +129,19 @@ void Laser::mejorar(){
 void Laser::update(float dt, Map* m){
 
     for(unsigned int i = 0; i < proyectiles.size(); i++){
-        proyectiles.at(i)->moverse(proyectiles.at(i)->orientacion * (vel * dt), 0);
 
-        if(m->checkCollision(proyectiles.at(i)->getSprite()->getSprite()))
+        if(!balaEstaLejos(i, m)){
+
+            proyectiles.at(i)->moverse(proyectiles.at(i)->orientacion * (vel * dt), 0);
+
+            if(m->checkCollision(proyectiles.at(i)->getSprite()->getSprite()))
+                proyectiles.erase(proyectiles.begin() + i);
+        }
+
+        else{
+
             proyectiles.erase(proyectiles.begin() + i);
+        }
     }
     
 }
@@ -161,4 +171,17 @@ void Laser::balaImpactada(NPC* enemigo){
         }
 
 	}
+}
+
+bool Laser::balaEstaLejos(int i, Map* m){
+
+    if((proyectiles.at(i)->getSprite()->getPosX() / m->getWidth() > m->getWidth() || proyectiles.at(i)->getSprite()->getPosX() / m->getWidth() < 0 )){
+
+        return true;
+    }
+
+    else {
+
+        return false;
+    }
 }

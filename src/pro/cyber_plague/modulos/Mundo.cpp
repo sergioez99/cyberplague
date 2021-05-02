@@ -51,8 +51,7 @@ void Mundo::Init()
     //enemigos.push_back(sold);
     enemigos.push_back(zom);
     //TODO: Poner al personaje para dejar de controlar al MAGO
-    Map *tutorial = new Map(lvl); 
-    
+    Map *tutorial = new Map(lvl);
 
     vector<bool> key;
 
@@ -61,6 +60,8 @@ void Mundo::Init()
     //Bucle juego
     while (vent->abierta())
     {
+
+        
 
         string key = M_Input::InputController();
 

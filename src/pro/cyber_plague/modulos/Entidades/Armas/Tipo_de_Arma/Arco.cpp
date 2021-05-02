@@ -48,6 +48,11 @@ void Arco::Bala::rotar(float grad){
     sprite_bala->rotar(grad);
 }
 
+float Arco::Bala::getRotation(){
+
+    return sprite_bala->getRotation();
+}
+
 M_Sprite* Arco::Bala::getSprite(){
 
     return sprite_bala;
@@ -131,7 +136,7 @@ void Arco::disparo(){
                         break;
                 }
 
-                proyectiles.push_back(bala);        
+                proyectiles.push_back(bala);    
             }
 
         }
@@ -156,29 +161,34 @@ void Arco::update(float dt, Map* m){
 
     if(mejora){
 
-        int resto = 0;
-
         for(unsigned int i = 0; i < proyectiles.size(); i++){
 
-            resto = i % 3;
+            if(!balaEstaLejos(i, m)){
 
-            switch(resto){
+                float rotacion = proyectiles.at(i)->getRotation();
 
-                case 0: 
+                if(rotacion == 30 || rotacion == 210){
 
                     proyectiles.at(i)->moverse(proyectiles.at(i)->orientacion * (vel * dt), proyectiles.at(i)->orientacion * ((vel * dt) / 3));  //BALA SUPERIOR.
-                
-                    break;
+                }
 
-                case 1:
-
-                    proyectiles.at(i)->moverse(proyectiles.at(i)->orientacion * (vel * dt), 0); //BALA MEDIA
-                    break;
-
-                case 2:
+                else if(rotacion == 330 || rotacion == 150){
 
                     proyectiles.at(i)->moverse(proyectiles.at(i)->orientacion * (vel * dt), -proyectiles.at(i)->orientacion * (vel * dt)/ 3); //BALA INFERIOR.
-                    break;
+                }
+
+                else{
+
+                    proyectiles.at(i)->moverse(proyectiles.at(i)->orientacion * (vel * dt), 0); //BALA MEDIA
+                }
+                
+                if(m->checkCollision(proyectiles.at(i)->getSprite()->getSprite()))
+                    proyectiles.erase(proyectiles.begin() + i);
+            }
+
+            else{
+
+                proyectiles.erase(proyectiles.begin() + i);
             }
 
             
@@ -188,10 +198,20 @@ void Arco::update(float dt, Map* m){
     else{
 
         for(unsigned int i = 0; i < proyectiles.size(); i++){
-            proyectiles.at(i)->moverse(proyectiles.at(i)->orientacion * (vel * dt), 0);
 
-            if(m->checkCollision(proyectiles.at(i)->getSprite()->getSprite()))
+            if(!balaEstaLejos(i, m)){
+
+                proyectiles.at(i)->moverse(proyectiles.at(i)->orientacion * (vel * dt), 0);
+
+                if(m->checkCollision(proyectiles.at(i)->getSprite()->getSprite()))
+                    proyectiles.erase(proyectiles.begin() + i);
+            }
+
+            else{
+
                 proyectiles.erase(proyectiles.begin() + i);
+            }
+            
         }
     }
 }
@@ -220,4 +240,17 @@ void Arco::balaImpactada(NPC* enemigo){
         }
 
 	}
+}
+
+bool Arco::balaEstaLejos(int i, Map* m){
+
+    if((proyectiles.at(i)->getSprite()->getPosX() / m->getWidth() > m->getWidth() || proyectiles.at(i)->getSprite()->getPosX() / m->getWidth() < 0 ) || (proyectiles.at(i)->getSprite()->getPosY() / m->getHeight() > 2 * m->getHeight()|| proyectiles.at(i)->getSprite()->getPosY() / m->getHeight() < 0)){
+
+        return true;
+    }
+
+    else {
+
+        return false;
+    }
 }

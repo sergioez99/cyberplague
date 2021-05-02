@@ -22,6 +22,8 @@ class Arco : public Arma{
 
                 void moverse(float posX, float posY);
                 void rotar(float grad);
+                float getRotation();
+
                 M_Sprite* getSprite();
                 bool heColisionado(NPC* enemigo);
 
@@ -41,6 +43,7 @@ class Arco : public Arma{
       void update(float deltaTime, Map* m);
       void render(M_Window* vent, float percentTick);
       void balaImpactada(NPC* enemigos);
+      bool balaEstaLejos(int i, Map* m);
 
 };
 

@@ -40,6 +40,8 @@ class M_Sprite{
 
         float getPosY();
 
+        float getRotation();
+
         void setPosition(Vector2D pos);
 
         void setColor(int i);

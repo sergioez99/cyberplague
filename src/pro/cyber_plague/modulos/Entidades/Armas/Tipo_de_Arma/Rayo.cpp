@@ -119,10 +119,21 @@ void Rayo::mejorar(){
 void Rayo::update(float dt, Map* m){
 
     for(unsigned int i = 0; i < proyectiles.size(); i++){
-        proyectiles.at(i)->moverse(proyectiles.at(i)->orientacion * (vel * dt), 0);
 
-        if(m->checkCollision(proyectiles.at(i)->getSprite()->getSprite()))
-            proyectiles.erase(proyectiles.begin() + i);
+        if(!balaEstaLejos(i, m)){
+
+             proyectiles.at(i)->moverse(proyectiles.at(i)->orientacion * (vel * dt), 0);
+
+            if(m->checkCollision(proyectiles.at(i)->getSprite()->getSprite()))
+                proyectiles.erase(proyectiles.begin() + i);
+        }
+
+        else{
+
+            proyectiles.erase(proyectiles.begin() + i); 
+        }
+
+       
     }
     
 }
@@ -152,4 +163,17 @@ void Rayo::balaImpactada(NPC* enemigo){
         }
 
 	}
+}
+
+bool Rayo::balaEstaLejos(int i, Map* m){
+
+    if((proyectiles.at(i)->getSprite()->getPosX() / m->getWidth() > m->getWidth() || proyectiles.at(i)->getSprite()->getPosX() / m->getWidth() < 0 )){
+
+        return true;
+    }
+
+    else {
+
+        return false;
+    }
 }

@@ -144,3 +144,7 @@ Creacion clase M_Input para manejar la entrada del teclado.
 
 ## 20210429 CarlosVillena @(4h)
 Cambios en el resto de clases del proyecto para ajustarlos a los inputs. Hacer que el arma se dispare por pulsacion y no por tecla mantenida y el personaje no puede saltar si mantiene la tecla.
+
+## 20210502 CarlosVillena @(2h)
+He arreglado un bug en el arco que hacia que la rotacion fallara a veces y no se rotasen las flechas como deberian y ahora las balas de
+todas las armas se eliminan cuando pasan cierta distancia.
