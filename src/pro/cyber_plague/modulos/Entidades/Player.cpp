@@ -112,12 +112,14 @@ void Player::update(float deltaTime, Map* m)
 		armas[arma_actual]->mejorar();
 	}
 		
-
-	if (movement.x == 0.0f) {
+	if (movement.x == 0.0f && isGrounded()) {
 		row = 0;
 	}
-	else {
-		row = 1;
+	else{
+		if(isGrounded())
+			row = 1;
+		else
+			row = 2;
 
 		if (movement.x > 0.0f) {
 			faceRight = true;
