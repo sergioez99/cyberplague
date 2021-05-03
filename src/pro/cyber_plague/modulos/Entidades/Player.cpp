@@ -11,7 +11,7 @@ Player::Player(sf::Texture* texture, sf::Vector2u imageCount, float switchTime, 
 	faceRight = true;
 	vida = new int( kVida );
 
-	spr = new M_Sprite("Union 3.png",0,0,texture->getSize().x / float(imageCount.x),texture->getSize().y / float(imageCount.y),206,206);
+	spr = new M_Sprite("Union 3e.png",0,0,texture->getSize().x / float(imageCount.x),texture->getSize().y / float(imageCount.y),206,206);
 
 	pos.setPosition(206.f, 206.f);
 	pos.setPosition(206.f, 206.f);
