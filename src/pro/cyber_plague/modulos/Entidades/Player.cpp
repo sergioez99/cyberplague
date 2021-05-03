@@ -11,7 +11,7 @@ Player::Player(sf::Texture* texture, sf::Vector2u imageCount, float switchTime, 
 	faceRight = true;
 	vida = new int( kVida );
 
-	spr = new M_Sprite("Union 3.png",0,0,texture->getSize().x / float(imageCount.x),texture->getSize().y / float(imageCount.y),206,206);
+	spr = new M_Sprite("Union 3e.png",0,0,texture->getSize().x / float(imageCount.x),texture->getSize().y / float(imageCount.y),206,206);
 
 	pos.setPosition(206.f, 206.f);
 	pos.setPosition(206.f, 206.f);
@@ -112,12 +112,14 @@ void Player::update(float deltaTime, Map* m)
 		armas[arma_actual]->mejorar();
 	}
 		
-
-	if (movement.x == 0.0f) {
+	if (movement.x == 0.0f && isGrounded()) {
 		row = 0;
 	}
-	else {
-		row = 1;
+	else{
+		if(isGrounded())
+			row = 1;
+		else
+			row = 2;
 
 		if (movement.x > 0.0f) {
 			faceRight = true;

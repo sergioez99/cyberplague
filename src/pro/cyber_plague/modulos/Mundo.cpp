@@ -32,7 +32,7 @@ void Mundo::Init()
 
     //Cargo la imagen donde reside la textura del sprite protagonista
     sf::Texture playerTexture;
-    playerTexture.loadFromFile("resources/Union 3.png");
+    playerTexture.loadFromFile("resources/Union 3e.png");
 
     Player player(&playerTexture, sf::Vector2u(8, 3), 0.15f, 250.0f);
 

@@ -142,6 +142,9 @@ Solucionados problemas de colision del arma en el mapa 1. He creado un nuevo map
 ## 20210428 CarlosVillena @(3h)
 Creacion clase M_Input para manejar la entrada del teclado.
 
+## 20210428 JoseSansano @(3h 10m)
+Retocado el sprite del personaje para que su bounding box no sea tan grande respecto a los pixeles que se ven de él. Animacion cambiada de salto.
+
 ## 20210429 CarlosVillena @(4h)
 Cambios en el resto de clases del proyecto para ajustarlos a los inputs. Hacer que el arma se dispare por pulsacion y no por tecla mantenida y el personaje no puede saltar si mantiene la tecla.
 
