@@ -42,11 +42,6 @@ void Player::update(float deltaTime, Map* m)
 	Vector2D movement{0.0f, 0.0f};
 	//Utilizar Vector2D en vez del sf::Vector2f para no usar SFML
 
-	if(salto > 0){
-
-		movement.y -= 5 * salto * salto * deltaTime;
-		salto -= 2;
-	}
 	if (M_Input::isKeyPressedLeft())
 		movement.x -= speed * deltaTime;
 
@@ -55,8 +50,8 @@ void Player::update(float deltaTime, Map* m)
 
 	if (M_Input::isKeyPressedUp() && isGrounded() && heSaltado == false){
 
-		salto = 10;
-		movement.y -= 4 * salto * salto * deltaTime;
+		salto = 12;
+		//movement.y -= 4 * salto * salto * deltaTime;
 		heSaltado = true;
 		setGrounded(false);
 	}
@@ -128,18 +123,29 @@ void Player::update(float deltaTime, Map* m)
 			faceRight = false;
 		}
 	}
-	animacion.Update(row, deltaTime, faceRight);
-	spr->cambiarPosTextura(animacion.uvRect.left,animacion.uvRect.top,animacion.uvRect.width,animacion.uvRect.height);
-	spr->mover(movement.x,movement.y);
+
+	spr->mover(movement.x,0);
+
+	if(m->checkCollision(getSprite()->getSprite()))//si es verdadero, se ha chocado con algo en el eje X
+		getSprite()->setPosition(getLastPosition());
+
+	if(salto > 0){
+		//movement.y -= 4 * salto * salto * deltaTime;
+		getSprite()->mover(0, -5 * salto * salto * deltaTime);
+		salto -= 2;
+		if(m->checkCollision(getSprite()->getSprite())){//Si es verdadero, ha chocado en el eje Y
+			salto = 0;
+			colPos.x = getSprite()->getPosX();
+			colPos.y = m->getCollision(getSprite()->getSprite())->getGlobalBounds().top+m->getCollision(getSprite()->getSprite())->getLocalBounds().height+getSprite()->getSprite()->getLocalBounds().height/2;
+        	getSprite()->setPosition(colPos);
+		}
+	}
 
 	for(unsigned int i = 0; i < armas.size(); i++){
 
 		armas.at(i)->setDatosJugador(getPosX(), getPosY(), mirandoDerecha());
 		armas.at(i)->update(deltaTime, m);
 	}
-
-	if(m->checkCollision(getSprite()->getSprite()))//si es verdadero, no debe de estar en esa posicion
-		getSprite()->setPosition(getLastPosition());
 
 	//Evita que pueda salir del mapa
 	float posLadoDerecho = getPosX() - getSprite()->getSprite()->getGlobalBounds().width / 2;
@@ -168,6 +174,8 @@ void Player::update(float deltaTime, Map* m)
         }
     }
 
+	animacion.Update(row, deltaTime, faceRight);
+	spr->cambiarPosTextura(animacion.uvRect.left,animacion.uvRect.top,animacion.uvRect.width,animacion.uvRect.height);
 	//Si se cae por un hueco muere
 	if(getPosY() > m->getHeight() * m->getTileHeight())
 		setVida(0);
