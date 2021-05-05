@@ -73,6 +73,16 @@ float M_Sprite::getPosY(){
     return sprite->getPosition().y;
 }
 
+Vector2D M_Sprite::getScale(){
+
+    Vector2D escala;
+
+    escala.x = sprite->getScale().x;
+    escala.y = sprite->getScale().y;
+
+    return escala;
+}
+
 float M_Sprite::getRotation(){
 
     return sprite->getRotation();

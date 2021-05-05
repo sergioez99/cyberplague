@@ -102,13 +102,11 @@ bool Rayo::puedeDisparar(){
 
 void Rayo::disparo(){
 
-    if(puedeDisparar()){
+    Bala* bala = new Bala(pX, pY, ori); 
+    proyectiles.push_back(bala);
 
-        Bala* bala = new Bala(pX, pY, ori); 
-        proyectiles.push_back(bala);
-
-       contDisparo.restart();
-    }
+    contDisparo.restart();
+    
 }
 
 void Rayo::mejorar(){
@@ -176,4 +174,9 @@ bool Rayo::balaEstaLejos(int i, Map* m){
 
         return false;
     }
+}
+
+void Rayo::limpiarCargador(){
+
+    proyectiles.clear();
 }

@@ -41,5 +41,7 @@ class Rayo : public Arma{
       void render(M_Window* vent, float percentTick);
       void balaImpactada(NPC* enemigos);
       bool balaEstaLejos(int i, Map* m);
+
+      void limpiarCargador();
 };
 

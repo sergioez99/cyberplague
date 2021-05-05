@@ -111,45 +111,42 @@ bool Arco::puedeDisparar(){
 
 void Arco::disparo(){
 
-    if(puedeDisparar()){
+    if(mejora){
 
-        if(mejora){
-
-            for(unsigned int i = 0; i < 3; i++){
-                
-
-                Bala* bala = new Bala(pX, pY, ori); 
-
-                switch (i) {
-
-                    case 0:
-
-                        bala->rotar(30);
-                        break;
-                    
-                    case 2:
-
-                        bala->rotar(-30);
-                        break;
-
-                    default:
-                        break;
-                }
-
-                proyectiles.push_back(bala);    
-            }
-
-        }
-        
-        else{
+        for(unsigned int i = 0; i < 3; i++){
+            
 
             Bala* bala = new Bala(pX, pY, ori); 
-            proyectiles.push_back(bala);
+
+            switch (i) {
+
+                case 0:
+
+                    bala->rotar(30);
+                    break;
+                
+                case 2:
+
+                    bala->rotar(-30);
+                    break;
+
+                default:
+                    break;
+            }
+
+            proyectiles.push_back(bala);    
         }
 
-        municionActual = municionActual - kMuncGas;
-       contDisparo.restart();
     }
+    
+    else{
+
+        Bala* bala = new Bala(pX, pY, ori); 
+        proyectiles.push_back(bala);
+    }
+
+    municionActual = municionActual - kMuncGas;
+    contDisparo.restart();
 }
 
 void Arco::mejorar(){
@@ -253,4 +250,9 @@ bool Arco::balaEstaLejos(int i, Map* m){
 
         return false;
     }
+}
+
+void Arco::limpiarCargador(){
+
+    proyectiles.clear();
 }

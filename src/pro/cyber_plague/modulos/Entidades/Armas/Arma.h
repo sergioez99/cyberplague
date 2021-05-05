@@ -51,6 +51,7 @@ class Arma {
         virtual void balaImpactada(NPC* enemigos) = 0;
 
         virtual bool puedeDisparar() = 0;
+        virtual void limpiarCargador() = 0;
 
         //GETTERS Y SETTERS
         int getDmg();
@@ -64,7 +65,6 @@ class Arma {
         void setMunicionAct(int cant);
 
         void setDatosJugador(float posX, float posY, int orie);
-        
 
 };
 

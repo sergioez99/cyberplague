@@ -45,5 +45,6 @@ class Arco : public Arma{
       void balaImpactada(NPC* enemigos);
       bool balaEstaLejos(int i, Map* m);
 
+      void limpiarCargador();
 };
 

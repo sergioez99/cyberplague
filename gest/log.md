@@ -151,3 +151,6 @@ Cambios en el resto de clases del proyecto para ajustarlos a los inputs. Hacer q
 ## 20210502 CarlosVillena @(2h)
 He arreglado un bug en el arco que hacia que la rotacion fallara a veces y no se rotasen las flechas como deberian y ahora las balas de
 todas las armas se eliminan cuando pasan cierta distancia.
+
+## 20210505 CarlosVillena @(3h)
+Lanzallamas creado, y unos pequeños ajustes en el player para mejorar el disparo.

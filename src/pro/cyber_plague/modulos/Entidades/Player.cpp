@@ -19,11 +19,13 @@ Player::Player(sf::Texture* texture, sf::Vector2u imageCount, float switchTime, 
 	Arco* arco = new Arco(getPosX(), getPosY(), mirandoDerecha());
 	Rayo* rayo = new Rayo(getPosX(), getPosY(), mirandoDerecha());
 	Laser* laser = new Laser(getPosX(), getPosY(), mirandoDerecha());
+	Lanzallamas* lanzallamas = new Lanzallamas(getPosX(), getPosY(), mirandoDerecha());
 
 
 	armas.push_back(rayo);
 	armas.push_back(arco);
 	armas.push_back(laser);
+	armas.push_back(lanzallamas);
 
 	arma_actual = 0;
 }
@@ -68,7 +70,7 @@ void Player::update(float deltaTime, Map* m)
 
 	if(arma_actual != 3){
 
-		if (M_Input::isKeyPressedZ() && heDisparado == false){
+		if (M_Input::isKeyPressedZ() && heDisparado == false && armas[arma_actual]->puedeDisparar()){
 
 			ataque();
 			heDisparado = true;
@@ -82,7 +84,18 @@ void Player::update(float deltaTime, Map* m)
 
 	}
 
-	
+	else{
+
+		if (M_Input::isKeyPressedZ() && armas[arma_actual]->puedeDisparar()){
+
+			ataque();
+		}
+
+		else{
+
+			armas[arma_actual]->limpiarCargador();
+		}
+	}
 
 	if(M_Input::isKeyPressedC()){
 		
@@ -90,7 +103,7 @@ void Player::update(float deltaTime, Map* m)
 
 		if(tmp >= kTmpCamb){
 
-			if(arma_actual == 2){
+			if(arma_actual == 3){
 
 				arma_actual = 0;
 				temp_cambioArma.restart();

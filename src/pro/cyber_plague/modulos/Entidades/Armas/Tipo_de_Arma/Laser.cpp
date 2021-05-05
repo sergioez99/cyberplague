@@ -106,14 +106,11 @@ bool Laser::puedeDisparar(){
 
 void Laser::disparo(){
 
-    if(puedeDisparar()){
+    Bala* bala = new Bala(pX, pY, ori); 
+    proyectiles.push_back(bala);
 
-        Bala* bala = new Bala(pX, pY, ori); 
-        proyectiles.push_back(bala);
-
-       contDisparo.restart();
-       municionActual = municionActual - kMuncGas;
-    }
+    contDisparo.restart();
+    municionActual = municionActual - kMuncGas;
 }
 
 void Laser::mejorar(){
@@ -184,4 +181,9 @@ bool Laser::balaEstaLejos(int i, Map* m){
 
         return false;
     }
+}
+
+void Laser::limpiarCargador(){
+
+    proyectiles.clear();
 }
