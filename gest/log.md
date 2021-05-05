@@ -154,3 +154,6 @@ Retocado el sprite del personaje para que su bounding box no sea tan grande resp
 
 ## 20210504 JoseSansano @(2h)
 El jugador ahora primero comprueba su movimiento en el eje X, y después su movimiento en el eje Y, no todo a la vez. Ahora salta aunque se choque con algo, y si se choca con un techo, pierde la fuerza del salto.
+
+## 20210505 JoseSansano @(2h)
+El jugador colisiona perfectamente (sin espacios vacios) siempre, al menos su Bounding Box.
