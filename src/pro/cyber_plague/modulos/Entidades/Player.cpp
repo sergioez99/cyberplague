@@ -126,8 +126,16 @@ void Player::update(float deltaTime, Map* m)
 
 	spr->mover(movement.x,0);
 
-	if(m->checkCollision(getSprite()->getSprite()))//si es verdadero, se ha chocado con algo en el eje X
-		getSprite()->setPosition(getLastPosition());
+	if(m->checkCollision(getSprite()->getSprite())){//si es verdadero, se ha chocado con algo en el eje X
+		//getSprite()->setPosition(getLastPosition());
+		colPos.y = getSprite()->getPosY();
+		if(m->getCollision(getSprite()->getSprite())->getGlobalBounds().left+1>getSprite()->getPosX())
+			colPos.x = m->getCollision(getSprite()->getSprite())->getGlobalBounds().left-getSprite()->getSprite()->getLocalBounds().width/2;
+		else
+			colPos.x = m->getCollision(getSprite()->getSprite())->getGlobalBounds().left+m->getCollision(getSprite()->getSprite())->getLocalBounds().width+getSprite()->getSprite()->getLocalBounds().width/2;
+        getSprite()->setPosition(colPos); //Esto se utiliza para que este tocando el suelo, y no flotando.
+
+	}
 
 	if(salto > 0){
 		//movement.y -= 4 * salto * salto * deltaTime;
