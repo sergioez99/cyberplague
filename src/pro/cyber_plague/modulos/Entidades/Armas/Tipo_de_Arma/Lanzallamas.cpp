@@ -12,7 +12,7 @@
 
 /* DATOS DE LA BALA */
 
-#define kFich "spritesheet_armas.png"
+#define kFich "spritesheet_otros.png"
 #define kTexLeft 73
 #define kTexTop 0
 #define kTexWidth 28
@@ -106,7 +106,7 @@ M_Sprite* Lanzallamas::Bala::getSprite(){
 
 bool Lanzallamas::Bala::heColisionado(NPC* enemigo){
 
-    if(sprite_bala->getSprite()->getGlobalBounds().intersects(enemigo->getSprite()->getSprite()->getGlobalBounds())){
+    if(sprite_bala->intersects(enemigo->getSprite())){
 
         return true;
     }

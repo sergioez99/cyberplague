@@ -56,3 +56,4 @@ Este fichero puede ser un PDF si la herramienta que gastáis lo requiere, pero *
 * `[Hecho]` - `20210429; Cambios en clases para ajustarlas a M_Input, arreglos varios; 240', CarlosVC-UA`
 * `[Hecho]` - `20210502; Arreglo Bug Arco y proyectiles se eliminan cuando estan lejos; 120', CarlosVC-UA`
 * `[Hecho]` - `20210505; Lanzallamas creado, y unos pequeños ajustes en el player para mejorar el disparo; 180', CarlosVC-UA`
+* `[Hecho]` - `20210505; Dropeo de Monedas.; 180', CarlosVC-UA`

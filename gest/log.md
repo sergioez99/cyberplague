@@ -160,3 +160,6 @@ El jugador colisiona perfectamente (sin espacios vacios) siempre, al menos su Bo
 
 ## 20210505 CarlosVillena @(3h)
 Lanzallamas creado, y unos pequeños ajustes en el player para mejorar el disparo.
+
+## 20210505 CarlosVillena @(3h)
+Sistema de dropeo de monedas creado.

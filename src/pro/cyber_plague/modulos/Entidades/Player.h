@@ -31,6 +31,7 @@ public:
 	//void checkEnemyColision(vector<NPC*> enemigos);
 	void ataque();
 	bool superado();
+	bool consigoDinero(Moneda* moneda);
 
 	void renders(M_Window* vent, float percentTick, Map* mapa);
 
@@ -47,6 +48,8 @@ private:
 	float speed;
 	bool faceRight;
 	int dmg;
+
+	int monedero;
 	
 	bool next = false;
 

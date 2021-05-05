@@ -11,7 +11,7 @@
 
 /* DATOS DE LA BALA */
 
-#define kFich "spritesheet_armas.png"
+#define kFich "spritesheet_otros.png"
 #define kTexLeft 32
 #define kTexTop 0
 #define kTexWidth 16
@@ -53,7 +53,7 @@ M_Sprite* Rayo::Bala::getSprite(){
 
 bool Rayo::Bala::heColisionado(NPC* enemigo){
 
-    if(sprite_bala->getSprite()->getGlobalBounds().intersects(enemigo->getSprite()->getSprite()->getGlobalBounds())){
+    if(sprite_bala->intersects(enemigo->getSprite())){
 
         return true;
     }

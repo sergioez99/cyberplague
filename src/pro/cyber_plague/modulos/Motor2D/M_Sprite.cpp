@@ -44,6 +44,11 @@ void M_Sprite::escalar(float x, float y){
     sprite->scale(x, y);
 }
 
+bool M_Sprite::intersects(M_Sprite* spr){
+
+    return sprite->getGlobalBounds().intersects(spr->getSprite()->getGlobalBounds());
+}
+
 void M_Sprite::setColor(int i){
     switch (i)
     {

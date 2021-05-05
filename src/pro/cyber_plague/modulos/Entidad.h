@@ -9,9 +9,6 @@
 
 using namespace std;
 
-
-
-
 /*
 CLASE ABSTRACTA ENTIDAD, NO SE PUEDE INSTANCIAR. TODAS LAS ENTIDADES DEL JUEGO (EL PJ Y LOS NPCs), HEREDAN DE ESTA CLASE.
 
@@ -51,8 +48,7 @@ class Entidad{
         
         bool muerto();
         void reciboDmg(int dmg);
-        void renderPlayer(M_Window* vent, float percentTick, Map* mapa);
-        void render(M_Window* vent, float percentTick);
+        
 
     
 

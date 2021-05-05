@@ -23,7 +23,7 @@ void Entidad::reciboDmg(int dmg){
 
     int dmgRecibido = dmg - *armadura;
 
-    cout << "Vida: " << *vida << " --- " << "Armadura: " << *armadura << "Daño: " << dmgRecibido << endl;
+    cout << "Vida: " << *vida << " --- Armadura: " << *armadura << " --- Daño: " << dmgRecibido << endl;
     float temp = (float) invencibilidad.getElapsedTime().asMilliseconds() / 1000;
     cout << temp << endl;
     if(temp > kTempInv){
@@ -42,29 +42,6 @@ void Entidad::reciboDmg(int dmg){
         dmgColor=15;
     }
 
-}
-
-void Entidad::renderPlayer(M_Window* vent, float percentTick, Map* mapa){
-    Vector2D posicion;
-     if(dmgColor!=0)
-        dmgColor --;
-    if(dmgColor==0)
-        getSprite()->setColor(0);
-    posicion.x = pos.getLastX()*(1-percentTick) + pos.getX()*percentTick;
-    posicion.y = pos.getLastY()*(1-percentTick) + pos.getY()*percentTick;
-
-    spr->setPosition(posicion);
-    vent->renderPlayer(spr, mapa);
-}
-
-void Entidad::render(M_Window* vent, float percentTick){
-    Vector2D posicion;
-   
-    posicion.x = pos.getLastX()*(1-percentTick) + pos.getX()*percentTick;
-    posicion.y = pos.getLastY()*(1-percentTick) + pos.getY()*percentTick;
-
-    spr->setPosition(posicion);
-    vent->render(spr);
 }
 
 /* SETTERS Y GETTERS */

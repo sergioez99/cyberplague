@@ -3,6 +3,9 @@
 #define kVida  50
 #define kTmpCamb 0.5f
 
+static int monedero = 0;
+
+
 Player::Player(sf::Texture* texture, sf::Vector2u imageCount, float switchTime, float speed) : 
 	animacion(texture, imageCount, switchTime)
 {	
@@ -10,6 +13,8 @@ Player::Player(sf::Texture* texture, sf::Vector2u imageCount, float switchTime, 
 	row = 0;
 	faceRight = true;
 	vida = new int( kVida );
+
+	monedero = 0;
 
 	spr = new M_Sprite("Union 3e.png",0,0,texture->getSize().x / float(imageCount.x),texture->getSize().y / float(imageCount.y),206,206);
 
@@ -216,6 +221,20 @@ Arma* Player::getArmaEquipada(){
 	return armas.at(arma_actual);
 }
 
+bool Player::consigoDinero(Moneda* moneda){
+
+	if(this->getSprite()->intersects(moneda->getSprite())){
+
+		monedero = monedero + moneda->getValor();
+
+		cout << monedero << endl;
+
+		return true;
+	}
+
+	return false;
+}
+
 bool Player::superado(){
 	return next;
 }
@@ -247,13 +266,23 @@ void Player::ataque(){
 
 void Player::renders(M_Window* vent, float percentTick, Map* mapa){
 
-	this->renderPlayer(vent, percentTick, mapa);
+	Vector2D posicion;
+
+     if(dmgColor!=0)
+        dmgColor --;
+    if(dmgColor==0)
+        getSprite()->setColor(0);
+
+    posicion.x = pos.getLastX()*(1-percentTick) + pos.getX()*percentTick;
+    posicion.y = pos.getLastY()*(1-percentTick) + pos.getY()*percentTick;
+
+    spr->setPosition(posicion);
 
 	for(unsigned int  i = 0; i < armas.size(); i++){
 
 		armas[i]->render(vent, percentTick);
 	}
 
-	
+	vent->renderPlayer(spr, mapa);
 }
 

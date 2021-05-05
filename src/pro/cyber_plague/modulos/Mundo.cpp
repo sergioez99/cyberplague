@@ -46,6 +46,7 @@ void Mundo::Init()
     //arc->mejorar();
 
     vector<NPC *> enemigos;
+    vector<Moneda *> monedasNivel;
     //enemigos.push_back(mago);
     //enemigos.push_back(paj);
     //enemigos.push_back(sold);
@@ -86,17 +87,31 @@ void Mundo::Init()
             {
                 player.getArmaEquipada()->balaImpactada(enemigos.at(i));
                 enemigos.at(i)->update(deltaTime, tutorial);
-            }
-
-            for (int i = 0; i < (int)enemigos.size(); i++)
-            {
 
                 if (enemigos.at(i)->muerto())
                 {
 
+                    Moneda* coin = enemigos.at(i)->looteoMoneda();
+                    
+                    if(coin != 0){
+
+                        monedasNivel.push_back(enemigos.at(i)->looteoMoneda());
+                    }
+
                     enemigos.erase(enemigos.begin() + i);
                 }
+
             }
+
+            for(unsigned int i = 0; i < monedasNivel.size(); i++){
+
+                if(player.consigoDinero(monedasNivel.at(i))){
+
+                    monedasNivel.erase(monedasNivel.begin() + i);
+                }
+
+            }
+
 
             timeStartUpdate = clock.getElapsedTime();
         }
@@ -109,6 +124,11 @@ void Mundo::Init()
         {
 
             enemigos.at(i)->render(vent, percentTick); //Renderiza todos los personajes por ahora
+        }
+
+        for(unsigned int i = 0; i < monedasNivel.size(); i++){
+
+            monedasNivel.at(i)->render(vent);
         }
         
         player.renders(vent, percentTick, tutorial);
@@ -134,5 +154,5 @@ void Mundo::Init()
 
 void Mundo::Render()
 {
-    //Podemos trasladar los renders y updates que se vean convenientes aquí
+    //Podemos trasladar los renders y updates que se vean convenientes aquí.
 }

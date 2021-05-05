@@ -33,6 +33,8 @@ class M_Sprite{
         //Escalar el Sprite.
         void escalar(float x, float y);
 
+        //Detectar si el Sprite intersecta con otro Sprite.
+        bool intersects(M_Sprite* spr);
 
         //Metodos Setters y Getters.
 

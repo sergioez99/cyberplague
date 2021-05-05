@@ -13,7 +13,7 @@
 
 /* DATOS DE LA BALA */
 
-#define kFich "spritesheet_armas.png"
+#define kFich "spritesheet_otros.png"
 #define kTexLeft 0
 #define kTexTop 0
 #define kTexWidth 32
@@ -60,7 +60,7 @@ M_Sprite* Arco::Bala::getSprite(){
 
 bool Arco::Bala::heColisionado(NPC* enemigo){
 
-    if(sprite_bala->getSprite()->getGlobalBounds().intersects(enemigo->getSprite()->getSprite()->getGlobalBounds())){
+    if(sprite_bala->intersects(enemigo->getSprite())){
 
         return true;
     }

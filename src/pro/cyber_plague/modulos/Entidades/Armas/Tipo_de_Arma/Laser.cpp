@@ -12,7 +12,7 @@
 
 /* DATOS DE LA BALA */
 
-#define kFich "spritesheet_armas.png"
+#define kFich "spritesheet_otros.png"
 #define kTexLeft 48
 #define kTexTop 0
 #define kTexWidth 24
@@ -55,7 +55,7 @@ M_Sprite* Laser::Bala::getSprite(){
 
 bool Laser::Bala::heColisionado(NPC* enemigo){
 
-    if(sprite_bala->getSprite()->getGlobalBounds().intersects(enemigo->getSprite()->getSprite()->getGlobalBounds())){
+    if(sprite_bala->intersects(enemigo->getSprite())){
 
         return true;
     }
