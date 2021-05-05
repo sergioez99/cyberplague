@@ -142,15 +142,21 @@ Solucionados problemas de colision del arma en el mapa 1. He creado un nuevo map
 ## 20210428 CarlosVillena @(3h)
 Creacion clase M_Input para manejar la entrada del teclado.
 
-## 20210428 JoseSansano @(3h 10m)
-Retocado el sprite del personaje para que su bounding box no sea tan grande respecto a los pixeles que se ven de él. Animacion cambiada de salto.
-
 ## 20210429 CarlosVillena @(4h)
 Cambios en el resto de clases del proyecto para ajustarlos a los inputs. Hacer que el arma se dispare por pulsacion y no por tecla mantenida y el personaje no puede saltar si mantiene la tecla.
 
 ## 20210502 CarlosVillena @(2h)
 He arreglado un bug en el arco que hacia que la rotacion fallara a veces y no se rotasen las flechas como deberian y ahora las balas de
 todas las armas se eliminan cuando pasan cierta distancia.
+
+## 20210503 JoseSansano @(3h 10m)
+Retocado el sprite del personaje para que su bounding box no sea tan grande respecto a los pixeles que se ven de él. Animacion cambiada de salto.
+
+## 20210504 JoseSansano @(2h)
+El jugador ahora primero comprueba su movimiento en el eje X, y después su movimiento en el eje Y, no todo a la vez. Ahora salta aunque se choque con algo, y si se choca con un techo, pierde la fuerza del salto.
+
+## 20210505 JoseSansano @(2h)
+El jugador colisiona perfectamente (sin espacios vacios) siempre, al menos su Bounding Box.
 
 ## 20210505 CarlosVillena @(3h)
 Lanzallamas creado, y unos pequeños ajustes en el player para mejorar el disparo.

@@ -108,12 +108,12 @@ float Entidad::getVelMovimiento(){
 
 float Entidad::getPosX(){
 
-    return spr->getSprite()->getPosition().x;
+    return spr->getPosX();
 }
 
 float Entidad::getPosY(){
 
-    return spr->getSprite()->getPosition().y;
+    return spr->getPosY();
 }
 
 float Entidad::getScaleX(){
