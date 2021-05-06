@@ -163,3 +163,6 @@ Lanzallamas creado, y unos pequeños ajustes en el player para mejorar el dispar
 
 ## 20210505 CarlosVillena @(3h)
 Sistema de dropeo de monedas creado.
+
+## 20210506 JoseSansano @(3h)
+El jugador poseia un bug que rebotaba en el suelo y mientras andaba iba siempre un frame atrás por el bucle interpolado, ya que este nunca llegaba al final de su posicion(percentTick nunca era 1). Ahora, ese bug esta arreglado con el jugador, forzando antes del player.update, a que su sprite este en la posición que debería estar. Esto también arregla un bug de que cuando saltaba desde una gran altura el personaje, se metía dentro del suelo durante un par de frames. Ahora el jugador funciona perfectamente sin ningún bug de movimiento.
