@@ -69,7 +69,10 @@ void Mundo::Init()
         if (clock.getElapsedTime().asMilliseconds() - timeStartUpdate.asMilliseconds() > kUpdateTimePS)
         {
             float deltaTime = clock2.restart().asSeconds();
-
+            Vector2D playerPos;
+            playerPos.x=player.getPosInterpolada().getX();
+            playerPos.y=player.getPosInterpolada().getY();
+            player.getSprite()->setPosition(playerPos);
             //Gravedad
             player.update(deltaTime, tutorial);  
 
