@@ -15,6 +15,7 @@ Mundo::Mundo(CyberPlague *context, M_Window *w, int nivel)
     vent = w;
     _context = context;
     lvl = nivel;
+
 }
 
 void Mundo::Handle()
@@ -29,6 +30,8 @@ void Mundo::Update()
 void Mundo::Init()
 {
     M_View *camara = new M_View(0, 0, 640, 480);
+
+
 
     //Cargo la imagen donde reside la textura del sprite protagonista
     sf::Texture playerTexture;
@@ -65,6 +68,11 @@ void Mundo::Init()
         
 
         string key = M_Input::InputController();
+
+        if(key == "ESCAPE"){            
+            Menu::Instance(CyberPlague::Instance(), vent, lvl)->Handle();
+                     
+        }
 
         if (clock.getElapsedTime().asMilliseconds() - timeStartUpdate.asMilliseconds() > kUpdateTimePS)
         {
@@ -147,6 +155,8 @@ void Mundo::Init()
         vent->setView(camara);
         vent->display();
     }
+
+    
 
     delete vent;
     delete camara;

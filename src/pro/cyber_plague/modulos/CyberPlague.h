@@ -11,7 +11,7 @@
 
 
 
-#define MAX_NUMBER_OF_ITEMS 6
+#define MAX_NUMBER_OF_ITEMS 5
 #define MAX_NUMBER_OF_ITEMS_L 5
 #define MAX_NUMBER_OF_ITEMS_N 5
 #define MAX_NUMBER_OF_ITEMS_T 3
@@ -68,10 +68,10 @@ class Menu : public State{
         CyberPlague* getContexto();
         int GetPressedItem();
         int Eventos(string key);
-        static Menu* Instance(CyberPlague* contexto, M_Window *w);
+        static Menu* Instance(CyberPlague* contexto, M_Window *w, int inic);
 
     protected: 
-        Menu(CyberPlague* contexto, M_Window *w);
+        Menu(CyberPlague* contexto, M_Window *w, int inic);
         Menu(const Menu &);
         Menu &operator = (const Menu &);   
 

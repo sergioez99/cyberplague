@@ -172,3 +172,6 @@ El jugador poseia un bug que rebotaba en el suelo y mientras andaba iba siempre 
 
 ## 20210507 RamónRodríguez @(1h 15m)
 Ajuste de los sprites de Zombi con Photoshop.
+
+## 20210509 RubenHerrera @(2h)
+Ajustado menú y añadido el menú de pausa. Añadido el escape a los controles y añadido exit al cerrar ya que salía error al limpiar. La pausa no mantiene el estado del juego y hay un bug con la vista del menú cuando mueves el personaje por el mapa.

@@ -34,7 +34,7 @@ class M_Input{
         static bool isKeyPressedUp();
         static bool isKeyPressedDown();
         static bool isKeyPressedReturn();
-
+        static bool isKeyPressedEscape();
 
         static M_Input* Instanciar(M_Window* vent);
         static void EliminarInstancia();

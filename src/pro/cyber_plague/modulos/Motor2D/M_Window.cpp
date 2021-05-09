@@ -1,5 +1,6 @@
 #include "M_Window.h"
 #include <stdlib.h>
+#include <stdio.h>
 
 #define fps 60
 
@@ -27,13 +28,16 @@ M_Window::~M_Window(){
 
 void M_Window::limpiar(){
   ventana->clear();
+
 }
 
 
 void M_Window::cerrar(){
 
   ventana->close();
+    
   cout << "Ventana Cerrada." << endl;
+  exit(0);
 }
 
 bool M_Window::abierta(){

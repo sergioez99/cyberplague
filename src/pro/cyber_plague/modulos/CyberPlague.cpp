@@ -22,7 +22,7 @@ void CyberPlague::Handle(){
 
     M_Input::Instanciar(window);
 
-    Menu::Instance(this,window)->Handle();
+    Menu::Instance(this,window,0)->Handle();
 }
 
 CyberPlague::CyberPlague(){

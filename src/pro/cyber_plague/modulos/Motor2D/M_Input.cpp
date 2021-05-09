@@ -1,7 +1,7 @@
 #include "M_Input.h"
 
 
-#define k_Nkeys 8 //Numero de keys que se van a controlar.
+#define k_Nkeys 9 //Numero de keys que se van a controlar.
 
 /*
 
@@ -11,7 +11,7 @@ CODIFICACION DE LAS TECLAS:
 - X: 1          - Down: 4
 - C: 2          - Left: 5
 - Enter: 7      - Right: 6              
-
+- Escape: 8
 */
 
 
@@ -130,7 +130,9 @@ string M_Input::InputController(){
 
                 case Keyboard::Escape:
 
-                    ventana->cerrar();
+                    teclas->at(8) = true;
+                    return "ESCAPE";
+                    //ventana->cerrar();
                 break;
 
                 default:
@@ -193,6 +195,12 @@ string M_Input::InputController(){
                     //return "NO_ENTER";
                 break;
 
+                case Keyboard::Escape:
+                
+                    teclas->at(8) = false;
+                    //return "NO_ENTER";
+                break;
+
                 default:
 
                 break;
@@ -252,6 +260,10 @@ bool M_Input::isKeyPressedReturn(){
     return teclas->at(7);
 }
 
+bool M_Input::isKeyPressedEscape(){
+
+    return teclas->at(8);
+}
 
 
 //CONSTRUCTOR Y DESTRUCTOR.

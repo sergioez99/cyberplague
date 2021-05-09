@@ -1,14 +1,14 @@
 #include "CyberPlague.h"
-
+#include <stdio.h>
 
 Menu* Menu::pinstance = 0;
 
-Menu* Menu::Instance(CyberPlague* contexto, M_Window *w){
-    pinstance = new Menu(contexto,w);
+Menu* Menu::Instance(CyberPlague* contexto, M_Window *w, int inic){
+    pinstance = new Menu(contexto,w,inic);
     return pinstance;
 }
 
-Menu::Menu(CyberPlague* contexto, M_Window *w) {
+Menu::Menu(CyberPlague* contexto, M_Window *w, int inic) {
   
     _contexto = contexto;
     window=w;
@@ -20,37 +20,36 @@ Menu::Menu(CyberPlague* contexto, M_Window *w) {
         font.loadFromFile("./resources/arial.ttf");
     }
 
-  //  menustate = 1;
+    if(inic != 0){
+        menustate=5;
+    }
+
+    nivel=inic;  //para guardar la nivel en el que se ha pausado
 
     menu[0].setFont(font);
     menu[0].setColor(sf::Color::Red);
-    menu[0].setString("Nueva partida");
+    menu[0].setString("Jugar");
     menu[0].setPosition(sf::Vector2f(width / 2, height / (MAX_NUMBER_OF_ITEMS +1) * 1));
 
     menu[1].setFont(font);
     menu[1].setColor(sf::Color::White);
-    menu[1].setString("Continuar");
+    menu[1].setString("Tienda");
     menu[1].setPosition(sf::Vector2f(width / 2, height / (MAX_NUMBER_OF_ITEMS +1) * 2));
 
     menu[2].setFont(font);
     menu[2].setColor(sf::Color::White);
-    menu[2].setString("Lobby");
+    menu[2].setString("Seleccionar nivel");
     menu[2].setPosition(sf::Vector2f(width / 2, height / (MAX_NUMBER_OF_ITEMS +1) * 3));
 
     menu[3].setFont(font);
     menu[3].setColor(sf::Color::White);
-    menu[3].setString("Opciones");
+    menu[3].setString("Creditos");
     menu[3].setPosition(sf::Vector2f(width / 2, height / (MAX_NUMBER_OF_ITEMS +1) * 4));
 
     menu[4].setFont(font);
     menu[4].setColor(sf::Color::White);
-    menu[4].setString("Creditos");
+    menu[4].setString("Salir");
     menu[4].setPosition(sf::Vector2f(width / 2, height / (MAX_NUMBER_OF_ITEMS +1) * 5));
-
-    menu[5].setFont(font);
-    menu[5].setColor(sf::Color::White);
-    menu[5].setString("Salir");
-    menu[5].setPosition(sf::Vector2f(width / 2, height / (MAX_NUMBER_OF_ITEMS +1) * 6));
 
 ///////////////////////////////////////  LOBBY
     menuL[0].setFont(font);
@@ -127,12 +126,12 @@ Menu::Menu(CyberPlague* contexto, M_Window *w) {
 
     menuP[0].setFont(font);
     menuP[0].setColor(sf::Color::Red);
-    menuP[0].setString("Guardar partida");
+    menuP[0].setString("Continuar");
     menuP[0].setPosition(sf::Vector2f(width / 2, height / (MAX_NUMBER_OF_ITEMS_P +1) * 1));
 
     menuP[1].setFont(font);
     menuP[1].setColor(sf::Color::White);
-    menuP[1].setString("Opciones");
+    menuP[1].setString("Reiniciar");
     menuP[1].setPosition(sf::Vector2f(width / 2, height / (MAX_NUMBER_OF_ITEMS_P +1) * 2));
 
     menuP[2].setFont(font);
@@ -211,12 +210,11 @@ int Menu::Eventos(string key){
                                 
                                 Mundo::Instance(CyberPlague::Instance(), window, nivel)->Handle();
                             break;
-                            case 1: //¿continuarrr?
-                                //menustate = 5;
-                                
-                                nivel = 2;
-                                
-                                Mundo::Instance(CyberPlague::Instance(), window, nivel)->Handle();
+                            case 1:
+    
+
+                                //TIENDA
+                                menustate = 4;
                             break;
                             case 2:
                                 //lobby
@@ -226,14 +224,15 @@ int Menu::Eventos(string key){
                                 
                             break;
                             case 4:
-
-                            break;
-                            case 5:
                                 window->cerrar();
+                                exit(0);
                             break;
                         }    
 
  
+                    }else if(key == "ESCAPE"){
+                        window->cerrar();
+                        exit(0);
                     }
                 break;
                 case 2:     //LOBBY
@@ -250,13 +249,15 @@ int Menu::Eventos(string key){
                         switch(selectedItemIndexL){
                             case 0: 
                                 //SECTOR O NIVEL 1
-                                //menustate = 5;
-                                // Menu::Instance(CyberPlague::Instance(),window)->Handle();
+                                nivel = 1;
+                                
+                                Mundo::Instance(CyberPlague::Instance(), window, nivel)->Handle();
                             break;
                             case 1:
                                 //SECTOR O NIVEL 2
-                                //menustate = 5;
-                                // Menu::Instance(CyberPlague::Instance(),window)->Handle();
+                                nivel = 2;
+                                
+                                Mundo::Instance(CyberPlague::Instance(), window, nivel)->Handle();
                             break;
                             case 2:
                                 //SECTOR O NIVEL 3
@@ -274,6 +275,8 @@ int Menu::Eventos(string key){
                         }    
 
  
+                    }else if(key == "ESCAPE"){
+                        window->cerrar();
                     }
                 break;
                  case 4:             //TIENDA  
@@ -316,6 +319,43 @@ int Menu::Eventos(string key){
                         }    
 
  
+                    }else if(key == "ESCAPE"){
+                        window->cerrar();
+                        exit(0);
+                    }
+                break;
+                case 5:             //PAUSA  
+                    if(key == "UP")
+                                    
+                        MoveUp();
+                                
+                    else if (key == "DOWN")
+                                    
+                        MoveDown();
+                     
+                    else if(key == "ENTER"){
+                        switch(selectedItemIndexP){
+                            case 0: 
+                                
+                                Mundo::Instance(CyberPlague::Instance(), window, nivel)->Handle();
+                            break;
+                            case 1:
+                                Mundo::Instance(CyberPlague::Instance(), window, nivel)->Handle();
+                            break;
+                            case 2:
+                                
+                                menustate = 1;
+                            break;
+                            case 3:
+                                window->cerrar();
+                            break;
+                            
+                        }    
+
+ 
+                    }else if(key == "ESCAPE"){
+                        window->cerrar();
+                        exit(0);
                     }
                 break;
             }
