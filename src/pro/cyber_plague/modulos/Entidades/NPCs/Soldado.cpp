@@ -47,7 +47,7 @@ void Soldado::update(float deltaTime, Map *m){
         if(currentImage > 3)
             currentImage = 0;
 
-        spr->cambiarPosTextura(currentImage*35, 0, 35, 40);
+        spr->cambiarPosTextura(currentImage*36, 0, 36, 40);
 
         animationClock.restart();
     }
