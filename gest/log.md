@@ -181,3 +181,6 @@ Animación de los NPCs Zombi y Soldado. Tengo que ajustarlos un poco ya que uno 
 
 ## 20210510 JoseSansano @(1h)
 Preparar clase Hud
+
+## 20210510 RamónRodríguez @(1h 30m)
+Animación de los NPCs Zombi y Soldado y pequeños cambios en sus sprite sheets para que se visualicen bien.
