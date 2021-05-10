@@ -11,6 +11,9 @@ class Zombi : public NPC{
         int attackTime;
         //Reloj para controlar el tiempo de ataque
         Clock attackClock;
+        //Animacion
+        int currentImage;
+        Clock animationClock;
     public:
         Zombi(string nomFichero, int texLeft, int texTop, int tex_width, int tex_height, float posX, float posY);
         ~Zombi();

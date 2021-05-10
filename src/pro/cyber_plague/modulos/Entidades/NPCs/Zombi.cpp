@@ -21,6 +21,8 @@ Zombi::Zombi(string nomFichero, int texLeft, int texTop, int tex_width, int tex_
 
     attackTime = kAtTime;
 
+    currentImage = 0;
+
     pos.setPosition(posX, posY);
     pos.setPosition(posX, posY);
 }
@@ -34,6 +36,16 @@ Zombi::~Zombi(){
 }
 
 void Zombi::update(float deltaTime, Map *m){
+    //Animacion
+    if(animationClock.getElapsedTime().asSeconds() >= 0.15f){
+        currentImage++;
+        if(currentImage > 5)
+            currentImage = 0;
+
+        spr->cambiarPosTextura(currentImage*23, 0, 23, 40);
+
+        animationClock.restart();
+    }
     //Mover
     //Cambiar direccion del sprite
     if(m->checkCaida(this->getSprite()->getSprite()))

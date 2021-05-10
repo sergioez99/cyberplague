@@ -12,6 +12,9 @@ class Soldado : public NPC{
         //Reloj para controlar el tiempo de spawneo de balas
         Clock spawnClock;
         Time time;
+        //Animacion
+        int currentImage;
+        Clock animationClock;
 
     public:
         Soldado(string nomFichero, int texLeft, int texTop, int tex_width, int tex_height, float posX, float posY);

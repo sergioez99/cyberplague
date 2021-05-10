@@ -4,7 +4,7 @@
 
 #define kVida  50
 #define kArm  20
-#define kVel  200.0f
+#define kVel  75.0f
 #define kRang  50.0f
 #define kCad 1.0f
 
@@ -22,7 +22,12 @@ Soldado::Soldado(string nomFichero, int texLeft, int texTop, int tex_width, int 
 
     cadencia = kCad;
 
+    currentImage = 0;
+
     time = spawnClock.getElapsedTime();
+
+    pos.setPosition(posX, posY);
+    pos.setPosition(posX, posY);
 }
 
 Soldado::~Soldado(){
@@ -36,6 +41,16 @@ Soldado::~Soldado(){
 }
 
 void Soldado::update(float deltaTime, Map *m){
+    //Animacion
+    if(animationClock.getElapsedTime().asSeconds() >= 0.15f){
+        currentImage++;
+        if(currentImage > 3)
+            currentImage = 0;
+
+        spr->cambiarPosTextura(currentImage*35, 0, 35, 40);
+
+        animationClock.restart();
+    }
     //Disparar
     if(deteccion()){
         if(puedoAtacar()){
@@ -58,11 +73,11 @@ bool Soldado::deteccion(){
     float x = 0, y = 0; //Acceder a la posicion de jugador
     float distancia = sqrt(pow(abs(x - this->getPosX()), 2) + pow(abs(y - this->getPosY()), 2));
     
-    if(distancia <= getRango()){
+    /*if(distancia <= getRango()){
         this->escalar(-1, 1);
 
         return true;
-    }
+    }*/
 
     return false;
 }
@@ -81,8 +96,13 @@ bool Soldado::puedoAtacar(){
 }
 
 void Soldado::moverse(float deltaTime){
+    Vector2D mov;
+    mov.y = 0.f;
+    
     if(this->getScaleX() < 0)
-        getSprite()->mover(-(getVelMovimiento() * deltaTime), 0);
+        mov.x = -deltaTime * getVelMovimiento();
     else
-        getSprite()->mover(getVelMovimiento() * deltaTime, 0);
+        mov.x = deltaTime * getVelMovimiento();
+
+    pos.setPosition(pos.getX() + mov.x, pos.getY() + mov.y);
 }
