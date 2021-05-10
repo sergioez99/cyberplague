@@ -45,8 +45,8 @@ void Mundo::Init()
     //NPC* mago = new Mago("sprites.png", 0*75, 0*75, 75, 75, 640/4, 480/2);
     //NPC* paj = new Pajaro("sprites.png", 1*75, 0*75, 75, 75, 640/4, 480/4);
     //NPC* sold = new Soldado("sprites.png", 2.3*75, 0*75, 75, 75, 640/6, 480/6);
-    NPC *zom = new Zombi("Zombie23x40.png", 0, 0, 23, 40, 1216, 365);
-    NPC* sold = new Soldado("Soldier35.5x40.png", 0, 0, 35, 40, 1240, 365);
+    NPC *zom = new Zombi("Zombie24x40.png", 0, 0, 24, 40, 1216, 365);
+    NPC* sold = new Soldado("Soldier35x40.png", 0, 0, 35, 40, 1240, 365);
     //arc->mejorar();
 
     vector<NPC *> enemigos;

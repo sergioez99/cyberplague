@@ -42,7 +42,7 @@ void Zombi::update(float deltaTime, Map *m){
         if(currentImage > 5)
             currentImage = 0;
 
-        spr->cambiarPosTextura(currentImage*23, 0, 23, 40);
+        spr->cambiarPosTextura(currentImage*24, 0, 24, 40);
 
         animationClock.restart();
     }
