@@ -25,6 +25,7 @@ public:
 	int getDmg();
 
 	Arma* getArmaEquipada();
+	int getIntArmaActual();
 	
 
 	void setDmg(int d);
@@ -32,6 +33,7 @@ public:
 	void ataque();
 	bool superado();
 	bool consigoDinero(Moneda* moneda);
+	int getDinero();
 
 	void renders(M_Window* vent, float percentTick, Map* mapa);
 

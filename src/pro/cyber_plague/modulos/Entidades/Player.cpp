@@ -221,6 +221,11 @@ Arma* Player::getArmaEquipada(){
 	return armas.at(arma_actual);
 }
 
+int Player::getIntArmaActual(){
+
+	return arma_actual;
+}
+
 bool Player::consigoDinero(Moneda* moneda){
 
 	if(this->getSprite()->intersects(moneda->getSprite())){
@@ -233,6 +238,11 @@ bool Player::consigoDinero(Moneda* moneda){
 	}
 
 	return false;
+}
+
+int Player::getDinero(){
+
+	return monedero;
 }
 
 bool Player::superado(){

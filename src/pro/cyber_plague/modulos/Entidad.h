@@ -22,6 +22,7 @@ class Entidad{
     protected:   
         M_Sprite* spr;
         int* vida;
+        int* vidaMax;
         int* armadura;
         float salto=0;
         int dmgColor=0;
@@ -54,6 +55,7 @@ class Entidad{
 
         M_Sprite* getSprite();
         int getVida();
+        int getVidaMax();
         int getArmadura();
         float getVelMovimiento();
         float getPosX();
