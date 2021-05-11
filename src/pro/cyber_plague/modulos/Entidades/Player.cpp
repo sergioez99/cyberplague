@@ -33,6 +33,24 @@ Player::Player(sf::Texture* texture, sf::Vector2u imageCount, float switchTime, 
 	armas.push_back(lanzallamas);
 
 	arma_actual = 0;
+
+	money = new sf::Text();
+    ammo = new sf::Text();
+    totalAmmo = new sf::Text();
+	fuente = new sf::Font();
+    //Conversion de int a string
+    toString << getDinero();
+   	toString >> s;
+    //
+	
+	if(!fuente->loadFromFile("./resources/FIGHTT3_.ttf")){
+        fuente->loadFromFile("./resources/arial.ttf");
+    }
+	money->setFont(*fuente);
+    money->setString(s);
+    money->setPosition(40,400);
+	money->setColor(sf::Color::Black);
+
 }
 
 Player::~Player(){
@@ -137,7 +155,7 @@ void Player::update(float deltaTime, Map* m)
 		if (movement.x > 0.0f) {
 			faceRight = true;
 		}
-		else {
+		else if(movement.x<0.0f){
 			faceRight = false;
 		}
 	}
@@ -209,6 +227,10 @@ void Player::update(float deltaTime, Map* m)
 	pos.setPosition(spr->getPosX(), spr->getPosY());
 
 	//cout << M_Input::getKeys() << endl;
+	char* c = new char();
+	sprintf(c, "%d", monedero);//Convierte int a char*
+	s = c; //Pasa char* a string
+	money->setString(s);
 }
 
 int Player::getDmg(){
@@ -230,7 +252,7 @@ bool Player::consigoDinero(Moneda* moneda){
 
 	if(this->getSprite()->intersects(moneda->getSprite())){
 
-		monedero = monedero + moneda->getValor();
+		monedero += moneda->getValor();
 
 		cout << monedero << endl;
 

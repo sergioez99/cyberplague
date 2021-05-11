@@ -39,6 +39,8 @@ void Mundo::Init()
 
     Player player(&playerTexture, sf::Vector2u(8, 3), 0.15f, 250.0f);
 
+    player.setPosHUD(camara->getView()->getCenter().x,camara->getView()->getCenter().y);
+
     Clock clock;
     Clock clock2;
 
@@ -78,13 +80,14 @@ void Mundo::Init()
 
         if (clock.getElapsedTime().asMilliseconds() - timeStartUpdate.asMilliseconds() > kUpdateTimePS)
         {
-            float deltaTime = clock2.restart().asSeconds();
             Vector2D playerPos;
+
+            float deltaTime = clock2.restart().asSeconds();
             playerPos.x=player.getPosInterpolada().getX();
             playerPos.y=player.getPosInterpolada().getY();
-            player.getSprite()->setPosition(playerPos);
+            player.getSprite()->setPosition(playerPos);//Fuerza a la posicion donde deberia estar ya.
             //Gravedad
-            player.update(deltaTime, tutorial);  
+            player.update(deltaTime, tutorial);
 
             //Aqui habra que cambiar de State
             if(player.muerto())
@@ -145,6 +148,7 @@ void Mundo::Init()
         }
         
         player.renders(vent, percentTick, tutorial);
+        player.renderHUD(vent, camara->getView());
 
         //Mover camara
         if (player.getPosX() < 320.0f)

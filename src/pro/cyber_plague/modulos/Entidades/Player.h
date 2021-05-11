@@ -1,9 +1,11 @@
 #pragma once
+#include <sstream>
 #include <SFML/Graphics.hpp>
 #include "Animacion.h"
 #include "Entidad.h"
 #include "NPC.h"
 #include "Map.h"
+#include "Hud.h"
 
 #include "Armas/Arma.h"
 #include "Armas/Tipo_de_Arma/Arco.h"
@@ -12,7 +14,7 @@
 #include "Armas/Tipo_de_Arma/Lanzallamas.h"
 
 
-class Player : public Entidad
+class Player : public Entidad, public Hud
 {
 public: 
 	Player(sf::Texture* texture, sf::Vector2u imageCount, float switchTime, float speed);
@@ -60,6 +62,5 @@ private:
 	
     virtual bool puedoAtacar(){return false;};
     virtual void moverse(float deltaTime){};
-
 
 };
