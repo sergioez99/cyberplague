@@ -43,7 +43,7 @@ Menu::Menu(CyberPlague* contexto, M_Window *w, int inic) {
 
     menu[3].setFont(font);
     menu[3].setColor(sf::Color::White);
-    menu[3].setString("Creditos");
+    menu[3].setString("Controles");
     menu[3].setPosition(sf::Vector2f(width / 2, height / (MAX_NUMBER_OF_ITEMS +1) * 4));
 
     menu[4].setFont(font);
@@ -77,32 +77,14 @@ Menu::Menu(CyberPlague* contexto, M_Window *w, int inic) {
     menuL[4].setString("Volver");
     menuL[4].setPosition(sf::Vector2f(width / 2, height / (MAX_NUMBER_OF_ITEMS_L +1) * 5));
 
-    //////////////////////////  NIVELES
+    //////////////////////////  CONTROLES
 
     menuN[0].setFont(font);
     menuN[0].setColor(sf::Color::Red);
-    menuN[0].setString("Nivel 1"); 
+    menuN[0].setString("Volver"); 
     menuN[0].setPosition(sf::Vector2f(width / 2, height / (MAX_NUMBER_OF_ITEMS_N +1) * 1));
 
-    menuN[1].setFont(font);
-    menuN[1].setColor(sf::Color::White);
-    menuN[1].setString("Nivel 2");
-    menuN[1].setPosition(sf::Vector2f(width / 2, height / (MAX_NUMBER_OF_ITEMS_N +1) * 2));
-
-    menuN[2].setFont(font);
-    menuN[2].setColor(sf::Color::White);
-    menuN[2].setString("Nivel 3");
-    menuN[2].setPosition(sf::Vector2f(width / 2, height / (MAX_NUMBER_OF_ITEMS_N +1) * 3));
-
-    menuN[3].setFont(font);
-    menuN[3].setColor(sf::Color::White);
-    menuN[3].setString("Jefe final");
-    menuN[3].setPosition(sf::Vector2f(width / 2, height / (MAX_NUMBER_OF_ITEMS_N +1) * 4));
-
-    menuN[4].setFont(font);
-    menuN[4].setColor(sf::Color::White);
-    menuN[4].setString("Volver");
-    menuN[4].setPosition(sf::Vector2f(width / 2, height / (MAX_NUMBER_OF_ITEMS_N +1) * 5));
+    
 
     ////////////////////////////   TIENDA
 
@@ -173,6 +155,7 @@ int Menu::run(M_Window *window){
 
    string key;
    fondo = new M_Sprite("Fondo.jpg",0, 0, 640, 480,320, 240);
+   fondoC = new M_Sprite("FondoControl.jpg",0, 0, 640, 480,320, 240);
 
     while(window->abierta()){
 
@@ -185,6 +168,7 @@ int Menu::run(M_Window *window){
     }
 
     delete fondo;
+    delete fondoC;
     return 0;
 }
 
@@ -221,7 +205,7 @@ int Menu::Eventos(string key){
                                 menustate = 2;
                             break;
                             case 3:
-                                
+                                menustate = 3;
                             break;
                             case 4:
                                 window->cerrar();
@@ -269,6 +253,30 @@ int Menu::Eventos(string key){
                                 menustate = 4;
                             break;
                             case 4:
+                                menustate = 1;
+                            break;
+                            
+                        }    
+
+ 
+                    }else if(key == "ESCAPE"){
+                        window->cerrar();
+                    }
+                break;
+                case 3:     //CONTROLES
+                    if(key == "UP")
+                                    
+                        MoveUp();
+                        
+                                
+                    else if (key == "DOWN")
+                                    
+                        MoveDown();
+                     
+                    else if(key == "ENTER"){
+                        switch(selectedItemIndexN){
+                            
+                            case 0:
                                 menustate = 1;
                             break;
                             
@@ -377,8 +385,12 @@ void Menu::Render(){
   //  sf::Sprite fondo1(tex);
   //  window->fondo(fondo1);
 
+    if(menustate==3){
+        window->render(fondoC);
+    }else{
+        window->render(fondo);
+    }
     
-    window->render(fondo);
     
     switch(menustate){
         case 1:
