@@ -176,8 +176,8 @@ Ajuste de los sprites de Zombi con Photoshop.
 ## 20210509 RubenHerrera @(2h)
 Ajustado menú y añadido el menú de pausa. Añadido el escape a los controles y añadido exit al cerrar ya que salía error al limpiar. La pausa no mantiene el estado del juego y hay un bug con la vista del menú cuando mueves el personaje por el mapa.
 
-## 20210510 RamónRodríguez @(1h)
-Animación de los NPCs Zombi y Soldado. Tengo que ajustarlos un poco ya que uno de los sprites de Zombi se ve un poco cortado, y los sprites de Soldado tengo que ponerlos que miren hacia el otro lado para que su IA funcione correctamente.
+## 20210510 RamónRodríguez @(1h 30m)
+Animación de los NPCs Zombi y Soldado y pequeños cambios en sus sprite sheets para que se visualicen bien.
 
 ## 20210510 JoseSansano @(1h)
 Preparar clase Hud
