@@ -185,8 +185,11 @@ Preparar clase Hud
 ## 20210510 RamónRodríguez @(1h 30m)
 Animación de los NPCs Zombi y Soldado y pequeños cambios en sus sprite sheets para que se visualicen bien.
 
-## 20210510 JoseSansano @(3h)
+## 20210511 JoseSansano @(3h)
 Hud que sigue la View y que muestra por ahora solo las monedas que tiene el personaje.
 
 ## 20210511 RubénHerrera @(1h 30m)
 Creación con photoshop del fondo para los controles y añadido en el menú.
+
+## 20210512 JoseSansano @(1h)
+Ahora hud muestra municion del arma actual y vida del personaje

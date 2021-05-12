@@ -4,7 +4,13 @@
 //    width = 640;
 //    height = 480;
 Hud::Hud(){}
-Hud::~Hud(){}
+Hud::~Hud(){
+    delete money;
+    delete life;
+    delete ammo;
+
+    delete fuente;
+}
 
 void Hud::renderHUD(M_Window* vent, View* view){
     Vector2D posicion;
