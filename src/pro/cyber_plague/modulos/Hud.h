@@ -20,7 +20,7 @@ class Hud{
     //sf::Image* weaponType;
     sf::Text* money;
     sf::Text* ammo;
-    sf::Text* totalAmmo;
+    sf::Text* life;
     sf::Font* fuente;
     float PosX;
     float PosY;

@@ -111,11 +111,10 @@ float Entidad::getScaleY(){
 
 void Entidad::setVida(int vi){
 
-    if(vida == 0){vida = new int(vi); vidaMax = new int(vi);}
+    if(vida == 0){vida = new int(vi);}
     else{
 
         *vida = vi;
-        *vidaMax = vi;
     }
 }
 

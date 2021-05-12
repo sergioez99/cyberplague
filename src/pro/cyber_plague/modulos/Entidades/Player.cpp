@@ -13,6 +13,7 @@ Player::Player(sf::Texture* texture, sf::Vector2u imageCount, float switchTime, 
 	row = 0;
 	faceRight = true;
 	vida = new int( kVida );
+	vidaMax = new int( kVida );
 
 	monedero = 0;
 
@@ -36,13 +37,14 @@ Player::Player(sf::Texture* texture, sf::Vector2u imageCount, float switchTime, 
 
 	money = new sf::Text();
     ammo = new sf::Text();
-    totalAmmo = new sf::Text();
+    life = new sf::Text();
 	fuente = new sf::Font();
     //Conversion de int a string
     toString << getDinero();
    	toString >> s;
     //
 	
+	//Iniciar HUD de player
 	if(!fuente->loadFromFile("./resources/FIGHTT3_.ttf")){
         fuente->loadFromFile("./resources/arial.ttf");
     }
@@ -50,6 +52,25 @@ Player::Player(sf::Texture* texture, sf::Vector2u imageCount, float switchTime, 
     money->setString(s);
     money->setPosition(40,400);
 	money->setColor(sf::Color::Black);
+
+	s = "Ammo: INF";
+	ammo->setFont(*fuente);
+	ammo->setPosition(40,80);
+	ammo->setString(s);
+	ammo->setColor(sf::Color::Black);
+
+	s = "Life: ";
+	char* c1 = new char();
+	char* c2 = new char();
+	sprintf(c1, "%d", getVida());//Convierte int a char*
+	sprintf(c2, "%d", getVidaMax());
+	s.append(c1); s.append("/"); s.append(c2);
+	life->setFont(*fuente);
+	life->setPosition(40,40);
+	life->setString(s);
+	life->setColor(sf::Color::Black);
+	
+
 
 }
 
@@ -227,10 +248,29 @@ void Player::update(float deltaTime, Map* m)
 	pos.setPosition(spr->getPosX(), spr->getPosY());
 
 	//cout << M_Input::getKeys() << endl;
-	char* c = new char();
-	sprintf(c, "%d", monedero);//Convierte int a char*
-	s = c; //Pasa char* a string
+
+	//UPDATE HUD
+	char* c1 = new char();
+	sprintf(c1, "%d", monedero);//Convierte int a char*
+	s = c1; //Pasa char* a string
 	money->setString(s);
+
+	char* c2 = new char();
+	sprintf(c1, "%d", getArmaEquipada()->getMunicionAct());//Convierte int a char*
+	sprintf(c2, "%d", getArmaEquipada()->getMunicionMax());
+	s = "Ammo: ";//Pasa char* a string
+	if(arma_actual==0)
+		s.append("INF");
+	else{
+	s.append(c1); s.append("/"); s.append(c2);
+	}
+	ammo->setString(s);
+
+	s = "Life: ";
+	sprintf(c1, "%d", getVida());//Convierte int a char*
+	sprintf(c2, "%d", getVidaMax());
+	s.append(c1); s.append("/"); s.append(c2);
+	life->setString(s);
 }
 
 int Player::getDmg(){
