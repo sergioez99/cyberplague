@@ -7,8 +7,7 @@
 #include <string> 
 #include "Motor2D/M_Window.h"
 #include "Motor2D/M_Input.h"
-
-
+#include "MenuPausa.h"
 
 
 #define MAX_NUMBER_OF_ITEMS 5
@@ -25,6 +24,8 @@ class CyberPlague; //Clase contexto
 class State{ //Clase estado
     protected:
         CyberPlague *contexto;
+        bool quit;
+        
     public:
         virtual ~State(){ };
         void setContexto(CyberPlague *contexto){ this->contexto = contexto; };
@@ -35,6 +36,7 @@ class State{ //Clase estado
 };
 
 class CyberPlague {
+
     
 private:
   State *estado;
@@ -48,6 +50,8 @@ public:
   void cambiarEstado(State *estado);
   void Handle();
   void update();
+  void pausar();
+  void despausar();
   
   M_Window* window;
 };
@@ -111,9 +115,11 @@ class Mundo: public State{ //Class ingame
         void Init();
         void Render();
     private:
+        
         M_Window *vent;
         CyberPlague* _context;
         static Mundo* pinstance;
         int lvl;
-        
+        MenuPausa* pmenu;
+        bool pausado=false;
 };
