@@ -205,3 +205,6 @@ Creación del mapa del nivel 3 de temática volcánica. Se puede acceder finaliz
 
 ## 20210513 RubénHerrera @(2h 30m)
 Añadida pausa. Ahora muestra el menu en la posición correcta y mantiene el estado.
+
+## 20210513 JoseSansano @(2h)
+Hud con iconos de vida y municion. Fixeado un bug con las colisiones en las escaleras del sector 2. Al estar chocando seguidamente, subia rápidamente de escalón al entrar dentro de su bounding box. Ahora todas las colisiones en X separan al jugador 4 pixeles para evitar eso.

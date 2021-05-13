@@ -71,6 +71,9 @@ Player::Player(sf::Texture* texture, sf::Vector2u imageCount, float switchTime, 
 	life->setPosition(40,40);
 	life->setString(s);
 	life->setColor(sf::Color::Black);
+
+	lifeIcon = new M_Sprite("vidas_1.png",90,105,170,170,0,0);
+	lifeIcon->escalar(0.13,0.15);
 	
 
 
@@ -188,10 +191,10 @@ void Player::update(float deltaTime, Map* m)
 	if(m->checkCollision(getSprite()->getSprite())){//si es verdadero, se ha chocado con algo en el eje X
 		//getSprite()->setPosition(getLastPosition());
 		colPos.y = getSprite()->getPosY();
-		if(m->getCollision(getSprite()->getSprite())->getGlobalBounds().left+1>getSprite()->getPosX())
-			colPos.x = m->getCollision(getSprite()->getSprite())->getGlobalBounds().left-getSprite()->getSprite()->getLocalBounds().width/2;
+		if(m->getCollision(getSprite()->getSprite())->getGlobalBounds().left+2>getSprite()->getPosX())
+			colPos.x = m->getCollision(getSprite()->getSprite())->getGlobalBounds().left-4-getSprite()->getSprite()->getLocalBounds().width/2;
 		else
-			colPos.x = m->getCollision(getSprite()->getSprite())->getGlobalBounds().left+m->getCollision(getSprite()->getSprite())->getLocalBounds().width+getSprite()->getSprite()->getLocalBounds().width/2;
+			colPos.x = m->getCollision(getSprite()->getSprite())->getGlobalBounds().left+4+m->getCollision(getSprite()->getSprite())->getLocalBounds().width+getSprite()->getSprite()->getLocalBounds().width/2;
         getSprite()->setPosition(colPos); //Esto se utiliza para que este tocando el suelo, y no flotando.
 
 	}
@@ -277,7 +280,7 @@ void Player::update(float deltaTime, Map* m)
 	}else if(arma_actual==3){//LANZALLAMAS
 		ammoType = new M_Sprite("spritesheet_otros.png",73,0,28,23,10,10);
 	}
-	s = "Life: ";
+	s = " ";
 	sprintf(c1, "%d", getVida());//Convierte int a char*
 	sprintf(c2, "%d", getVidaMax());
 	s.append(c1); s.append("/"); s.append(c2);
