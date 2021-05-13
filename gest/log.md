@@ -211,3 +211,6 @@ Hud con iconos de vida y municion. Fixeado un bug con las colisiones en las esca
 
 ## 20210513 CarlosVillena @(4h)
 Sistema de Cofres Creado.
+
+## 20210513 RamónRodríguez @(1h)
+Arreglado un fallo por el que los enemigos se teletransportaban al salir del menú de pausa. Al no ejecutar sus updates mientras estabas en pausa el reloj que controla el deltaTime no se reseteaba por lo que se movían en función del tiempo que estabas en pausa.

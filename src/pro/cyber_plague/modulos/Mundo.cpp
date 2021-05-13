@@ -32,7 +32,6 @@ void Mundo::Init()
     M_View *camara = new M_View(0, 0, 640, 480);
 
     pausado=false;
-    float percentTick;
     fondo = new M_Sprite("Fondo.jpg",0, 0, 640, 480,320, 240);
 
     //Cargo la imagen donde reside la textura del sprite protagonista
@@ -75,16 +74,17 @@ void Mundo::Init()
 
     //Bucle juego
     while (vent->abierta())
-    {   
+    {
         if(pausado==false){
-
             string key = M_Input::InputController();
 
-                if(key == "ESCAPE"){            
-                // Menu::Instance(CyberPlague::Instance(), vent, lvl)->Handle();
-                    pausado=true;        
-                }
+            if(key == "ESCAPE"){            
+            // Menu::Instance(CyberPlague::Instance(), vent, lvl)->Handle();
+                pausado=true;        
+            }
+        }
 
+        if(pausado==false){
             if (clock.getElapsedTime().asMilliseconds() - timeStartUpdate.asMilliseconds() > kUpdateTimePS)
             {
                 Vector2D playerPos;
@@ -148,15 +148,13 @@ void Mundo::Init()
                 }
 
                 timeStartUpdate = clock.getElapsedTime();
-            }
-
-            percentTick = min(1.f, clock2.getElapsedTime().asMilliseconds() / (float)(kUpdateTimePS));
-            
+            }           
         } else {
             pmenu->update();
         }
 
         if(pausado==true){
+            clock2.restart();
             vent->limpiar();
             Vector2D posicion;
             posicion.x = camara->getView()->getCenter().x;
@@ -166,6 +164,7 @@ void Mundo::Init()
             pausado = pmenu->render(camara->getView());
         }else{
 
+        float percentTick = min(1.f, clock2.getElapsedTime().asMilliseconds() / (float)(kUpdateTimePS));
         vent->limpiar();
         tutorial->drawTile(vent->getWindow());
 
