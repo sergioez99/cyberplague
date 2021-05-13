@@ -53,11 +53,13 @@ Player::Player(sf::Texture* texture, sf::Vector2u imageCount, float switchTime, 
     money->setPosition(40,400);
 	money->setColor(sf::Color::Black);
 
-	s = "Ammo: INF";
+	s = " INF";
 	ammo->setFont(*fuente);
 	ammo->setPosition(40,80);
 	ammo->setString(s);
 	ammo->setColor(sf::Color::Black);
+
+	ammoType = new M_Sprite("spritesheet_otros.png",32,0,16,8,10,10);
 
 	s = "Life: ";
 	char* c1 = new char();
@@ -258,19 +260,29 @@ void Player::update(float deltaTime, Map* m)
 	char* c2 = new char();
 	sprintf(c1, "%d", getArmaEquipada()->getMunicionAct());//Convierte int a char*
 	sprintf(c2, "%d", getArmaEquipada()->getMunicionMax());
-	s = "Ammo: ";//Pasa char* a string
-	if(arma_actual==0)
+	s = " ";//Pasa char* a string
+	if(arma_actual==0){
 		s.append("INF");
+		ammoType = new M_Sprite("spritesheet_otros.png",32,0,16,8,10,10);
+	}
 	else{
 	s.append(c1); s.append("/"); s.append(c2);
 	}
 	ammo->setString(s);
 
+	if(arma_actual==1){//ARCO
+		ammoType = new M_Sprite("spritesheet_otros.png",0,0,32,10,10,10);
+	}else if(arma_actual==2){//LASER
+		ammoType = new M_Sprite("spritesheet_otros.png",48,0,24,4,10,10);
+	}else if(arma_actual==3){//LANZALLAMAS
+		ammoType = new M_Sprite("spritesheet_otros.png",73,0,28,23,10,10);
+	}
 	s = "Life: ";
 	sprintf(c1, "%d", getVida());//Convierte int a char*
 	sprintf(c2, "%d", getVidaMax());
 	s.append(c1); s.append("/"); s.append(c2);
 	life->setString(s);
+
 }
 
 int Player::getDmg(){
