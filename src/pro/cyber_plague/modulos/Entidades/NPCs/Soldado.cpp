@@ -3,7 +3,7 @@
 /* STATS */
 
 #define kVida  50
-#define kArm  20
+#define kArm  5
 #define kVel  75.0f
 #define kRang  50.0f
 #define kCad 1.0f

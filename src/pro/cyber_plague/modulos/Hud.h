@@ -25,6 +25,8 @@ class Hud{
     sf::Font* fuente;
     M_Sprite* ammoType;
     M_Sprite* lifeIcon;
+    M_Sprite* armorIcon;
+    
     float PosX;
     float PosY;
     //Estos dos son para convertir números en string

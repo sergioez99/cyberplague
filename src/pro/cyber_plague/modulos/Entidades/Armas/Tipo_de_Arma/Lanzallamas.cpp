@@ -2,10 +2,10 @@
 
 /* STATS DEL ARMA */
 
-#define kDmg 8
+#define kDmg 10
 #define kTmpMuncGas 0.4f  //TIEMPO QUE DEBE PASAR PARA QUE EL ARMA GASTE MUNICION.
 #define kVel 700.0f
-#define kMuncGas 10  //MUNICION QUE GASTA EL ARMA
+#define kMuncGas 2  //MUNICION QUE GASTA EL ARMA
 
 /* -------------- */
 

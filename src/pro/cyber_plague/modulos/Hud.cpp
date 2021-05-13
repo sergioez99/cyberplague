@@ -10,6 +10,10 @@ Hud::~Hud(){
     delete armor;
     delete ammo;
 
+    delete armorIcon;
+    delete ammoType;
+    delete lifeIcon;
+
     delete fuente;
 }
 
@@ -20,19 +24,23 @@ void Hud::renderHUD(M_Window* vent, View* view){
     posicion.y = view->getCenter().y;
 
     money->setPosition(posicion.x-280.f,posicion.y+180.f);
-    armor->setPosition(posicion.x-280.f, posicion.y-140.f);
+    armor->setPosition(posicion.x-250.f, posicion.y-140.f);
     
     ammo->setPosition(posicion.x-250.f,posicion.y-180.f);
     life->setPosition(posicion.x-250.f,posicion.y-220.f);
+
     ammoType->setPosition(posicion.x-265.f, posicion.y-160.f);
     lifeIcon->setPosition(posicion.x-265.f, posicion.y-200.f);
+    armorIcon->setPosition(posicion.x-265.f, posicion.y-120.f);
 
     vent->escribir(armor);
 	vent->escribir(money);
     vent->escribir(ammo);
     vent->escribir(life);
+
     vent->render(ammoType);
     vent->render(lifeIcon);
+    vent->render(armorIcon);
 }
 
 void Hud::setPosHUD(float x, float y){
@@ -41,12 +49,13 @@ void Hud::setPosHUD(float x, float y){
 }
 
 void Hud::setPosHUDsf(){
-    
+
     money->setPosition(PosX-280.f,PosY+180.f);
     armor->setPosition(PosX-280.f,PosY-180.f);
-
     ammo->setPosition(PosX-250.f,PosY-180.f);
     life->setPosition(PosX-250.f,PosY-220.f);
+
     lifeIcon->setPosition(PosX-265.f,PosY-200.f);
     ammoType->setPosition(PosX-265.f, PosY-160.f);
+    armorIcon->setPosition(PosX-265.f, PosY-140.f);
 }
