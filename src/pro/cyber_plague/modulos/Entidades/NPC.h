@@ -22,6 +22,7 @@ class NPC : public Entidad{
         float getRango();
         Moneda* looteoMoneda();
         Moneda* getLoot();
+        void colision(float deltaTime, NPC* enemigo);
         void render(M_Window* vent, float percentTick);
         virtual bool deteccion() = 0;
 };

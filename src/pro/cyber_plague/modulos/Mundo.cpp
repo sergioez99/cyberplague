@@ -48,8 +48,8 @@ void Mundo::Init()
     //NPC* mago = new Mago("sprites.png", 0*75, 0*75, 75, 75, 640/4, 480/2);
     //NPC* paj = new Pajaro("sprites.png", 1*75, 0*75, 75, 75, 640/4, 480/4);
     //NPC* sold = new Soldado("sprites.png", 2.3*75, 0*75, 75, 75, 640/6, 480/6);
-    NPC *zom = new Zombi("Zombie24x40.png", 0, 0, 24, 40, 1216, 365);
-    NPC* sold = new Soldado("Soldier36x40.png", 0, 0, 36, 40, 1240, 365);
+    NPC *zom = new Zombi("Zombie24x40.png", 0, 0, 24, 40, 900, 365);
+    NPC* sold = new Soldado("Soldier36x40.png", 0, 0, 36, 40, 1200, 365);
     //arc->mejorar();
 
     vector<NPC *> enemigos;
@@ -102,6 +102,12 @@ void Mundo::Init()
 
                 if(player.superado()){
                     Mundo::Instance(CyberPlague::Instance(), vent, lvl+1)->Handle();
+                }
+
+                //Colisiones entre NPCs
+                for(int i = 0; i < (int)enemigos.size(); i++){
+                    for(int j = i + 1; j < (int)enemigos.size(); j++)
+                        enemigos.at(i)->colision(deltaTime, enemigos.at(j));
                 }
 
                 //Updates antes de los renders o el personaje vibra por las colisiones.

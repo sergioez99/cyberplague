@@ -62,3 +62,39 @@ Moneda* NPC::looteoMoneda(){
     return moneda;
 
 }
+
+void NPC::colision(float deltaTime, NPC* enemigo){
+    //Simulamos el movimiento de ambos NPCs
+    if(this->getScaleX() < 0)
+        this->getSprite()->mover(-deltaTime * this->getVelMovimiento(), 0);
+    else
+        this->getSprite()->mover(deltaTime * this->getVelMovimiento(), 0);
+
+    if(enemigo->getScaleX() < 0)
+        enemigo->getSprite()->mover(-deltaTime * enemigo->getVelMovimiento(), 0);
+    else
+        enemigo->getSprite()->mover(deltaTime * enemigo->getVelMovimiento(), 0);
+
+    if(this->getSprite()->getSprite()->getGlobalBounds().intersects(enemigo->getSprite()->getSprite()->getGlobalBounds())){
+        //Si se chocan de frente ambos se dan la vuelta
+        if((this->getScaleX() < 0 && enemigo->getScaleX() > 0) ||(this->getScaleX() > 0 && enemigo->getScaleX() < 0)){
+            this->escalar(-1.0f, 1.0f);
+            enemigo->escalar(-1.0f, 1.0f);
+        }
+        else{
+            //Si ambos van en la misma direccion se da la vuelta el NPC que choque por detras al otro
+            if(this->getScaleX() < 0){
+                if(this->getPosX() > enemigo->getPosX())
+                    this->escalar(-1.0f, 1.0f);
+                else
+                    enemigo->escalar(-1.0f, 1.0f);
+            }
+            else{
+                if(this->getPosX() < enemigo->getPosX())
+                    this->escalar(-1.0f, 1.0f);
+                else
+                    enemigo->escalar(-1.0f, 1.0f);
+            }
+        }
+    }
+}
