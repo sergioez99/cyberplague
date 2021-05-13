@@ -122,4 +122,5 @@ class Mundo: public State{ //Class ingame
         int lvl;
         MenuPausa* pmenu;
         bool pausado=false;
+        M_Sprite* fondo;
 };

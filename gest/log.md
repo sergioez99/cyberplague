@@ -202,3 +202,6 @@ Creada clase Menu Pausa. Falta separar los update y render. Aún no funciona.
 
 ## 20210513 SergioEspinosa @(1h 40')
 Creación del mapa del nivel 3 de temática volcánica. Se puede acceder finalizando el nivel 2 o desde el menú en la opción de nivel 3.
+
+## 20210513 RubénHerrera @(2h 30m)
+Añadida pausa. Ahora muestra el menu en la posición correcta y mantiene el estado.

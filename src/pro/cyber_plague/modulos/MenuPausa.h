@@ -17,13 +17,14 @@ class MenuPausa{
         int height;
         sf::Font font;
         sf::Text menuP[MAX_NUMBER_OF_ITEMS_P];
+        bool pausado;
     public:
 
         MenuPausa(M_Window *w);
         ~MenuPausa();
 
         void update();
-        void render();
+        bool render(View* view);
 
         void MoveUp();
         void MoveDown();

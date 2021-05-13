@@ -20,9 +20,9 @@ Menu::Menu(CyberPlague* contexto, M_Window *w, int inic) {
         font.loadFromFile("./resources/arial.ttf");
     }
 
-    if(inic != 0){
-        menustate=5;
-    }
+   // if(inic != 0){
+   //     menustate=5;
+   // }
 
     nivel=inic;  //para guardar la nivel en el que se ha pausado
 
