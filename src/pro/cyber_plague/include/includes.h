@@ -20,5 +20,4 @@
 
 //Otras Clases
 #include "../modulos/Map.h"
-//#include "../modulos/CyberPlague.h"
 #include "../modulos/Animacion.h"

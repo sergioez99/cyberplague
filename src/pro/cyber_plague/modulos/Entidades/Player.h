@@ -35,6 +35,10 @@ public:
 	void ataque();
 	bool superado();
 	bool consigoDinero(Moneda* moneda);
+	bool consigoMejora(Mejora* mejora);
+
+	int compruebaMunicionArmas(); //Este metodo comprueba la municion de todas las armas y devuelve el indice del arma que menos 										municion tenga. En el caso de que todas las armas tengan la municion al máximo, devuelve -1.
+
 	int getDinero();
 
 	void renders(M_Window* vent, float percentTick, Map* mapa);

@@ -26,6 +26,7 @@ class Arco : public Arma{
 
                 M_Sprite* getSprite();
                 bool heColisionado(NPC* enemigo);
+                bool heColisionado(Cofre* cofre);
 
         };
         
@@ -43,6 +44,7 @@ class Arco : public Arma{
       void update(float deltaTime, Map* m);
       void render(M_Window* vent, float percentTick);
       void balaImpactada(NPC* enemigos);
+      void balaImpactada(Cofre* cofre);
       bool balaEstaLejos(int i, Map* m);
 
       void limpiarCargador();

@@ -19,6 +19,7 @@ class Hud{
     //sf::Image* health;
     //sf::Image* weaponType;
     sf::Text* money;
+    sf::Text* armor;
     sf::Text* ammo;
     sf::Text* life;
     sf::Font* fuente;

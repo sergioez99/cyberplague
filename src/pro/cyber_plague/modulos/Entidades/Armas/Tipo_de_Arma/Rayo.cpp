@@ -64,6 +64,19 @@ bool Rayo::Bala::heColisionado(NPC* enemigo){
     }
 }
 
+bool Rayo::Bala::heColisionado(Cofre* cofre){
+
+    if(sprite_bala->intersects(cofre->getSprite())){
+    
+        return true;
+    }
+
+    else{
+
+        return false;
+    }
+}
+
 /* ---------------- */
 
 
@@ -160,6 +173,17 @@ void Rayo::balaImpactada(NPC* enemigo){
             proyectiles.erase(proyectiles.begin() + i);
         }
 
+	}
+}
+
+void Rayo::balaImpactada(Cofre* cofre){
+    for(unsigned int i = 0; i < proyectiles.size(); i++){
+
+        if(proyectiles.at(i)->heColisionado(cofre)){
+
+            cofre->abrir();
+            proyectiles.erase(proyectiles.begin() + i);
+        }
 	}
 }
 

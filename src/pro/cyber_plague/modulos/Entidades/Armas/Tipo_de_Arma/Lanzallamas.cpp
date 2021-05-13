@@ -117,6 +117,20 @@ bool Lanzallamas::Bala::heColisionado(NPC* enemigo){
     }
 }
 
+bool Lanzallamas::Bala::heColisionado(Cofre* cofre){
+
+    if(sprite_bala->intersects(cofre->getSprite())){
+    
+        return true;
+    }
+
+    else{
+
+        return false;
+    }
+}
+
+
 /* ---------------- */
 
 
@@ -244,6 +258,16 @@ void Lanzallamas::balaImpactada(NPC* enemigo){
             enemigo->reciboDmg(this->getDmg());
         }
 
+	}
+}
+
+void Lanzallamas::balaImpactada(Cofre* cofre){
+    for(unsigned int i = 0; i < proyectiles.size(); i++){
+
+        if(proyectiles.at(i)->heColisionado(cofre)){
+
+            cofre->abrir();
+        }
 	}
 }
 

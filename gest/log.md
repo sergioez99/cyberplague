@@ -193,3 +193,6 @@ Creación con photoshop del fondo para los controles y añadido en el menú.
 
 ## 20210512 JoseSansano @(1h)
 Ahora hud muestra municion del arma actual y vida del personaje
+
+## 20210513 CarlosVillena @(4h)
+Sistema de Cofres Creado.

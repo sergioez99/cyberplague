@@ -4,6 +4,7 @@
 #include "../../Motor2D/M_Window.h"
 
 #include "../NPC.h"
+#include "../../Cofre.h"
 
 using namespace std;
 
@@ -49,6 +50,7 @@ class Arma {
         virtual void render(M_Window* vent, float percentTick) = 0;
         virtual void update(float deltaTime, Map* m) = 0;
         virtual void balaImpactada(NPC* enemigos) = 0;
+        virtual void balaImpactada(Cofre* cofre) = 0;
 
         virtual bool puedeDisparar() = 0;
         virtual void limpiarCargador() = 0;

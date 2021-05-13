@@ -31,7 +31,7 @@ void Mundo::Init()
 {
     M_View *camara = new M_View(0, 0, 640, 480);
 
-
+    
 
     //Cargo la imagen donde reside la textura del sprite protagonista
     sf::Texture playerTexture;
@@ -58,6 +58,13 @@ void Mundo::Init()
     //enemigos.push_back(sold);
     enemigos.push_back(zom);
     enemigos.push_back(sold);
+
+    vector<Cofre*> cofres;
+    Cofre* cofre1 = new Cofre(1000, 365);
+
+    cofres.push_back(cofre1);
+
+
     Map *tutorial = new Map(lvl);
 
     vector<bool> key;
@@ -67,9 +74,6 @@ void Mundo::Init()
     //Bucle juego
     while (vent->abierta())
     {
-
-        
-
         string key = M_Input::InputController();
 
         if(key == "ESCAPE"){            
@@ -127,6 +131,17 @@ void Mundo::Init()
 
             }
 
+            for(unsigned int i = 0; i < cofres.size(); i++){
+
+                player.getArmaEquipada()->balaImpactada(cofres.at(i));
+                cofres.at(i)->update();
+                
+                if(player.consigoMejora(cofres.at(i)->getMejora())){
+
+                    cofres.erase(cofres.begin() + i);
+                }
+            }
+
 
             timeStartUpdate = clock.getElapsedTime();
         }
@@ -135,6 +150,12 @@ void Mundo::Init()
 
         vent->limpiar();
         tutorial->drawTile(vent->getWindow());
+
+        for(unsigned int i = 0; i < cofres.size(); i++){
+
+            cofres.at(i)->render(vent);
+        }
+
         for (unsigned int i = 0; i < enemigos.size(); i++)
         {
 
@@ -145,7 +166,7 @@ void Mundo::Init()
 
             monedasNivel.at(i)->render(vent);
         }
-        
+
         player.renders(vent, percentTick, tutorial);
         player.renderHUD(vent, camara->getView());
 

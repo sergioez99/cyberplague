@@ -71,6 +71,19 @@ bool Arco::Bala::heColisionado(NPC* enemigo){
     }
 }
 
+bool Arco::Bala::heColisionado(Cofre* cofre){
+
+    if(sprite_bala->intersects(cofre->getSprite())){
+    
+        return true;
+    }
+
+    else{
+
+        return false;
+    }
+}
+
 /* ---------------- */
 
 
@@ -88,7 +101,7 @@ Arco::Arco(float posX, float posY, int orie) : Arma(){
     mejora = false;
 
     municionMax = 100;
-    municionActual = 100;
+    municionActual = municionMax;
 }
 
 Arco::~Arco(){}
@@ -234,6 +247,17 @@ void Arco::balaImpactada(NPC* enemigo){
         if(proyectiles.at(i)->heColisionado(enemigo)){
 
             enemigo->reciboDmg(getDmg());
+        }
+
+	}
+}
+
+void Arco::balaImpactada(Cofre* cofre){
+    for(unsigned int i = 0; i < proyectiles.size(); i++){
+
+        if(proyectiles.at(i)->heColisionado(cofre)){
+
+            cofre->abrir();
         }
 
 	}

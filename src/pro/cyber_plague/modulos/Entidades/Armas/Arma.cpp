@@ -48,7 +48,11 @@ void Arma::setDatosJugador(float posX, float posY, int orie){
 
 void Arma::setMunicionMax(int max){
 
-    municionMax = max;
+    if(max < 300){
+
+        municionMax = max;
+        municionActual = max;  //Cuando el jugador coja una mejora de municion, tambien recupera la municion perdida.
+    }
 }
 
 void Arma::setMunicionAct(int act){

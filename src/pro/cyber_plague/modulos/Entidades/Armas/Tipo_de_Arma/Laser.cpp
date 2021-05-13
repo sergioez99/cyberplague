@@ -66,6 +66,19 @@ bool Laser::Bala::heColisionado(NPC* enemigo){
     }
 }
 
+bool Laser::Bala::heColisionado(Cofre* cofre){
+
+    if(sprite_bala->intersects(cofre->getSprite())){
+    
+        return true;
+    }
+
+    else{
+
+        return false;
+    }
+}
+
 /* ---------------- */
 
 
@@ -84,7 +97,7 @@ Laser::Laser(float posX, float posY, int orie) : Arma(){
     mejora = false;
 
     municionMax = 100;
-    municionActual = 100;
+    municionActual = municionMax;
 }
 
 Laser::~Laser(){}
@@ -167,6 +180,17 @@ void Laser::balaImpactada(NPC* enemigo){
             proyectiles.erase(proyectiles.begin() + i);
         }
 
+	}
+}
+
+void Laser::balaImpactada(Cofre* cofre){
+    for(unsigned int i = 0; i < proyectiles.size(); i++){
+
+        if(proyectiles.at(i)->heColisionado(cofre)){
+
+            cofre->abrir();
+            proyectiles.erase(proyectiles.begin() + i);
+        }
 	}
 }
 

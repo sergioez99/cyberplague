@@ -96,3 +96,8 @@ float M_Sprite::getRotation(){
 void M_Sprite::setPosition(Vector2D pos){
     sprite->setPosition(pos.x,pos.y);
 }
+
+void M_Sprite::setPosition(float posX, float posY){
+
+    sprite->setPosition(posX, posY);
+}

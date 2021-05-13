@@ -3,8 +3,6 @@
 #define kVida  50
 #define kTmpCamb 0.5f
 
-static int monedero = 0;
-
 
 Player::Player(sf::Texture* texture, sf::Vector2u imageCount, float switchTime, float speed) : 
 	animacion(texture, imageCount, switchTime)
@@ -14,6 +12,8 @@ Player::Player(sf::Texture* texture, sf::Vector2u imageCount, float switchTime, 
 	faceRight = true;
 	vida = new int( kVida );
 	vidaMax = new int( kVida );
+
+	armadura = new int( 0 );
 
 	monedero = 0;
 
@@ -36,6 +36,7 @@ Player::Player(sf::Texture* texture, sf::Vector2u imageCount, float switchTime, 
 	arma_actual = 0;
 
 	money = new sf::Text();
+	armor = new sf::Text();
     ammo = new sf::Text();
     life = new sf::Text();
 	fuente = new sf::Font();
@@ -70,7 +71,15 @@ Player::Player(sf::Texture* texture, sf::Vector2u imageCount, float switchTime, 
 	life->setString(s);
 	life->setColor(sf::Color::Black);
 	
+	s = "Armor: ";
+	char* c = new char();
 
+	sprintf(c, "%d", getArmadura());//Convierte int a char*
+	s.append(c);
+	armor->setFont(*fuente);
+	armor->setPosition(40,120);
+	armor->setString(s);
+	armor->setColor(sf::Color::Black);
 
 }
 
@@ -258,6 +267,7 @@ void Player::update(float deltaTime, Map* m)
 	char* c2 = new char();
 	sprintf(c1, "%d", getArmaEquipada()->getMunicionAct());//Convierte int a char*
 	sprintf(c2, "%d", getArmaEquipada()->getMunicionMax());
+
 	s = "Ammo: ";//Pasa char* a string
 	if(arma_actual==0)
 		s.append("INF");
@@ -271,6 +281,11 @@ void Player::update(float deltaTime, Map* m)
 	sprintf(c2, "%d", getVidaMax());
 	s.append(c1); s.append("/"); s.append(c2);
 	life->setString(s);
+
+	s = "Armor: ";
+	sprintf(c1, "%d", getArmadura());//Convierte int a char*
+	s.append(c1);
+	armor->setString(s);
 }
 
 int Player::getDmg(){
@@ -301,6 +316,123 @@ bool Player::consigoDinero(Moneda* moneda){
 
 	return false;
 }
+
+bool Player::consigoMejora(Mejora* mejora){
+
+	if(this->getSprite()->intersects(mejora->getSprite()) && mejora->getObtenible()){
+
+		cout << mejora->getTipo() << endl;
+
+		if(mejora->getTipo() == 0){
+
+			if(*vidaMax == 500){
+
+				monedero = monedero + 200;   //Si tienes la caracteristica al maximo, te da dinero.
+			}
+
+			else{
+
+				*vidaMax = *vidaMax + 50;
+				*vida = *vidaMax;
+			}
+		}
+
+		else if(mejora -> getTipo() == 1){
+
+			int arma_mejorar = this->compruebaMunicionArmas();
+
+			cout << arma_mejorar << endl;
+
+			if(arma_mejorar == -1){
+
+				monedero = monedero + 200;   //Si tienes la caracteristica al maximo, te da dinero.
+			}
+
+			else{
+
+				if(arma_actual == 0){
+
+					int muncMaxMejorar = armas.at(arma_mejorar) -> getMunicionMax();
+					armas.at(arma_mejorar)->setMunicionMax(muncMaxMejorar + 50);	
+				}
+
+				else{
+
+					int muncMaxActual = armas.at(arma_actual) -> getMunicionMax();
+					int muncMaxMejorar = armas.at(arma_mejorar) -> getMunicionMax();
+
+					if(muncMaxActual == 300){
+
+						armas.at(arma_mejorar)->setMunicionMax(muncMaxMejorar + 50);
+					}
+
+					else{
+
+						armas.at(arma_actual)->setMunicionMax(muncMaxActual + 50);
+					}
+
+				}
+
+			}
+
+		}
+
+		else{
+
+			if(*armadura == 100){
+
+				monedero = monedero + 200;   //Si tienes la caracteristica al maximo, te da dinero.
+			}
+
+			else{
+
+				*armadura = *armadura + 5;
+			}
+		}
+
+		return true;
+	}
+
+	return false;
+
+}
+
+int Player::compruebaMunicionArmas(){
+
+	int indice_arma = 0;
+	int munc_menor = 0;
+
+	for(unsigned int i = 1; i < armas.size(); i++){  //Empieza desde 1 porque ignora el rayo.
+
+		if(armas.at(i)->getMunicionMax() < 300){
+
+			if(munc_menor == 0){
+
+				munc_menor = armas.at(i)->getMunicionMax();
+				indice_arma = i;
+			}
+
+			else{
+
+				if(munc_menor > armas.at(i)->getMunicionMax()){
+
+					munc_menor = armas.at(i)->getMunicionMax();
+					indice_arma = i;
+				}
+			}
+		}
+	}
+
+	if(munc_menor == 0){
+
+		indice_arma = -1;
+	}
+
+
+	return indice_arma;
+}
+
+
 
 int Player::getDinero(){
 
