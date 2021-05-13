@@ -29,6 +29,7 @@ target_sources(libModulos PRIVATE
     "${CMAKE_CURRENT_SOURCE_DIR}/Moneda.cpp"
     "${CMAKE_CURRENT_SOURCE_DIR}/Cofre.cpp"
 
+    "${CMAKE_CURRENT_SOURCE_DIR}/MenuPausa.cpp"
     "${CMAKE_CURRENT_SOURCE_DIR}/Map.cpp"
     "${CMAKE_CURRENT_SOURCE_DIR}/CyberPlague.cpp"
     "${CMAKE_CURRENT_SOURCE_DIR}/Menu.cpp"

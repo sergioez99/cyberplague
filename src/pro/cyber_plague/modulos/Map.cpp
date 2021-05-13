@@ -22,6 +22,15 @@ Map::Map(int nivel) {
             std::cout << "Error al cargar el tileset." << std::endl;
         }
     }
+    if(nivel == 3){
+        if(!doc.LoadFile("resources/Mapa3.tmx")){
+            std::cout << "Error al cargar el mapa." << std::endl;
+        }
+
+        if(!_tilesetTexture.loadFromFile("resources/mapa3.jpg")){
+            std::cout << "Error al cargar el tileset." << std::endl;
+        }
+    }
     
 
     TiXmlElement* map = doc.FirstChildElement("map");

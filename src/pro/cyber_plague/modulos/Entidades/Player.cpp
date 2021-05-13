@@ -54,11 +54,13 @@ Player::Player(sf::Texture* texture, sf::Vector2u imageCount, float switchTime, 
     money->setPosition(40,400);
 	money->setColor(sf::Color::Black);
 
-	s = "Ammo: INF";
+	s = " INF";
 	ammo->setFont(*fuente);
 	ammo->setPosition(40,80);
 	ammo->setString(s);
 	ammo->setColor(sf::Color::Black);
+
+	ammoType = new M_Sprite("spritesheet_otros.png",32,0,16,8,10,10);
 
 	s = "Life: ";
 	char* c1 = new char();
@@ -70,16 +72,21 @@ Player::Player(sf::Texture* texture, sf::Vector2u imageCount, float switchTime, 
 	life->setPosition(40,40);
 	life->setString(s);
 	life->setColor(sf::Color::Black);
+
+	lifeIcon = new M_Sprite("vidas_1.png",90,105,170,170,0,0);
+	lifeIcon->escalar(0.13,0.15);
 	
-	s = "Armor: ";
 	char* c = new char();
 
 	sprintf(c, "%d", getArmadura());//Convierte int a char*
 	s.append(c);
+
 	armor->setFont(*fuente);
 	armor->setPosition(40,120);
 	armor->setString(s);
 	armor->setColor(sf::Color::Black);
+
+	armorIcon = new M_Sprite("spritesheet_otros.png",70,36,32,32,-80,-80);
 
 }
 
@@ -195,10 +202,10 @@ void Player::update(float deltaTime, Map* m)
 	if(m->checkCollision(getSprite()->getSprite())){//si es verdadero, se ha chocado con algo en el eje X
 		//getSprite()->setPosition(getLastPosition());
 		colPos.y = getSprite()->getPosY();
-		if(m->getCollision(getSprite()->getSprite())->getGlobalBounds().left+1>getSprite()->getPosX())
-			colPos.x = m->getCollision(getSprite()->getSprite())->getGlobalBounds().left-getSprite()->getSprite()->getLocalBounds().width/2;
+		if(m->getCollision(getSprite()->getSprite())->getGlobalBounds().left+2>getSprite()->getPosX())
+			colPos.x = m->getCollision(getSprite()->getSprite())->getGlobalBounds().left-4-getSprite()->getSprite()->getLocalBounds().width/2;
 		else
-			colPos.x = m->getCollision(getSprite()->getSprite())->getGlobalBounds().left+m->getCollision(getSprite()->getSprite())->getLocalBounds().width+getSprite()->getSprite()->getLocalBounds().width/2;
+			colPos.x = m->getCollision(getSprite()->getSprite())->getGlobalBounds().left+4+m->getCollision(getSprite()->getSprite())->getLocalBounds().width+getSprite()->getSprite()->getLocalBounds().width/2;
         getSprite()->setPosition(colPos); //Esto se utiliza para que este tocando el suelo, y no flotando.
 
 	}
@@ -267,22 +274,30 @@ void Player::update(float deltaTime, Map* m)
 	char* c2 = new char();
 	sprintf(c1, "%d", getArmaEquipada()->getMunicionAct());//Convierte int a char*
 	sprintf(c2, "%d", getArmaEquipada()->getMunicionMax());
-
-	s = "Ammo: ";//Pasa char* a string
-	if(arma_actual==0)
+	s = " ";//Pasa char* a string
+	if(arma_actual==0){
 		s.append("INF");
+		ammoType = new M_Sprite("spritesheet_otros.png",32,0,16,8,10,10);
+	}
 	else{
 	s.append(c1); s.append("/"); s.append(c2);
 	}
 	ammo->setString(s);
 
-	s = "Life: ";
+	if(arma_actual==1){//ARCO
+		ammoType = new M_Sprite("spritesheet_otros.png",0,0,32,10,10,10);
+	}else if(arma_actual==2){//LASER
+		ammoType = new M_Sprite("spritesheet_otros.png",48,0,24,4,10,10);
+	}else if(arma_actual==3){//LANZALLAMAS
+		ammoType = new M_Sprite("spritesheet_otros.png",73,0,28,23,10,10);
+	}
+	s = " ";
 	sprintf(c1, "%d", getVida());//Convierte int a char*
 	sprintf(c2, "%d", getVidaMax());
 	s.append(c1); s.append("/"); s.append(c2);
 	life->setString(s);
 
-	s = "Armor: ";
+	s = " ";
 	sprintf(c1, "%d", getArmadura());//Convierte int a char*
 	s.append(c1);
 	armor->setString(s);

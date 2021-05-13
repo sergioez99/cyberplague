@@ -15,7 +15,7 @@ Mundo::Mundo(CyberPlague *context, M_Window *w, int nivel)
     vent = w;
     _context = context;
     lvl = nivel;
-
+     pmenu = new MenuPausa(w);
 }
 
 void Mundo::Handle()
@@ -31,7 +31,9 @@ void Mundo::Init()
 {
     M_View *camara = new M_View(0, 0, 640, 480);
 
-    
+    pausado=false;
+    float percentTick;
+    fondo = new M_Sprite("Fondo.jpg",0, 0, 640, 480,320, 240);
 
     //Cargo la imagen donde reside la textura del sprite protagonista
     sf::Texture playerTexture;
@@ -73,80 +75,96 @@ void Mundo::Init()
 
     //Bucle juego
     while (vent->abierta())
-    {
-        string key = M_Input::InputController();
+    {   
+        if(pausado==false){
 
-        if(key == "ESCAPE"){            
-            Menu::Instance(CyberPlague::Instance(), vent, lvl)->Handle();
-                     
-        }
+            string key = M_Input::InputController();
 
-        if (clock.getElapsedTime().asMilliseconds() - timeStartUpdate.asMilliseconds() > kUpdateTimePS)
-        {
-            Vector2D playerPos;
+                if(key == "ESCAPE"){            
+                // Menu::Instance(CyberPlague::Instance(), vent, lvl)->Handle();
+                    pausado=true;        
+                }
 
-            float deltaTime = clock2.restart().asSeconds();
-            playerPos.x=player.getPosInterpolada().getX();
-            playerPos.y=player.getPosInterpolada().getY();
-            player.getSprite()->setPosition(playerPos);//Fuerza a la posicion donde deberia estar ya.
-            //Gravedad
-            player.update(deltaTime, tutorial);
-
-            //Aqui habra que cambiar de State
-            if(player.muerto())
-                cout << "HE MUERTO" << endl;
-
-            if(player.superado()){
-                Mundo::Instance(CyberPlague::Instance(), vent, lvl+1)->Handle();
-            }
-
-            //Updates antes de los renders o el personaje vibra por las colisiones.
-
-            for (int i = 0; i < (int)enemigos.size(); i++)
+            if (clock.getElapsedTime().asMilliseconds() - timeStartUpdate.asMilliseconds() > kUpdateTimePS)
             {
-                player.getArmaEquipada()->balaImpactada(enemigos.at(i));
-                enemigos.at(i)->update(deltaTime, tutorial);
+                Vector2D playerPos;
 
-                if (enemigos.at(i)->muerto())
+                float deltaTime = clock2.restart().asSeconds();
+                playerPos.x=player.getPosInterpolada().getX();
+                playerPos.y=player.getPosInterpolada().getY();
+                player.getSprite()->setPosition(playerPos);//Fuerza a la posicion donde deberia estar ya.
+                //Gravedad
+                player.update(deltaTime, tutorial);
+
+                //Aqui habra que cambiar de State
+                if(player.muerto())
+                    cout << "HE MUERTO" << endl;
+
+                if(player.superado()){
+                    Mundo::Instance(CyberPlague::Instance(), vent, lvl+1)->Handle();
+                }
+
+                //Updates antes de los renders o el personaje vibra por las colisiones.
+
+                for (int i = 0; i < (int)enemigos.size(); i++)
                 {
+                    player.getArmaEquipada()->balaImpactada(enemigos.at(i));
+                    enemigos.at(i)->update(deltaTime, tutorial);
 
-                    Moneda* coin = enemigos.at(i)->looteoMoneda();
-                    
-                    if(coin != 0){
+                    if (enemigos.at(i)->muerto())
+                    {
 
-                        monedasNivel.push_back(enemigos.at(i)->looteoMoneda());
+                        Moneda* coin = enemigos.at(i)->looteoMoneda();
+                        
+                        if(coin != 0){
+
+                            monedasNivel.push_back(enemigos.at(i)->looteoMoneda());
+                        }
+
+                        enemigos.erase(enemigos.begin() + i);
                     }
 
-                    enemigos.erase(enemigos.begin() + i);
                 }
 
-            }
+                for(unsigned int i = 0; i < monedasNivel.size(); i++){
 
-            for(unsigned int i = 0; i < monedasNivel.size(); i++){
+                    if(player.consigoDinero(monedasNivel.at(i))){
 
-                if(player.consigoDinero(monedasNivel.at(i))){
+                        monedasNivel.erase(monedasNivel.begin() + i);
+                    }
 
-                    monedasNivel.erase(monedasNivel.begin() + i);
                 }
 
-            }
 
-            for(unsigned int i = 0; i < cofres.size(); i++){
+                for(unsigned int i = 0; i < cofres.size(); i++){
 
-                player.getArmaEquipada()->balaImpactada(cofres.at(i));
-                cofres.at(i)->update();
-                
-                if(player.consigoMejora(cofres.at(i)->getMejora())){
+                    player.getArmaEquipada()->balaImpactada(cofres.at(i));
+                    cofres.at(i)->update();
+                    
+                    if(player.consigoMejora(cofres.at(i)->getMejora())){
 
-                    cofres.erase(cofres.begin() + i);
+                        cofres.erase(cofres.begin() + i);
+                    }
                 }
+
+                timeStartUpdate = clock.getElapsedTime();
             }
 
-
-            timeStartUpdate = clock.getElapsedTime();
+            percentTick = min(1.f, clock2.getElapsedTime().asMilliseconds() / (float)(kUpdateTimePS));
+            
+        } else {
+            pmenu->update();
         }
 
-        float percentTick = min(1.f, clock2.getElapsedTime().asMilliseconds() / (float)(kUpdateTimePS));
+        if(pausado==true){
+            vent->limpiar();
+            Vector2D posicion;
+            posicion.x = camara->getView()->getCenter().x;
+            posicion.y = 240;
+            fondo->setPosition(posicion);
+            vent->render(fondo);
+            pausado = pmenu->render(camara->getView());
+        }else{
 
         vent->limpiar();
         tutorial->drawTile(vent->getWindow());
@@ -158,31 +176,31 @@ void Mundo::Init()
 
         for (unsigned int i = 0; i < enemigos.size(); i++)
         {
+                enemigos.at(i)->render(vent, percentTick); //Renderiza todos los personajes por ahora
+            }
 
-            enemigos.at(i)->render(vent, percentTick); //Renderiza todos los personajes por ahora
-        }
+            for(unsigned int i = 0; i < monedasNivel.size(); i++){
 
-        for(unsigned int i = 0; i < monedasNivel.size(); i++){
+                monedasNivel.at(i)->render(vent);
+            }
+            
+            player.renders(vent, percentTick, tutorial);
+            player.renderHUD(vent, camara->getView());
 
-            monedasNivel.at(i)->render(vent);
-        }
+            //Mover camara
+            if (player.getPosX() < 320.0f)
+                camara->reset(0.f, 0.f, 640, 480);
+            if (player.getPosX() >= 320.0f && player.getPosX() < tutorial->getWidth() * tutorial->getTileWidth() - 320.0f)
+                camara->reset(player.getPosX() - 320.f, 0.f, 640, 480);
+            if (player.getPosX() >= tutorial->getWidth() * tutorial->getTileWidth() - 320.0f)
+                camara->reset((float)tutorial->getWidth() * tutorial->getTileWidth() - 640.0f, 0.f, 640, 480);
 
-        player.renders(vent, percentTick, tutorial);
-        player.renderHUD(vent, camara->getView());
-
-        //Mover camara
-        if (player.getPosX() < 320.0f)
-            camara->reset(0.f, 0.f, 640, 480);
-        if (player.getPosX() >= 320.0f && player.getPosX() < tutorial->getWidth() * tutorial->getTileWidth() - 320.0f)
-            camara->reset(player.getPosX() - 320.f, 0.f, 640, 480);
-        if (player.getPosX() >= tutorial->getWidth() * tutorial->getTileWidth() - 320.0f)
-            camara->reset((float)tutorial->getWidth() * tutorial->getTileWidth() - 640.0f, 0.f, 640, 480);
-
-        vent->setView(camara);
-        vent->display();
+            vent->setView(camara);
+            vent->display();
+        }     
     }
 
-    
+    delete fondo;
 
     delete vent;
     delete camara;

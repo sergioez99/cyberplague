@@ -25,7 +25,10 @@ void CyberPlague::Handle(){
     Menu::Instance(this,window,0)->Handle();
 }
 
+
+
 CyberPlague::CyberPlague(){
     //Clase por si queremos iniciarlizar variables o clases al iniciar el juego.
     estado = 0;
+
 }
