@@ -176,6 +176,9 @@ Ajuste de los sprites de Zombi con Photoshop.
 ## 20210509 RubenHerrera @(2h)
 Ajustado menú y añadido el menú de pausa. Añadido el escape a los controles y añadido exit al cerrar ya que salía error al limpiar. La pausa no mantiene el estado del juego y hay un bug con la vista del menú cuando mueves el personaje por el mapa.
 
+## 20210510 SergioEspinosa @(1h 20')
+Buscando todos los sprites necesarios para el HUD (monedas, armas, vidas), transformando los sprites a png con fondo transparente
+
 ## 20210510 RamónRodríguez @(1h 30m)
 Animación de los NPCs Zombi y Soldado y pequeños cambios en sus sprite sheets para que se visualicen bien.
 
@@ -196,3 +199,6 @@ Ahora hud muestra municion del arma actual y vida del personaje
 
 ## 20210512 RubénHerrera @(1h 30m)
 Creada clase Menu Pausa. Falta separar los update y render. Aún no funciona.
+
+## 20210513 SergioEspinosa @(1h 40')
+Creación del mapa del nivel 3 de temática volcánica. Se puede acceder finalizando el nivel 2 o desde el menú en la opción de nivel 3.
