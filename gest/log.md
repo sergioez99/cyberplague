@@ -223,3 +223,6 @@ Icono de moneda en el hud añadido.
 
 ## 20210514 RubénHerrera @(1h 15m)
 Añadadida la vista de la tienda en el menú.
+
+## 20210514 RubénHerrera @(2h 30m)
+Creada la tienda. Falta llamarla con las monedas que tenga el jugador(ahora se llama con 100 para probar si funciona) y añadir las armas al personaje. Todo esto en Mundo en el update de la pausa.

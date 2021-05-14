@@ -33,23 +33,18 @@ Menu::Menu(CyberPlague* contexto, M_Window *w, int inic) {
 
     menu[1].setFont(font);
     menu[1].setColor(sf::Color::White);
-    menu[1].setString("Tienda");
+    menu[1].setString("Seleccionar nivel");
     menu[1].setPosition(sf::Vector2f(width / 2, height / (MAX_NUMBER_OF_ITEMS +1) * 2));
 
     menu[2].setFont(font);
     menu[2].setColor(sf::Color::White);
-    menu[2].setString("Seleccionar nivel");
+    menu[2].setString("Controles");
     menu[2].setPosition(sf::Vector2f(width / 2, height / (MAX_NUMBER_OF_ITEMS +1) * 3));
 
     menu[3].setFont(font);
     menu[3].setColor(sf::Color::White);
-    menu[3].setString("Controles");
+    menu[3].setString("Salir");
     menu[3].setPosition(sf::Vector2f(width / 2, height / (MAX_NUMBER_OF_ITEMS +1) * 4));
-
-    menu[4].setFont(font);
-    menu[4].setColor(sf::Color::White);
-    menu[4].setString("Salir");
-    menu[4].setPosition(sf::Vector2f(width / 2, height / (MAX_NUMBER_OF_ITEMS +1) * 5));
 
 ///////////////////////////////////////  LOBBY
     menuL[0].setFont(font);
@@ -67,15 +62,12 @@ Menu::Menu(CyberPlague* contexto, M_Window *w, int inic) {
     menuL[2].setString("Sector 3");
     menuL[2].setPosition(sf::Vector2f(width / 2, height / (MAX_NUMBER_OF_ITEMS_L +1) * 3));
 
+
+
     menuL[3].setFont(font);
     menuL[3].setColor(sf::Color::White);
-    menuL[3].setString("Tienda");
+    menuL[3].setString("Volver");
     menuL[3].setPosition(sf::Vector2f(width / 2, height / (MAX_NUMBER_OF_ITEMS_L +1) * 4));
-
-    menuL[4].setFont(font);
-    menuL[4].setColor(sf::Color::White);
-    menuL[4].setString("Volver");
-    menuL[4].setPosition(sf::Vector2f(width / 2, height / (MAX_NUMBER_OF_ITEMS_L +1) * 5));
 
     //////////////////////////  CONTROLES
 
@@ -195,22 +187,18 @@ int Menu::Eventos(string key){
                                 Mundo::Instance(CyberPlague::Instance(), window, nivel)->Handle();
                             break;
                             case 1:
-    
-
-                                //TIENDA
-                                menustate = 4;
+                                 //lobby
+                                menustate = 2;
                             break;
                             case 2:
                                 //lobby
-                                menustate = 2;
-                            break;
-                            case 3:
                                 menustate = 3;
                             break;
-                            case 4:
+                            case 3:
                                 window->cerrar();
                                 exit(0);
                             break;
+                            
                         }    
 
  
@@ -251,12 +239,10 @@ int Menu::Eventos(string key){
                                 Mundo::Instance(CyberPlague::Instance(), window, nivel)->Handle();
                             break;
                             case 3:
-                                //TIENDA
-                                menustate = 4;
-                            break;
-                            case 4:
+  
                                 menustate = 1;
                             break;
+                          
                             
                         }    
 

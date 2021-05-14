@@ -10,10 +10,10 @@
 #include "MenuPausa.h"
 
 
-#define MAX_NUMBER_OF_ITEMS 5
-#define MAX_NUMBER_OF_ITEMS_L 5
+#define MAX_NUMBER_OF_ITEMS 4
+#define MAX_NUMBER_OF_ITEMS_L 4
 #define MAX_NUMBER_OF_ITEMS_N 1
-#define MAX_NUMBER_OF_ITEMS_T 3
+
 #define MAX_NUMBER_OF_ITEMS_P 4
 
 

@@ -22,12 +22,15 @@ class MenuPausa{
         sf::Text menuT[MAX_NUMBER_OF_ITEMS_T];
         bool pausado;
         int menustate=1;
+        bool arco=false;
+        bool laser=false;
+        bool lanza=false;
     public:
 
         MenuPausa(M_Window *w);
         ~MenuPausa();
 
-        void update();
+        int update(int mon);
         bool render(View* view);
 
         void MoveUp();

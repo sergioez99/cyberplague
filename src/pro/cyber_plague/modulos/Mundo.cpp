@@ -156,7 +156,31 @@ void Mundo::Init()
                 timeStartUpdate = clock.getElapsedTime();
             }           
         } else {
-            pmenu->update();
+            int compra = pmenu->update(100);  //Entra a la tienda con 100, aqui hay que poner la cantidad de monedas
+            if(compra!=0){
+                switch(compra){
+                    case 1:
+                        //monedas = monedas -50;
+                        //añadir arco 
+                    break;
+                    case 2:
+                        //monedas = monedas - 100;
+                        //añadir laser
+                    break;
+                    case 3:
+                        //monedas = monedas - 200;
+                        //añadir lanzallamas
+                    break;
+                    case 4:
+                        //monedas = monedas - 20;
+                        //recargar municion
+                    break;
+                    case 5:
+                        //monedas = monedas - 50;
+                        //añadir escudo
+                    break;        
+                }
+            }
         }
 
         if(pausado==true){

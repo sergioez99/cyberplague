@@ -37,23 +37,23 @@ MenuPausa::MenuPausa(M_Window *w){
 
     menuT[0].setFont(font);
     menuT[0].setColor(sf::Color::Red);
-    menuT[0].setString("Comprar Arco");
+    
 
     menuT[1].setFont(font);
     menuT[1].setColor(sf::Color::White);
-    menuT[1].setString("Comprar Laser");
+    
 
     menuT[2].setFont(font);
     menuT[2].setColor(sf::Color::White);
-    menuT[2].setString("Comprar Lanzallamas");
+    
 
     menuT[3].setFont(font);
     menuT[3].setColor(sf::Color::White);
-    menuT[3].setString("Recargar Municion");
+    menuT[3].setString("Recargar Municion - 20$");
 
     menuT[4].setFont(font);
     menuT[4].setColor(sf::Color::White);
-    menuT[4].setString("Aumentar Escudo");
+    menuT[4].setString("Aumentar Escudo - 50$");
 
     menuT[5].setFont(font);
     menuT[5].setColor(sf::Color::White);
@@ -70,10 +70,11 @@ MenuPausa::~MenuPausa(){
 }
 
 
-void MenuPausa::update(){
+int MenuPausa::update(int mon){
     pausado=true;
     string key;
     key = M_Input::InputController();
+    int compra=0;
 
      switch(menustate){
          case 1:
@@ -122,19 +123,34 @@ void MenuPausa::update(){
                 switch(selectedItemIndexT){
                     case 0: 
                         //comprar arco
+                        if(mon>=50 && arco==false){
+                            compra = 1;
+                            arco=true;
+                        }    
                     break;
                     case 1:
                         //comprar laser
+                        if(mon>=100 && laser==false){
+                            compra = 2;
+                            laser=true;
+                        }    
                     break;
                     case 2:
-                              
+                        if(mon>=200 && lanza==false){
+                            compra = 3;
+                            lanza=true;
+                        }    
                         //comprar lanzallamas
                     break;
                     case 3:
+                        if(mon>=20)
+                            compra = 4;
                         //recargar municion
                     break;     
                     case 4:
                         //aumentar escudo
+                        if(mon>=50)
+                            compra = 5;
                     break; 
                     case 5:
                         //volver
@@ -146,7 +162,8 @@ void MenuPausa::update(){
             }
         break;
 
-     }        
+     }       
+     return compra; 
 }
 
 bool MenuPausa::render(View* view){
@@ -174,12 +191,18 @@ bool MenuPausa::render(View* view){
             window->escribir(&menuP[3]);
         break;
         case 2:
+            if(arco==false) menuT[0].setString("Comprar Arco - 50$");
+            else menuT[0].setString("Arco - Comprado");
             menuT[0].setPosition(sf::Vector2f(posicion.x, height / (MAX_NUMBER_OF_ITEMS_T +1) * 1));
             window->escribir(&menuT[0]);
-        
+
+            if(laser==false) menuT[1].setString("Comprar Laser - 100$");
+            else menuT[1].setString("Laser - Comprado");
             menuT[1].setPosition(sf::Vector2f(posicion.x, height / (MAX_NUMBER_OF_ITEMS_T +1) * 2));
             window->escribir(&menuT[1]);
 
+            if(lanza==false) menuT[2].setString("Comprar Lanzallamas - 200$");
+            else menuT[2].setString("Lanzallamas - Comprado");
             menuT[2].setPosition(sf::Vector2f(posicion.x, height / (MAX_NUMBER_OF_ITEMS_T +1) * 3));
             window->escribir(&menuT[2]);
 
