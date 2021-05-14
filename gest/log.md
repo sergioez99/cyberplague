@@ -218,6 +218,8 @@ Arreglado un fallo por el que los enemigos se teletransportaban al salir del men
 ## 20210513 RamónRodríguez @(1h)
 Colisión entre NPCs.
 
-
 ## 20210514 JoseSansano @(30m)
 Icono de moneda en el hud añadido.
+
+## 20210514 RubénHerrera @(1h 15m)
+Añadadida la vista de la tienda en el menú.
