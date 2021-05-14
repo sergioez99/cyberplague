@@ -88,6 +88,8 @@ Player::Player(sf::Texture* texture, sf::Vector2u imageCount, float switchTime, 
 
 	armorIcon = new M_Sprite("spritesheet_otros.png",70,36,32,32,-80,-80);
 
+	moneyIcon = new M_Sprite("spritesheet_otros.png", 32, 11, 16, 16, 40, 400);
+
 }
 
 Player::~Player(){

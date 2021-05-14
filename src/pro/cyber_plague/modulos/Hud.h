@@ -26,6 +26,7 @@ class Hud{
     M_Sprite* ammoType;
     M_Sprite* lifeIcon;
     M_Sprite* armorIcon;
+    M_Sprite* moneyIcon;
     
     float PosX;
     float PosY;
