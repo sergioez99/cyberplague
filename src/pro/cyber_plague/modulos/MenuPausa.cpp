@@ -1,10 +1,11 @@
 #include "MenuPausa.h"
 
+#define kDistX 80     //Para ajustar del eje -X la posicion de los elementos del menu. A 0, se colocan en el centro de la vista. 
 
 MenuPausa::MenuPausa(M_Window *w){
     window=w;
 
-    width = 640;
+    width = 680;
     height = 480;
 
     if(!font.loadFromFile("./resources/FIGHTT3_.ttf")){
@@ -46,18 +47,30 @@ MenuPausa::MenuPausa(M_Window *w){
     menuT[2].setFont(font);
     menuT[2].setColor(sf::Color::White);
     
-
     menuT[3].setFont(font);
     menuT[3].setColor(sf::Color::White);
-    menuT[3].setString("Recargar Municion - 20$");
 
     menuT[4].setFont(font);
     menuT[4].setColor(sf::Color::White);
-    menuT[4].setString("Aumentar Escudo - 50$");
 
     menuT[5].setFont(font);
     menuT[5].setColor(sf::Color::White);
-    menuT[5].setString("Volver");
+
+    menuT[6].setFont(font);
+    menuT[6].setColor(sf::Color::White);
+    menuT[6].setString("Recargar Todas las Armas - 20$");
+
+    menuT[7].setFont(font);
+    menuT[7].setColor(sf::Color::White);
+    menuT[7].setString("Comprar Armadura - 50$");
+
+    menuT[8].setFont(font);
+    menuT[8].setColor(sf::Color::White);
+    menuT[8].setString("Comprar Vida - 100$");
+
+    menuT[9].setFont(font);
+    menuT[9].setColor(sf::Color::White);
+    menuT[9].setString("Volver");
 
 
     selectedItemIndexP = 0;
@@ -142,17 +155,56 @@ int MenuPausa::update(int mon){
                         }    
                         //comprar lanzallamas
                     break;
+
                     case 3:
-                        if(mon>=20)
+
+                        if(mon>=200 && arco == true){
+
                             compra = 4;
-                        //recargar municion
-                    break;     
+                            arco_mej = true;
+                        }
+
+                    break;
+
                     case 4:
+                    
+                        if(mon>=200 && laser == true){
+
+                            compra = 5;
+                            laser_mej = true;
+                        }
+
+                    break;
+
+                    case 5:
+                    
+                        if(mon>=200 && lanza == true){
+
+                            compra = 6;
+                            lanza_mej = true;
+                        }
+
+                    break;
+
+                    case 6:
+                        if(mon>=20)
+                            compra = 7;
+                        //recargar municion
+                    break;    
+
+                    case 7:
                         //aumentar escudo
                         if(mon>=50)
-                            compra = 5;
+                            compra = 8;
                     break; 
-                    case 5:
+
+                    case 8:
+                        //Aumentar VidaMax
+                        if(mon>=100)
+                            compra = 9;
+                    break;
+
+                    case 9:
                         //volver
                         menustate=1;
                     break;        
@@ -206,14 +258,66 @@ bool MenuPausa::render(View* view){
             menuT[2].setPosition(sf::Vector2f(posicion.x, height / (MAX_NUMBER_OF_ITEMS_T +1) * 3));
             window->escribir(&menuT[2]);
 
-            menuT[3].setPosition(sf::Vector2f(posicion.x, height / (MAX_NUMBER_OF_ITEMS_T +1) * 4));
-            window->escribir(&menuT[3]);
+            if(arco == true){
 
-            menuT[4].setPosition(sf::Vector2f(posicion.x, height / (MAX_NUMBER_OF_ITEMS_T +1) * 5));
-            window->escribir(&menuT[4]);
+                if(arco_mej==false) menuT[3].setString("Mejora del Arco - 200$");
+                else menuT[3].setString("Arco - Mejorado");
+                menuT[3].setPosition(sf::Vector2f(posicion.x, height / (MAX_NUMBER_OF_ITEMS_T +1) * 4));
+                window->escribir(&menuT[3]);
+            }
 
-            menuT[5].setPosition(sf::Vector2f(posicion.x, height / (MAX_NUMBER_OF_ITEMS_T +1) * 6));
-            window->escribir(&menuT[5]);
+            else{
+
+                menuT[3].setString("Mejora del Arco - Sin Arma");
+                menuT[3].setPosition(sf::Vector2f(posicion.x, height / (MAX_NUMBER_OF_ITEMS_T +1) * 4));
+                window->escribir(&menuT[3]);
+            }
+
+            if(laser == true){
+
+                if(laser_mej==false) menuT[4].setString("Mejora del Laser - 200$");
+                else menuT[4].setString("Laser - Mejorado");
+                menuT[4].setPosition(sf::Vector2f(posicion.x, height / (MAX_NUMBER_OF_ITEMS_T +1) * 5));
+                window->escribir(&menuT[4]);
+            }
+
+            else{
+
+                menuT[4].setString("Mejora del Laser - Sin Arma");
+                menuT[4].setPosition(sf::Vector2f(posicion.x, height / (MAX_NUMBER_OF_ITEMS_T +1) * 5));
+                window->escribir(&menuT[4]);
+            }
+            
+            if(lanza == true){
+
+                if(lanza_mej==false) menuT[5].setString("Mejora del Lanzallamas - 200$");
+                else menuT[5].setString("Lanzallamas - Mejorado");
+                menuT[5].setPosition(sf::Vector2f(posicion.x, height / (MAX_NUMBER_OF_ITEMS_T +1) * 6));
+                window->escribir(&menuT[5]);
+            }
+
+            else{
+
+                menuT[5].setString("Mejora del Lanzallamas - Sin Arma");
+                menuT[5].setPosition(sf::Vector2f(posicion.x, height / (MAX_NUMBER_OF_ITEMS_T +1) * 6));
+                window->escribir(&menuT[5]);
+            }
+
+            menuT[6].setString("Recargar Todas las Armas - 20$");
+            menuT[6].setPosition(sf::Vector2f(posicion.x, height / (MAX_NUMBER_OF_ITEMS_T +1) * 7));
+            window->escribir(&menuT[6]);
+
+            menuT[7].setString("Comprar Armadura - 50$");
+            menuT[7].setPosition(sf::Vector2f(posicion.x, height / (MAX_NUMBER_OF_ITEMS_T +1) * 8));
+            window->escribir(&menuT[7]);
+
+            menuT[8].setString("Comprar Vida - 100$");
+            menuT[8].setPosition(sf::Vector2f(posicion.x, height / (MAX_NUMBER_OF_ITEMS_T +1) * 9));
+            window->escribir(&menuT[8]);
+
+            menuT[9].setString("Salir");
+            menuT[9].setPosition(sf::Vector2f(posicion.x, height / (MAX_NUMBER_OF_ITEMS_T +1) * 10));
+            window->escribir(&menuT[9]);
         break;    
 
     }

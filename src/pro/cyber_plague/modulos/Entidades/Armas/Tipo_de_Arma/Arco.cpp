@@ -102,6 +102,8 @@ Arco::Arco(float posX, float posY, int orie) : Arma(){
 
     municionMax = 100;
     municionActual = municionMax;
+
+    tipo = "arco";
 }
 
 Arco::~Arco(){}

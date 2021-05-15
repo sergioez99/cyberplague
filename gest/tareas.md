@@ -58,3 +58,4 @@ Este fichero puede ser un PDF si la herramienta que gastáis lo requiere, pero *
 * `[Hecho]` - `20210505; Lanzallamas creado, y unos pequeños ajustes en el player para mejorar el disparo; 180', CarlosVC-UA`
 * `[Hecho]` - `20210505; Dropeo de Monedas.; 180', CarlosVC-UA`
 * `[Hecho]` - `20210513; Sistema de Cofres.; 240', CarlosVC-UA`
+* `[Hecho]` - `20210515; Implementación de la Tienda.; 210', CarlosVC-UA`

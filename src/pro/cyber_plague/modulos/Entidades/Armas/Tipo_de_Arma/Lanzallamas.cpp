@@ -148,6 +148,8 @@ Lanzallamas::Lanzallamas(float posX, float posY, int orie) : Arma(){
 
     mejora = false;
 
+    tipo = "lanzallamas";
+
     municionMax = 100;
     municionActual = municionMax;
 }

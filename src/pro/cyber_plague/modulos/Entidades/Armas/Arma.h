@@ -34,6 +34,7 @@ class Arma {
         int municionActual; //Municion que le queda al arma.
 
         bool mejora;
+        string tipo;
 
         Clock contDisparo;
         
@@ -61,10 +62,13 @@ class Arma {
         int getMunicionMax();
         int getMunicionAct();
 
+        string getTipo();
+
         void setDmg(int d);
         void setCad(int c);
         void setMunicionMax(int cant);
         void setMunicionAct(int cant);
+        void recargaArma();
 
         void setDatosJugador(float posX, float posY, int orie);
 

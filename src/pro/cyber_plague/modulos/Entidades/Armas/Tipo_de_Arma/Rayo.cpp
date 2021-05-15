@@ -93,6 +93,8 @@ Rayo::Rayo(float posX, float posY, int orie) : Arma(){
     vel = kVel;
 
     mejora = false;
+
+    tipo = "rayo";
 }
 
 Rayo::~Rayo(){}

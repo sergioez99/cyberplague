@@ -15,23 +15,17 @@ Player::Player(sf::Texture* texture, sf::Vector2u imageCount, float switchTime, 
 
 	armadura = new int( 0 );
 
-	monedero = 0;
+	monedero = 999;   //ESTA A 999 PARA PROBAR, CUANDO SE VAYA A ENTREGAR PONERLO A 0.
 
 	spr = new M_Sprite("Union 3e.png",0,0,texture->getSize().x / float(imageCount.x),texture->getSize().y / float(imageCount.y),206,206);
 
 	pos.setPosition(206.f, 206.f);
 	pos.setPosition(206.f, 206.f);
 
-	Arco* arco = new Arco(getPosX(), getPosY(), mirandoDerecha());
 	Rayo* rayo = new Rayo(getPosX(), getPosY(), mirandoDerecha());
-	Laser* laser = new Laser(getPosX(), getPosY(), mirandoDerecha());
-	Lanzallamas* lanzallamas = new Lanzallamas(getPosX(), getPosY(), mirandoDerecha());
 
 
 	armas.push_back(rayo);
-	armas.push_back(arco);
-	armas.push_back(laser);
-	armas.push_back(lanzallamas);
 
 	arma_actual = 0;
 
@@ -125,7 +119,7 @@ void Player::update(float deltaTime, Map* m)
 		heSaltado = false;
 	}
 
-	if(arma_actual != 3){
+	if(armas[arma_actual]->getTipo() != "lanzallamas"){
 
 		if (M_Input::isKeyPressedZ() && heDisparado == false && armas[arma_actual]->puedeDisparar()){
 
@@ -160,26 +154,23 @@ void Player::update(float deltaTime, Map* m)
 
 		if(tmp >= kTmpCamb){
 
-			if(arma_actual == 3){
+			if(armas.size() != 0){
 
-				arma_actual = 0;
-				temp_cambioArma.restart();
+				if(arma_actual == armas.size() - 1){
+
+					arma_actual = 0;
+					temp_cambioArma.restart();
+				}
+
+				else{
+
+					arma_actual++;
+					temp_cambioArma.restart();
+				}
 			}
 
-			else{
-
-				arma_actual++;
-				temp_cambioArma.restart();
-			}
-
-			cout << "ARMA CAMBIADA" << endl;
+			
 		}	
-	}
-
-	//ESTO ES PARA DEBUG. MEJORA EL ARMA EQUIPADA CON UN BOTON.
-	if(sf::Keyboard::isKeyPressed(sf::Keyboard::M)){
-		
-		armas[arma_actual]->mejorar();
 	}
 		
 	if (movement.x == 0.0f && isGrounded()) {
@@ -265,8 +256,6 @@ void Player::update(float deltaTime, Map* m)
 	
 	pos.setPosition(spr->getPosX(), spr->getPosY());
 
-	//cout << M_Input::getKeys() << endl;
-
 	//UPDATE HUD
 	char* c1 = new char();
 	sprintf(c1, "%d", monedero);//Convierte int a char*
@@ -286,11 +275,11 @@ void Player::update(float deltaTime, Map* m)
 	}
 	ammo->setString(s);
 
-	if(arma_actual==1){//ARCO
+	if(armas[arma_actual]->getTipo() == "arco"){//ARCO
 		ammoType = new M_Sprite("spritesheet_otros.png",0,0,32,10,10,10);
-	}else if(arma_actual==2){//LASER
+	}else if(armas[arma_actual]->getTipo() == "laser"){//LASER
 		ammoType = new M_Sprite("spritesheet_otros.png",48,0,24,4,10,10);
-	}else if(arma_actual==3){//LANZALLAMAS
+	}else if(armas[arma_actual]->getTipo() == "lanzallamas"){//LANZALLAMAS
 		ammoType = new M_Sprite("spritesheet_otros.png",73,0,28,23,10,10);
 	}
 	s = " ";
@@ -326,8 +315,6 @@ bool Player::consigoDinero(Moneda* moneda){
 
 		monedero += moneda->getValor();
 
-		cout << monedero << endl;
-
 		return true;
 	}
 
@@ -338,19 +325,16 @@ bool Player::consigoMejora(Mejora* mejora){
 
 	if(this->getSprite()->intersects(mejora->getSprite()) && mejora->getObtenible()){
 
-		cout << mejora->getTipo() << endl;
-
 		if(mejora->getTipo() == 0){
 
 			if(*vidaMax == 500){
 
-				monedero = monedero + 200;   //Si tienes la caracteristica al maximo, te da dinero.
+				aumentarDinero(200);   //Si tienes la caracteristica al maximo, te da dinero.
 			}
 
 			else{
 
-				*vidaMax = *vidaMax + 50;
-				*vida = *vidaMax;
+				incrementarVida();
 			}
 		}
 
@@ -358,16 +342,14 @@ bool Player::consigoMejora(Mejora* mejora){
 
 			int arma_mejorar = this->compruebaMunicionArmas();
 
-			cout << arma_mejorar << endl;
+			if(arma_mejorar == -1 && armas.size() == 4){
 
-			if(arma_mejorar == -1){
-
-				monedero = monedero + 200;   //Si tienes la caracteristica al maximo, te da dinero.
+				aumentarDinero(200);   //Si tienes la caracteristica al maximo, te da dinero.
 			}
 
 			else{
 
-				if(arma_actual == 0){
+				if(arma_actual == 0 && armas.size() > 1){
 
 					int muncMaxMejorar = armas.at(arma_mejorar) -> getMunicionMax();
 					armas.at(arma_mejorar)->setMunicionMax(muncMaxMejorar + 50);	
@@ -375,19 +357,26 @@ bool Player::consigoMejora(Mejora* mejora){
 
 				else{
 
-					int muncMaxActual = armas.at(arma_actual) -> getMunicionMax();
-					int muncMaxMejorar = armas.at(arma_mejorar) -> getMunicionMax();
+					if(arma_actual != 0){
 
-					if(muncMaxActual == 300){
+						int muncMaxActual = armas.at(arma_actual) -> getMunicionMax();
+						int muncMaxMejorar = armas.at(arma_mejorar) -> getMunicionMax();
 
-						armas.at(arma_mejorar)->setMunicionMax(muncMaxMejorar + 50);
+						if(muncMaxActual == 300){
+
+							armas.at(arma_mejorar)->setMunicionMax(muncMaxMejorar + 50);
+						}
+
+						else{
+
+							armas.at(arma_actual)->setMunicionMax(muncMaxActual + 50);
+						}
 					}
 
 					else{
 
-						armas.at(arma_actual)->setMunicionMax(muncMaxActual + 50);
+						aumentarDinero(50);
 					}
-
 				}
 
 			}
@@ -398,12 +387,12 @@ bool Player::consigoMejora(Mejora* mejora){
 
 			if(*armadura == 100){
 
-				monedero = monedero + 200;   //Si tienes la caracteristica al maximo, te da dinero.
+				aumentarDinero(200);   //Si tienes la caracteristica al maximo, te da dinero.
 			}
 
 			else{
 
-				*armadura = *armadura + 5;
+				incrementarArmadura();
 			}
 		}
 
@@ -454,6 +443,115 @@ int Player::compruebaMunicionArmas(){
 int Player::getDinero(){
 
 	return monedero;
+}
+
+void Player::quitarDinero(int cantidad){
+
+	monedero = monedero - cantidad;
+}
+
+void Player::aumentarDinero(int cantidad){
+
+	monedero += cantidad;
+}
+
+bool Player::tengoArma(string tipo){
+
+	Arma* arma = devuelvoArma(tipo);
+
+	if(arma != 0){
+
+		return true;
+	}
+
+	else{
+
+		return false;
+	}
+
+}
+
+void Player::consigoArma(string tipo){
+
+	if(tipo == "arco" && !tengoArma(tipo)){
+
+		Arma* arco = new Arco(getPosX(), getPosY(), mirandoDerecha());
+		armas.push_back(arco);
+	}
+
+	else if(tipo == "laser" && !tengoArma(tipo)){
+
+		Arma* laser = new Laser(getPosX(), getPosY(), mirandoDerecha());
+		armas.push_back(laser);
+	}
+
+	else if(tipo == "lanzallamas" && !tengoArma(tipo)){
+
+		Arma* lanzallamas = new Lanzallamas(getPosX(), getPosY(), mirandoDerecha());
+		armas.push_back(lanzallamas);
+	}
+}
+
+void Player::mejoroArma(string tipo){
+
+	Arma* arma = devuelvoArma(tipo);
+
+	if(arma != 0){
+
+		arma->mejorar();
+	}
+}
+
+Arma* Player::devuelvoArma(string tipo){
+
+	
+
+	for(unsigned int i = 0; i < armas.size(); i++){
+
+		if(armas.at(i)->getTipo() == tipo){
+
+			return armas.at(i);
+		}
+	}
+
+	return 0;
+}
+
+void Player::recargoMunicion(){
+
+	for(unsigned int i = 1; i < armas.size(); i++){
+
+		armas.at(i)->recargaArma();
+	}
+}
+
+int Player::numArmasEquipadas(){
+
+	return armas.size();
+}
+
+bool Player::todasArmasCargadas(){
+
+	for(unsigned int i = 1; i < armas.size(); i++){
+
+		if(armas.at(i)->getMunicionAct() < armas.at(i)->getMunicionMax()){
+
+			return false;
+		}
+	}
+
+	return true;
+}
+
+void Player::incrementarArmadura(){
+
+	*armadura += 5;
+}
+
+void Player::incrementarVida(){
+
+	*vidaMax += 50;
+	*vida = *vidaMax;
 }
 
 bool Player::superado(){

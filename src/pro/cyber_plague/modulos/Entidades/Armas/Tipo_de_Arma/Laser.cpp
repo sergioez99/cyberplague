@@ -96,6 +96,8 @@ Laser::Laser(float posX, float posY, int orie) : Arma(){
 
     mejora = false;
 
+    tipo = "laser";
+
     municionMax = 100;
     municionActual = municionMax;
 }

@@ -40,7 +40,22 @@ public:
 	int compruebaMunicionArmas(); //Este metodo comprueba la municion de todas las armas y devuelve el indice del arma que menos 										municion tenga. En el caso de que todas las armas tengan la municion al máximo, devuelve -1.
 
 	int getDinero();
+	void quitarDinero(int cantidad);
+	void aumentarDinero(int cantidad);
 
+	void consigoArma(string tipo);
+	bool tengoArma(string tipo);
+	void mejoroArma(string tipo);
+	Arma* devuelvoArma(string tipo);
+	int numArmasEquipadas();
+	bool todasArmasCargadas();
+
+
+	void incrementarArmadura();
+	void incrementarVida();
+
+	void recargoMunicion();
+	
 	void renders(M_Window* vent, float percentTick, Map* mapa);
 
 private:

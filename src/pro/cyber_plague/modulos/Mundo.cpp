@@ -75,6 +75,9 @@ void Mundo::Init()
     //Bucle juego
     while (vent->abierta())
     {
+
+        cout << M_Input::getKeys() << endl;
+
         if(pausado==false){
             string key = M_Input::InputController();
 
@@ -156,28 +159,72 @@ void Mundo::Init()
                 timeStartUpdate = clock.getElapsedTime();
             }           
         } else {
-            int compra = pmenu->update(100);  //Entra a la tienda con 100, aqui hay que poner la cantidad de monedas
+            int compra = pmenu->update(player.getDinero());  //Entra a la tienda con 100, aqui hay que poner la cantidad de monedas
             if(compra!=0){
                 switch(compra){
                     case 1:
-                        //monedas = monedas -50;
-                        //añadir arco 
+                        
+                        player.quitarDinero(50);
+                        player.consigoArma("arco");
                     break;
                     case 2:
-                        //monedas = monedas - 100;
-                        //añadir laser
+
+                        player.quitarDinero(100);
+                        player.consigoArma("laser");
                     break;
                     case 3:
-                        //monedas = monedas - 200;
-                        //añadir lanzallamas
+                        
+                        player.quitarDinero(200);
+                        player.consigoArma("lanzallamas");
                     break;
+
                     case 4:
-                        //monedas = monedas - 20;
-                        //recargar municion
+
+                        player.quitarDinero(200);
+                        player.mejoroArma("arco");
                     break;
+
                     case 5:
-                        //monedas = monedas - 50;
-                        //añadir escudo
+
+                        player.quitarDinero(200);
+                        player.mejoroArma("laser");
+                    break;
+
+                        
+                    case 6:
+
+                        player.quitarDinero(200);
+                        player.mejoroArma("lanzallamas");
+                    break;
+
+                    case 7:
+
+                        //SI EL JUGADOR TIENE SOLO EL RAYO O TIENE TODAS LAS ARMAS CARGADAS, NO LO COMPRA.
+                        if(player.numArmasEquipadas() > 1 || !player.todasArmasCargadas()){ 
+
+                            player.quitarDinero(20);
+                            player.recargoMunicion();
+                        }
+ 
+                    break;
+                    case 8:
+
+                        if(player.getArmadura() < 100){  //SI EL JUGADOR TIENE 100 (EL MAXIMO) DE ARMADURA, NO LA COMPRA.
+
+                            player.quitarDinero(50);
+                            player.incrementarArmadura();
+                        }
+
+                    break;
+
+                    case 9:
+
+                        if(player.getVidaMax() < 500){ //SI EL JUGADOR TIENE 500 (EL MAXIMO) DE VIDA, NO LA COMPRA.
+
+                            player.quitarDinero(100);
+                            player.incrementarVida();
+                        }
+                        
                     break;        
                 }
             }

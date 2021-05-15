@@ -5,7 +5,7 @@
 #include "Motor2D/M_Input.h"
 
 #define MAX_NUMBER_OF_ITEMS_P 4
-#define MAX_NUMBER_OF_ITEMS_T 6
+#define MAX_NUMBER_OF_ITEMS_T 10
 
 
 class MenuPausa{
@@ -25,6 +25,11 @@ class MenuPausa{
         bool arco=false;
         bool laser=false;
         bool lanza=false;
+
+        bool arco_mej = false;
+        bool laser_mej = false;
+        bool lanza_mej = false;
+
     public:
 
         MenuPausa(M_Window *w);
