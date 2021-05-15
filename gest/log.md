@@ -229,3 +229,6 @@ Creada la tienda. Falta llamarla con las monedas que tenga el jugador(ahora se l
 
 ## 20210515 CarlosVillena @(3h 30m)
 Tienda Implementada.
+
+## 20210514 RubénHerrera @(30m)
+Ya se puede cambiar desde el menu de pausa al menu principal.
