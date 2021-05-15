@@ -1,5 +1,6 @@
 #include "CyberPlague.h"
 #include "../include/includes.h"
+#include <SFML/Audio.hpp>
 
 #define kUpdateTimePS 1000/15
 

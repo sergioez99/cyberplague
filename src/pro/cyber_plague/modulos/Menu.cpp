@@ -1,5 +1,6 @@
 #include "CyberPlague.h"
 #include <stdio.h>
+#include <SFML/Audio.hpp>
 
 Menu* Menu::pinstance = 0;
 
@@ -7,6 +8,8 @@ Menu* Menu::Instance(CyberPlague* contexto, M_Window *w, int inic){
     pinstance = new Menu(contexto,w,inic);
     return pinstance;
 }
+
+sf::Music intro, mapa1, mapa2, mapa3;
 
 Menu::Menu(CyberPlague* contexto, M_Window *w, int inic) {
   
@@ -19,6 +22,26 @@ Menu::Menu(CyberPlague* contexto, M_Window *w, int inic) {
     if(!font.loadFromFile("./resources/FIGHTT3_.ttf")){
         font.loadFromFile("./resources/arial.ttf");
     }
+
+    // Canción menú principal
+    intro.openFromFile("./audio/Intro.ogg");
+    intro.setVolume(40);
+    intro.setLoop(true);
+
+    // Canción mapa 1
+    mapa1.openFromFile("./audio/Mapa1.ogg");
+    mapa1.setVolume(40);
+    mapa1.setLoop(true);
+
+    // Canción mapa 2
+    mapa2.openFromFile("./audio/Mapa2.ogg");
+    mapa2.setVolume(40);
+    mapa2.setLoop(true);
+
+    // Canción mapa 3
+    mapa3.openFromFile("./audio/Mapa3.ogg");
+    mapa3.setVolume(40);
+    mapa3.setLoop(true);
 
    // if(inic != 0){
    //     menustate=5;
@@ -149,12 +172,16 @@ int Menu::run(M_Window *window){
    fondo = new M_Sprite("Fondo.jpg",0, 0, 640, 480,320, 240);
    fondoC = new M_Sprite("FondoControl.jpg",0, 0, 640, 480,320, 240);
 
+    // Intro
+    
+    intro.play();
+
     while(window->abierta()){
 
         key = M_Input::InputController();
-
-        Eventos(key); //utilizamos la funcion para coger las teclas
         
+
+        Eventos(key); //utilizamos la funcion para coger las teclado
         
         Render(); //dibujamos en pantalla el menu
     }
@@ -165,30 +192,32 @@ int Menu::run(M_Window *window){
 }
 
 int Menu::Eventos(string key){
-
+            
             switch(menustate){ //para cada pantalla o estado del menu
                 case 1:     //MENU PRINCIPAL
                     if(key == "UP"){
                                     
                         MoveUp();
-                        
                                 
                     }else if (key == "DOWN")
                                     
                         MoveDown();
                      
                     else if(key == "ENTER"){
+                        
+                        
                         switch(selectedItemIndex){
                             case 0: // Nueva Partida
                                 //menustate = 5;
-                                
+                                intro.stop();
+                                mapa1.play();
                                 nivel = 1;
-                                
                                 Mundo::Instance(CyberPlague::Instance(), window, nivel)->Handle();
                             break;
                             case 1:
                                  //lobby
                                 menustate = 2;
+                                
                             break;
                             case 2:
                                 //lobby
@@ -222,20 +251,23 @@ int Menu::Eventos(string key){
                             case 0: 
                                 //SECTOR O NIVEL 1
                                 nivel = 1;
-                                
+                                intro.stop(); // paramos la cancion de la intro
+                                mapa1.play(); // cancion mapa 1
                                 Mundo::Instance(CyberPlague::Instance(), window, nivel)->Handle();
                             break;
                             case 1:
                                 //SECTOR O NIVEL 2
                                 nivel = 2;
-                                
+                                intro.stop(); // paramos la cancion de la intro
+                                mapa2.play(); // cancion mapa 2
                                 Mundo::Instance(CyberPlague::Instance(), window, nivel)->Handle();
                             break;
                             case 2:
                                 //SECTOR O NIVEL 3
                                 //SECTOR O NIVEL 1
                                 nivel = 3;
-                                
+                                intro.stop(); // paramos la cancion de la intro
+                                mapa3.play(); // cancion mapa 3
                                 Mundo::Instance(CyberPlague::Instance(), window, nivel)->Handle();
                             break;
                             case 3:
@@ -321,6 +353,7 @@ int Menu::Eventos(string key){
                     }
                 break;
                 case 5:             //PAUSA  
+                    intro.pause();
                     if(key == "UP")
                                     
                         MoveUp();
@@ -387,16 +420,19 @@ void Menu::Render(){
             }
             break;
         case 2: 
+
             for (int i=0;i<MAX_NUMBER_OF_ITEMS_L;i++){
                 window->escribir(&menuL[i]);
             }
             break;   
         case 3: 
+
             for (int i=0;i<MAX_NUMBER_OF_ITEMS_N;i++){
                 window->escribir(&menuN[i]);
             }
             break;  
         case 5: 
+
             for (int i=0;i<MAX_NUMBER_OF_ITEMS_P;i++){
                 window->escribir(&menuP[i]);
             }
