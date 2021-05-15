@@ -226,7 +226,7 @@ bool MenuPausa::render(View* view){
  //       window->escribir(&menuP[i]);
  //   }
     Vector2D posicion;
-    posicion.x = view->getCenter().x;
+    posicion.x = view->getCenter().x - kDistX;
 
     switch(menustate){
         case 1:
@@ -242,6 +242,7 @@ bool MenuPausa::render(View* view){
             menuP[3].setPosition(sf::Vector2f(posicion.x, height / (MAX_NUMBER_OF_ITEMS_P +1) * 4));
             window->escribir(&menuP[3]);
         break;
+    
         case 2:
             if(arco==false) menuT[0].setString("Comprar Arco - 50$");
             else menuT[0].setString("Arco - Comprado");
