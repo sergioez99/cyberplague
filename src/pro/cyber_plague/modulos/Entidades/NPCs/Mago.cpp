@@ -48,9 +48,9 @@ void Mago::moverse(float deltaTime){
     cout << "Movimiento" << endl;
 }
 
-void Mago::update(float deltaTime, Map *m){
+void Mago::update(float deltaTime, Map *m, M_Sprite* player){
     //Spawnear enemigo
-    if(deteccion()){
+    if(deteccion(player)){
         if(puedoAtacar()){
             //Generar enemigo
 
@@ -60,7 +60,7 @@ void Mago::update(float deltaTime, Map *m){
     //setLastPosition();//Ultima posicion buena del sprite
 }
 
-bool Mago::deteccion(){
+/*bool Mago::deteccion(M_Sprite* player){
     float x = 0, y = 0; //Acceder a la posicion de jugador
     float distancia = sqrt(pow(abs(x - this->getPosX()), 2) + pow(abs(y - this->getPosY()), 2));
     
@@ -71,7 +71,7 @@ bool Mago::deteccion(){
     }
 
     return false;
-}
+}*/
 
 bool Mago::puedoAtacar(){
     if(spawnClock.getElapsedTime().asSeconds() - time.asSeconds() > spawnTime)

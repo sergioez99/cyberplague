@@ -18,10 +18,10 @@ class Pajaro : public NPC{
         virtual void ataque(){};
         virtual bool puedoAtacar(){return false;};
         void moverse(float deltaTime, Map *m);
-        void update(float deltaTime, Map *m);
+        void update(float deltaTime, Map *m, M_Sprite* player);
         /* ----------------------------- */
 
         /* METODOS HEREDADOS DE NPC */
-        bool deteccion();
+        bool deteccion(M_Sprite* player){return false;};
         /* ------------------------ */  
 };

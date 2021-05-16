@@ -229,3 +229,6 @@ Creada la tienda. Falta llamarla con las monedas que tenga el jugador(ahora se l
 
 ## 20210515 CarlosVillena @(3h 30m)
 Tienda Implementada.
+
+## 20210515 RamónRodríguez @(2h 10m)
+Ataque de Soldado implementado. Falta rotar el sprite de la bala en función el ángulo con el que se mueve y añadir las colisiones a estas balas.

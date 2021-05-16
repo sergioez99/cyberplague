@@ -77,7 +77,7 @@ void Mundo::Init()
     while (vent->abierta())
     {
 
-        cout << M_Input::getKeys() << endl;
+        //cout << M_Input::getKeys() << endl;
 
         if(pausado==false){
             string key = M_Input::InputController();
@@ -119,7 +119,7 @@ void Mundo::Init()
                 for (int i = 0; i < (int)enemigos.size(); i++)
                 {
                     player.getArmaEquipada()->balaImpactada(enemigos.at(i));
-                    enemigos.at(i)->update(deltaTime, tutorial);
+                    enemigos.at(i)->update(deltaTime, tutorial, player.getSprite());
 
                     if (enemigos.at(i)->muerto())
                     {

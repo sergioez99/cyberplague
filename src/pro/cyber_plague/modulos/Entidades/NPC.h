@@ -23,6 +23,7 @@ class NPC : public Entidad{
         Moneda* looteoMoneda();
         Moneda* getLoot();
         void colision(float deltaTime, NPC* enemigo);
-        void render(M_Window* vent, float percentTick);
-        virtual bool deteccion() = 0;
+        virtual void render(M_Window* vent, float percentTick);
+        virtual void update(float deltaTime, Map *m, M_Sprite* player) = 0;
+        virtual bool deteccion(M_Sprite* player) = 0;
 };

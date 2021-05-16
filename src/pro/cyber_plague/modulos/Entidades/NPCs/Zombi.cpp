@@ -35,7 +35,7 @@ Zombi::~Zombi(){
     delete vel;
 }
 
-void Zombi::update(float deltaTime, Map *m){
+void Zombi::update(float deltaTime, Map *m, M_Sprite* player){
     //Animacion
     if(animationClock.getElapsedTime().asSeconds() >= 0.15f){
         currentImage++;
