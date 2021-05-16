@@ -244,3 +244,6 @@ Buscar, adaptar y meter en el código los efectos de sonido para la interacción
 
 ## 20210516 JorgeMompe @(1h)
 Creación imagen GameOver e investigación de como implementarlo cuando el personaje muera.
+
+## 20210516 JoseSansano @(1h 30m)
+Creacion de setup.sh que descarga la carpeta resources del juego desde Google Drive y la descomprime. Se ha borrado un binario antiguo del juego que no servia para nada.
