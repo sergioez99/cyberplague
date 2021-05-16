@@ -247,3 +247,6 @@ Creación imagen GameOver e investigación de como implementarlo cuando el perso
 
 ## 20210516 JoseSansano @(1h 30m)
 Creacion de setup.sh que descarga la carpeta resources del juego desde Google Drive y la descomprime. Se ha borrado un binario antiguo del juego que no servia para nada.
+
+## 20210516 RamónRodríguez @(40m)
+Las balas de Soldado ya rotan correctamente y se destruyen al colisionar con el mapa o salirse de él.

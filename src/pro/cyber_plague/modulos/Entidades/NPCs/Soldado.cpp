@@ -12,8 +12,7 @@
 
 Soldado::Bala::Bala(float posX, float posY, float vX, float vY, float angulo){
     spr_bala = new M_Sprite("spritesheet_otros.png", 32, 0, 16, 8, posX, posY);
-    cout << angulo << endl;
-    //spr_bala->rotar(angulo);
+    spr_bala->rotar(angulo);
 
     pos.setPosition(posX, posY);
 	pos.setPosition(posX, posY);
@@ -89,7 +88,10 @@ void Soldado::update(float deltaTime, Map *m, M_Sprite* player){
             float distX = player->getPosX() - this->getPosX(), distY = player->getPosY() - this->getPosY();
             float distT = sqrt(pow(distX, 2) + pow(distY, 2));
             float vX = distX/distT, vY = distY/distT;
-            float angulo = asin(distY/distT);
+            float angulo = asin(distY/distT) * 180 / M_PI;
+
+            if(vX < 0)
+                angulo*= -1;
 
             Bala* bala = new Bala(this->getPosX(), this->getPosY(), vX, vY, angulo);
             balas.push_back(bala);
@@ -104,8 +106,16 @@ void Soldado::update(float deltaTime, Map *m, M_Sprite* player){
         moverse(deltaTime);
     }
 
-    for(int i = 0; i < (int)balas.size(); i++)
+    for(int i = 0; i < (int)balas.size(); i++){
         balas.at(i)->update(deltaTime);
+
+        if(balas.at(i)->getSprite()->getPosX() < 0 || balas.at(i)->getSprite()->getPosX() > m->getWidth() * m->getTileWidth() || balas.at(i)->getSprite()->getPosY() < 0 || balas.at(i)->getSprite()->getPosY() > m->getHeight() * m->getTileHeight())
+            balas.erase(balas.begin() + i);
+        else{
+            if(m->checkCollision(balas.at(i)->getSprite()->getSprite()))
+                balas.erase(balas.begin() + i);
+        }
+    }
 }
 
 bool Soldado::deteccion(M_Sprite* player){
