@@ -157,6 +157,8 @@ void Mundo::Init()
                     }
                 }
 
+                player.checkEnemyColision(enemigos);
+
                 timeStartUpdate = clock.getElapsedTime();
             }           
         } else {

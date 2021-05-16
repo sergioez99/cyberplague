@@ -250,3 +250,6 @@ Creacion de setup.sh que descarga la carpeta resources del juego desde Google Dr
 
 ## 20210516 RamónRodríguez @(40m)
 Las balas de Soldado ya rotan correctamente y se destruyen al colisionar con el mapa o salirse de él.
+
+## 20210516 RamónRodríguez @(45m)
+Player sufre daño cuando recibe un ataque cuerpo a cuerpo de un NPC o cuando colisiona con una bala de Soldado.

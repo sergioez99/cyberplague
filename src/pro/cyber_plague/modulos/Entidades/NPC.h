@@ -26,4 +26,5 @@ class NPC : public Entidad{
         virtual void render(M_Window* vent, float percentTick);
         virtual void update(float deltaTime, Map *m, M_Sprite* player) = 0;
         virtual bool deteccion(M_Sprite* player) = 0;
+        virtual bool colisionBala(M_Sprite* player) = 0;
 };

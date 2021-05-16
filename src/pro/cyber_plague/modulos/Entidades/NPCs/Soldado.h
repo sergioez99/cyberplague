@@ -12,7 +12,6 @@ class Soldado : public NPC{
             private:
                 M_Sprite* spr_bala;
             public:
-                int dmg;
                 float vel;
                 posInterpolada pos;
 
@@ -29,6 +28,8 @@ class Soldado : public NPC{
 
         vector<Bala*> balas;
         float cadencia;
+        //Reloj para controlar el tiempo de ataque cuerpo a cuerpo
+        Clock attackClock;
         //Reloj para controlar el tiempo de spawneo de balas
         Clock spawnClock;
         //Animacion
@@ -38,6 +39,7 @@ class Soldado : public NPC{
     public:
         Soldado(string nomFichero, int texLeft, int texTop, int tex_width, int tex_height, float posX, float posY);
         ~Soldado();
+        bool puedoDisparar();
         
         /* METODOS HEREDADOS DE ENTIDAD. */
         void ataque();
@@ -49,5 +51,6 @@ class Soldado : public NPC{
         /* METODOS HEREDADOS DE NPC */
         bool deteccion(M_Sprite* player);
         void render(M_Window* vent, float percentTick);
+        bool colisionBala(M_Sprite* player);
         /* ------------------------ */  
 };

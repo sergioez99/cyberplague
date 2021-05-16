@@ -569,14 +569,17 @@ int Player::mirandoDerecha(){
 	else return -1;
 }
 
-/*void Player::checkEnemyColision(vector<NPC*> enemigos){
-	for(unsigned int i = 0; i < enemigos.size(); i++){
+void Player::checkEnemyColision(vector<NPC*> enemigos){
+	for(int i = 0; i < (int)enemigos.size(); i++){
 		if(spr->getSprite()->getGlobalBounds().intersects(enemigos.at(i)->getSprite()->getSprite()->getGlobalBounds())){
 			if(enemigos.at(i)->puedoAtacar())
-				setVida(getVida() - enemigos.at(i)->getAtaque());
+				this->reciboDmg(enemigos.at(i)->getAtaque());
 		}
+
+		if(enemigos.at(i)->colisionBala(spr))
+			this->reciboDmg(enemigos.at(i)->getAtaque());
 	}
-}*/
+}
 
 void Player::ataque(){
 
@@ -587,7 +590,7 @@ void Player::renders(M_Window* vent, float percentTick, Map* mapa){
 
 	Vector2D posicion;
 
-     if(dmgColor!=0)
+    if(dmgColor!=0)
         dmgColor --;
     if(dmgColor==0)
         getSprite()->setColor(0);

@@ -7,6 +7,7 @@
 #define kVel  75.0f
 #define kRang  150.0f
 #define kCad 1.0f
+#define kAta 20
 
 /*--------------*/
 
@@ -19,8 +20,7 @@ Soldado::Bala::Bala(float posX, float posY, float vX, float vY, float angulo){
 
     vx = vX;
     vy = vY;
-    dmg = 10;
-    vel = 700.0f;
+    vel = 400.0f;
 
     if(vx < 0)
         spr_bala->escalar(-1.0f, 1.0f);
@@ -43,6 +43,7 @@ Soldado::Soldado(string nomFichero, int texLeft, int texTop, int tex_width, int 
     vida = new int( kVida );
     armadura = new int( kArm );
     vel = new float( kVel );
+    ataq = kAta;
 
     rango = new float( kRang );
 
@@ -83,7 +84,7 @@ void Soldado::update(float deltaTime, Map *m, M_Sprite* player){
         if((player->getPosX() < this->getPosX() && this->getScaleX() > 0) || player->getPosX() > this->getPosX() && this->getScaleX() < 0)
             this->escalar(-1.0f, 1.0f);
 
-        if(puedoAtacar()){
+        if(puedoDisparar()){
             //Generar bala
             float distX = player->getPosX() - this->getPosX(), distY = player->getPosY() - this->getPosY();
             float distT = sqrt(pow(distX, 2) + pow(distY, 2));
@@ -137,6 +138,16 @@ void Soldado::ataque(){
 }
 
 bool Soldado::puedoAtacar(){
+    if(attackClock.getElapsedTime().asSeconds() >= 2.0f){
+        attackClock.restart();
+
+        return true;
+    }
+
+    return false;
+}
+
+bool Soldado::puedoDisparar(){
     if(spawnClock.getElapsedTime().asSeconds() >= cadencia){
         spawnClock.restart();
 
@@ -176,4 +187,16 @@ void Soldado::render(M_Window* vent, float percentTick){
         
         vent->render(balas.at(i)->getSprite());
     }
+}
+
+bool Soldado::colisionBala(M_Sprite* player){
+    for(int i = 0; i < (int)balas.size(); i++){
+        if(balas.at(i)->getSprite()->getSprite()->getGlobalBounds().intersects(player->getSprite()->getGlobalBounds())){
+            balas.erase(balas.begin() + i);
+
+            return true;
+        }
+    }
+
+    return false;
 }

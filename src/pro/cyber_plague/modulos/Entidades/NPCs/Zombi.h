@@ -27,5 +27,6 @@ class Zombi : public NPC{
 
         /* METODOS HEREDADOS DE NPC */
         bool deteccion(M_Sprite* player){return false;};
+        bool colisionBala(M_Sprite* player){return false;};
         /* ------------------------ */
 };

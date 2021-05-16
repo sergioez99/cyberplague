@@ -31,7 +31,7 @@ public:
 	
 
 	void setDmg(int d);
-	//void checkEnemyColision(vector<NPC*> enemigos);
+	void checkEnemyColision(vector<NPC*> enemigos);
 	void ataque();
 	bool superado();
 	bool consigoDinero(Moneda* moneda);

@@ -11,6 +11,10 @@ NPC::NPC(){}
 NPC::~NPC(){}
 
 void NPC::render(M_Window* vent, float percentTick){
+    if(dmgColor!=0)
+        dmgColor --;
+    if(dmgColor==0)
+        getSprite()->setColor(0);
 
     Vector2D posicion;
 
