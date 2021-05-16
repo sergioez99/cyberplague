@@ -241,3 +241,6 @@ Implementar en el código la música principal del menú inicial, consiguiendo q
 
 ## 20210516 JorgeMompe @(1h 20m)
 Buscar, adaptar y meter en el código los efectos de sonido para la interacción de subir y bajar en los menús.
+
+## 20210516 JorgeMompe @(1h)
+Creación imagen GameOver e investigación de como implementarlo cuando el personaje muera.

@@ -103,7 +103,6 @@ Menu::Menu(CyberPlague* contexto, M_Window *w, int inic) {
     menuN[0].setString("Volver"); 
     menuN[0].setPosition(sf::Vector2f(width / 2, height / (MAX_NUMBER_OF_ITEMS_N +1) * 1));
 
-    
 
     ////////////////////////////   TIENDA
 
@@ -144,6 +143,8 @@ Menu::Menu(CyberPlague* contexto, M_Window *w, int inic) {
     menuP[3].setColor(sf::Color::White);
     menuP[3].setString("Salir");
     menuP[3].setPosition(sf::Vector2f(width / 2, height / (MAX_NUMBER_OF_ITEMS_P +1) * 4));
+
+    
 
     selectedItemIndex = 0;
     selectedItemIndexL = 0;
