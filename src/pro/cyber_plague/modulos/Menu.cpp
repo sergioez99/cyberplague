@@ -9,7 +9,7 @@ Menu* Menu::Instance(CyberPlague* contexto, M_Window *w, int inic){
     return pinstance;
 }
 
-sf::Music intro, mapa1, mapa2, mapa3;
+sf::Music intro, mapa1, mapa2, mapa3, menu1;
 
 Menu::Menu(CyberPlague* contexto, M_Window *w, int inic) {
   
@@ -42,6 +42,10 @@ Menu::Menu(CyberPlague* contexto, M_Window *w, int inic) {
     mapa3.openFromFile("./audio/Mapa3.ogg");
     mapa3.setVolume(40);
     mapa3.setLoop(true);
+
+    // Efecto sonido menú 1
+    menu1.openFromFile("./audio/menu2.ogg");
+    menu1.setVolume(20);
 
    // if(inic != 0){
    //     menustate=5;
@@ -198,12 +202,14 @@ int Menu::Eventos(string key){
                     if(key == "UP"){
                                     
                         MoveUp();
+                        menu1.play();
                                 
-                    }else if (key == "DOWN")
+                    }else if (key == "DOWN"){
                                     
                         MoveDown();
+                        menu1.play();
                      
-                    else if(key == "ENTER"){
+                    }else if(key == "ENTER"){
                         
                         
                         switch(selectedItemIndex){
@@ -237,16 +243,18 @@ int Menu::Eventos(string key){
                     }
                 break;
                 case 2:     //LOBBY
-                    if(key == "UP")
+                    if(key == "UP"){
                                     
                         MoveUp();
+                        menu1.play();
                         
                                 
-                    else if (key == "DOWN")
+                    }else if (key == "DOWN"){
                                     
                         MoveDown();
+                        menu1.play();
                      
-                    else if(key == "ENTER"){
+                    }else if(key == "ENTER"){
                         switch(selectedItemIndexL){
                             case 0: 
                                 //SECTOR O NIVEL 1
@@ -284,16 +292,18 @@ int Menu::Eventos(string key){
                     }
                 break;
                 case 3:     //CONTROLES
-                    if(key == "UP")
+                    if(key == "UP"){
                                     
                         MoveUp();
+                        menu1.play();
                         
                                 
-                    else if (key == "DOWN")
+                    }else if (key == "DOWN"){
                                     
                         MoveDown();
+                        menu1.play();
                      
-                    else if(key == "ENTER"){
+                    }else if(key == "ENTER"){
                         switch(selectedItemIndexN){
                             
                             case 0:
@@ -308,15 +318,18 @@ int Menu::Eventos(string key){
                     }
                 break;
                  case 4:             //TIENDA  
-                    if(key == "UP")
+                    if(key == "UP"){
                                     
                         MoveUp();
+                        menu1.play();
+                        
                                 
-                    else if (key == "DOWN")
+                    }else if (key == "DOWN"){
                                     
                         MoveDown();
+                        menu1.play();
                      
-                    else if(key == "ENTER"){
+                    }else if(key == "ENTER"){
                         switch(selectedItemIndexT){
                             case 0: 
                                 //SECTOR O NIVEL 1
@@ -354,15 +367,18 @@ int Menu::Eventos(string key){
                 break;
                 case 5:             //PAUSA  
                     intro.pause();
-                    if(key == "UP")
+                    if(key == "UP"){
                                     
                         MoveUp();
+                        menu1.play();
+                        
                                 
-                    else if (key == "DOWN")
+                    }else if (key == "DOWN"){
                                     
                         MoveDown();
+                        menu1.play();
                      
-                    else if(key == "ENTER"){
+                    }else if(key == "ENTER"){
                         switch(selectedItemIndexP){
                             case 0: 
                                 

@@ -232,3 +232,12 @@ Tienda Implementada.
 
 ## 20210515 RamónRodríguez @(2h 10m)
 Ataque de Soldado implementado. Falta rotar el sprite de la bala en función el ángulo con el que se mueve y añadir las colisiones a estas balas.
+
+## 20210515 JorgeMompe @(1h 15m)
+Buscar música para los mapas y la intro. Adaptarla y probar meterla en el juego.
+
+## 20210515 JorgeMompe @(3h)
+Implementar en el código la música principal del menú inicial, consiguiendo que si elige un sector en el inicio, cada mapa tenga su propia música. También que si le da a jugar sin más tenga se ponga la música del mapa 1. No conseguía que una vez pasara de un mapa a otro cambiara la canción.
+
+## 20210516 JorgeMompe @(1h 20m)
+Buscar, adaptar y meter en el código los efectos de sonido para la interacción de subir y bajar en los menús.
