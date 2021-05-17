@@ -48,9 +48,14 @@ void Zombi::update(float deltaTime, Map *m, M_Sprite* player){
     }
     //Mover
     //Cambiar direccion del sprite
-    if(m->checkCaida(this->getSprite()->getSprite()))
-        this->escalar(-1.0f, 1.0f);
 
+    bool caida = m->checkCaida(this->getSprite()->getSprite());
+
+    if(caida){
+
+        this->escalar(-1.0f, 1.0f);
+    }
+        
     moverse(deltaTime);
 }
 

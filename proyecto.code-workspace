@@ -52,7 +52,11 @@
 			"streambuf": "cpp",
 			"utility": "cpp",
 			"typeinfo": "cpp",
-			"random": "cpp"
+			"random": "cpp",
+			"chrono": "cpp",
+			"ratio": "cpp",
+			"memory": "cpp",
+			"thread": "cpp"
 		}
 	}
 }

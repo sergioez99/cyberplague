@@ -17,7 +17,7 @@
 class Player : public Entidad, public Hud
 {
 public: 
-	Player(sf::Texture* texture, sf::Vector2u imageCount, float switchTime, float speed);
+	Player(sf::Texture* texture, sf::Vector2u imageCount, float switchTime, float speed, float posX, float posY);
 	~Player();
 
 	void update(float deltaTime, Map *m);
@@ -34,6 +34,8 @@ public:
 	void checkEnemyColision(vector<NPC*> enemigos);
 	void ataque();
 	bool superado();
+	void noSuperado(); //Para controlar el cambio de nivel.
+
 	bool consigoDinero(Moneda* moneda);
 	bool consigoMejora(Mejora* mejora);
 

@@ -4,7 +4,7 @@
 #define kTmpCamb 0.5f
 
 
-Player::Player(sf::Texture* texture, sf::Vector2u imageCount, float switchTime, float speed) : 
+Player::Player(sf::Texture* texture, sf::Vector2u imageCount, float switchTime, float speed, float posX, float posY) : 
 	animacion(texture, imageCount, switchTime)
 {	
 	this->speed = speed;
@@ -17,10 +17,10 @@ Player::Player(sf::Texture* texture, sf::Vector2u imageCount, float switchTime, 
 
 	monedero = 999;   //ESTA A 999 PARA PROBAR, CUANDO SE VAYA A ENTREGAR PONERLO A 0.
 
-	spr = new M_Sprite("Union 3e.png",0,0,texture->getSize().x / float(imageCount.x),texture->getSize().y / float(imageCount.y),206,206);
+	spr = new M_Sprite("Union 3e.png",0,0,texture->getSize().x / float(imageCount.x),texture->getSize().y / float(imageCount.y),posX,posY);
 
-	pos.setPosition(206.f, 206.f);
-	pos.setPosition(206.f, 206.f);
+	pos.setPosition(posX, posY);
+	pos.setPosition(posX, posY);
 
 	Rayo* rayo = new Rayo(getPosX(), getPosY(), mirandoDerecha());
 
@@ -189,7 +189,6 @@ void Player::update(float deltaTime, Map* m)
 			faceRight = false;
 		}
 	}
-
 	spr->mover(movement.x,0);
 
 	if(m->checkCollision(getSprite()->getSprite())){//si es verdadero, se ha chocado con algo en el eje X
@@ -228,7 +227,7 @@ void Player::update(float deltaTime, Map* m)
 	if(posLadoDerecho < 0)
 		getSprite()->setPosition(getLastPosition());
 
-	if(posLadoIzquierdo > m->getWidth() * m->getTileWidth())
+	if(posLadoIzquierdo > m->getWidth() * m->getTileWidth() && next == false)
 		next = true;
 
 	//Gravedad
@@ -308,6 +307,8 @@ int Player::getIntArmaActual(){
 
 	return arma_actual;
 }
+
+
 
 bool Player::consigoDinero(Moneda* moneda){
 
@@ -555,7 +556,13 @@ void Player::incrementarVida(){
 }
 
 bool Player::superado(){
+	
 	return next;
+}
+
+void Player::noSuperado(){
+
+	next = false;
 }
 
 void Player::setDmg(int d){

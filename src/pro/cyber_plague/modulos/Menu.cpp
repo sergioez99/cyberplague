@@ -1,6 +1,6 @@
 #include "CyberPlague.h"
 #include <stdio.h>
-#include <SFML/Audio.hpp>
+
 
 Menu* Menu::pinstance = 0;
 
@@ -168,7 +168,7 @@ void Menu::Update(){
 }
 
 void Menu::Init(){
-    run(CyberPlague::Instance()->window);
+    run(CyberPlague::Instance()->getWindow());
 }
 
 int Menu::run(M_Window *window){

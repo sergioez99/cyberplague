@@ -41,6 +41,10 @@ Map::Map(int nivel) {
     map->QueryIntAttribute("height",&_height);
     map->QueryIntAttribute("tilewidth",&_tilewidth);
     map->QueryIntAttribute("tileheight",&_tileheigth);
+
+    //Cogemos el punto de Spawn del Jugador.
+    map->QueryFloatAttribute("spawnPointX",&_spawnPointX);
+    map->QueryFloatAttribute("spawnPointY",&_spawnPointY);
     
     //Leemos los tilesets
     TiXmlElement *img = map->FirstChildElement("tileset");//->FirstChildElement("image");  
@@ -193,19 +197,40 @@ bool Map::checkCaida(Sprite *sp){
     int x = ceil(sp->getPosition().x / _tilewidth) - 1;
     int y = ceil(sp->getPosition().y / _tileheigth) - 1;
 
+    bool caida = false;
+
     if(sp->getScale().x > 0){
-        if(x + 1 >= _width || _tilemapSprite[0][y + 1][x + 1] == NULL || _tilemapSprite[0][y][x + 1] != NULL || _tilemapSprite[0][y - 1][x + 1] != NULL)
-            return true;
+
+        if(x + 1 >= _width || _tilemapSprite[0][y + 1][x + 1] == NULL || _tilemapSprite[0][y][x + 1] != NULL || _tilemapSprite[0][y - 1][x + 1] != NULL){
+            
+            caida = true;
+        }
+
+           
     }
     else{
-        if(x - 1 < 0 || _tilemapSprite[0][y + 1][x - 1] == NULL || _tilemapSprite[0][y][x - 1] != NULL || _tilemapSprite[0][y - 1][x - 1] != NULL)
-            return true;
+        if(x - 1 < 0 || _tilemapSprite[0][y + 1][x - 1] == NULL || _tilemapSprite[0][y][x - 1] != NULL || _tilemapSprite[0][y - 1][x - 1] != NULL){
+
+            caida = true;
+        }
+            
     }
 
-    return false;
+    cout << caida << endl;
+
+    return caida;
 }
 
 Map::~Map() {
 }
 
+Vector2D Map::getSpawnPoint(){
 
+    Vector2D spawn;
+    spawn.x = _spawnPointX * _tilewidth;
+    spawn.y = _spawnPointY * _tileheigth;
+
+    cout << spawn.x << " --- " << spawn.y << endl;
+
+    return spawn;
+}

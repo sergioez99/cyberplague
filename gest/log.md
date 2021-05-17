@@ -253,3 +253,6 @@ Las balas de Soldado ya rotan correctamente y se destruyen al colisionar con el 
 
 ## 20210516 RamónRodríguez @(45m)
 Player sufre daño cuando recibe un ataque cuerpo a cuerpo de un NPC o cuando colisiona con una bala de Soldado.
+
+## 20210517 CarlosVillena @(2h)
+Cambios en el mundo, ahora el player no se resetea cuando se cambia de nivel.

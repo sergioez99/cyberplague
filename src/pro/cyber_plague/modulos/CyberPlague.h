@@ -8,7 +8,8 @@
 #include "Motor2D/M_Window.h"
 #include "Motor2D/M_Input.h"
 #include "MenuPausa.h"
-
+#include "Entidades/Player.h"
+#include <SFML/Audio.hpp>
 
 #define MAX_NUMBER_OF_ITEMS 4
 #define MAX_NUMBER_OF_ITEMS_L 4
@@ -41,10 +42,13 @@ class CyberPlague {
 private:
   State *estado;
   static CyberPlague* pinstance;
+  Player* player;
+  M_Window* window;
 
 public:
   CyberPlague(); //La función que lo crea todo es esta -> la que se llama en el main y ya
   CyberPlague(State *estado){ this->cambiarEstado(estado); }
+  ~CyberPlague();
 
   static CyberPlague* Instance();
   void cambiarEstado(State *estado);
@@ -52,8 +56,9 @@ public:
   void update();
   void pausar();
   void despausar();
+  Player* getPlayer();
+  M_Window* getWindow();
   
-  M_Window* window;
 };
 
 class Menu : public State{
@@ -118,6 +123,9 @@ class Mundo: public State{ //Class ingame
         
         M_Window *vent;
         CyberPlague* _context;
+        Player* player;
+        Map* mapa;
+
         static Mundo* pinstance;
         int lvl;
         MenuPausa* pmenu;

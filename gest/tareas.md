@@ -59,3 +59,4 @@ Este fichero puede ser un PDF si la herramienta que gastáis lo requiere, pero *
 * `[Hecho]` - `20210505; Dropeo de Monedas.; 180', CarlosVC-UA`
 * `[Hecho]` - `20210513; Sistema de Cofres.; 240', CarlosVC-UA`
 * `[Hecho]` - `20210515; Implementación de la Tienda.; 210', CarlosVC-UA`
+* `[Hecho]` - `20210517; Player ya no se resetea cuando se cambia de nivel.; 120', CarlosVC-UA`

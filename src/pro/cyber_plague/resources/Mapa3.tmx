@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="200" height="15" tilewidth="32" tileheight="32">
+<map version="1.0" orientation="orthogonal" width="200" height="15" tilewidth="32" tileheight="32" spawnPointX = "2" spawnPointY = "11">
  <tileset firstgid="1" source="mapa3.tsx"/>
  <tileset firstgid="7740" name="mapa3" tilewidth="32" tileheight="32">
   <image source="mapa3.jpg" width="3500" height="2353"/>
