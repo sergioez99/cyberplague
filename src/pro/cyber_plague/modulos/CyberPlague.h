@@ -164,6 +164,7 @@ class Mundo: public State{ //Class ingame
         void Init();
         void Render();
         static bool instanced();
+        void cambiarLvl(int lvl);
     private:
         
         M_Window *vent;

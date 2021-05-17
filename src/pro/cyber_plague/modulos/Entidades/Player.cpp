@@ -15,7 +15,7 @@ Player::Player(sf::Texture* texture, sf::Vector2u imageCount, float switchTime, 
 
 	armadura = new int( 0 );
 
-	monedero = 999;   //ESTA A 999 PARA PROBAR, CUANDO SE VAYA A ENTREGAR PONERLO A 0.
+	monedero = 0;   
 
 	spr = new M_Sprite("Union 3e.png",0,0,texture->getSize().x / float(imageCount.x),texture->getSize().y / float(imageCount.y),posX,posY);
 
@@ -576,7 +576,7 @@ void Player::setDefaultValues(){
 
 	*armadura =  0 ;
 
-	monedero = 999;
+	monedero = 0;
 
 	Rayo* rayo = new Rayo(getPosX(), getPosY(), mirandoDerecha());
 

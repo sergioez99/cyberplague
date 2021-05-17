@@ -18,9 +18,12 @@ Mundo *Mundo::Instance(CyberPlague *context, M_Window *w, int nivel)
 
 void Mundo::EliminarInstancia(){
 
-
-    cout << "aqui" << endl;
     delete pinstance;
+}
+
+void Mundo::cambiarLvl(int lvl){
+
+    this->lvl = lvl;
 }
 
 Mundo::Mundo(CyberPlague *context, M_Window *w, int nivel)
@@ -91,6 +94,7 @@ void Mundo::Init()
     vector<NPC *> enemigos;
     vector<Cofre*> cofres;
     
+    cout << lvl << endl;
 
     if(lvl == 1){
         mapa1.play();

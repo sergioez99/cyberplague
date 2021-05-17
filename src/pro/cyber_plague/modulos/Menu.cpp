@@ -250,20 +250,35 @@ int Menu::Eventos(string key){
                         menu1.play();
                      
                     }else if(key == "ENTER"){
+
                         switch(selectedItemIndexL){
                             case 0: 
                                 //SECTOR O NIVEL 1
                                 nivel = 1;
                                 intro.stop(); // paramos la cancion de la intro
                                 //mapa1.play(); // cancion mapa 1
+
+                                if(Mundo::instanced()){
+
+                                    Mundo::Instance(CyberPlague::Instance(), window, nivel)->cambiarLvl(nivel);
+                                }
+
                                 Mundo::Instance(CyberPlague::Instance(), window, nivel)->Handle();
+
+                                
                             break;
                             case 1:
                                 //SECTOR O NIVEL 2
                                 nivel = 2;
                                 intro.stop(); // paramos la cancion de la intro
                                 //mapa2.play(); // cancion mapa 2
+                                if(Mundo::instanced()){
+
+                                    Mundo::Instance(CyberPlague::Instance(), window, nivel)->cambiarLvl(nivel);
+                                }
+
                                 Mundo::Instance(CyberPlague::Instance(), window, nivel)->Handle();
+
                             break;
                             case 2:
                                 //SECTOR O NIVEL 3
@@ -271,7 +286,13 @@ int Menu::Eventos(string key){
                                 nivel = 3;
                                 intro.stop(); // paramos la cancion de la intro
                                 //mapa3.play(); // cancion mapa 3
+                                if(Mundo::instanced()){
+
+                                    Mundo::Instance(CyberPlague::Instance(), window, nivel)->cambiarLvl(nivel);
+                                }
+
                                 Mundo::Instance(CyberPlague::Instance(), window, nivel)->Handle();
+
                             break;
                             case 3:
   
@@ -318,7 +339,6 @@ int Menu::Eventos(string key){
                             case 0: 
                                 //SECTOR O NIVEL 1
                                 menustate = 1;
-                                // Menu::Instance(CyberPlague::Instance(),window)->Handle();
                             break;
                             
                            

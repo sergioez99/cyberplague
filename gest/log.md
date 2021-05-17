@@ -254,9 +254,6 @@ Las balas de Soldado ya rotan correctamente y se destruyen al colisionar con el 
 ## 20210516 RamónRodríguez @(45m)
 Player sufre daño cuando recibe un ataque cuerpo a cuerpo de un NPC o cuando colisiona con una bala de Soldado.
 
-## 20210517 CarlosVillena @(2h)
-Cambios en el mundo, ahora el player no se resetea cuando se cambia de nivel.
-
 ## 20210517 SergioEspinosa @(30m)
 Actualizados los documentos autoevaluación, log, reparto y tareas.
 
@@ -280,3 +277,6 @@ Posicionar junto con Ramón los enemigos y cofres en el mapa. He actualizado ade
 
 ## 20210517 RubénHerrera @(45m)
 Añadida la pantalla de game over.
+
+## 20210517 CarlosVillena @(2h)
+Cambios en el mundo, ahora el player no se resetea cuando se cambia de nivel y arrelgos para que funcione.
