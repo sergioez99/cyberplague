@@ -97,19 +97,29 @@ void Mundo::Init()
         NPC *zom2 = new Zombi("Zombie24x40.png", 0, 0, 24, 40, 2550, 204);
         NPC* sold3 = new Soldado("Soldier36x40.png", 0, 0, 36, 40, 3500, 365);
         NPC *zom3 = new Zombi("Zombie24x40.png", 0, 0, 24, 40, 3732, 365);
+        NPC *zom4 = new Zombi("Zombie24x40.png", 0, 0, 24, 40, 4112, 332);
+        NPC* sold4 = new Soldado("Soldier36x40.png", 0, 0, 36, 40, 4544, 300);
+        NPC *zom5 = new Zombi("Zombie24x40.png", 0, 0, 24, 40, 4832, 332);
+        NPC *zom6 = new Zombi("Zombie24x40.png", 0, 0, 24, 40, 5504, 172);
         enemigos.push_back(sold);
         enemigos.push_back(sold2);
         enemigos.push_back(zom);
         enemigos.push_back(zom2);
         enemigos.push_back(sold3);
         enemigos.push_back(zom3);
+        enemigos.push_back(zom4);
+        enemigos.push_back(sold4);
+        enemigos.push_back(zom5);
+        enemigos.push_back(zom6);
 
         Cofre* cofre1 = new Cofre(1300, 333);
         Cofre* cofre2 = new Cofre(3000, 333);
         Cofre* cofre3 = new Cofre(4112, 237);
+        Cofre* cofre4 = new Cofre(5136, 365);
         cofres.push_back(cofre1);
         cofres.push_back(cofre2);
         cofres.push_back(cofre3);
+        cofres.push_back(cofre4);
     }
     
     //Cargo la imagen donde reside la textura del sprite protagonista

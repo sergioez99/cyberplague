@@ -265,3 +265,6 @@ Actualizado vida_1.png
 
 ## 20210516 SergioEspinosa @(20m)
 Ahora se escucha la música de cada nivel independientemente de si se accede a través del menú o pasando de nivel a nivel.
+
+## 20210517 RamónRodríguez @(2h)
+Posicionar junto a Sergio los enemigos y cofres en los distintos mapas.
