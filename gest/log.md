@@ -275,3 +275,6 @@ Posicionar junto a Sergio los enemigos y cofres en los distintos mapas.
 
 ## 20210517 RubénHerrera @(30m)
 Cambiada el fondo de los controles del menú y actualizado documentos.
+
+## 20210517 RubénHerrera @(45m)
+Añadida la pantalla de game over.

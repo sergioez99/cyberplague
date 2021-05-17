@@ -93,6 +93,7 @@ class Menu : public State{
         M_Window* window; 
         M_Sprite* fondo;
         M_Sprite* fondoC;
+        M_Sprite* fondoM;
      //   vector<bool> key;
 
         static Menu* pinstance;

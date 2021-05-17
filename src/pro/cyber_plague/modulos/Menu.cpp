@@ -44,9 +44,9 @@ Menu::Menu(CyberPlague* contexto, M_Window *w, int inic) {
     menu1.openFromFile("./audio/menu2.ogg");
     menu1.setVolume(20);
 
-   // if(inic != 0){
-   //     menustate=5;
-   // }
+    if(inic != 0){
+        menustate=4;
+    }
 
     nivel=inic;  //para guardar la nivel en el que se ha pausado
 
@@ -105,18 +105,10 @@ Menu::Menu(CyberPlague* contexto, M_Window *w, int inic) {
 
     menuT[0].setFont(font);
     menuT[0].setColor(sf::Color::Red);
-    menuT[0].setString("Armas");
-    menuT[0].setPosition(sf::Vector2f(width / 2, height / (MAX_NUMBER_OF_ITEMS_T +1) * 1));
+    menuT[0].setString("Menu Principal");
+    menuT[0].setPosition(sf::Vector2f(220, height / 2));
 
-    menuT[1].setFont(font);
-    menuT[1].setColor(sf::Color::White);
-    menuT[1].setString("Habilidades");
-    menuT[1].setPosition(sf::Vector2f(width / 2, height / (MAX_NUMBER_OF_ITEMS_T +1) * 2));
-
-    menuT[2].setFont(font);
-    menuT[2].setColor(sf::Color::White);
-    menuT[2].setString("Volver");
-    menuT[2].setPosition(sf::Vector2f(width / 2, height / (MAX_NUMBER_OF_ITEMS_T +1) * 3));
+    
 
 
     //////////////////////////// PAUSA
@@ -173,6 +165,7 @@ int Menu::run(M_Window *window){
    string key;
    fondo = new M_Sprite("Fondo.jpg",0, 0, 640, 480,320, 240);
    fondoC = new M_Sprite("FondoControl.jpg",0, 0, 640, 480,320, 240);
+   fondoM = new M_Sprite("muerto.jpg",0, 0, 640, 480,320, 240);
 
     // Intro
     
@@ -190,6 +183,7 @@ int Menu::run(M_Window *window){
 
     delete fondo;
     delete fondoC;
+    delete fondoM;
     return 0;
 }
 
@@ -316,46 +310,15 @@ int Menu::Eventos(string key){
                     }
                 break;
                  case 4:             //TIENDA  
-                    if(key == "UP"){
-                                    
-                        MoveUp();
-                        menu1.play();
+                    if(key == "ENTER"){
                         
-                                
-                    }else if (key == "DOWN"){
-                                    
-                        MoveDown();
-                        menu1.play();
-                     
-                    }else if(key == "ENTER"){
-                        switch(selectedItemIndexT){
                             case 0: 
                                 //SECTOR O NIVEL 1
-                                //menustate = 5;
-                                // Menu::Instance(CyberPlague::Instance(),window)->Handle();
-                            break;
-                            case 1:
-                                //SECTOR O NIVEL 2
-                                //menustate = 5;
-                                // Menu::Instance(CyberPlague::Instance(),window)->Handle();
-                            break;
-                            case 2:
-                                //SECTOR O NIVEL 3
-                                //menustate = 5;
-                                // Menu::Instance(CyberPlague::Instance(),window)->Handle();
-                                menustate = 2;
-                            break;
-                            case 3:
-                                //MENU PRINCIPAL
-                                menustate = 2;
-                            break;
-                            case 4:
-
-                            break;
-                            case 5:
                                 menustate = 1;
+                                // Menu::Instance(CyberPlague::Instance(),window)->Handle();
                             break;
-                        }    
+                            
+                           
 
  
                     }else if(key == "ESCAPE"){
@@ -422,6 +385,8 @@ void Menu::Render(){
 
     if(menustate==3){
         window->render(fondoC);
+    }else if (menustate==4){
+        window->render(fondoM);
     }else{
         window->render(fondo);
     }
@@ -445,6 +410,10 @@ void Menu::Render(){
                 window->escribir(&menuN[i]);
             }
             break;  
+        case 4:
+             window->escribir(&menuT[0]);
+        break;    
+   
         case 5: 
 
             for (int i=0;i<MAX_NUMBER_OF_ITEMS_P;i++){
