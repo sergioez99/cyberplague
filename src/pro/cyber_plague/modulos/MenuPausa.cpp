@@ -112,7 +112,7 @@ int MenuPausa::update(int mon){
                         menustate = 2;
                     break;
                     case 2:
-                       Menu::Instance(CyberPlague::Instance(), window, 0)->Handle();               
+                     //  Menu::Instance(CyberPlague::Instance(), window, 0)->Handle();               
                         //aqui al menu
                         compra = -1;
                     break;
