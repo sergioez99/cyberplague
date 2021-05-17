@@ -3,6 +3,7 @@
 #include <iostream>
 #include <sstream>
 #include <SFML/System.hpp>
+#include <SFML/Audio.hpp>
 #include <vector>
 #include <string> 
 #include "Motor2D/M_Window.h"
@@ -103,6 +104,7 @@ class Menu : public State{
         sf::Text menuN[MAX_NUMBER_OF_ITEMS_N];
         sf::Text menuT[MAX_NUMBER_OF_ITEMS_T];
         sf::Text menuP[MAX_NUMBER_OF_ITEMS_P];
+        sf::Music intro, mapa1, mapa2, mapa3, menu1;
 
 };
 
@@ -123,4 +125,5 @@ class Mundo: public State{ //Class ingame
         MenuPausa* pmenu;
         bool pausado=false;
         M_Sprite* fondo;
+        sf::Music mapa1, mapa2, mapa3;
 };

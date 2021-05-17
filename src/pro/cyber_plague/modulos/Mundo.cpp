@@ -35,6 +35,33 @@ void Mundo::Init()
     pausado=false;
     fondo = new M_Sprite("Fondo.jpg",0, 0, 640, 480,320, 240);
 
+    // Canciones
+
+    // Canción mapa 1
+    mapa1.openFromFile("./audio/Mapa1.ogg");
+    mapa1.setVolume(40);
+    mapa1.setLoop(true);
+
+    // Canción mapa 2
+    mapa2.openFromFile("./audio/Mapa2.ogg");
+    mapa2.setVolume(40);
+    mapa2.setLoop(true);
+
+    // Canción mapa 3
+    mapa3.openFromFile("./audio/Mapa3.ogg");
+    mapa3.setVolume(40);
+    mapa3.setLoop(true);
+
+    if(lvl == 1){
+        mapa1.play();
+    }
+    else if(lvl == 2){
+        mapa2.play();
+    }
+    else{
+        mapa3.play();
+    }
+    
     //Cargo la imagen donde reside la textura del sprite protagonista
     sf::Texture playerTexture;
     playerTexture.loadFromFile("resources/Union 3e.png");
@@ -105,6 +132,9 @@ void Mundo::Init()
                     cout << "HE MUERTO" << endl;
 
                 if(player.superado()){
+                    mapa1.stop();
+                    mapa2.stop();
+                    mapa3.stop();
                     Mundo::Instance(CyberPlague::Instance(), vent, lvl+1)->Handle();
                 }
 

@@ -262,3 +262,6 @@ Actualizados documentos autoevaluación, reparto y tareas.
 
 ## 20210517 JoseSansano @(20m)
 Actualizado vida_1.png
+
+## 20210516 SergioEspinosa @(20m)
+Ahora se escucha la música de cada nivel independientemente de si se accede a través del menú o pasando de nivel a nivel.
