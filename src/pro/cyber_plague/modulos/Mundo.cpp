@@ -52,14 +52,64 @@ void Mundo::Init()
     mapa3.setVolume(40);
     mapa3.setLoop(true);
 
+    vector<NPC *> enemigos;
+    vector<Cofre*> cofres;
+    
+
     if(lvl == 1){
         mapa1.play();
+
+        NPC *zom = new Zombi("Zombie24x40.png", 0, 0, 24, 40, 900, 365);
+        NPC* sold = new Soldado("Soldier36x40.png", 0, 0, 36, 40, 1200, 365);
+        enemigos.push_back(zom);
+        enemigos.push_back(sold);
+
+        Cofre* cofre1 = new Cofre(1000, 365);
+        cofres.push_back(cofre1);
     }
     else if(lvl == 2){
         mapa2.play();
+
+        NPC* sold = new Soldado("Soldier36x40.png", 0, 0, 36, 40, 400, 365);
+        NPC *zom = new Zombi("Zombie24x40.png", 0, 0, 24, 40, 1200, 236);
+        NPC* sold2 = new Soldado("Soldier36x40.png", 0, 0, 36, 40, 1920, 396);
+        NPC* sold3 = new Soldado("Soldier36x40.png", 0, 0, 36, 40, 3424, 365);
+        NPC *zom2 = new Zombi("Zombie24x40.png", 0, 0, 24, 40, 3424, 236);
+        NPC *zom3 = new Zombi("Zombie24x40.png", 0, 0, 24, 40, 3104, 365);
+        enemigos.push_back(sold);
+        enemigos.push_back(zom);
+        enemigos.push_back(sold2);
+        enemigos.push_back(sold3);
+        enemigos.push_back(zom2);
+        enemigos.push_back(zom3);
+
+        Cofre* cofre1 = new Cofre(544, 270);
+        Cofre* cofre2 = new Cofre(2916, 333);
+        cofres.push_back(cofre1);
+        cofres.push_back(cofre2);
     }
     else{
         mapa3.play();
+
+        NPC* sold = new Soldado("Soldier36x40.png", 0, 0, 36, 40, 1000, 333);
+        NPC* sold2 = new Soldado("Soldier36x40.png", 0, 0, 36, 40, 1850, 365);
+        NPC *zom = new Zombi("Zombie24x40.png", 0, 0, 24, 40, 2050, 204);
+        NPC *zom2 = new Zombi("Zombie24x40.png", 0, 0, 24, 40, 2550, 204);
+        NPC* sold3 = new Soldado("Soldier36x40.png", 0, 0, 36, 40, 3500, 365);
+        NPC *zom3 = new Zombi("Zombie24x40.png", 0, 0, 24, 40, 3732, 365);
+        enemigos.push_back(sold);
+        enemigos.push_back(sold2);
+        enemigos.push_back(zom);
+        enemigos.push_back(zom2);
+        enemigos.push_back(sold3);
+        enemigos.push_back(zom3);
+
+        Cofre* cofre1 = new Cofre(1300, 333);
+        Cofre* cofre2 = new Cofre(3000, 333);
+        Cofre* cofre3 = new Cofre(4112, 237);
+        cofres.push_back(cofre1);
+        cofres.push_back(cofre2);
+        cofres.push_back(cofre3);
     }
     
     //Cargo la imagen donde reside la textura del sprite protagonista
@@ -72,27 +122,8 @@ void Mundo::Init()
 
     Clock clock;
     Clock clock2;
-
-    //NPC* mago = new Mago("sprites.png", 0*75, 0*75, 75, 75, 640/4, 480/2);
-    //NPC* paj = new Pajaro("sprites.png", 1*75, 0*75, 75, 75, 640/4, 480/4);
-    //NPC* sold = new Soldado("sprites.png", 2.3*75, 0*75, 75, 75, 640/6, 480/6);
-    NPC *zom = new Zombi("Zombie24x40.png", 0, 0, 24, 40, 900, 365);
-    NPC* sold = new Soldado("Soldier36x40.png", 0, 0, 36, 40, 1200, 365);
-    //arc->mejorar();
-
-    vector<NPC *> enemigos;
+   
     vector<Moneda *> monedasNivel;
-    //enemigos.push_back(mago);
-    //enemigos.push_back(paj);
-    //enemigos.push_back(sold);
-    enemigos.push_back(zom);
-    enemigos.push_back(sold);
-
-    vector<Cofre*> cofres;
-    Cofre* cofre1 = new Cofre(1000, 365);
-
-    cofres.push_back(cofre1);
-
 
     Map *tutorial = new Map(lvl);
 
@@ -135,6 +166,17 @@ void Mundo::Init()
                     mapa1.stop();
                     mapa2.stop();
                     mapa3.stop();
+
+                    for (int i = 0; i < (int)enemigos.size(); i++){
+                        delete enemigos.at(i);
+                        enemigos.erase(enemigos.begin() + i);
+                    }
+
+                    for (int i = 0; i < (int)cofres.size(); i++){
+                        delete cofres.at(i);
+                        cofres.erase(cofres.begin() + i);
+                    }
+
                     Mundo::Instance(CyberPlague::Instance(), vent, lvl+1)->Handle();
                 }
 
