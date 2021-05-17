@@ -274,3 +274,5 @@ Cambiada el fondo de los controles del menú y actualizado documentos.
 
 ## 20210517 SergioEspinosa @(2h 30')
 Posicionar junto con Ramón los enemigos y cofres en el mapa. He actualizado además el mapa del nivel 3 para colocar mejor enemigos, he bajado el daño de los enemigos que era bastante alto y he solucionado un problema del menú de pausa que no cambiaba al menú inicial si le dabas a menú principal.
+## 20210517 RubénHerrera @(45m)
+Añadida la pantalla de game over.

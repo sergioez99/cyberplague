@@ -168,8 +168,12 @@ void Mundo::Init()
                 player.update(deltaTime, tutorial);
 
                 //Aqui habra que cambiar de State
-                if(player.muerto())
+                if(player.muerto()){
                     cout << "HE MUERTO" << endl;
+                    camara->reset(0.f, 0.f, 640, 480);
+                    vent->setView(camara);
+                    Menu::Instance(CyberPlague::Instance(), vent, 4)->Handle();
+                }
 
                 if(player.superado()){
                     mapa1.stop();

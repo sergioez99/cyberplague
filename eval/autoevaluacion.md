@@ -17,7 +17,7 @@ Y por último decidimos hacer un tercer nivel que también cree e implementé yo
 
 
 ## Rubén Herrera Cervera
-En el hito final, me he encargado de terminar el menu y arreglar unos fallos que tenía. Le he añadido a este una pantalla con los controles. He creado la clase pausa que mantiene el estilo del menú y he hecho que funciones parando el update y el render del juego. Tambien he creado el sistema con el que funciona la tienda del juego en este menú.
+En el hito final, me he encargado de terminar el menu y arreglar unos fallos que tenía. Le he añadido a este una pantalla con los controles. He creado la clase pausa que mantiene el estilo del menú y he hecho que funciones parando el update y el render del juego. Tambien he creado el sistema con el que funciona la tienda del juego en este menú. Al final he añadido la pantalla de muerte que te permite ir al menú.
 
 ## Carlos Villena Cerdá
 Al comienzo del hito empecé creando la clase M_Window y M_Sprite, después creé la clase Entidad y NPC e incluí algunas funcionalidades para que las clases de los NPCs (que ya estaban creadas) para que pudieran utilizar los métodos de las clases padre. También implementé las clases de las armas y creé sus sprites.

@@ -42,6 +42,7 @@ Esta información debe estár sincronizada con el GDD. Debe contener la informac
 - Posibilidad de pausar el juego
 - Vista de la pausa
 - Creación de la tienda en la pausa
+- Vista de game over.
 
 ### José Antonio Sansano Melero
 - Creación del HUD.
