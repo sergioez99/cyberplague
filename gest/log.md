@@ -136,7 +136,7 @@ El personaje ya no se queda flotando en la pared sin caer. Ahora siempre cae.
 Las Armas ya funcionan con el render interpolado y las balas se destruyen al colisionar con el mapa (la función intersects no siempre detecta las colisiones, solo en la parte superior de los obstaculos, no sé por qué).
 El personaje ya no puede salir de la pantalla al inicio y al final del mapa y cuando cae por un hueco muere.
 
-## 20210426 SergioEspinosa @(2h 45m)
+## 20210428 SergioEspinosa @(2h 45m)
 Solucionados problemas de colision del arma en el mapa 1. He creado un nuevo mapa y lo he implementado, cuando acabe el nivel 1 se pasa directamente y desde la opcion del continuar menú se puede entrar también de momento
 
 ## 20210428 CarlosVillena @(3h)
@@ -253,3 +253,6 @@ Las balas de Soldado ya rotan correctamente y se destruyen al colisionar con el 
 
 ## 20210516 RamónRodríguez @(45m)
 Player sufre daño cuando recibe un ataque cuerpo a cuerpo de un NPC o cuando colisiona con una bala de Soldado.
+
+## 20210516 SergioEspinosa @(30m)
+Actualizados los documentos autoevaluación, log, reparto y tareas.
