@@ -155,17 +155,20 @@ class MenuPausa{
 class Mundo: public State{ //Class ingame
     public:
         static Mundo* Instance(CyberPlague* context, M_Window *w, int nivel);
+        static void EliminarInstancia();
+
         Mundo(CyberPlague* context, M_Window *w, int nivel);
+        ~Mundo();
         void Handle();
         void Update();
         void Init();
         void Render();
+        static bool instanced();
     private:
         
         M_Window *vent;
         CyberPlague* _context;
         Player* player;
-        Map* mapa;
 
         static Mundo* pinstance;
         int lvl;

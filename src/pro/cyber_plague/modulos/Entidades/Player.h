@@ -51,7 +51,7 @@ public:
 	Arma* devuelvoArma(string tipo);
 	int numArmasEquipadas();
 	bool todasArmasCargadas();
-
+	void setDefaultValues();
 
 	void incrementarArmadura();
 	void incrementarVida();

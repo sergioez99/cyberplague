@@ -6,8 +6,21 @@
 Mundo *Mundo::pinstance = 0;
 Mundo *Mundo::Instance(CyberPlague *context, M_Window *w, int nivel)
 {
-    pinstance = new Mundo(context, w, nivel);
+
+    if(pinstance == 0){
+
+        pinstance = new Mundo(context, w, nivel);
+    }
+
+
     return pinstance;
+}
+
+void Mundo::EliminarInstancia(){
+
+
+    cout << "aqui" << endl;
+    delete pinstance;
 }
 
 Mundo::Mundo(CyberPlague *context, M_Window *w, int nivel)
@@ -16,9 +29,19 @@ Mundo::Mundo(CyberPlague *context, M_Window *w, int nivel)
     _context = context;
     lvl = nivel;
 
-    player = _context->getPlayer();
+    //Cargo la imagen donde reside la textura del sprite protagonista
+    sf::Texture playerTexture;
+    playerTexture.loadFromFile("resources/Union 3e.png");
+
+    player = new Player(&playerTexture, sf::Vector2u(8, 3), 0.15f, 250.0f, 0, 0);
 
     pmenu = new MenuPausa(w);
+}
+
+Mundo::~Mundo(){
+
+    delete pmenu;
+    delete player;
 }
 
 void Mundo::Handle()
@@ -30,10 +53,20 @@ void Mundo::Update()
     _context = _context;
 }
 
+bool Mundo::instanced(){
+
+    if(pinstance != 0){
+
+        return true;
+    }
+    
+    return false;
+}
+
 void Mundo::Init()
 {
     M_View *camara = new M_View(0, 0, 640, 480);
-    mapa = new Map(lvl);
+    Map* mapa = new Map(lvl);
 
     pausado = false;
     fondo = new M_Sprite("Fondo.jpg",0, 0, 640, 480,320, 240);
@@ -169,6 +202,15 @@ void Mundo::Init()
 
                 //Aqui habra que cambiar de State
                 if(player->muerto()){
+
+                    player->setDefaultValues();
+
+                    lvl = 1;
+
+                    mapa1.stop();
+                    mapa2.stop();
+                    mapa3.stop();
+
                     cout << "HE MUERTO" << endl;
                     camara->reset(0.f, 0.f, 640, 480);
                     vent->setView(camara);
@@ -176,6 +218,9 @@ void Mundo::Init()
                 }
 
                 if(player->superado()){
+                    
+                    lvl++;
+                    
                     mapa1.stop();
                     mapa2.stop();
                     mapa3.stop();

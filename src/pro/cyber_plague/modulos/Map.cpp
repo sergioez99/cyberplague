@@ -218,7 +218,5 @@ Vector2D Map::getSpawnPoint(){
     spawn.x = _spawnPointX * _tilewidth;
     spawn.y = _spawnPointY * _tileheigth;
 
-    cout << spawn.x << " --- " << spawn.y << endl;
-
     return spawn;
 }

@@ -505,8 +505,6 @@ void Player::mejoroArma(string tipo){
 
 Arma* Player::devuelvoArma(string tipo){
 
-	
-
 	for(unsigned int i = 0; i < armas.size(); i++){
 
 		if(armas.at(i)->getTipo() == tipo){
@@ -568,6 +566,24 @@ void Player::noSuperado(){
 void Player::setDmg(int d){
 
 	dmg = d;
+}
+
+void Player::setDefaultValues(){
+
+	*vidaMax = kVida;
+
+	vivo();
+
+	*armadura =  0 ;
+
+	monedero = 999;
+
+	Rayo* rayo = new Rayo(getPosX(), getPosY(), mirandoDerecha());
+
+	armas.clear();
+	armas.push_back(rayo);
+
+	arma_actual = 0;
 }
 
 int Player::mirandoDerecha(){

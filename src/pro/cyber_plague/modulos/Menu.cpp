@@ -212,6 +212,7 @@ int Menu::Eventos(string key){
                                 intro.stop();
                                 //mapa1.play();
                                 nivel = 1;
+                                
                                 Mundo::Instance(CyberPlague::Instance(), window, nivel)->Handle();
                             break;
                             case 1:
