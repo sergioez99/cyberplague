@@ -254,9 +254,8 @@ Las balas de Soldado ya rotan correctamente y se destruyen al colisionar con el 
 ## 20210516 RamónRodríguez @(45m)
 Player sufre daño cuando recibe un ataque cuerpo a cuerpo de un NPC o cuando colisiona con una bala de Soldado.
 
-## 20210516 SergioEspinosa @(30m)
+## 20210517 SergioEspinosa @(30m)
 Actualizados los documentos autoevaluación, log, reparto y tareas.
-
 
 ## 20210517 JoseSansano @(30m)
 Actualizados documentos autoevaluación, reparto y tareas. 
@@ -264,7 +263,7 @@ Actualizados documentos autoevaluación, reparto y tareas.
 ## 20210517 JoseSansano @(20m)
 Actualizado vida_1.png
 
-## 20210516 SergioEspinosa @(20m)
+## 20210517 SergioEspinosa @(20m)
 Ahora se escucha la música de cada nivel independientemente de si se accede a través del menú o pasando de nivel a nivel.
 
 ## 20210517 RamónRodríguez @(2h)
@@ -272,3 +271,6 @@ Posicionar junto a Sergio los enemigos y cofres en los distintos mapas.
 
 ## 20210517 RubénHerrera @(30m)
 Cambiada el fondo de los controles del menú y actualizado documentos.
+
+## 20210517 SergioEspinosa @(2h 30')
+Posicionar junto con Ramón los enemigos y cofres en el mapa. He actualizado además el mapa del nivel 3 para colocar mejor enemigos, he bajado el daño de los enemigos que era bastante alto y he solucionado un problema del menú de pausa que no cambiaba al menú inicial si le dabas a menú principal.

@@ -1,6 +1,5 @@
 #include "CyberPlague.h"
 #include "../include/includes.h"
-#include <SFML/Audio.hpp>
 
 #define kUpdateTimePS 1000/15
 
@@ -187,7 +186,14 @@ void Mundo::Init()
                         cofres.erase(cofres.begin() + i);
                     }
 
-                    Mundo::Instance(CyberPlague::Instance(), vent, lvl+1)->Handle();
+                    if(lvl > 3){
+                        //Si acaba el juego vuelve al menú principal
+                        Menu::Instance(CyberPlague::Instance(), vent, 1);
+                    }else{
+                        Mundo::Instance(CyberPlague::Instance(), vent, lvl+1)->Handle();
+                    }
+
+                   
                 }
 
                 //Colisiones entre NPCs
