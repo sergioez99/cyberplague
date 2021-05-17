@@ -34,6 +34,7 @@ Esta información debe estár sincronizada con el GDD. Debe contener la informac
 - Búsqueda de sprites para el HUD del juego.
 - Solucionar errores con colisiones en el mapa debido a las capas.
 - Dibujado del personaje y de las balas en su capa del mapa correspondiente.
+- Posicionar NPCs y Cofres en los mapas.
 
 ### Rubén Herrera Cervera
 - Implementacíon del menú
@@ -47,3 +48,11 @@ Esta información debe estár sincronizada con el GDD. Debe contener la informac
 - Mejoras varias a las colisiones de Player.
 - Correción de algunos bugs del proyecto (Input de menu, bucle interpolado).
 - Creación del setup.sh
+
+### Ramón Rodríguez Pedraza
+- Render interpolado.
+- Colisiones balas con mapa.
+- Sprite sheets y animación Zombi y Soldado.
+- Colisión entre NPCs.
+- Ataque Soldado.
+- Posicionar NPCs y Cofres en los mapas.
