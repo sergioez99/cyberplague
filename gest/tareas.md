@@ -53,9 +53,11 @@ Este fichero puede ser un PDF si la herramienta que gastáis lo requiere, pero *
 # HITO 3
 
 * `[Hecho]` - `20210426; Fixear salto para que no haga efecto ascensor; 100', Zindov` 
+* `[Hecho]` - `20210426; Render interpolado y fixear un fallo en la limitación de llamadas a update; 140'; ramonrp99`
 * `[Hecho]` - `20210427; Fixeado un bug importante que recogia la posicion del puntero como input para el menu; 70', Zindov` 
 * `[Hecho]` - `20210428; Player ya no puede quedarse agarrado a la pared, ahora siempre cae; 70', Zindov` 
 * `[Hecho]` - `20210428; Creacion clase M_Input para manejar la entrada del teclado; 180', CarlosVC-UA`
+* `[Hecho]` - `20210428; Las Armas usan el render interpolado, las balas se destruyen al colisionar con mapa y player no puede salir de los límites del mapa; 100'; ramonrp99`
 * `[Hecho]` - `20210429; Cambios en clases para ajustarlas a M_Input, arreglos varios; 240', CarlosVC-UA`
 * `[Hecho]` - `20210502; Arreglo Bug Arco y proyectiles se eliminan cuando estan lejos; 120', CarlosVC-UA`
 * `[Hecho]` - `20210503; Retocado el sprite del Player para que el Sprite que crea SFML sea más pequeño y cambiada la animación de salto; 180', Zindov`
@@ -63,14 +65,22 @@ Este fichero puede ser un PDF si la herramienta que gastáis lo requiere, pero *
 * `[Hecho]` - `20210505; Mejoras en las colisiones del mapa de Player para que parezca que se choca de verdad con el mapa; 120', Zindov`
 * `[Hecho]` - `20210505; Lanzallamas creado, y unos pequeños ajustes en el player para mejorar el disparo; 180', CarlosVC-UA`
 * `[Hecho]` - `20210505; Dropeo de Monedas.; 180', CarlosVC-UA`
+* `[Hecho]` - `20210505; Búsqueda de sprites para NPCs y crear sprite sheet con Photoshop; 180'; ramonrp99`
 * `[Hecho]` - `20210506; Player ya no vibra y rebota con el mapa; 180', Zindov`
+* `[Hecho]` - `20210507; Ajustes del sprite sheet de Zombi; 75'; ramonrp99`
 * `[Hecho]` - `20210510; Preparar clase Hud; 60', Zindov`
+* `[Hecho]` - `20210510; Ajustes en los sprite sheets y animacion NPCs; 90'; ramonrp99`
 * `[Hecho]` - `20210511; Hud que sigue a la view y solo muestra monedas; 180', Zindov`
 * `[Hecho]` - `20210512; Hud ahora también muestra municion y vida; 60', Zindov`
 * `[Hecho]` - `20210513; Hud con iconos de municion y vida. Fixeado un bug de colision especifico; 120', Zindov`
 * `[Hecho]` - `20210513; Sistema de Cofres.; 240', CarlosVC-UA`
+* `[Hecho]` - `20210513; Bugfix NPCs. Se siguen moviendo estando en pausa; 60'; ramonrp99`
+* `[Hecho]` - `20210513; Colisión entre NPCs; 60'; ramonrp99`
 * `[Hecho]` - `20210514; Hud con icono de moneda añadido; 30', Zindov`
 * `[Hecho]` - `20210515; Implementación de la Tienda.; 210', CarlosVC-UA`
+* `[Hecho]` - `20210515; Ataque Soldado; 130'; ramonrp99`
+* `[Hecho]` - `20210516; Colisión balas Soldado y player sufre daño al colisionar con un NPC o con sus balas; 85'; ramonrp99`
+* `[Hecho]` - `20210517; Posicionar NPCs y Cofres en los distintos mapas; 120'; ramonrp99, sergioez99`
 * `[Hecho]` - `20210426; Patrón State implementado en la clase mundo y menú; 190', sergioez99`
 * `[Hecho]` - `20210426; Dibujado del personaje en la capa que le corresponde del mapa y problemas de colisión con las capas; 60', sergioez99`
 * `[Hecho]` - `20210428; Creación e implementación del mapa de un segundo nivel; 180', sergioez99`

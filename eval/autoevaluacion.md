@@ -7,11 +7,8 @@ Ahora mismo, la colisión del Player con el mapa esta lo más perfecta posible, 
 El Hud se podia hacer de dos maneras, pero he optado por la más rápida, que es hacer que el hud siga la vista del juego, por lo que crea una sensación de que el hud no se mueve y está en su sitio, al menos respecto a la View. La he creado de tal manera de que el Hud solo puede existir si esta el Player creado, ya que no tiene sentido que haya Hud si no hay Player para mostrar sus estadísticas.
 
 ## Ramón Rodríguez Pedraza
-En este hito 2, he solucionado los errores que tuve en el hito 1 con el Algoritmo A*, y he unificado todos los NPCs a través de la clase NPC de la que todos heredan. También he creado la clase AI_Agent que contiene una clase Nodo y que sirve para obtener un camino a seguir utilizando el Algoritmo A*, esta clase se utilizará en el NPC Pájaro.
-He hecho que los NPCs terrestres, Zombi y Soldado, se muevan de un lado a otro sin caerse de la plataforma en la que están utilizando la matriz de colisiones del mapa.
-He implementado el movimiento de la cámara, haciendo que siga al jugador cuando llegue a la mitad de la pantalla y que deje de seguirlo cuando llegue al final del mapa. Para esto he creado una clase M_View en Motor2D para no trabajar sobre la View de SFML.
-He hecho que cuando el jugador colisione con un NPC sufra daño y muera cuando su vida llegue a 0 (actualmente cuando muere deja de llamar a su update y a su render, por lo que no se mostrará y no podremos interactuar, para el próximo hito lo que hará será mostrar la típica pantalla de Game Over). También he hecho que cuando un proyectil colisione con un NPC este reciba daño y el proyectil se elimine. Cuando la vida del NPC llegue a 0 este morirá.
-Por último, he limitado las llamadas a los update a 15 veces por segundo y he intentado implementar el render interpolado, pero como hasta el momento estabamos moviendo los sprites en los updates me han surgido varios errores al implementarlo y he tenido que quitarlo para este hito.
+En este último hito he implementado el render interpolado y he arreglado un problema con la limitación de las llamadas a update.
+También he implementado las colisiones de las balas de Player con el mapa, los sprite sheets y animación de los NPCs Zombi y Soldado con sus respectivos ataques, he hecho que los NPCs colisionen entre ellos y junto a Sergio he posicionado todos los NPCs y Cofres en los mapas.
 
 ## Sergio Espinosa Zaragoza
 Este último hito lo primero que implementé fueron las clases menú y mundo con el patrón state que se quedaron a medias en el hito 2. 

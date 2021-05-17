@@ -1,4 +1,17 @@
 # Manual de usuario
 
-Cuando ejecutemos el juego podremos observar al jugador al lado izquierdo de la pantalla caer hacia el suelo, una vez en el suelo podremos movernos utilizando las flechas derecha e izquerda y saltar con la flecha hacia arriba. El personaje colisionará con el mapa y podrá caerse por los huecos de este.
-Al cruzar la primera plataforma que debemos saltar nos encontraremos con un enemigo, este enemigo podremos matarlo disparandole con la tecla Z que disparará una flecha siempre que haya pasado cierto tiempo desde la anterior (este enemigo morirá de 2 disparos). Si por el contrario seguimos andando y colisionamos con el enemigo este nos atacará cada 2 segundos matándonos de 3 ataques. Si el jugador muere desaparece y no podremos interactuar con el juego (en un futuro aparecerá la típica pantalla de Game Over).
+Controles del menú:
+- Flechas arriba y abajo para movernos.
+- ENTER para seleccionar una opción.
+
+Controles del juego: 
+- Flechas izquierda y derecha para movernos.
+- Flecha arriba para saltar.
+- Z para disparar.
+- ESC para pausa.
+
+Cuando ejecutemos el juego nos aparecerá el menú principal con las opciones Jugar, Seleccionar Sector, Controles y Salir. Si seleccionamos Jugar apareceremos en el primer sector y podremos pasar al siguiente una vez lo completemos. En Seleccionar Sector podremos escoger el sector que queramos jugar.
+
+Una vez dentro del sector deberemos avanzar por las plataformas y matar a los enemigos para completarlo. Habrán 2 tipos de enemigos: Zombi (cuerpo a cuerpo) y Soldado (distancia). Cada vez que matemos un enemigo este podrá soltar una moneda que podremos coger pasando por encima. Por el sector también encontraremos Cofres que podremos abrir disparandoles, estos soltarán vida, munición o armadura en función de lo que indique el cartel situado encima.
+
+Cuando la vida del jugador llegue a 0 o se caiga por un hueco este morirá y aparecerá la pantalla de Game Over.
