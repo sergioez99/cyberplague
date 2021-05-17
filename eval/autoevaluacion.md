@@ -20,10 +20,7 @@ Y por último decidimos hacer un tercer nivel que también cree e implementé yo
 
 
 ## Rubén Herrera Cervera
-Para este hito lo primero que hice fue unificar el código del menú que teniamos separado. Aquí tuve un error ya que al pasar el codigo al proyecto probe a llamarlo desde el main para ver el resultado y no conseguía que se dibujase. Era porque tenía un error con la variable que manejaba es estado del menu en el que se encontraba. 
-Implemente las diferentes funciones del patrón state en el menú e intenté continuar implementandolo en la clase CyberPlague pero sin éxito.
-Finalmente adapté el codigo del menú para que utilizase el patrón fachada y añadí a este para que pudiese dibujar el texto.
-Me ha quedado pendiente haber conseguido implementar el patrón state completo, aunque confío en tenerlo esta próxima semana.
+En el hito final, me he encargado de terminar el menu y arreglar unos fallos que tenía. Le he añadido a este una pantalla con los controles. He creado la clase pausa que mantiene el estilo del menú y he hecho que funciones parando el update y el render del juego. Tambien he creado el sistema con el que funciona la tienda del juego en este menú.
 
 ## Carlos Villena Cerdá
 Al comienzo del hito empecé creando la clase M_Window y M_Sprite, después creé la clase Entidad y NPC e incluí algunas funcionalidades para que las clases de los NPCs (que ya estaban creadas) para que pudieran utilizar los métodos de las clases padre. También implementé las clases de las armas y creé sus sprites.

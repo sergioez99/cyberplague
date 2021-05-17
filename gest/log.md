@@ -230,6 +230,9 @@ Creada la tienda. Falta llamarla con las monedas que tenga el jugador(ahora se l
 ## 20210515 CarlosVillena @(3h 30m)
 Tienda Implementada.
 
+## 20210514 RubénHerrera @(30m)
+Ya se puede cambiar desde el menu de pausa al menu principal.
+
 ## 20210515 RamónRodríguez @(2h 10m)
 Ataque de Soldado implementado. Falta rotar el sprite de la bala en función el ángulo con el que se mueve y añadir las colisiones a estas balas.
 
@@ -257,6 +260,7 @@ Player sufre daño cuando recibe un ataque cuerpo a cuerpo de un NPC o cuando co
 ## 20210516 SergioEspinosa @(30m)
 Actualizados los documentos autoevaluación, log, reparto y tareas.
 
+
 ## 20210517 JoseSansano @(30m)
 Actualizados documentos autoevaluación, reparto y tareas. 
 
@@ -268,3 +272,6 @@ Ahora se escucha la música de cada nivel independientemente de si se accede a t
 
 ## 20210517 RamónRodríguez @(2h)
 Posicionar junto a Sergio los enemigos y cofres en los distintos mapas.
+
+## 20210517 RubénHerrera @(30m)
+Cambiada el fondo de los controles del menú y actualizado documentos.

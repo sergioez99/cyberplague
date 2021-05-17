@@ -247,6 +247,11 @@ void Mundo::Init()
             int compra = pmenu->update(player.getDinero());  //Entra a la tienda con 100, aqui hay que poner la cantidad de monedas
             if(compra!=0){
                 switch(compra){
+                    case -1:
+                        camara->reset(0.f, 0.f, 640, 480);
+                        vent->setView(camara);
+                        Menu::Instance(CyberPlague::Instance(), vent, 0)->Handle();
+                    break;
                     case 1:
                         
                         player.quitarDinero(50);
