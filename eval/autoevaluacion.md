@@ -30,4 +30,4 @@ En este hito he tenido bastante poca participación por mi parte por temas perso
 Este hito hemos conseguido implementar casi todas las funcionalidades propuestas al principio del proyecto en el juego, incluyendo las funcionales opcionales de las monedas y la tienda, pero quitando los NPC de Pajaro y Mago. Estamos bastante contentos con el resultado de nuestro trabajo y pensamos que hemos conseguido un buen resultado. Creemos que la nota de nuestro hito podría ser un 7/10.
 
 # Porcentaje de nota
-José Antonio Sansano Melero : 20% Ramón Rodríguez Pedraza : 20% Sergio Espinosa Zaragoza: 20% Rubén Herrera Cervera : 16% Carlos Villena Cerdá : 20% Jorge Mompeán Cabezas: 4%
+José Antonio Sansano Melero : 20% Ramón Rodríguez Pedraza : 20% Sergio Espinosa Zaragoza: 20% Rubén Herrera Cervera : 15% Carlos Villena Cerdá : 20% Jorge Mompeán Cabezas: 5%

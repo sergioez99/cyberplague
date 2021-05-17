@@ -66,3 +66,9 @@ Esta información debe estár sincronizada con el GDD. Debe contener la informac
 - Cofres.
 - Arreglos generales en todo el código.
 - Player no se resetea cuando cambia de nivel.
+
+### Jorge Mompeán Cabezas
+- Implementación final del movimiento del personaje principal.
+- Búsqueda y adaptación sprite presonaje principal.
+- Música y efectos de sonido de todo el juego y de los mundos.
+- Imagen Game Over e intento de implementarlo en el juego.
