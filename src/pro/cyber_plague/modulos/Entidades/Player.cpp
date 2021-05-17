@@ -67,8 +67,8 @@ Player::Player(sf::Texture* texture, sf::Vector2u imageCount, float switchTime, 
 	life->setString(s);
 	life->setColor(sf::Color::Black);
 
-	lifeIcon = new M_Sprite("vidas_1.png",90,105,170,170,0,0);
-	lifeIcon->escalar(0.13,0.15);
+	lifeIcon = new M_Sprite("vidas_1.png",0,0,80,79,0,0);
+	lifeIcon->escalar(0.4,0.4);
 	
 	char* c = new char();
 
@@ -108,7 +108,7 @@ void Player::update(float deltaTime, Map* m)
 
 	if (M_Input::isKeyPressedUp() && isGrounded() && heSaltado == false){
 
-		salto = 12;
+		salto = 11;
 		//movement.y -= 4 * salto * salto * deltaTime;
 		heSaltado = true;
 		setGrounded(false);

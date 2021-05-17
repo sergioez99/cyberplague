@@ -5,7 +5,7 @@
 #define kVida  15
 #define kArm  2
 #define kVel  55.0f
-#define kAta  20
+#define kAta  5
 #define kAtTime  2
 
 /*--------------*/

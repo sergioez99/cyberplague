@@ -1,28 +1,23 @@
 # Autoevaluación individual
 
 ## José Antonio Sansano Melero
-En este hito 2, he transferido las colisiones al mapa, y he simulado la gravedad para que el jugador no pueda moverse en cualquier dirección. También he añadido la funcionalidad de saltar, que será mejorada más adelante (doble salto, por ejemplo).
-He creado una carpeta Tools con structs que son para sustituir a los de SFML (Vector2 de floats, Vector4 de Ints). También he intentado convertir todo el código que esta puesto de SFML a C++, utilizando solamente de SFML las clases de Motor2D (Fachada), pero no he podido por un error. Necesitaré hacerlo por partes, o dejar la clase Map (la que da el error) sin transformar y que siga utilizando funciones de SFML directamente.
-He ayudado a implementar la clase personaje que no tenía sprite porque no heredaba de Entidad.
-Y he ordenado como se realizaban los Inputs. Ahora los Inputs de movimiento los coge en tiempo real, y los pulsados (el botón de disparar, por ejemplo) utilizando el bucle de Events.
+En este hito 3, me he dedicado a perfeccionar las colisiones, ya que el personaje se movia raro.
+Desde que el bucle interpolado se añadió al juego, el movimiento del player hacia cosas raras : Vibraba, se metía dentro del suelo si saltaba muy alto... Pero también tenia otros problemas secundarios, que no eran a causa del bucle interpolado, como que el Player podía "agarrarse" a la pared y no caerse de ella. Todos los bugs que surgían se han fixeado, hasta el del bucle interpolado.
+Ahora mismo, la colisión del Player con el mapa esta lo más perfecta posible, no hace cosas raras y se mueve como debería de moverse. También realiza el salto bien, y cambié el spritesheet del Player para que tenga una animación correcta el salto sin cambiar código. Aparecian algunos bugs que se creaban al añadir cosas nuevas, como uno del input del menu, que he acabado fixeando, y he creado el Hud del juego. 
+El Hud se podia hacer de dos maneras, pero he optado por la más rápida, que es hacer que el hud siga la vista del juego, por lo que crea una sensación de que el hud no se mueve y está en su sitio, al menos respecto a la View. La he creado de tal manera de que el Hud solo puede existir si esta el Player creado, ya que no tiene sentido que haya Hud si no hay Player para mostrar sus estadísticas.
 
 ## Ramón Rodríguez Pedraza
-En este hito 2, he solucionado los errores que tuve en el hito 1 con el Algoritmo A*, y he unificado todos los NPCs a través de la clase NPC de la que todos heredan. También he creado la clase AI_Agent que contiene una clase Nodo y que sirve para obtener un camino a seguir utilizando el Algoritmo A*, esta clase se utilizará en el NPC Pájaro.
-He hecho que los NPCs terrestres, Zombi y Soldado, se muevan de un lado a otro sin caerse de la plataforma en la que están utilizando la matriz de colisiones del mapa.
-He implementado el movimiento de la cámara, haciendo que siga al jugador cuando llegue a la mitad de la pantalla y que deje de seguirlo cuando llegue al final del mapa. Para esto he creado una clase M_View en Motor2D para no trabajar sobre la View de SFML.
-He hecho que cuando el jugador colisione con un NPC sufra daño y muera cuando su vida llegue a 0 (actualmente cuando muere deja de llamar a su update y a su render, por lo que no se mostrará y no podremos interactuar, para el próximo hito lo que hará será mostrar la típica pantalla de Game Over). También he hecho que cuando un proyectil colisione con un NPC este reciba daño y el proyectil se elimine. Cuando la vida del NPC llegue a 0 este morirá.
-Por último, he limitado las llamadas a los update a 15 veces por segundo y he intentado implementar el render interpolado, pero como hasta el momento estabamos moviendo los sprites en los updates me han surgido varios errores al implementarlo y he tenido que quitarlo para este hito.
+En este último hito he implementado el render interpolado y he arreglado un problema con la limitación de las llamadas a update.
+También he implementado las colisiones de las balas de Player con el mapa, los sprite sheets y animación de los NPCs Zombi y Soldado con sus respectivos ataques, he hecho que los NPCs colisionen entre ellos y junto a Sergio he posicionado todos los NPCs y Cofres en los mapas.
 
 ## Sergio Espinosa Zaragoza
-Este hito comencé implementando la clase juego con el patrón estado en forma de ejemplo, pero se ha quedado sin implementar todavia el patrón al seguir trabajando en que el juego funcione.
-También me di cuenta de que mi código de mapa tenia varios errores al coger los tiles y tuve que arreglarlo de inmediato. Además intenté usar la fachada en la clase mapa igual que Jose al haber hecho yo el código, pero lo dejamos para más adelante si hay tiempo para no liar mucho la cosa, ya que funciona correctamente así.
-Por último, he creado las clases mundo y menú con las funciones de estado nada más porque como he mencionado antes, no estamos trabajando aun con el juego usando el patrón estado.
+Este último hito lo primero que implementé fueron las clases menú y mundo con el patrón state que se quedaron a medias en el hito 2. 
+Una vez funcionales, me puse a crear un segundo nivel para nuestro videojuego. Después salió un problema con las capas del mapa y tuve que arreglar las colisiones de las balas, y el dibujado del personaje que también es el de las balas. 
+Y por último decidimos hacer un tercer nivel que también cree e implementé yo, y también decidi buscar los sprites para el HUD que ya había empezado a implementar Jose para quitarle trabajo, ya que a los sprites del HUD habia que quitarles el fondo porque no había ningún png sin fondo que nos sirviese.
+
 
 ## Rubén Herrera Cervera
-Para este hito lo primero que hice fue unificar el código del menú que teniamos separado. Aquí tuve un error ya que al pasar el codigo al proyecto probe a llamarlo desde el main para ver el resultado y no conseguía que se dibujase. Era porque tenía un error con la variable que manejaba es estado del menu en el que se encontraba. 
-Implemente las diferentes funciones del patrón state en el menú e intenté continuar implementandolo en la clase CyberPlague pero sin éxito.
-Finalmente adapté el codigo del menú para que utilizase el patrón fachada y añadí a este para que pudiese dibujar el texto.
-Me ha quedado pendiente haber conseguido implementar el patrón state completo, aunque confío en tenerlo esta próxima semana.
+En el hito final, me he encargado de terminar el menu y arreglar unos fallos que tenía. Le he añadido a este una pantalla con los controles. He creado la clase pausa que mantiene el estilo del menú y he hecho que funciones parando el update y el render del juego. Tambien he creado el sistema con el que funciona la tienda del juego en este menú. Al final he añadido la pantalla de muerte que te permite ir al menú.
 
 ## Carlos Villena Cerdá
 Al comienzo del hito empecé creando la clase M_Window y M_Sprite, después creé la clase Entidad y NPC e incluí algunas funcionalidades para que las clases de los NPCs (que ya estaban creadas) para que pudieran utilizar los métodos de las clases padre. También implementé las clases de las armas y creé sus sprites.
@@ -33,4 +28,7 @@ En este hito he tenido bastante poca participación por mi parte por temas perso
 
 
 # Autoevaluación general
-En este hito hemos conseguido asentar las bases de lo que será nuestro futuro videojuego y, a pesar de que nos queda más trabajo a realizar, estamos muy satisfechos con el resultado. Creemos que la nota de nuestro hito podría ser un 7/10.
+Este hito hemos conseguido implementar casi todas las funcionalidades propuestas al principio del proyecto en el juego, incluyendo las funcionales opcionales de las monedas y la tienda, pero quitando los NPC de Pajaro y Mago. Estamos bastante contentos con el resultado de nuestro trabajo y pensamos que hemos conseguido un buen resultado. Creemos que la nota de nuestro hito podría ser un 7/10.
+
+# Porcentaje de nota
+José Antonio Sansano Melero : 20% Ramón Rodríguez Pedraza : 20% Sergio Espinosa Zaragoza: 20% Rubén Herrera Cervera : 16% Carlos Villena Cerdá : 20% Jorge Mompeán Cabezas: 4%

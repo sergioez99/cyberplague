@@ -197,28 +197,16 @@ bool Map::checkCaida(Sprite *sp){
     int x = ceil(sp->getPosition().x / _tilewidth) - 1;
     int y = ceil(sp->getPosition().y / _tileheigth) - 1;
 
-    bool caida = false;
-
     if(sp->getScale().x > 0){
-
-        if(x + 1 >= _width || _tilemapSprite[0][y + 1][x + 1] == NULL || _tilemapSprite[0][y][x + 1] != NULL || _tilemapSprite[0][y - 1][x + 1] != NULL){
-            
-            caida = true;
-        }
-
-           
+        if(x + 1 >= _width || _tilemapSprite[0][y + 1][x] == NULL || _tilemapSprite[0][y][x + 1] != NULL || _tilemapSprite[0][y - 1][x + 1] != NULL)
+            return true;
     }
     else{
-        if(x - 1 < 0 || _tilemapSprite[0][y + 1][x - 1] == NULL || _tilemapSprite[0][y][x - 1] != NULL || _tilemapSprite[0][y - 1][x - 1] != NULL){
-
-            caida = true;
-        }
-            
+        if(x - 1 < 0 || _tilemapSprite[0][y + 1][x] == NULL || _tilemapSprite[0][y][x - 1] != NULL || _tilemapSprite[0][y - 1][x - 1] != NULL)
+            return true;
     }
 
-    cout << caida << endl;
-
-    return caida;
+    return false;
 }
 
 Map::~Map() {

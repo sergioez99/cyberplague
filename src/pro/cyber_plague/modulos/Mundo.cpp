@@ -1,6 +1,5 @@
 #include "CyberPlague.h"
 #include "../include/includes.h"
-#include <SFML/Audio.hpp>
 
 #define kUpdateTimePS 1000/15
 
@@ -39,6 +38,92 @@ void Mundo::Init()
     pausado = false;
     fondo = new M_Sprite("Fondo.jpg",0, 0, 640, 480,320, 240);
 
+    // Canciones
+
+    // Canción mapa 1
+    mapa1.openFromFile("./audio/Mapa1.ogg");
+    mapa1.setVolume(40);
+    mapa1.setLoop(true);
+
+    // Canción mapa 2
+    mapa2.openFromFile("./audio/Mapa2.ogg");
+    mapa2.setVolume(40);
+    mapa2.setLoop(true);
+
+    // Canción mapa 3
+    mapa3.openFromFile("./audio/Mapa3.ogg");
+    mapa3.setVolume(40);
+    mapa3.setLoop(true);
+
+    vector<NPC *> enemigos;
+    vector<Cofre*> cofres;
+    
+
+    if(lvl == 1){
+        mapa1.play();
+
+        NPC *zom = new Zombi("Zombie24x40.png", 0, 0, 24, 40, 900, 365);
+        NPC* sold = new Soldado("Soldier36x40.png", 0, 0, 36, 40, 1200, 365);
+        enemigos.push_back(zom);
+        enemigos.push_back(sold);
+
+        Cofre* cofre1 = new Cofre(1000, 365);
+        cofres.push_back(cofre1);
+    }
+    else if(lvl == 2){
+        mapa2.play();
+
+        NPC* sold = new Soldado("Soldier36x40.png", 0, 0, 36, 40, 400, 365);
+        NPC *zom = new Zombi("Zombie24x40.png", 0, 0, 24, 40, 1200, 236);
+        NPC* sold2 = new Soldado("Soldier36x40.png", 0, 0, 36, 40, 1920, 396);
+        NPC* sold3 = new Soldado("Soldier36x40.png", 0, 0, 36, 40, 3424, 365);
+        NPC *zom2 = new Zombi("Zombie24x40.png", 0, 0, 24, 40, 3424, 236);
+        NPC *zom3 = new Zombi("Zombie24x40.png", 0, 0, 24, 40, 3104, 365);
+        enemigos.push_back(sold);
+        enemigos.push_back(zom);
+        enemigos.push_back(sold2);
+        enemigos.push_back(sold3);
+        enemigos.push_back(zom2);
+        enemigos.push_back(zom3);
+
+        Cofre* cofre1 = new Cofre(544, 270);
+        Cofre* cofre2 = new Cofre(2916, 333);
+        cofres.push_back(cofre1);
+        cofres.push_back(cofre2);
+    }
+    else{
+        mapa3.play();
+
+        NPC* sold = new Soldado("Soldier36x40.png", 0, 0, 36, 40, 1000, 333);
+        NPC* sold2 = new Soldado("Soldier36x40.png", 0, 0, 36, 40, 1850, 365);
+        NPC *zom = new Zombi("Zombie24x40.png", 0, 0, 24, 40, 2050, 204);
+        NPC *zom2 = new Zombi("Zombie24x40.png", 0, 0, 24, 40, 2550, 204);
+        NPC* sold3 = new Soldado("Soldier36x40.png", 0, 0, 36, 40, 3500, 365);
+        NPC *zom3 = new Zombi("Zombie24x40.png", 0, 0, 24, 40, 3732, 365);
+        NPC *zom4 = new Zombi("Zombie24x40.png", 0, 0, 24, 40, 4112, 332);
+        NPC* sold4 = new Soldado("Soldier36x40.png", 0, 0, 36, 40, 4544, 300);
+        NPC *zom5 = new Zombi("Zombie24x40.png", 0, 0, 24, 40, 4832, 332);
+        NPC *zom6 = new Zombi("Zombie24x40.png", 0, 0, 24, 40, 5504, 172);
+        enemigos.push_back(sold);
+        enemigos.push_back(sold2);
+        enemigos.push_back(zom);
+        enemigos.push_back(zom2);
+        enemigos.push_back(sold3);
+        enemigos.push_back(zom3);
+        enemigos.push_back(zom4);
+        enemigos.push_back(sold4);
+        enemigos.push_back(zom5);
+        enemigos.push_back(zom6);
+
+        Cofre* cofre1 = new Cofre(1300, 333);
+        Cofre* cofre2 = new Cofre(3000, 333);
+        Cofre* cofre3 = new Cofre(4112, 237);
+        Cofre* cofre4 = new Cofre(5136, 365);
+        cofres.push_back(cofre1);
+        cofres.push_back(cofre2);
+        cofres.push_back(cofre3);
+        cofres.push_back(cofre4);
+    }
 
     player->setPosition(mapa->getSpawnPoint());
     player->noSuperado();
@@ -46,22 +131,9 @@ void Mundo::Init()
 
     Clock clock;
     Clock clock2;
-
-    NPC *zom = new Zombi("Zombie24x40.png", 0, 0, 24, 40, 890, 364);
-    NPC* sold = new Soldado("Soldier36x40.png", 0, 0, 36, 40, 1200, 365);
-
-    vector<NPC *> enemigos;
+   
     vector<Moneda *> monedasNivel;
 
-
-    enemigos.push_back(zom);
-    enemigos.push_back(sold);
-
-    vector<Cofre*> cofres;
-    Cofre* cofre1 = new Cofre(1000, 365);
-
-    cofres.push_back(cofre1);
-    
     vector<bool> key;
 
     Time timeStartUpdate = clock.getElapsedTime();
@@ -97,14 +169,35 @@ void Mundo::Init()
 
                 //Aqui habra que cambiar de State
                 if(player->muerto()){
-
-                   /* player->vivo();       ESTO HABRIA QUE ARREGLARLO UN POCO MAS, DA PROBLEMAS.
-                    Menu::Instance(CyberPlague::Instance(), vent, lvl)->Handle();*/
+                    cout << "HE MUERTO" << endl;
+                    camara->reset(0.f, 0.f, 640, 480);
+                    vent->setView(camara);
+                    Menu::Instance(CyberPlague::Instance(), vent, 4)->Handle();
                 }
-                
 
                 if(player->superado()){
-                    Mundo::Instance(CyberPlague::Instance(), vent, lvl+1)->Handle();
+                    mapa1.stop();
+                    mapa2.stop();
+                    mapa3.stop();
+
+                    for (int i = 0; i < (int)enemigos.size(); i++){
+                        delete enemigos.at(i);
+                        enemigos.erase(enemigos.begin() + i);
+                    }
+
+                    for (int i = 0; i < (int)cofres.size(); i++){
+                        delete cofres.at(i);
+                        cofres.erase(cofres.begin() + i);
+                    }
+
+                    if(lvl > 3){
+                        //Si acaba el juego vuelve al menú principal
+                        Menu::Instance(CyberPlague::Instance(), vent, 1);
+                    }else{
+                        Mundo::Instance(CyberPlague::Instance(), vent, lvl+1)->Handle();
+                    }
+
+                   
                 }
 
                 //Colisiones entre NPCs
@@ -164,6 +257,11 @@ void Mundo::Init()
             int compra = pmenu->update(player->getDinero());
             if(compra!=0){
                 switch(compra){
+                    case -1:
+                        camara->reset(0.f, 0.f, 640, 480);
+                        vent->setView(camara);
+                        Menu::Instance(CyberPlague::Instance(), vent, 0)->Handle();
+                    break;
                     case 1:
                         
                         player->quitarDinero(50);

@@ -136,7 +136,7 @@ El personaje ya no se queda flotando en la pared sin caer. Ahora siempre cae.
 Las Armas ya funcionan con el render interpolado y las balas se destruyen al colisionar con el mapa (la función intersects no siempre detecta las colisiones, solo en la parte superior de los obstaculos, no sé por qué).
 El personaje ya no puede salir de la pantalla al inicio y al final del mapa y cuando cae por un hueco muere.
 
-## 20210426 SergioEspinosa @(2h 45m)
+## 20210428 SergioEspinosa @(2h 45m)
 Solucionados problemas de colision del arma en el mapa 1. He creado un nuevo mapa y lo he implementado, cuando acabe el nivel 1 se pasa directamente y desde la opcion del continuar menú se puede entrar también de momento
 
 ## 20210428 CarlosVillena @(3h)
@@ -185,9 +185,6 @@ Animación de los NPCs Zombi y Soldado y pequeños cambios en sus sprite sheets 
 ## 20210510 JoseSansano @(1h)
 Preparar clase Hud
 
-## 20210510 RamónRodríguez @(1h 30m)
-Animación de los NPCs Zombi y Soldado y pequeños cambios en sus sprite sheets para que se visualicen bien.
-
 ## 20210511 JoseSansano @(3h)
 Hud que sigue la View y que muestra por ahora solo las monedas que tiene el personaje.
 
@@ -230,6 +227,9 @@ Creada la tienda. Falta llamarla con las monedas que tenga el jugador(ahora se l
 ## 20210515 CarlosVillena @(3h 30m)
 Tienda Implementada.
 
+## 20210514 RubénHerrera @(30m)
+Ya se puede cambiar desde el menu de pausa al menu principal.
+
 ## 20210515 RamónRodríguez @(2h 10m)
 Ataque de Soldado implementado. Falta rotar el sprite de la bala en función el ángulo con el que se mueve y añadir las colisiones a estas balas.
 
@@ -256,3 +256,27 @@ Player sufre daño cuando recibe un ataque cuerpo a cuerpo de un NPC o cuando co
 
 ## 20210517 CarlosVillena @(2h)
 Cambios en el mundo, ahora el player no se resetea cuando se cambia de nivel.
+
+## 20210517 SergioEspinosa @(30m)
+Actualizados los documentos autoevaluación, log, reparto y tareas.
+
+## 20210517 JoseSansano @(30m)
+Actualizados documentos autoevaluación, reparto y tareas. 
+
+## 20210517 JoseSansano @(20m)
+Actualizado vida_1.png
+
+## 20210517 SergioEspinosa @(20m)
+Ahora se escucha la música de cada nivel independientemente de si se accede a través del menú o pasando de nivel a nivel.
+
+## 20210517 RamónRodríguez @(2h)
+Posicionar junto a Sergio los enemigos y cofres en los distintos mapas.
+
+## 20210517 RubénHerrera @(30m)
+Cambiada el fondo de los controles del menú y actualizado documentos.
+
+## 20210517 SergioEspinosa @(2h 30')
+Posicionar junto con Ramón los enemigos y cofres en el mapa. He actualizado además el mapa del nivel 3 para colocar mejor enemigos, he bajado el daño de los enemigos que era bastante alto y he solucionado un problema del menú de pausa que no cambiaba al menú inicial si le dabas a menú principal.
+
+## 20210517 RubénHerrera @(45m)
+Añadida la pantalla de game over.

@@ -3,6 +3,7 @@
 #include <iostream>
 #include <sstream>
 #include <SFML/System.hpp>
+#include <SFML/Audio.hpp>
 #include <vector>
 #include <string> 
 #include "Motor2D/M_Window.h"
@@ -16,6 +17,7 @@
 #define MAX_NUMBER_OF_ITEMS_N 1
 
 #define MAX_NUMBER_OF_ITEMS_P 4
+#define MAX_NUMBER_OF_ITEMS_T 10
 
 
 //Esta es la clase desde donde se empieza a ejecutar todo, por eso contiene los estados.
@@ -98,6 +100,7 @@ class Menu : public State{
         M_Window* window; 
         M_Sprite* fondo;
         M_Sprite* fondoC;
+        M_Sprite* fondoM;
      //   vector<bool> key;
 
         static Menu* pinstance;
@@ -108,6 +111,44 @@ class Menu : public State{
         sf::Text menuN[MAX_NUMBER_OF_ITEMS_N];
         sf::Text menuT[MAX_NUMBER_OF_ITEMS_T];
         sf::Text menuP[MAX_NUMBER_OF_ITEMS_P];
+        sf::Music intro, mapa1, mapa2, mapa3, menu1;
+
+};
+
+
+//Menu pausa q está dentro de mundo
+class MenuPausa{
+ 
+    private:
+        M_Window* window; 
+        M_Sprite* fondo;
+        int selectedItemIndexP;
+        int selectedItemIndexT;
+        int width;
+        int height;
+        sf::Font font;
+        sf::Text menuP[MAX_NUMBER_OF_ITEMS_P];
+        sf::Text menuT[MAX_NUMBER_OF_ITEMS_T];
+        bool pausado;
+        int menustate=1;
+        bool arco=false;
+        bool laser=false;
+        bool lanza=false;
+
+        bool arco_mej = false;
+        bool laser_mej = false;
+        bool lanza_mej = false;
+
+    public:
+
+        MenuPausa(M_Window *w);
+        ~MenuPausa();
+
+        int update(int mon);
+        bool render(View* view);
+
+        void MoveUp();
+        void MoveDown();
 
 };
 
@@ -131,4 +172,8 @@ class Mundo: public State{ //Class ingame
         MenuPausa* pmenu;
         bool pausado=false;
         M_Sprite* fondo;
+        sf::Music mapa1, mapa2, mapa3;
 };
+
+
+
