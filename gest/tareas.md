@@ -59,3 +59,8 @@ Este fichero puede ser un PDF si la herramienta que gastáis lo requiere, pero *
 * `[Hecho]` - `20210505; Dropeo de Monedas.; 180', CarlosVC-UA`
 * `[Hecho]` - `20210513; Sistema de Cofres.; 240', CarlosVC-UA`
 * `[Hecho]` - `20210515; Implementación de la Tienda.; 210', CarlosVC-UA`
+* `[Hecho]` - `20210426; Patrón State implementado en la clase mundo y menú; 190', sergioez99`
+* `[Hecho]` - `20210426; Dibujado del personaje en la capa que le corresponde del mapa y problemas de colisión con las capas; 60', sergioez99`
+* `[Hecho]` - `20210428; Creación e implementación del mapa de un segundo nivel; 180', sergioez99`
+* `[Hecho]` - `20210510; Búsqueda de sprites para el HUD poniendo el fondo transparente de los png; 80', sergioez99`
+* `[Hecho]` - `20210413; Creación e implementación del mapa del tercer nivel; 100', sergioez99`

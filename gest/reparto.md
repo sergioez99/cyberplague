@@ -17,3 +17,13 @@ Esta información debe estár sincronizada con el GDD. Debe contener la informac
 - Hacer que el jugador pueda cambiar de arma.
 - Creacion de la clase Entidad y NPC.
 - Pequeños ajustes en las clases de los NPCs para que puedan utilizar las clases anteriores.
+
+## Tareas Hito 3
+
+### Sergio Espinosa Zaragoza
+- Implementación del patrón state en las clases necesarias
+- Creación de un segundo nivel.
+- Creación de un tercer nivel.
+- Búsqueda de sprites para el HUD del juego.
+- Solucionar errores con colisiones en el mapa debido a las capas.
+- Dibujado del personaje y de las balas en su capa del mapa correspondiente.

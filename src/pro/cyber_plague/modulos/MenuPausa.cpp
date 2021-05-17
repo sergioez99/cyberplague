@@ -1,5 +1,6 @@
 #include "MenuPausa.h"
 
+
 #define kDistX 80     //Para ajustar del eje -X la posicion de los elementos del menu. A 0, se colocan en el centro de la vista. 
 
 MenuPausa::MenuPausa(M_Window *w){
@@ -84,6 +85,7 @@ MenuPausa::~MenuPausa(){
 
 
 int MenuPausa::update(int mon){
+    
     pausado=true;
     string key;
     key = M_Input::InputController();

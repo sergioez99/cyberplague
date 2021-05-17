@@ -8,10 +8,30 @@ using namespace sf;
 
 class Soldado : public NPC{
     private:
+        class Bala{
+            private:
+                M_Sprite* spr_bala;
+            public:
+                float vel;
+                posInterpolada pos;
+
+                /* Ambos valores estaran entre 0 y 1 e indicaran el porcentaje de la velocidad que habra en cada eje */
+                float vx;
+                float vy;
+
+                Bala(float posX, float posY, float vX, float vY, float ang);
+                ~Bala();
+                void update(float deltaTime);
+                M_Sprite* getSprite(){return spr_bala;};
+                posInterpolada getPosInterpolada(){return pos;};
+        };
+
+        vector<Bala*> balas;
         float cadencia;
+        //Reloj para controlar el tiempo de ataque cuerpo a cuerpo
+        Clock attackClock;
         //Reloj para controlar el tiempo de spawneo de balas
         Clock spawnClock;
-        Time time;
         //Animacion
         int currentImage;
         Clock animationClock;
@@ -19,15 +39,18 @@ class Soldado : public NPC{
     public:
         Soldado(string nomFichero, int texLeft, int texTop, int tex_width, int tex_height, float posX, float posY);
         ~Soldado();
+        bool puedoDisparar();
         
         /* METODOS HEREDADOS DE ENTIDAD. */
         void ataque();
         bool puedoAtacar();
         void moverse(float deltaTime);
-        void update(float deltaTime, Map *m);
+        void update(float deltaTime, Map *m, M_Sprite* player);
         /* ----------------------------- */
 
         /* METODOS HEREDADOS DE NPC */
-        bool deteccion();
+        bool deteccion(M_Sprite* player);
+        void render(M_Window* vent, float percentTick);
+        bool colisionBala(M_Sprite* player);
         /* ------------------------ */  
 };

@@ -1,5 +1,6 @@
 #include "CyberPlague.h"
 #include "../include/includes.h"
+#include <SFML/Audio.hpp>
 
 #define kUpdateTimePS 1000/15
 
@@ -76,7 +77,7 @@ void Mundo::Init()
     while (vent->abierta())
     {
 
-        cout << M_Input::getKeys() << endl;
+        //cout << M_Input::getKeys() << endl;
 
         if(pausado==false){
             string key = M_Input::InputController();
@@ -118,7 +119,7 @@ void Mundo::Init()
                 for (int i = 0; i < (int)enemigos.size(); i++)
                 {
                     player.getArmaEquipada()->balaImpactada(enemigos.at(i));
-                    enemigos.at(i)->update(deltaTime, tutorial);
+                    enemigos.at(i)->update(deltaTime, tutorial, player.getSprite());
 
                     if (enemigos.at(i)->muerto())
                     {
@@ -155,6 +156,8 @@ void Mundo::Init()
                         cofres.erase(cofres.begin() + i);
                     }
                 }
+
+                player.checkEnemyColision(enemigos);
 
                 timeStartUpdate = clock.getElapsedTime();
             }           

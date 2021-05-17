@@ -42,7 +42,7 @@ class Entidad{
         virtual void ataque() = 0;
         virtual bool puedoAtacar() = 0;
         virtual void moverse(float deltaTime) = 0;
-        virtual void update(float deltaTime, Map *m) = 0;
+        //virtual void update(float deltaTime, Map *m) = 0;
         /* ------------------------ */
 
         void escalar(float x, float y);

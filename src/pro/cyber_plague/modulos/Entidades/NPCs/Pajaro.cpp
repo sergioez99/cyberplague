@@ -33,13 +33,13 @@ Pajaro::~Pajaro(){
     delete rango;
 }
 
-void Pajaro::update(float deltaTime, Map *m){
+void Pajaro::update(float deltaTime, Map *m, M_Sprite* player){
     //Mover
-    if(deteccion())
+    if(deteccion(player))
         moverse(deltaTime, m);
 }
 
-bool Pajaro::deteccion(){
+/*bool Pajaro::deteccion(M_Sprite* player){
 
     float x = 0, y = 0; //Acceder a la posicion de jugador
     float distancia = sqrt(pow(abs(x - this->getPosX()), 2) + pow(abs(y - this->getPosY()), 2));
@@ -52,7 +52,7 @@ bool Pajaro::deteccion(){
     }
 
     return false;
-}
+}*/
 
 void Pajaro::moverse(float deltaTime, Map *m){
     AI_Agent ai;

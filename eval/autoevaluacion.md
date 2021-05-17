@@ -14,9 +14,10 @@ He hecho que cuando el jugador colisione con un NPC sufra daño y muera cuando s
 Por último, he limitado las llamadas a los update a 15 veces por segundo y he intentado implementar el render interpolado, pero como hasta el momento estabamos moviendo los sprites en los updates me han surgido varios errores al implementarlo y he tenido que quitarlo para este hito.
 
 ## Sergio Espinosa Zaragoza
-Este hito comencé implementando la clase juego con el patrón estado en forma de ejemplo, pero se ha quedado sin implementar todavia el patrón al seguir trabajando en que el juego funcione.
-También me di cuenta de que mi código de mapa tenia varios errores al coger los tiles y tuve que arreglarlo de inmediato. Además intenté usar la fachada en la clase mapa igual que Jose al haber hecho yo el código, pero lo dejamos para más adelante si hay tiempo para no liar mucho la cosa, ya que funciona correctamente así.
-Por último, he creado las clases mundo y menú con las funciones de estado nada más porque como he mencionado antes, no estamos trabajando aun con el juego usando el patrón estado.
+Este último hito lo primero que implementé fueron las clases menú y mundo con el patrón state que se quedaron a medias en el hito 2. 
+Una vez funcionales, me puse a crear un segundo nivel para nuestro videojuego. Después salió un problema con las capas del mapa y tuve que arreglar las colisiones de las balas, y el dibujado del personaje que también es el de las balas. 
+Y por último decidimos hacer un tercer nivel que también cree e implementé yo, y también decidi buscar los sprites para el HUD que ya había empezado a implementar Jose para quitarle trabajo, ya que a los sprites del HUD habia que quitarles el fondo porque no había ningún png sin fondo que nos sirviese.
+
 
 ## Rubén Herrera Cervera
 Para este hito lo primero que hice fue unificar el código del menú que teniamos separado. Aquí tuve un error ya que al pasar el codigo al proyecto probe a llamarlo desde el main para ver el resultado y no conseguía que se dibujase. Era porque tenía un error con la variable que manejaba es estado del menu en el que se encontraba. 

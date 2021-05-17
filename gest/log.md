@@ -136,7 +136,7 @@ El personaje ya no se queda flotando en la pared sin caer. Ahora siempre cae.
 Las Armas ya funcionan con el render interpolado y las balas se destruyen al colisionar con el mapa (la función intersects no siempre detecta las colisiones, solo en la parte superior de los obstaculos, no sé por qué).
 El personaje ya no puede salir de la pantalla al inicio y al final del mapa y cuando cae por un hueco muere.
 
-## 20210426 SergioEspinosa @(2h 45m)
+## 20210428 SergioEspinosa @(2h 45m)
 Solucionados problemas de colision del arma en el mapa 1. He creado un nuevo mapa y lo he implementado, cuando acabe el nivel 1 se pasa directamente y desde la opcion del continuar menú se puede entrar también de momento
 
 ## 20210428 CarlosVillena @(3h)
@@ -230,5 +230,34 @@ Creada la tienda. Falta llamarla con las monedas que tenga el jugador(ahora se l
 ## 20210515 CarlosVillena @(3h 30m)
 Tienda Implementada.
 
+<<<<<<< HEAD
 ## 20210514 RubénHerrera @(30m)
 Ya se puede cambiar desde el menu de pausa al menu principal.
+=======
+## 20210515 RamónRodríguez @(2h 10m)
+Ataque de Soldado implementado. Falta rotar el sprite de la bala en función el ángulo con el que se mueve y añadir las colisiones a estas balas.
+
+## 20210515 JorgeMompe @(1h 15m)
+Buscar música para los mapas y la intro. Adaptarla y probar meterla en el juego.
+
+## 20210515 JorgeMompe @(3h)
+Implementar en el código la música principal del menú inicial, consiguiendo que si elige un sector en el inicio, cada mapa tenga su propia música. También que si le da a jugar sin más tenga se ponga la música del mapa 1. No conseguía que una vez pasara de un mapa a otro cambiara la canción.
+
+## 20210516 JorgeMompe @(1h 20m)
+Buscar, adaptar y meter en el código los efectos de sonido para la interacción de subir y bajar en los menús.
+
+## 20210516 JorgeMompe @(1h)
+Creación imagen GameOver e investigación de como implementarlo cuando el personaje muera.
+
+## 20210516 JoseSansano @(1h 30m)
+Creacion de setup.sh que descarga la carpeta resources del juego desde Google Drive y la descomprime. Se ha borrado un binario antiguo del juego que no servia para nada.
+
+## 20210516 RamónRodríguez @(40m)
+Las balas de Soldado ya rotan correctamente y se destruyen al colisionar con el mapa o salirse de él.
+
+## 20210516 RamónRodríguez @(45m)
+Player sufre daño cuando recibe un ataque cuerpo a cuerpo de un NPC o cuando colisiona con una bala de Soldado.
+
+## 20210516 SergioEspinosa @(30m)
+Actualizados los documentos autoevaluación, log, reparto y tareas.
+>>>>>>> f9117438d927e1641656abd57e38951edfdea1e1
