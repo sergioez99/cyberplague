@@ -1,4 +1,4 @@
-#include "MenuPausa.h"
+#include "CyberPlague.h"
 
 
 #define kDistX 80     //Para ajustar del eje -X la posicion de los elementos del menu. A 0, se colocan en el centro de la vista. 
@@ -112,7 +112,7 @@ int MenuPausa::update(int mon){
                         menustate = 2;
                     break;
                     case 2:
-                    //   Menu::Instance(CyberPlague::Instance(), window, 0)->Handle();               
+                       Menu::Instance(CyberPlague::Instance(), window, 0)->Handle();               
                         //aqui al menu
                     break;
                     case 3:
