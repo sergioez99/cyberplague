@@ -5,7 +5,7 @@
 #define kVida  15
 #define kArm  2
 #define kVel  55.0f
-#define kAta  20
+#define kAta  5
 #define kAtTime  2
 
 /*--------------*/
@@ -21,6 +21,8 @@ Zombi::Zombi(string nomFichero, int texLeft, int texTop, int tex_width, int tex_
 
     attackTime = kAtTime;
 
+    currentImage = 0;
+
     pos.setPosition(posX, posY);
     pos.setPosition(posX, posY);
 }
@@ -33,12 +35,27 @@ Zombi::~Zombi(){
     delete vel;
 }
 
-void Zombi::update(float deltaTime, Map *m){
+void Zombi::update(float deltaTime, Map *m, M_Sprite* player){
+    //Animacion
+    if(animationClock.getElapsedTime().asSeconds() >= 0.15f){
+        currentImage++;
+        if(currentImage > 5)
+            currentImage = 0;
+
+        spr->cambiarPosTextura(currentImage*24, 0, 24, 40);
+
+        animationClock.restart();
+    }
     //Mover
     //Cambiar direccion del sprite
-    if(m->checkCaida(this->getSprite()->getSprite()))
-        this->escalar(-1.0f, 1.0f);
 
+    bool caida = m->checkCaida(this->getSprite()->getSprite());
+
+    if(caida){
+
+        this->escalar(-1.0f, 1.0f);
+    }
+        
     moverse(deltaTime);
 }
 
@@ -47,11 +64,9 @@ void Zombi::moverse(float deltaTime){
     mov.y = 0.f;
     
     if(this->getScaleX() < 0)
-        //mov.x = -deltaTime * getVelMovimiento();
-        getSprite()->mover(-(getVelMovimiento() * deltaTime), 0);
+        mov.x = -deltaTime * getVelMovimiento();
     else
-        //mov.x = deltaTime * getVelMovimiento();
-        getSprite()->mover(getVelMovimiento() * deltaTime, 0);
+        mov.x = deltaTime * getVelMovimiento();
 
     pos.setPosition(pos.getX() + mov.x, pos.getY() + mov.y);
 }

@@ -2,6 +2,7 @@
 #include <SFML/Graphics.hpp>
 #include "M_Sprite.h"
 #include "M_View.h"
+#include "Map.h"
 #include <iostream>
 
 using namespace std;
@@ -11,15 +12,12 @@ class M_Window{
     
     private:
 
-        //RenderWindow* ventana;
+        RenderWindow* ventana;
         Clock reloj;
         bool dir=false;
-        //float deltaTime = 0;
 
-    
     public:
 
-        RenderWindow* ventana;
         //Constructor
         M_Window(int width, int heigth, string nom);
 
@@ -28,13 +26,9 @@ class M_Window{
 
         //Metodo para renderizar un Sprite.
         void render(M_Sprite* spr);
-
-        std::vector<bool> keyPressed();
+        void renderPlayer(M_Sprite* spr, Map* mapa);
 
         void limpiar();
-
-        //Metodo para devolver el deltaTime.
-        //float getDt();
         
         //Metodo para comprobar si la ventana esta abierta.
         bool abierta();
@@ -49,7 +43,13 @@ class M_Window{
         void setView(M_View *camara);
 
         //Metodo para escribir el menu
-        void escribir(sf::Text text);
+        void escribir(sf::Text* text);
+
+        //Metodo para dibujar el fondo del menu
+        void fondo(sf::Sprite* fon);
+
+        //Metodo pollEvent de la Ventana.
+        bool pollEvent(Event* event);
 
         RenderWindow* getWindow();
 };

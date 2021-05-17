@@ -1,145 +1,141 @@
-#include "Menu.h"
-#include "../include/includes.h"
-#include <SFML/Graphics.hpp>
+#include "CyberPlague.h"
 #include <stdio.h>
-#include <iostream>
-#include <sstream>
-#include <SFML/System.hpp>
-#include <vector>
-#include <string> 
+
 
 Menu* Menu::pinstance = 0;
 
-Menu* Menu::Instance(CyberPlague* contexto, M_Window *w){
-    pinstance = new Menu(contexto,w);
+Menu* Menu::Instance(CyberPlague* contexto, M_Window *w, int inic){
+    pinstance = new Menu(contexto,w,inic);
     return pinstance;
 }
 
-Menu::Menu(CyberPlague* contexto, M_Window *w) {
+
+Menu::Menu(CyberPlague* contexto, M_Window *w, int inic) {
   
     _contexto = contexto;
     window=w;
 
     width = 640;
     height = 480;
-    
+
+    if(!font.loadFromFile("./resources/FIGHTT3_.ttf")){
+        font.loadFromFile("./resources/arial.ttf");
+    }
+
+    // Canción menú principal
+    intro.openFromFile("./audio/Intro.ogg");
+    intro.setVolume(40);
+    intro.setLoop(true);
+
+    // Canción mapa 1
+    mapa1.openFromFile("./audio/Mapa1.ogg");
+    mapa1.setVolume(40);
+    mapa1.setLoop(true);
+
+    // Canción mapa 2
+    mapa2.openFromFile("./audio/Mapa2.ogg");
+    mapa2.setVolume(40);
+    mapa2.setLoop(true);
+
+    // Canción mapa 3
+    mapa3.openFromFile("./audio/Mapa3.ogg");
+    mapa3.setVolume(40);
+    mapa3.setLoop(true);
+
+    // Efecto sonido menú 1
+    menu1.openFromFile("./audio/menu2.ogg");
+    menu1.setVolume(20);
+
+    if(inic != 0){
+        menustate=4;
+    }
+
+    nivel=inic;  //para guardar la nivel en el que se ha pausado
+
+    menu[0].setFont(font);
     menu[0].setColor(sf::Color::Red);
-    menu[0].setString("Nueva partida");
+    menu[0].setString("Jugar");
     menu[0].setPosition(sf::Vector2f(width / 2, height / (MAX_NUMBER_OF_ITEMS +1) * 1));
 
-
+    menu[1].setFont(font);
     menu[1].setColor(sf::Color::White);
-    menu[1].setString("Continuar");
+    menu[1].setString("Seleccionar nivel");
     menu[1].setPosition(sf::Vector2f(width / 2, height / (MAX_NUMBER_OF_ITEMS +1) * 2));
 
-  
+    menu[2].setFont(font);
     menu[2].setColor(sf::Color::White);
-    menu[2].setString("Como jugar");
+    menu[2].setString("Controles");
     menu[2].setPosition(sf::Vector2f(width / 2, height / (MAX_NUMBER_OF_ITEMS +1) * 3));
 
-  
+    menu[3].setFont(font);
     menu[3].setColor(sf::Color::White);
-    menu[3].setString("Opciones");
+    menu[3].setString("Salir");
     menu[3].setPosition(sf::Vector2f(width / 2, height / (MAX_NUMBER_OF_ITEMS +1) * 4));
 
-
-    menu[4].setColor(sf::Color::White);
-    menu[4].setString("Creditos");
-    menu[4].setPosition(sf::Vector2f(width / 2, height / (MAX_NUMBER_OF_ITEMS +1) * 5));
-
-    menu[5].setColor(sf::Color::White);
-    menu[5].setString("Salir");
-    menu[5].setPosition(sf::Vector2f(width / 2, height / (MAX_NUMBER_OF_ITEMS +1) * 6));
-
 ///////////////////////////////////////  LOBBY
-  
+    menuL[0].setFont(font);
     menuL[0].setColor(sf::Color::Red);
     menuL[0].setString("Sector 1");  
     menuL[0].setPosition(sf::Vector2f(width / 2, height / (MAX_NUMBER_OF_ITEMS_L +1) * 1));
 
-   
+    menuL[1].setFont(font);
     menuL[1].setColor(sf::Color::White);
     menuL[1].setString("Sector 2");
     menuL[1].setPosition(sf::Vector2f(width / 2, height / (MAX_NUMBER_OF_ITEMS_L +1) * 2));
 
-   
+    menuL[2].setFont(font);
     menuL[2].setColor(sf::Color::White);
     menuL[2].setString("Sector 3");
     menuL[2].setPosition(sf::Vector2f(width / 2, height / (MAX_NUMBER_OF_ITEMS_L +1) * 3));
 
+
+
+    menuL[3].setFont(font);
     menuL[3].setColor(sf::Color::White);
-    menuL[3].setString("Tienda");
+    menuL[3].setString("Volver");
     menuL[3].setPosition(sf::Vector2f(width / 2, height / (MAX_NUMBER_OF_ITEMS_L +1) * 4));
 
+    //////////////////////////  CONTROLES
 
-    menuL[4].setColor(sf::Color::White);
-    menuL[4].setString("Volver al menu principal");
-    menuL[4].setPosition(sf::Vector2f(width / 2, height / (MAX_NUMBER_OF_ITEMS_L +1) * 5));
-
-    //////////////////////////  NIVELES
-
-  
+    menuN[0].setFont(font);
     menuN[0].setColor(sf::Color::Red);
-    menuN[0].setString("Nivel 1"); 
+    menuN[0].setString("Volver"); 
     menuN[0].setPosition(sf::Vector2f(width / 2, height / (MAX_NUMBER_OF_ITEMS_N +1) * 1));
 
- 
-    menuN[1].setColor(sf::Color::White);
-    menuN[1].setString("Nivel 2");
-    menuN[1].setPosition(sf::Vector2f(width / 2, height / (MAX_NUMBER_OF_ITEMS_N +1) * 2));
-
-   
-    menuN[2].setColor(sf::Color::White);
-    menuN[2].setString("Nivel 3");
-    menuN[2].setPosition(sf::Vector2f(width / 2, height / (MAX_NUMBER_OF_ITEMS_N +1) * 3));
-
- 
-    menuN[3].setColor(sf::Color::White);
-    menuN[3].setString("Jefe final");
-    menuN[3].setPosition(sf::Vector2f(width / 2, height / (MAX_NUMBER_OF_ITEMS_N +1) * 4));
-
-
-    menuN[4].setColor(sf::Color::White);
-    menuN[4].setString("Volver al lobby");
-    menuN[4].setPosition(sf::Vector2f(width / 2, height / (MAX_NUMBER_OF_ITEMS_N +1) * 5));
 
     ////////////////////////////   TIENDA
 
- 
+    menuT[0].setFont(font);
     menuT[0].setColor(sf::Color::Red);
-    menuT[0].setString("Armas");
-    menuT[0].setPosition(sf::Vector2f(width / 2, height / (MAX_NUMBER_OF_ITEMS_T +1) * 1));
+    menuT[0].setString("Menu Principal");
+    menuT[0].setPosition(sf::Vector2f(220, height / 2));
 
-    menuT[1].setColor(sf::Color::White);
-    menuT[1].setString("Habilidades");
-    menuT[1].setPosition(sf::Vector2f(width / 2, height / (MAX_NUMBER_OF_ITEMS_T +1) * 2));
-
-    menuT[2].setColor(sf::Color::White);
-    menuT[2].setString("Volver");
-    menuT[2].setPosition(sf::Vector2f(width / 2, height / (MAX_NUMBER_OF_ITEMS_T +1) * 3));
+    
 
 
     //////////////////////////// PAUSA
 
-
+    menuP[0].setFont(font);
     menuP[0].setColor(sf::Color::Red);
-    menuP[0].setString("Guardar partida");
+    menuP[0].setString("Continuar");
     menuP[0].setPosition(sf::Vector2f(width / 2, height / (MAX_NUMBER_OF_ITEMS_P +1) * 1));
 
-
+    menuP[1].setFont(font);
     menuP[1].setColor(sf::Color::White);
-    menuP[1].setString("Opciones");
+    menuP[1].setString("Reiniciar");
     menuP[1].setPosition(sf::Vector2f(width / 2, height / (MAX_NUMBER_OF_ITEMS_P +1) * 2));
 
-
+    menuP[2].setFont(font);
     menuP[2].setColor(sf::Color::White);
-    menuP[2].setString("Volver al menu de niveles");
+    menuP[2].setString("Menu Principal");
     menuP[2].setPosition(sf::Vector2f(width / 2, height / (MAX_NUMBER_OF_ITEMS_P +1) * 3));
 
-
+    menuP[3].setFont(font);
     menuP[3].setColor(sf::Color::White);
     menuP[3].setString("Salir");
     menuP[3].setPosition(sf::Vector2f(width / 2, height / (MAX_NUMBER_OF_ITEMS_P +1) * 4));
+
+    
 
     selectedItemIndex = 0;
     selectedItemIndexL = 0;
@@ -163,45 +159,234 @@ void Menu::Update(){
 }
 
 void Menu::Init(){
-    run(*CyberPlague::Instance()->window);
+    run(CyberPlague::Instance()->getWindow());
 }
 
-int Menu::run(M_Window &window){
-    vector<bool> key;
-    while(window.abierta()){
-        key = window.keyPressed();
-            Eventos( key); //utilizamos la funcion para coger las teclas
+int Menu::run(M_Window *window){
+
+   string key;
+   fondo = new M_Sprite("Fondo.jpg",0, 0, 640, 480,320, 240);
+   fondoC = new M_Sprite("FondoControl.jpg",0, 0, 640, 480,320, 240);
+   fondoM = new M_Sprite("muerto.jpg",0, 0, 640, 480,320, 240);
+
+    // Intro
+    
+    intro.play();
+
+    while(window->abierta()){
+
+        key = M_Input::InputController();
         
+
+        Eventos(key); //utilizamos la funcion para coger las teclado
         
         Render(); //dibujamos en pantalla el menu
     }
+
+    delete fondo;
+    delete fondoC;
+    delete fondoM;
     return 0;
 }
 
-int Menu::Eventos(vector<bool> key){
-            /*
-            if (event.type == sf::Event::Closed){
-                window->cerrar();
-            }
-            */
+int Menu::Eventos(string key){
+            
             switch(menustate){ //para cada pantalla o estado del menu
-                case 1:  
-                    if(key[2])
+                case 1:     //MENU PRINCIPAL
+                    if(key == "UP"){
                                     
                         MoveUp();
+                        menu1.play();
                                 
-                    else if (key[3])
+                    }else if (key == "DOWN"){
                                     
                         MoveDown();
+                        menu1.play();
                      
-                    else if(key[0]){
-                        if(selectedItemIndex==1){    // Llamamos al juego
-                            // Menu::Instance(CyberPlague::Instance(),window)->Handle();
-                        }
+                    }else if(key == "ENTER"){
+                        
+                        
+                        switch(selectedItemIndex){
+                            case 0: // Nueva Partida
+                                //menustate = 5;
+                                intro.stop();
+                                //mapa1.play();
+                                nivel = 1;
+                                
+                                Mundo::Instance(CyberPlague::Instance(), window, nivel)->Handle();
+                            break;
+                            case 1:
+                                 //lobby
+                                menustate = 2;
+                                
+                            break;
+                            case 2:
+                                //lobby
+                                menustate = 3;
+                            break;
+                            case 3:
+                                window->cerrar();
+                                exit(0);
+                            break;
+                            
+                        }    
+
  
+                    }else if(key == "ESCAPE"){
+                        window->cerrar();
+                        exit(0);
                     }
                 break;
-                
+                case 2:     //LOBBY
+                    if(key == "UP"){
+                                    
+                        MoveUp();
+                        menu1.play();
+                        
+                                
+                    }else if (key == "DOWN"){
+                                    
+                        MoveDown();
+                        menu1.play();
+                     
+                    }else if(key == "ENTER"){
+
+                        switch(selectedItemIndexL){
+                            case 0: 
+                                //SECTOR O NIVEL 1
+                                nivel = 1;
+                                intro.stop(); // paramos la cancion de la intro
+                                //mapa1.play(); // cancion mapa 1
+
+                                if(Mundo::instanced()){
+
+                                    Mundo::Instance(CyberPlague::Instance(), window, nivel)->cambiarLvl(nivel);
+                                }
+
+                                Mundo::Instance(CyberPlague::Instance(), window, nivel)->Handle();
+
+                                
+                            break;
+                            case 1:
+                                //SECTOR O NIVEL 2
+                                nivel = 2;
+                                intro.stop(); // paramos la cancion de la intro
+                                //mapa2.play(); // cancion mapa 2
+                                if(Mundo::instanced()){
+
+                                    Mundo::Instance(CyberPlague::Instance(), window, nivel)->cambiarLvl(nivel);
+                                }
+
+                                Mundo::Instance(CyberPlague::Instance(), window, nivel)->Handle();
+
+                            break;
+                            case 2:
+                                //SECTOR O NIVEL 3
+                                //SECTOR O NIVEL 1
+                                nivel = 3;
+                                intro.stop(); // paramos la cancion de la intro
+                                //mapa3.play(); // cancion mapa 3
+                                if(Mundo::instanced()){
+
+                                    Mundo::Instance(CyberPlague::Instance(), window, nivel)->cambiarLvl(nivel);
+                                }
+
+                                Mundo::Instance(CyberPlague::Instance(), window, nivel)->Handle();
+
+                            break;
+                            case 3:
+  
+                                menustate = 1;
+                            break;
+                          
+                            
+                        }    
+
+ 
+                    }else if(key == "ESCAPE"){
+                        window->cerrar();
+                    }
+                break;
+                case 3:     //CONTROLES
+                    if(key == "UP"){
+                                    
+                        MoveUp();
+                        menu1.play();
+                        
+                                
+                    }else if (key == "DOWN"){
+                                    
+                        MoveDown();
+                        menu1.play();
+                     
+                    }else if(key == "ENTER"){
+                        switch(selectedItemIndexN){
+                            
+                            case 0:
+                                menustate = 1;
+                            break;
+                            
+                        }    
+
+ 
+                    }else if(key == "ESCAPE"){
+                        window->cerrar();
+                    }
+                break;
+                 case 4:             //TIENDA  
+                    if(key == "ENTER"){
+                        
+                            case 0: 
+                                //SECTOR O NIVEL 1
+                                menustate = 1;
+                            break;
+                            
+                           
+
+ 
+                    }else if(key == "ESCAPE"){
+                        window->cerrar();
+                        exit(0);
+                    }
+                break;
+                case 5:             //PAUSA  
+                    intro.pause();
+                    if(key == "UP"){
+                                    
+                        MoveUp();
+                        menu1.play();
+                        
+                                
+                    }else if (key == "DOWN"){
+                                    
+                        MoveDown();
+                        menu1.play();
+                     
+                    }else if(key == "ENTER"){
+                        switch(selectedItemIndexP){
+                            case 0: 
+                                
+                                Mundo::Instance(CyberPlague::Instance(), window, nivel)->Handle();
+                            break;
+                            case 1:
+                                Mundo::Instance(CyberPlague::Instance(), window, nivel)->Handle();
+                            break;
+                            case 2:
+                                
+                                menustate = 1;
+                            break;
+                            case 3:
+                                window->cerrar();
+                            break;
+                            
+                        }    
+
+ 
+                    }else if(key == "ESCAPE"){
+                        window->cerrar();
+                        exit(0);
+                    }
+                break;
             }
   
     return 0;
@@ -213,36 +398,55 @@ CyberPlague* Menu::getContexto(){
 }
 
 void Menu::Render(){
+
     window->limpiar();
+    
+  //  sf::Texture tex;
+  //  tex.loadFromFile("./resources/Fondo.jpg");
+  //  sf::Sprite fondo1(tex);
+  //  window->fondo(fondo1);
+
+    if(menustate==3){
+        window->render(fondoC);
+    }else if (menustate==4){
+        window->render(fondoM);
+    }else{
+        window->render(fondo);
+    }
+    
+    
     switch(menustate){
         case 1:
             for (int i=0;i<MAX_NUMBER_OF_ITEMS;i++){
-                window->escribir(menu[i]);
+                window->escribir(&menu[i]);
             }
             break;
         case 2: 
+
             for (int i=0;i<MAX_NUMBER_OF_ITEMS_L;i++){
-                window->escribir(menuL[i]);
+                window->escribir(&menuL[i]);
             }
             break;   
         case 3: 
+
             for (int i=0;i<MAX_NUMBER_OF_ITEMS_N;i++){
-                window->escribir(menuN[i]);
+                window->escribir(&menuN[i]);
             }
             break;  
-        case 4: 
-            for (int i=0;i<MAX_NUMBER_OF_ITEMS_T;i++){
-                window->escribir(menuT[i]);
-            }
-            break;   
+        case 4:
+             window->escribir(&menuT[0]);
+        break;    
+   
         case 5: 
+
             for (int i=0;i<MAX_NUMBER_OF_ITEMS_P;i++){
-                window->escribir(menuP[i]);
+                window->escribir(&menuP[i]);
             }
             break;          
     }
-
+    
     window->display();
+    
 }
 
 int Menu::GetPressedItem(){

@@ -2,6 +2,7 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 #include <SFML/System.hpp>
+#include <Motor2D/M_Sprite.h>
 #include <sstream>
 #include "TinyXML/tinystr.h"
 #include "TinyXML/tinyxml.h"
@@ -23,19 +24,16 @@ public:
     int getWidth()                  { return _width;            };
     int getHeight()                 { return _height;           };
     int getTileWidth()              { return _tilewidth;        };
+    int getTileHeight()             { return _tileheigth;       };
 
     bool checkCollision(Sprite* sp); //Utilizar RectShapes de sfml para comprobar colisiones
+    Sprite* getCollision(Sprite* sp); //Devuelve la colisión que colisiona con el sprite
     bool checkCollision(int x, int y);  //Utilizar para crear el camino en AI_Agent
     bool checkCaida(Sprite *sp);    //Utilizar para el movimiento de Zombi y Soldado
     
-    //bool checkColision(int tx, int ty);             // nuevo
-    //bool checkPinchos(int tx, int ty);             // nuevo
-    void colocarEnemigos();                         // nuevo
-    std::vector<Vector2f> coord_enemy1;             // nuevo
-    std::vector<Vector2f> coord_enemy2;             // nuevo
-    std::vector<Vector2f> coord_enemy3;             // nuevo
-    std::vector<Vector2f> coord_enemy4;             // nuevo
-    std::vector<Vector2f> coord_enemy5;             // nuevo
+    void drawPersonaje(sf::RenderWindow *window, Sprite* sp);
+
+    Vector2D getSpawnPoint();
 
 private:
     //Tilemap
@@ -54,6 +52,6 @@ private:
     
         sf::Texture _tilesetTexture;
         
-        
-
+        float _spawnPointX;
+        float _spawnPointY;
 };

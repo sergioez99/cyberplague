@@ -11,18 +11,29 @@ void Entidad::escalar(float x, float y){
     spr->escalar(x, y);
 }
 
+
 bool Entidad::muerto(){
 
-    if(*vida <= 0){return true;}
-    else{return false;}
+    if(*vida <= 0){
+        
+        heMuerto = true;
+        *vida = 0;
+    }
+    
+    return heMuerto;
+}
 
+void Entidad::vivo(){
+
+    heMuerto = false;
+
+    *vida = *vidaMax;
 }
 
 void Entidad::reciboDmg(int dmg){
 
     int dmgRecibido = dmg - *armadura;
-
-    cout << "Vida: " << *vida << " --- " << "Armadura: " << *armadura << "Daño: " << dmgRecibido << endl;
+    
     float temp = (float) invencibilidad.getElapsedTime().asMilliseconds() / 1000;
     cout << temp << endl;
     if(temp > kTempInv){
@@ -36,18 +47,11 @@ void Entidad::reciboDmg(int dmg){
 
             *vida = *vida - dmgRecibido;
         }
-
         invencibilidad.restart();
-    } 
-}
+        getSprite()->setColor(1);
+        dmgColor=15;
+    }
 
-void Entidad::render(M_Window* vent, float percentTick){
-    Vector2D posicion;
-    posicion.x = pos.getLastX()*(1-percentTick) + pos.getX()*percentTick;
-    posicion.y = pos.getLastY()*(1-percentTick) + pos.getY()*percentTick;
-
-    //spr->setPosition(posicion);
-    vent->render(spr);
 }
 
 /* SETTERS Y GETTERS */
@@ -79,6 +83,11 @@ int Entidad::getVida(){
     return *vida;
 }
 
+int Entidad::getVidaMax(){
+
+    return *vidaMax;
+}
+
 int Entidad::getArmadura(){
 
     return *armadura;
@@ -91,12 +100,12 @@ float Entidad::getVelMovimiento(){
 
 float Entidad::getPosX(){
 
-    return spr->getSprite()->getPosition().x;
+    return spr->getPosX();
 }
 
 float Entidad::getPosY(){
 
-    return spr->getSprite()->getPosition().y;
+    return spr->getPosY();
 }
 
 float Entidad::getScaleX(){
@@ -136,6 +145,18 @@ void Entidad::setVelocidad(float velMov){
 
         *vel = velMov;
     }
+}
+
+void Entidad::setPosition(Vector2D position){
+
+    pos.setPosition(position.x, position.y);
+    spr->setPosition(position);
+}
+
+void Entidad::setPosition(float posX, float posY){
+
+    pos.setPosition(posX, posY);
+    spr->setPosition(posX, posY);
 }
 
 Vector2D Entidad::getLastPosition(){

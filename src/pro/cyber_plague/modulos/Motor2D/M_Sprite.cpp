@@ -44,6 +44,25 @@ void M_Sprite::escalar(float x, float y){
     sprite->scale(x, y);
 }
 
+bool M_Sprite::intersects(M_Sprite* spr){
+
+    return sprite->getGlobalBounds().intersects(spr->getSprite()->getGlobalBounds());
+}
+
+void M_Sprite::setColor(int i){
+    switch (i)
+    {
+    case 1:
+        sprite->setColor(sf::Color::Red);
+        break;
+    
+    
+    default:
+        sprite->setColor(sf::Color::White);
+        break;
+    }
+}
+
 //Metodos Setters y Getters
 //NO USAR ESTO. DEBUG.
 Sprite* M_Sprite::getSprite(){
@@ -59,6 +78,25 @@ float M_Sprite::getPosY(){
     return sprite->getPosition().y;
 }
 
+Vector2D M_Sprite::getScale(){
+
+    Vector2D escala;
+
+    escala.x = sprite->getScale().x;
+    escala.y = sprite->getScale().y;
+
+    return escala;
+}
+
+float M_Sprite::getRotation(){
+
+    return sprite->getRotation();
+}
+
 void M_Sprite::setPosition(Vector2D pos){
     sprite->setPosition(pos.x,pos.y);
+}
+
+void M_Sprite::setPosition(float x, float y){
+    sprite->setPosition(x,y);
 }

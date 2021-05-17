@@ -4,13 +4,34 @@ Map::Map(int nivel) {
       
     TiXmlDocument doc;
 
-    if(!doc.LoadFile("resources/MapaNivel1.tmx")){
-        std::cout << "Error al cargar el mapa." << std::endl;
-    }
+    if(nivel == 1){
+        if(!doc.LoadFile("resources/MapaNivel1.tmx")){
+            std::cout << "Error al cargar el mapa." << std::endl;
+        }
 
-    if(!_tilesetTexture.loadFromFile("resources/mapa_1.png")){
-        std::cout << "Error al cargar el tileset." << std::endl;
+        if(!_tilesetTexture.loadFromFile("resources/mapa_1.png")){
+            std::cout << "Error al cargar el tileset." << std::endl;
+        }
     }
+    if(nivel == 2){
+        if(!doc.LoadFile("resources/Mapa2.tmx")){
+            std::cout << "Error al cargar el mapa." << std::endl;
+        }
+
+        if(!_tilesetTexture.loadFromFile("resources/citytiles2.png")){
+            std::cout << "Error al cargar el tileset." << std::endl;
+        }
+    }
+    if(nivel == 3){
+        if(!doc.LoadFile("resources/Mapa3.tmx")){
+            std::cout << "Error al cargar el mapa." << std::endl;
+        }
+
+        if(!_tilesetTexture.loadFromFile("resources/mapa3.jpg")){
+            std::cout << "Error al cargar el tileset." << std::endl;
+        }
+    }
+    
 
     TiXmlElement* map = doc.FirstChildElement("map");
 
@@ -20,6 +41,10 @@ Map::Map(int nivel) {
     map->QueryIntAttribute("height",&_height);
     map->QueryIntAttribute("tilewidth",&_tilewidth);
     map->QueryIntAttribute("tileheight",&_tileheigth);
+
+    //Cogemos el punto de Spawn del Jugador.
+    map->QueryFloatAttribute("spawnPointX",&_spawnPointX);
+    map->QueryFloatAttribute("spawnPointY",&_spawnPointY);
     
     //Leemos los tilesets
     TiXmlElement *img = map->FirstChildElement("tileset");//->FirstChildElement("image");  
@@ -131,6 +156,17 @@ void Map::drawTile(sf::RenderWindow *window){
     }  
 }
 
+void Map::drawPersonaje(sf::RenderWindow *window, Sprite* sp){
+    window->draw(*sp);
+    for(int y=0; y<_height; y++){
+            for(int x=0; x<_width; x++){
+                if(_tilemapSprite[3][y][x]!=NULL){
+                    window->draw(*(_tilemapSprite[3][y][x]));
+                }
+            }
+        }
+}
+
 bool Map::checkCollision(Sprite* sp){
     for(int y=0; y<_height; y++)
             for(int x=0; x<_width; x++){
@@ -138,6 +174,15 @@ bool Map::checkCollision(Sprite* sp){
                     return true;//Colisiona con algo no atravesable
             }
     return false;
+}
+
+Sprite* Map::getCollision(Sprite* sp){
+    for(int y=0; y<_height; y++)
+            for(int x=0; x<_width; x++){
+                if(_tilemapSprite[0][y][x]!=NULL && sp->getGlobalBounds().intersects(_tilemapSprite[0][y][x]->getGlobalBounds()))
+                    return _tilemapSprite[0][y][x];//Sprite que colisiona con player
+            }
+    return NULL;//Devuelve null en caso contrario
 }
 
 bool Map::checkCollision(int x, int y){
@@ -153,11 +198,11 @@ bool Map::checkCaida(Sprite *sp){
     int y = ceil(sp->getPosition().y / _tileheigth) - 1;
 
     if(sp->getScale().x > 0){
-        if(_tilemapSprite[0][y + 2][x + 1] == NULL)
+        if(x + 1 >= _width || _tilemapSprite[0][y + 1][x] == NULL || _tilemapSprite[0][y][x + 1] != NULL || _tilemapSprite[0][y - 1][x + 1] != NULL)
             return true;
     }
     else{
-        if(_tilemapSprite[0][y + 2][x - 1] == NULL)
+        if(x - 1 < 0 || _tilemapSprite[0][y + 1][x] == NULL || _tilemapSprite[0][y][x - 1] != NULL || _tilemapSprite[0][y - 1][x - 1] != NULL)
             return true;
     }
 
@@ -167,4 +212,11 @@ bool Map::checkCaida(Sprite *sp){
 Map::~Map() {
 }
 
+Vector2D Map::getSpawnPoint(){
 
+    Vector2D spawn;
+    spawn.x = _spawnPointX * _tilewidth;
+    spawn.y = _spawnPointY * _tileheigth;
+
+    return spawn;
+}

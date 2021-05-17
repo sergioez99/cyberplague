@@ -13,7 +13,7 @@
 
 /* DATOS DE LA BALA */
 
-#define kFich "spritesheet_armas.png"
+#define kFich "spritesheet_otros.png"
 #define kTexLeft 0
 #define kTexTop 0
 #define kTexWidth 32
@@ -23,6 +23,9 @@
 Arco::Bala::Bala(float posX, float posY, int ori){
 
     sprite_bala = new M_Sprite( kFich , kTexLeft , kTexTop , kTexWidth , kTexHeight , posX, posY);
+
+    pos.setPosition(posX, posY);
+	pos.setPosition(posX, posY);
 
     orientacion = ori;
 
@@ -36,11 +39,18 @@ Arco::Bala::Bala(float posX, float posY, int ori){
 void Arco::Bala::moverse(float posX, float posY){
 
     sprite_bala->mover(posX, posY);
+
+    pos.setPosition(sprite_bala->getPosX(), sprite_bala->getPosY());
 }
 
 void Arco::Bala::rotar(float grad){
 
     sprite_bala->rotar(grad);
+}
+
+float Arco::Bala::getRotation(){
+
+    return sprite_bala->getRotation();
 }
 
 M_Sprite* Arco::Bala::getSprite(){
@@ -50,8 +60,21 @@ M_Sprite* Arco::Bala::getSprite(){
 
 bool Arco::Bala::heColisionado(NPC* enemigo){
 
-    if(sprite_bala->getSprite()->getGlobalBounds().intersects(enemigo->getSprite()->getSprite()->getGlobalBounds())){
+    if(sprite_bala->intersects(enemigo->getSprite())){
 
+        return true;
+    }
+
+    else{
+
+        return false;
+    }
+}
+
+bool Arco::Bala::heColisionado(Cofre* cofre){
+
+    if(sprite_bala->intersects(cofre->getSprite())){
+    
         return true;
     }
 
@@ -78,7 +101,9 @@ Arco::Arco(float posX, float posY, int orie) : Arma(){
     mejora = false;
 
     municionMax = 100;
-    municionActual = 100;
+    municionActual = municionMax;
+
+    tipo = "arco";
 }
 
 Arco::~Arco(){}
@@ -101,45 +126,42 @@ bool Arco::puedeDisparar(){
 
 void Arco::disparo(){
 
-    if(puedeDisparar()){
+    if(mejora){
 
-        if(mejora){
-
-            for(unsigned int i = 0; i < 3; i++){
-                
-
-                Bala* bala = new Bala(pX, pY, ori); 
-
-                switch (i) {
-
-                    case 0:
-
-                        bala->rotar(30);
-                        break;
-                    
-                    case 2:
-
-                        bala->rotar(-30);
-                        break;
-
-                    default:
-                        break;
-                }
-
-                proyectiles.push_back(bala);        
-            }
-
-        }
-        
-        else{
+        for(unsigned int i = 0; i < 3; i++){
+            
 
             Bala* bala = new Bala(pX, pY, ori); 
-            proyectiles.push_back(bala);
+
+            switch (i) {
+
+                case 0:
+
+                    bala->rotar(30);
+                    break;
+                
+                case 2:
+
+                    bala->rotar(-30);
+                    break;
+
+                default:
+                    break;
+            }
+
+            proyectiles.push_back(bala);    
         }
 
-        municionActual = municionActual - kMuncGas;
-       contDisparo.restart();
     }
+    
+    else{
+
+        Bala* bala = new Bala(pX, pY, ori); 
+        proyectiles.push_back(bala);
+    }
+
+    municionActual = municionActual - kMuncGas;
+    contDisparo.restart();
 }
 
 void Arco::mejorar(){
@@ -147,33 +169,38 @@ void Arco::mejorar(){
     mejora = true; 
 }
 
-void Arco::update(float dt){
+void Arco::update(float dt, Map* m){
 
     if(mejora){
 
-        int resto = 0;
-
         for(unsigned int i = 0; i < proyectiles.size(); i++){
 
-            resto = i % 3;
+            if(!balaEstaLejos(i, m)){
 
-            switch(resto){
+                float rotacion = proyectiles.at(i)->getRotation();
 
-                case 0: 
+                if(rotacion == 30 || rotacion == 210){
 
                     proyectiles.at(i)->moverse(proyectiles.at(i)->orientacion * (vel * dt), proyectiles.at(i)->orientacion * ((vel * dt) / 3));  //BALA SUPERIOR.
-                
-                    break;
+                }
 
-                case 1:
-
-                    proyectiles.at(i)->moverse(proyectiles.at(i)->orientacion * (vel * dt), 0); //BALA MEDIA
-                    break;
-
-                case 2:
+                else if(rotacion == 330 || rotacion == 150){
 
                     proyectiles.at(i)->moverse(proyectiles.at(i)->orientacion * (vel * dt), -proyectiles.at(i)->orientacion * (vel * dt)/ 3); //BALA INFERIOR.
-                    break;
+                }
+
+                else{
+
+                    proyectiles.at(i)->moverse(proyectiles.at(i)->orientacion * (vel * dt), 0); //BALA MEDIA
+                }
+                
+                if(m->checkCollision(proyectiles.at(i)->getSprite()->getSprite()))
+                    proyectiles.erase(proyectiles.begin() + i);
+            }
+
+            else{
+
+                proyectiles.erase(proyectiles.begin() + i);
             }
 
             
@@ -184,13 +211,31 @@ void Arco::update(float dt){
 
         for(unsigned int i = 0; i < proyectiles.size(); i++){
 
-            proyectiles.at(i)->moverse(proyectiles.at(i)->orientacion * (vel * dt), 0);
+            if(!balaEstaLejos(i, m)){
+
+                proyectiles.at(i)->moverse(proyectiles.at(i)->orientacion * (vel * dt), 0);
+
+                if(m->checkCollision(proyectiles.at(i)->getSprite()->getSprite()))
+                    proyectiles.erase(proyectiles.begin() + i);
+            }
+
+            else{
+
+                proyectiles.erase(proyectiles.begin() + i);
+            }
+            
         }
     }
 }
 
-void Arco::render(M_Window* vent){
+void Arco::render(M_Window* vent, float percentTick){
     for(unsigned int i = 0; i < proyectiles.size(); i++){
+        Vector2D posicion;
+   
+        posicion.x = proyectiles.at(i)->pos.getLastX()*(1-percentTick) + proyectiles.at(i)->pos.getX()*percentTick;
+        posicion.y = proyectiles.at(i)->pos.getLastY()*(1-percentTick) + proyectiles.at(i)->pos.getY()*percentTick;
+
+        proyectiles.at(i)->getSprite()->setPosition(posicion);
 
         vent->render(proyectiles.at(i)->getSprite());
     }
@@ -207,4 +252,33 @@ void Arco::balaImpactada(NPC* enemigo){
         }
 
 	}
+}
+
+void Arco::balaImpactada(Cofre* cofre){
+    for(unsigned int i = 0; i < proyectiles.size(); i++){
+
+        if(proyectiles.at(i)->heColisionado(cofre)){
+
+            cofre->abrir();
+        }
+
+	}
+}
+
+bool Arco::balaEstaLejos(int i, Map* m){
+
+    if((proyectiles.at(i)->getSprite()->getPosX() / m->getWidth() > m->getWidth() || proyectiles.at(i)->getSprite()->getPosX() / m->getWidth() < 0 ) || (proyectiles.at(i)->getSprite()->getPosY() / m->getHeight() > 2 * m->getHeight()|| proyectiles.at(i)->getSprite()->getPosY() / m->getHeight() < 0)){
+
+        return true;
+    }
+
+    else {
+
+        return false;
+    }
+}
+
+void Arco::limpiarCargador(){
+
+    proyectiles.clear();
 }

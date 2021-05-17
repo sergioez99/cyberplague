@@ -26,3 +26,9 @@ La url se obtiene desde el repositorio del grupo así:
 
 **Tened en cuenta que las intrucciones de la plantilla están aquí:** 
 [documentación_compilada](doc/plantilla_doc.html). Existen más documentos a leer en la carpeta `doc`. ¡Échales un vistazo!
+
+# Cómo compilar el proyecto
+Antes de poder compilar o ejecutar el proyecto normalmente, se deberá ejecutar el `setup.sh` que esta en la carpeta cyber_plague
+para que descargue todos los resources del juego (sonidos, graficos, etc.).
+Para realizar esto de forma sencilla, simplemente es abrir una terminal dentro de la carpeta cyber_plague (dentro de las carpetas src/pro/)
+y escribir `./setup.sh` en la terminal para descargar los resources del proyecto y poderlo ejecutar bien.

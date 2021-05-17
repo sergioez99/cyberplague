@@ -18,16 +18,34 @@ void CyberPlague::cambiarEstado(State* estado){
 }
 
 void CyberPlague::Handle(){
-    new M_Window(640,480,"Cyber Plague");
+   
 
-    //Menu::Instance(this,window,false)->Handle(); Aquí se llamaría por ejemplo al menú -> la primera cosa que se mostraría al iniciar el juego
+    M_Input::Instanciar(window);
 
-    while(window->abierta()){
-        update();
-    }
+    Menu::Instance(this,window,0)->Handle();
+}
+
+Player* CyberPlague::getPlayer(){
+
+  return player;
+}
+
+M_Window* CyberPlague::getWindow(){
+
+  return window;
 }
 
 CyberPlague::CyberPlague(){
     //Clase por si queremos iniciarlizar variables o clases al iniciar el juego.
     estado = 0;
+
+    
+
+    window = new M_Window(640, 480,"Cyber Plague");
+    
+}
+
+CyberPlague::~CyberPlague(){
+
+
 }

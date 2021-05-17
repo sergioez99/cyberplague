@@ -2,14 +2,12 @@
 #include <iostream>
 #include "Motor2D/M_Sprite.h"
 #include "Motor2D/M_Window.h"
+#include "Motor2D/M_Input.h"
 #include "Map.h"
 #include "Tools/posInterpolada.h"
 
 
 using namespace std;
-
-
-
 
 /*
 CLASE ABSTRACTA ENTIDAD, NO SE PUEDE INSTANCIAR. TODAS LAS ENTIDADES DEL JUEGO (EL PJ Y LOS NPCs), HEREDAN DE ESTA CLASE.
@@ -24,12 +22,15 @@ class Entidad{
     protected:   
         M_Sprite* spr;
         int* vida;
+        int* vidaMax;
         int* armadura;
-        int salto=0;
+        float salto=0;
+        int dmgColor=0;
         float* vel;
         int ataq;
         Vector2D lastPosition;
         bool grounded;
+        bool heMuerto = false;
         posInterpolada pos;
 
         Clock invencibilidad;     //Reloj para controlar el tiempo que debe pasar para que la entidad reciba daño.
@@ -42,19 +43,21 @@ class Entidad{
         virtual void ataque() = 0;
         virtual bool puedoAtacar() = 0;
         virtual void moverse(float deltaTime) = 0;
-        virtual void update(float deltaTime, Map *m) = 0;
+        //virtual void update(float deltaTime, Map *m) = 0;
         /* ------------------------ */
 
         void escalar(float x, float y);
         
         bool muerto();
+        void vivo();
         void reciboDmg(int dmg);
-        void render(M_Window* vent, float percentTick);
+        
 
     
 
         M_Sprite* getSprite();
         int getVida();
+        int getVidaMax();
         int getArmadura();
         float getVelMovimiento();
         float getPosX();
@@ -72,6 +75,7 @@ class Entidad{
         Vector2D getLastPosition();
         void setLastPosition();
         void setPosition(Vector2D pos);
+        void setPosition(float posX, float posY);
 
         bool isGrounded();
         void setGrounded(bool ground);

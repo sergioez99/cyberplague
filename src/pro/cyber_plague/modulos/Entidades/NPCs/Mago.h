@@ -21,10 +21,10 @@ class Mago : public NPC {
         void ataque();
         bool puedoAtacar();
         void moverse(float deltaTime);
-        void update(float deltaTime, Map *m);
+        void update(float deltaTime, Map *m, M_Sprite* player);
         /* ----------------------------- */
 
         /* METODOS HEREDADOS DE NPC */
-        bool deteccion();
+        bool deteccion(M_Sprite* player){return false;};
         /* ------------------------ */
 };

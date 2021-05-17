@@ -11,6 +11,9 @@ class Zombi : public NPC{
         int attackTime;
         //Reloj para controlar el tiempo de ataque
         Clock attackClock;
+        //Animacion
+        int currentImage;
+        Clock animationClock;
     public:
         Zombi(string nomFichero, int texLeft, int texTop, int tex_width, int tex_height, float posX, float posY);
         ~Zombi();
@@ -19,10 +22,11 @@ class Zombi : public NPC{
         virtual void ataque(){};
         bool puedoAtacar();
         void moverse(float deltaTime);
-        void update(float deltaTime, Map *m);
+        void update(float deltaTime, Map *m, M_Sprite* player);
         /* ----------------------------- */
 
         /* METODOS HEREDADOS DE NPC */
-        bool deteccion(){return false;};
+        bool deteccion(M_Sprite* player){return false;};
+        bool colisionBala(M_Sprite* player){return false;};
         /* ------------------------ */
 };

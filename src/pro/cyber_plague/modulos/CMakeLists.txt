@@ -3,10 +3,11 @@ target_sources(libModulos PRIVATE
     "${CMAKE_CURRENT_SOURCE_DIR}/Motor2D/M_Sprite.cpp"
     "${CMAKE_CURRENT_SOURCE_DIR}/Motor2D/M_Window.cpp"
     "${CMAKE_CURRENT_SOURCE_DIR}/Motor2D/M_View.cpp"
+    "${CMAKE_CURRENT_SOURCE_DIR}/Motor2D/M_Input.cpp"
 
-    "${CMAKE_CURRENT_SOURCE_DIR}/Tools/Vector2D.cpp"
     "${CMAKE_CURRENT_SOURCE_DIR}/Tools/posInterpolada.cpp"
     
+    "${CMAKE_CURRENT_SOURCE_DIR}/Hud.cpp"
     "${CMAKE_CURRENT_SOURCE_DIR}/Animacion.cpp"
     "${CMAKE_CURRENT_SOURCE_DIR}/Entidad.cpp"
     "${CMAKE_CURRENT_SOURCE_DIR}/Entidades/NPC.cpp"
@@ -24,8 +25,14 @@ target_sources(libModulos PRIVATE
     "${CMAKE_CURRENT_SOURCE_DIR}/Entidades/Armas/Tipo_de_Arma/Rayo.cpp"
     
     "${CMAKE_CURRENT_SOURCE_DIR}/AI_Agent.cpp"
+    "${CMAKE_CURRENT_SOURCE_DIR}/Moneda.cpp"
+    "${CMAKE_CURRENT_SOURCE_DIR}/Cofre.cpp"
 
+    "${CMAKE_CURRENT_SOURCE_DIR}/MenuPausa.cpp"
     "${CMAKE_CURRENT_SOURCE_DIR}/Map.cpp"
+    "${CMAKE_CURRENT_SOURCE_DIR}/CyberPlague.cpp"
+    "${CMAKE_CURRENT_SOURCE_DIR}/Menu.cpp"
+    "${CMAKE_CURRENT_SOURCE_DIR}/Mundo.cpp"
     "${CMAKE_CURRENT_SOURCE_DIR}/TinyXML/tinystr.cpp"
     "${CMAKE_CURRENT_SOURCE_DIR}/TinyXML/tinyxml.cpp"
     "${CMAKE_CURRENT_SOURCE_DIR}/TinyXML/tinyxmlparser.cpp"

@@ -4,6 +4,7 @@
 #include "../../Motor2D/M_Window.h"
 
 #include "../NPC.h"
+#include "../../Cofre.h"
 
 using namespace std;
 
@@ -33,6 +34,7 @@ class Arma {
         int municionActual; //Municion que le queda al arma.
 
         bool mejora;
+        string tipo;
 
         Clock contDisparo;
         
@@ -46,11 +48,13 @@ class Arma {
         virtual void disparo() = 0;
         virtual void mejorar() = 0;
 
-        virtual void render(M_Window* vent) = 0;
-        virtual void update(float deltaTime) = 0;
+        virtual void render(M_Window* vent, float percentTick) = 0;
+        virtual void update(float deltaTime, Map* m) = 0;
         virtual void balaImpactada(NPC* enemigos) = 0;
+        virtual void balaImpactada(Cofre* cofre) = 0;
 
         virtual bool puedeDisparar() = 0;
+        virtual void limpiarCargador() = 0;
 
         //GETTERS Y SETTERS
         int getDmg();
@@ -58,13 +62,15 @@ class Arma {
         int getMunicionMax();
         int getMunicionAct();
 
+        string getTipo();
+
         void setDmg(int d);
         void setCad(int c);
         void setMunicionMax(int cant);
         void setMunicionAct(int cant);
+        void recargaArma();
 
         void setDatosJugador(float posX, float posY, int orie);
-        
 
 };
 

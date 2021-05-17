@@ -15,14 +15,18 @@ class Arco : public Arma{
             public:
 
                 int orientacion;
+                posInterpolada pos;
 
                 Bala(float posX, float posY, int ori);
                 ~Bala();
 
                 void moverse(float posX, float posY);
                 void rotar(float grad);
+                float getRotation();
+
                 M_Sprite* getSprite();
                 bool heColisionado(NPC* enemigo);
+                bool heColisionado(Cofre* cofre);
 
         };
         
@@ -37,9 +41,12 @@ class Arco : public Arma{
       bool puedeDisparar();
       void disparo();
       void mejorar();
-      void update(float deltaTime);
-      void render(M_Window* vent);
+      void update(float deltaTime, Map* m);
+      void render(M_Window* vent, float percentTick);
       void balaImpactada(NPC* enemigos);
+      void balaImpactada(Cofre* cofre);
+      bool balaEstaLejos(int i, Map* m);
 
+      void limpiarCargador();
 };
 
