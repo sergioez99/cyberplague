@@ -1,6 +1,4 @@
 #include "CyberPlague.h"
-#include <stdio.h>
-#include <SFML/Audio.hpp>
 
 Menu* Menu::pinstance = 0;
 
@@ -9,7 +7,6 @@ Menu* Menu::Instance(CyberPlague* contexto, M_Window *w, int inic){
     return pinstance;
 }
 
-sf::Music intro, mapa1, mapa2, mapa3, menu1;
 
 Menu::Menu(CyberPlague* contexto, M_Window *w, int inic) {
   
@@ -217,7 +214,7 @@ int Menu::Eventos(string key){
                             case 0: // Nueva Partida
                                 //menustate = 5;
                                 intro.stop();
-                                mapa1.play();
+                                //mapa1.play();
                                 nivel = 1;
                                 Mundo::Instance(CyberPlague::Instance(), window, nivel)->Handle();
                             break;
@@ -261,14 +258,14 @@ int Menu::Eventos(string key){
                                 //SECTOR O NIVEL 1
                                 nivel = 1;
                                 intro.stop(); // paramos la cancion de la intro
-                                mapa1.play(); // cancion mapa 1
+                                //mapa1.play(); // cancion mapa 1
                                 Mundo::Instance(CyberPlague::Instance(), window, nivel)->Handle();
                             break;
                             case 1:
                                 //SECTOR O NIVEL 2
                                 nivel = 2;
                                 intro.stop(); // paramos la cancion de la intro
-                                mapa2.play(); // cancion mapa 2
+                                //mapa2.play(); // cancion mapa 2
                                 Mundo::Instance(CyberPlague::Instance(), window, nivel)->Handle();
                             break;
                             case 2:
@@ -276,7 +273,7 @@ int Menu::Eventos(string key){
                                 //SECTOR O NIVEL 1
                                 nivel = 3;
                                 intro.stop(); // paramos la cancion de la intro
-                                mapa3.play(); // cancion mapa 3
+                                //mapa3.play(); // cancion mapa 3
                                 Mundo::Instance(CyberPlague::Instance(), window, nivel)->Handle();
                             break;
                             case 3:

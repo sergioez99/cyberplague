@@ -260,7 +260,17 @@ Player sufre daño cuando recibe un ataque cuerpo a cuerpo de un NPC o cuando co
 
 ## 20210516 SergioEspinosa @(30m)
 Actualizados los documentos autoevaluación, log, reparto y tareas.
->>>>>>> f9117438d927e1641656abd57e38951edfdea1e1
 
-## 20210516 RubénHerrera @(30m)
+
+## 20210517 JoseSansano @(30m)
+Actualizados documentos autoevaluación, reparto y tareas. 
+
+## 20210517 JoseSansano @(20m)
+Actualizado vida_1.png
+
+## 20210516 SergioEspinosa @(20m)
+Ahora se escucha la música de cada nivel independientemente de si se accede a través del menú o pasando de nivel a nivel.
+
+
+## 20210517 RubénHerrera @(30m)
 Cambiada el fondo de los controles del menú y actualizado documentos.

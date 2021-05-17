@@ -18,6 +18,13 @@ Esta información debe estár sincronizada con el GDD. Debe contener la informac
 - Creacion de la clase Entidad y NPC.
 - Pequeños ajustes en las clases de los NPCs para que puedan utilizar las clases anteriores.
 
+### José Antonio Sansano Melero
+- Creación de casi todo Motor2D base.
+- Creación de colisiones.
+- Creación del primer método que recoge el input del jugador.
+- Creación de la gravedad.
+- Unificación entre el mapa y el render de los personajes.
+
 ## Tareas Hito 3
 
 ### Sergio Espinosa Zaragoza
@@ -34,3 +41,9 @@ Esta información debe estár sincronizada con el GDD. Debe contener la informac
 - Posibilidad de pausar el juego
 - Vista de la pausa
 - Creación de la tienda en la pausa
+
+### José Antonio Sansano Melero
+- Creación del HUD.
+- Mejoras varias a las colisiones de Player.
+- Correción de algunos bugs del proyecto (Input de menu, bucle interpolado).
+- Creación del setup.sh

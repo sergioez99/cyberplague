@@ -1,10 +1,10 @@
 # Autoevaluación individual
 
 ## José Antonio Sansano Melero
-En este hito 2, he transferido las colisiones al mapa, y he simulado la gravedad para que el jugador no pueda moverse en cualquier dirección. También he añadido la funcionalidad de saltar, que será mejorada más adelante (doble salto, por ejemplo).
-He creado una carpeta Tools con structs que son para sustituir a los de SFML (Vector2 de floats, Vector4 de Ints). También he intentado convertir todo el código que esta puesto de SFML a C++, utilizando solamente de SFML las clases de Motor2D (Fachada), pero no he podido por un error. Necesitaré hacerlo por partes, o dejar la clase Map (la que da el error) sin transformar y que siga utilizando funciones de SFML directamente.
-He ayudado a implementar la clase personaje que no tenía sprite porque no heredaba de Entidad.
-Y he ordenado como se realizaban los Inputs. Ahora los Inputs de movimiento los coge en tiempo real, y los pulsados (el botón de disparar, por ejemplo) utilizando el bucle de Events.
+En este hito 3, me he dedicado a perfeccionar las colisiones, ya que el personaje se movia raro.
+Desde que el bucle interpolado se añadió al juego, el movimiento del player hacia cosas raras : Vibraba, se metía dentro del suelo si saltaba muy alto... Pero también tenia otros problemas secundarios, que no eran a causa del bucle interpolado, como que el Player podía "agarrarse" a la pared y no caerse de ella. Todos los bugs que surgían se han fixeado, hasta el del bucle interpolado.
+Ahora mismo, la colisión del Player con el mapa esta lo más perfecta posible, no hace cosas raras y se mueve como debería de moverse. También realiza el salto bien, y cambié el spritesheet del Player para que tenga una animación correcta el salto sin cambiar código. Aparecian algunos bugs que se creaban al añadir cosas nuevas, como uno del input del menu, que he acabado fixeando, y he creado el Hud del juego. 
+El Hud se podia hacer de dos maneras, pero he optado por la más rápida, que es hacer que el hud siga la vista del juego, por lo que crea una sensación de que el hud no se mueve y está en su sitio, al menos respecto a la View. La he creado de tal manera de que el Hud solo puede existir si esta el Player creado, ya que no tiene sentido que haya Hud si no hay Player para mostrar sus estadísticas.
 
 ## Ramón Rodríguez Pedraza
 En este hito 2, he solucionado los errores que tuve en el hito 1 con el Algoritmo A*, y he unificado todos los NPCs a través de la clase NPC de la que todos heredan. También he creado la clase AI_Agent que contiene una clase Nodo y que sirve para obtener un camino a seguir utilizando el Algoritmo A*, esta clase se utilizará en el NPC Pájaro.
