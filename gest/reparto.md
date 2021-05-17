@@ -27,3 +27,10 @@ Esta información debe estár sincronizada con el GDD. Debe contener la informac
 - Búsqueda de sprites para el HUD del juego.
 - Solucionar errores con colisiones en el mapa debido a las capas.
 - Dibujado del personaje y de las balas en su capa del mapa correspondiente.
+
+### Rubén Herrera Cervera
+- Implementacíon del menú
+- Añadida vista para los controles
+- Posibilidad de pausar el juego
+- Vista de la pausa
+- Creación de la tienda en la pausa
