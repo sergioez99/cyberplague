@@ -256,3 +256,6 @@ Player sufre daño cuando recibe un ataque cuerpo a cuerpo de un NPC o cuando co
 
 ## 20210516 SergioEspinosa @(30m)
 Actualizados los documentos autoevaluación, log, reparto y tareas.
+
+## 20210517 JoseSansano @(30m)
+Actualizados documentos autoevaluación, reparto y tareas. 
