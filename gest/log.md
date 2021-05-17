@@ -259,3 +259,6 @@ Actualizados los documentos autoevaluación, log, reparto y tareas.
 
 ## 20210517 JoseSansano @(30m)
 Actualizados documentos autoevaluación, reparto y tareas. 
+
+## 20210517 JoseSansano @(20m)
+Actualizado vida_1.png
