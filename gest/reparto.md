@@ -57,3 +57,12 @@ Esta información debe estár sincronizada con el GDD. Debe contener la informac
 - Colisión entre NPCs.
 - Ataque Soldado.
 - Posicionar NPCs y Cofres en los mapas.
+
+### Carlos Villena Cerdá
+- Dropeo de Monedas.
+- Armas creadas y ajustes para mejorar el disparo.
+- Clase M_Input.
+- Lógica de la Tienda.
+- Cofres.
+- Arreglos generales en todo el código.
+- Player no se resetea cuando cambia de nivel.

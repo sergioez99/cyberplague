@@ -79,10 +79,9 @@ Este fichero puede ser un PDF si la herramienta que gastáis lo requiere, pero *
 * `[Hecho]` - `20210514; Hud con icono de moneda añadido; 30', Zindov`
 * `[Hecho]` - `20210515; Implementación de la Tienda.; 210', CarlosVC-UA`
 * `[Hecho]` - `20210515; Ataque Soldado; 130'; ramonrp99`
-* `[Hecho]` - `20210515; Implementación de la Tienda.; 210', CarlosVC-UA`
 * `[Hecho]` - `20210516; Colisión balas Soldado y player sufre daño al colisionar con un NPC o con sus balas; 85'; ramonrp99`
 * `[Hecho]` - `20210517; Posicionar NPCs y Cofres en los distintos mapas; 120'; ramonrp99, sergioez99`
-* `[Hecho]` - `20210517; Player ya no se resetea cuando se cambia de nivel.; 120', CarlosVC-UA`
+* `[Hecho]` - `20210517; Player ya no se resetea cuando se cambia de nivel.; 210', CarlosVC-UA`
 * `[Hecho]` - `20210426; Patrón State implementado en la clase mundo y menú; 190', sergioez99`
 * `[Hecho]` - `20210426; Dibujado del personaje en la capa que le corresponde del mapa y problemas de colisión con las capas; 60', sergioez99`
 * `[Hecho]` - `20210428; Creación e implementación del mapa de un segundo nivel; 180', sergioez99`
