@@ -5,7 +5,6 @@ target_sources(libModulos PRIVATE
     "${CMAKE_CURRENT_SOURCE_DIR}/Motor2D/M_View.cpp"
     "${CMAKE_CURRENT_SOURCE_DIR}/Motor2D/M_Input.cpp"
 
-    "${CMAKE_CURRENT_SOURCE_DIR}/Tools/Vector2D.cpp"
     "${CMAKE_CURRENT_SOURCE_DIR}/Tools/posInterpolada.cpp"
     
     "${CMAKE_CURRENT_SOURCE_DIR}/Hud.cpp"

@@ -14,16 +14,26 @@ void Entidad::escalar(float x, float y){
 
 bool Entidad::muerto(){
 
-    if(*vida <= 0){return true;}
-    else{return false;}
+    if(*vida <= 0){
+        
+        heMuerto = true;
+        *vida = 0;
+    }
+    
+    return heMuerto;
+}
 
+void Entidad::vivo(){
+
+    heMuerto = false;
+
+    *vida = *vidaMax;
 }
 
 void Entidad::reciboDmg(int dmg){
 
     int dmgRecibido = dmg - *armadura;
-
-    cout << "Vida: " << *vida << " --- Armadura: " << *armadura << " --- Daño: " << dmgRecibido << endl;
+    
     float temp = (float) invencibilidad.getElapsedTime().asMilliseconds() / 1000;
     cout << temp << endl;
     if(temp > kTempInv){
@@ -135,6 +145,18 @@ void Entidad::setVelocidad(float velMov){
 
         *vel = velMov;
     }
+}
+
+void Entidad::setPosition(Vector2D position){
+
+    pos.setPosition(position.x, position.y);
+    spr->setPosition(position);
+}
+
+void Entidad::setPosition(float posX, float posY){
+
+    pos.setPosition(posX, posY);
+    spr->setPosition(posX, posY);
 }
 
 Vector2D Entidad::getLastPosition(){

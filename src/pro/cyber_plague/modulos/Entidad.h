@@ -30,6 +30,7 @@ class Entidad{
         int ataq;
         Vector2D lastPosition;
         bool grounded;
+        bool heMuerto = false;
         posInterpolada pos;
 
         Clock invencibilidad;     //Reloj para controlar el tiempo que debe pasar para que la entidad reciba daño.
@@ -48,6 +49,7 @@ class Entidad{
         void escalar(float x, float y);
         
         bool muerto();
+        void vivo();
         void reciboDmg(int dmg);
         
 
@@ -73,6 +75,7 @@ class Entidad{
         Vector2D getLastPosition();
         void setLastPosition();
         void setPosition(Vector2D pos);
+        void setPosition(float posX, float posY);
 
         bool isGrounded();
         void setGrounded(bool ground);

@@ -7,7 +7,7 @@
 #define kVel  75.0f
 #define kRang  150.0f
 #define kCad 1.0f
-#define kAta 20
+#define kAta 10
 
 /*--------------*/
 

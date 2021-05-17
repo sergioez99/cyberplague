@@ -2,6 +2,7 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 #include <SFML/System.hpp>
+#include <Motor2D/M_Sprite.h>
 #include <sstream>
 #include "TinyXML/tinystr.h"
 #include "TinyXML/tinyxml.h"
@@ -32,6 +33,8 @@ public:
     
     void drawPersonaje(sf::RenderWindow *window, Sprite* sp);
 
+    Vector2D getSpawnPoint();
+
 private:
     //Tilemap
         int _width;
@@ -49,6 +52,6 @@ private:
     
         sf::Texture _tilesetTexture;
         
-        
-
+        float _spawnPointX;
+        float _spawnPointY;
 };

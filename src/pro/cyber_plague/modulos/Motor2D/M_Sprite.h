@@ -1,11 +1,26 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include <../modulos/Tools/Vector2D.cpp>//Recordar que include es como un cd de terminal. ../ es subir una carpeta.
 
 #include <iostream>
 
 using namespace std;
 using namespace sf;
+
+//Para utilizar Vector2 sin SFML
+struct Vector2D
+{
+  float x;
+  float y;
+};
+
+struct VectorInt4D
+{
+  int x;
+  int y;
+  int width;
+  int height;
+};
+
 
 class M_Sprite{
     

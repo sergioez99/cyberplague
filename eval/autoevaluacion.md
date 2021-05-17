@@ -7,11 +7,8 @@ Ahora mismo, la colisión del Player con el mapa esta lo más perfecta posible, 
 El Hud se podia hacer de dos maneras, pero he optado por la más rápida, que es hacer que el hud siga la vista del juego, por lo que crea una sensación de que el hud no se mueve y está en su sitio, al menos respecto a la View. La he creado de tal manera de que el Hud solo puede existir si esta el Player creado, ya que no tiene sentido que haya Hud si no hay Player para mostrar sus estadísticas.
 
 ## Ramón Rodríguez Pedraza
-En este hito 2, he solucionado los errores que tuve en el hito 1 con el Algoritmo A*, y he unificado todos los NPCs a través de la clase NPC de la que todos heredan. También he creado la clase AI_Agent que contiene una clase Nodo y que sirve para obtener un camino a seguir utilizando el Algoritmo A*, esta clase se utilizará en el NPC Pájaro.
-He hecho que los NPCs terrestres, Zombi y Soldado, se muevan de un lado a otro sin caerse de la plataforma en la que están utilizando la matriz de colisiones del mapa.
-He implementado el movimiento de la cámara, haciendo que siga al jugador cuando llegue a la mitad de la pantalla y que deje de seguirlo cuando llegue al final del mapa. Para esto he creado una clase M_View en Motor2D para no trabajar sobre la View de SFML.
-He hecho que cuando el jugador colisione con un NPC sufra daño y muera cuando su vida llegue a 0 (actualmente cuando muere deja de llamar a su update y a su render, por lo que no se mostrará y no podremos interactuar, para el próximo hito lo que hará será mostrar la típica pantalla de Game Over). También he hecho que cuando un proyectil colisione con un NPC este reciba daño y el proyectil se elimine. Cuando la vida del NPC llegue a 0 este morirá.
-Por último, he limitado las llamadas a los update a 15 veces por segundo y he intentado implementar el render interpolado, pero como hasta el momento estabamos moviendo los sprites en los updates me han surgido varios errores al implementarlo y he tenido que quitarlo para este hito.
+En este último hito he implementado el render interpolado y he arreglado un problema con la limitación de las llamadas a update.
+También he implementado las colisiones de las balas de Player con el mapa, los sprite sheets y animación de los NPCs Zombi y Soldado con sus respectivos ataques, he hecho que los NPCs colisionen entre ellos y junto a Sergio he posicionado todos los NPCs y Cofres en los mapas.
 
 ## Sergio Espinosa Zaragoza
 Este último hito lo primero que implementé fueron las clases menú y mundo con el patrón state que se quedaron a medias en el hito 2. 
@@ -20,18 +17,17 @@ Y por último decidimos hacer un tercer nivel que también cree e implementé yo
 
 
 ## Rubén Herrera Cervera
-Para este hito lo primero que hice fue unificar el código del menú que teniamos separado. Aquí tuve un error ya que al pasar el codigo al proyecto probe a llamarlo desde el main para ver el resultado y no conseguía que se dibujase. Era porque tenía un error con la variable que manejaba es estado del menu en el que se encontraba. 
-Implemente las diferentes funciones del patrón state en el menú e intenté continuar implementandolo en la clase CyberPlague pero sin éxito.
-Finalmente adapté el codigo del menú para que utilizase el patrón fachada y añadí a este para que pudiese dibujar el texto.
-Me ha quedado pendiente haber conseguido implementar el patrón state completo, aunque confío en tenerlo esta próxima semana.
+En el hito final, me he encargado de terminar el menu y arreglar unos fallos que tenía. Le he añadido a este una pantalla con los controles. He creado la clase pausa que mantiene el estilo del menú y he hecho que funciones parando el update y el render del juego. Tambien he creado el sistema con el que funciona la tienda del juego en este menú. Al final he añadido la pantalla de muerte que te permite ir al menú.
 
 ## Carlos Villena Cerdá
-Al comienzo del hito empecé creando la clase M_Window y M_Sprite, después creé la clase Entidad y NPC e incluí algunas funcionalidades para que las clases de los NPCs (que ya estaban creadas) para que pudieran utilizar los métodos de las clases padre. También implementé las clases de las armas y creé sus sprites.
-En general creo que ha sido un buen hito, hemos conseguido implementar muchas funcionalidades y nuestro juego a dia de hoy parece algo muy diferente a cuando empecemos. A pesar de que aun quedan más funcionalidades por implementar, estoy muy satisfecho con el resultado. 
+Para finalizar con el proyecto, en el hito 3 decidí terminar de hacer todas las armas y sus mejoras y terminar de perfeccionarlas (hice que las balas se eliminaran del mapa cuando llegan a cierta distancia), también creé una clase para implementar mejor los inputs del usuario, creé todo el sistema de looteo de monedas y el sistema de los cofres (la mayoría de los sprites los creé de 0 y los incluí en su respectivo spritesheet), implementé la lógica de la tienda (no hice los menús) y para terminar hice que el jugador sea independiente del nivel en el que se esté. Aparte de todo lo anterior, corregí algunos problemas menores con algunas clases y ajuste el código en general para que todo funcione mejor. Creo que en rasgos generales ha sido un buen hito y personalmente me siento muy satisfecho con el resultado final.
 
 ## Jorge Mompeán Cabezas
 En este hito he tenido bastante poca participación por mi parte por temas personales y de tiempo. Conseguí en la rama experimental que el personaje principal tenga una animación en estático y una animación corriendo de un lado para otro, y con la ayuda de Jose Antonio, una vez incluí en esta rama lo hecho en experimental, adaptamos mi código a lo que se había hecho en el main. Confio que para la entrega del proyecto final tenga más presencia y pueda aportar mucho más de lo poco que he hecho en relación al resto de compañeros.
 
 
 # Autoevaluación general
-En este hito hemos conseguido asentar las bases de lo que será nuestro futuro videojuego y, a pesar de que nos queda más trabajo a realizar, estamos muy satisfechos con el resultado. Creemos que la nota de nuestro hito podría ser un 7/10.
+Este hito hemos conseguido implementar casi todas las funcionalidades propuestas al principio del proyecto en el juego, incluyendo las funcionales opcionales de las monedas y la tienda, pero quitando los NPC de Pajaro y Mago. Estamos bastante contentos con el resultado de nuestro trabajo y pensamos que hemos conseguido un buen resultado. Creemos que la nota de nuestro hito podría ser un 7/10.
+
+# Porcentaje de nota
+José Antonio Sansano Melero : 20% Ramón Rodríguez Pedraza : 20% Sergio Espinosa Zaragoza: 20% Rubén Herrera Cervera : 16% Carlos Villena Cerdá : 20% Jorge Mompeán Cabezas: 4%
