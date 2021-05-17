@@ -278,5 +278,5 @@ Posicionar junto con Ramón los enemigos y cofres en el mapa. He actualizado ade
 ## 20210517 RubénHerrera @(45m)
 Añadida la pantalla de game over.
 
-## 20210517 CarlosVillena @(2h)
+## 20210517 CarlosVillena @(3h 30m)
 Cambios en el mundo, ahora el player no se resetea cuando se cambia de nivel y arrelgos para que funcione.
