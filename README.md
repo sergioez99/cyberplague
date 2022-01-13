@@ -6,11 +6,9 @@ Proyecto de la asignatura de Fundamentos de los Videojuegos realizado por un gru
 
 # Resumen
 
-CyberPlague es un juego desarrollado en 3 meses que está basado en una mezcla de géneros, los cuales son “Aventura”, “Plataforma” y “Run and gun”. Consta de 3 niveles 2D con scroll lateral hacia la derecha. El jugador dispone de un arma principal y además, tendrá acceso en todo momento a una tienda en la que poder comprar armas, habilidades y mejoras.
+CyberPlague es un juego desarrollado en 3 meses que está basado en una mezcla de géneros, los cuales son “Aventura”, “Plataforma” y “Run and gun”. Consta de 3 niveles 2D con scroll lateral hacia la derecha y un HUD en la posición superior izquierda que nos mostará la vida del jugador, la munición de su arma y su escudo. El jugador dispone de un arma principal con la que podrá derrotar a sus enemigos. Estos enemigos tienen una posibilidad de soltar una moneda de valor 10, con la cual podremos comprar nuevas armas, mejoras de estas y más en la tienda. La tienda estará disponible al jugador en todo momento.
+Por último, por el mapa se irá encontrando una serie de cofres, que le dará a su elección munición, escudo o vida.
 
-Por último, por el mapa se irá encontrando una serie de cofres, que le dará a su elección munición, dinero o vida.
-
-  
 
 # Imágenes del juego
 
