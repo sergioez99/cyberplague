@@ -21,11 +21,11 @@ Por último, por el mapa se irá encontrando una serie de cofres, que le dará a
 
 |![Nivel 1](imgs/nivel1.png)   |![Nivel 2](imgs/nivel2.png)   | ![Nivel 3](imgs/nivel3.png)  |
 |--|--|--|
-| Bosque | Ciudad | Infierno |
+| <div align="center">**Bosque**</div> | <div align="center">**Ciudad**</div> | <div align="center">**Infierno**</div> |
 
 ##  Cofres
 ![Disparo cofre](imgs/cofre1.gif) ![Cofre rotando](imgs/cofre2.gif) 
 
 ## Tienda
-![Tienda gameplay](imgs/tienda1.gif) ![Tienda](imgs/tienda2.png) 
+![Tienda gameplay](imgs/tienda1.gif) ![Tienda](imgs/tienda2.jpg) 
 
