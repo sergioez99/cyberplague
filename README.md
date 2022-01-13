@@ -1,34 +1,31 @@
-# Antes de nada
-Estos son los prerequesitos antes de gastar la plantilla. Debes tener conocimientos básicos de:
+# CyberPlague
 
-* **git**: conocer como mínimo y estar familiarizado con los comandos commit, add, push, pull, tag, merge y branch. Si no sabes nada de git te recomiendo que le eches un vistazo rápido antes de empezar a : https://david-estevez.gitbooks.io/the-git-the-bad-and-the-ugly/content/es/control-de-versiones.html
+Proyecto de la asignatura de Fundamentos de los Videojuegos realizado por un grupo de estudiantes de Ingeniería Multimedia como introducción a la programación de videojuegos utilizando C++ y librerías como SFML y Tiled.
 
-* **markdown**: saber escribir un fichero en markdown con formato básico. Saber incluir imágenes en dicho fichero. Es muy sencillo, con la entrada de la wikipedia podéis saber los tags básicos: https://es.wikipedia.org/wiki/Markdown
+  
 
-* **vscode**: probar el entorno y leer algún tutorial básico para aprender como usarlo. 
+# Resumen
+
+CyberPlague es un juego desarrollado en 3 meses que está basado en una mezcla de géneros, los cuales son “Aventura”, “Plataforma” y “Run and gun”. Consta de 3 niveles 2D con scroll lateral hacia la derecha. El jugador dispone de un arma principal y además, tendrá acceso en todo momento a una tienda en la que poder comprar armas, habilidades y mejoras.
+
+Por último, por el mapa se irá encontrando una serie de cofres, que le dará a su elección munición, dinero o vida.
+
+  
+
+# Imágenes del juego
+
+![gameplay](imgs/principal.gif)
 
 
-## Recomendable
-* **cmake**: tener conocimientos para que sirve y leves de que es el fichero `CMakeLists.txt`. Saber como genera *cmake* un ejecutable y hacer una mini prueba en tu equipo
+## Niveles
 
-# Cómo obtener la plantilla
+|![Nivel 1](imgs/nivel1.png)   |![Nivel 2](imgs/nivel2.png)   | ![Nivel 3](imgs/nivel3.png)  |
+|--|--|--|
+| Bosque | Ciudad | Infierno |
 
-La plantilla se debe obtener desde terminal mediante 
+##  Cofres
+![Disparo cofre](imgs/cofre1.gif) ![Cofre rotando](imgs/cofre2.gif) 
 
-~~~ 
-git clone <url_https_de_tu_repositorio>
-~~~
-La url se obtiene desde el repositorio del grupo así:
+## Tienda
+![Tienda gameplay](imgs/tienda1.gif) ![Tienda](imgs/tienda2.png) 
 
-![](otros/img/git_u.png)
-
-# Documentación
-
-**Tened en cuenta que las intrucciones de la plantilla están aquí:** 
-[documentación_compilada](doc/plantilla_doc.html). Existen más documentos a leer en la carpeta `doc`. ¡Échales un vistazo!
-
-# Cómo compilar el proyecto
-Antes de poder compilar o ejecutar el proyecto normalmente, se deberá ejecutar el `setup.sh` que esta en la carpeta cyber_plague
-para que descargue todos los resources del juego (sonidos, graficos, etc.).
-Para realizar esto de forma sencilla, simplemente es abrir una terminal dentro de la carpeta cyber_plague (dentro de las carpetas src/pro/)
-y escribir `./setup.sh` en la terminal para descargar los resources del proyecto y poderlo ejecutar bien.
